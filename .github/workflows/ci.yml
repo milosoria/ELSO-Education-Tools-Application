@@ -1,0 +1,33 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - master
+  push:
+    branches:
+      - develop
+      - master
+
+jobs:
+  test:
+    name: Run lint and jest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+
+      - name: Install node modules
+        working-directory: .
+        run: |
+          yarn install
+      - name: Run lint
+        working-directory: .
+        run: |
+          yarn lint
+      - name: Run jest
+        working-directory: .
+        run: |
+          yarn jest --passWithNoTests

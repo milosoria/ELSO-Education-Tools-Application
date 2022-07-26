@@ -18,13 +18,9 @@
       "**/*"
     ],
     "ios": {
+      "icon": "./assets/elso-icon.png",
+      "bundleIdentifier": "org.elso.app",
       "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
     }
   }
 }

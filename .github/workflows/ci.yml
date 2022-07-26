@@ -27,7 +27,3 @@ jobs:
         working-directory: .
         run: |
           yarn lint
-      - name: Run jest
-        working-directory: .
-        run: |
-          yarn jest --passWithNoTests

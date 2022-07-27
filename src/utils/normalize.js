@@ -1,28 +1,74 @@
-import { Dimensions, PixelRatio } from 'react-native'
+import { Dimensions, PixelRatio,StyleSheet } from 'react-native'
 
-const { width } = Dimensions.get('window')
+const ratio = PixelRatio.get()
 
-const scaleFont = width / 320
+const normalize = (size) => {
+    const { width, height } = Dimensions.get('window')
 
-/**
- * Normalize Font Size respect to window width with the scale width:320
- * @param {number} size
- */
-export const normalizeFontSize = (size) => {
-    const newSize = size * scaleFont
-    return Math.round(PixelRatio.roundToNearestPixel(newSize))
-}
+    if (ratio >= 2 && ratio < 3) {
+        if (width < 360) {
+            return size * 0.95
+        } else if (height < 667) {
+            return size
+        } else if (height >= 667 && height <= 735) {
+            return size * 1.15
+        }
 
-const scaleWidth = width / 420
+        return size * 1.25
+    } else if (ratio >= 3 && ratio < 3.5) {
+        if (width < 360) {
+            return size
+        } else if (height < 667) {
+            return size * 1.15
+        } else if (height >= 667 && height <= 735) {
+            return size * 1.2
+        }
 
-/**
- * Normalize px respect to window width with the scale width:420
- * @param {number, string} size
- */
-export const normalizePx =(size) => {
-    if (typeof size === 'string') {
-        return size
+        return size * 1.27
+    } else if (ratio >= 3.5) {
+        if (width < 360) {
+            return size
+        } else if (height < 667) {
+            return size * 1.2
+        } else if (height >= 667 && height <= 735) {
+            return size * 1.25
+        }
+
+        return size * 1.4
     }
-    const newSize = size * scaleWidth
-    return Math.round(PixelRatio.roundToNearestPixel(newSize))
+
+    return size
 }
+
+export const create = (
+    styles,
+    targetProperties = [
+        'fontSize',
+        'margin',
+        'marginLeft',
+        'marginRight',
+        'marginHorizontal',
+        'marginVertical',
+        'padding',
+        'paddingVertical',
+        'paddingHorizontal',
+        'borderRadius',
+        'shadowRadius',
+    ]
+) => {
+    const normalizedStyles = {}
+    Object.keys(styles).forEach((key) => {
+        normalizedStyles[key] = {}
+        Object.keys(styles[key]).forEach((property) => {
+            if (targetProperties.includes(property)) {
+                normalizedStyles[key][property] = normalize(styles[key][property])
+            } else {
+                normalizedStyles[key][property] = styles[key][property]
+            }
+        })
+    })
+
+    return StyleSheet.create(normalizedStyles)
+}
+
+export default normalize

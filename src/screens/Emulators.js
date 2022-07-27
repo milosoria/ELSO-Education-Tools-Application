@@ -1,7 +1,7 @@
 import { NativeBaseProvider } from 'native-base'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Meter from '../components/meter'
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native'
 
 const Emulators = () => {
 

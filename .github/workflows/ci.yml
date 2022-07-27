@@ -12,7 +12,7 @@ on:
 
 jobs:
   test:
-    name: Run lint and jest
+    name: Run lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, View } from 'react-native'
-import Knob from './src/components/knob'
+import Emulators from './src/screens/Emulators'
 
 const App = () => {
 
     return (
         <View style={styles.container}>
-            <Knob/>
+            <Emulators/>
             <StatusBar style="auto" />
         </View>
     )
@@ -14,6 +14,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
     container : {
+        flexDirection : 'column-reverse',
         flex : 1,
         backgroundColor : '#fff',
         alignItems : 'center',

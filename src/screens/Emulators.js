@@ -1,17 +1,20 @@
-import { NativeBaseProvider } from 'native-base'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import Meter from '../components/meter'
-import { StyleSheet } from 'react-native'
+import Mixer from '../components/mixer'
+import { StyleSheet, View,useWindowDimensions } from 'react-native'
+import useOrientation from '../utils/orientation'
 
 const Emulators = () => {
 
+    const isLandscape = useOrientation()
+    const { height,width } = useWindowDimensions()
+    const dimension = isLandscape ? 0.9* width : 0.9* height
+
     return (
-        <NativeBaseProvider>
-            <SafeAreaView style={styles.root}>
-                <Meter type='ml-min'/>
-                <Meter type='LPM'/>
-            </SafeAreaView>
-        </NativeBaseProvider>
+        <View style={styles.root}>
+            <Meter type='ml-min' dimension={dimension}/>
+            <Meter type='LPM' dimension={dimension}/>
+            <Mixer dimension={dimension}/>
+        </View>
     )
 }
 

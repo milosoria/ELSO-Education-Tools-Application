@@ -12,6 +12,7 @@ const Knob = ({
     size = 100,
     style = {},
     rotation,
+    imagePath
 }) => {
     // const margin = size * 0.15;
     const savedRotation = useSharedValue(0)
@@ -58,7 +59,7 @@ const Knob = ({
                         styles.knobImage,
                         animatedStyle,
                     ]}
-                    source={require('../assets/ml-min/Potenciometro.png')}
+                    source={imagePath}
                 />
             </View>
         </GestureDetector>

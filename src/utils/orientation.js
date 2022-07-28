@@ -6,14 +6,14 @@ const useOrientation = () =>{
     const [orientation, setOrientation] = useState(width > height)
 
     useEffect(() => {
-        Dimensions.addEventListener('change', ({ window: { width,height } })=>{
+        const subscription = Dimensions.addEventListener('change', ({ window: { width,height } })=>{
             if (width<height) {
                 setOrientation(false)
             } else {
                 setOrientation(true)
             }
         })
-
+        return () => subscription.remove()
     }, [])
 
     return orientation

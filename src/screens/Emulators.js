@@ -8,7 +8,8 @@ const Emulators = () => {
     return (
         <NativeBaseProvider>
             <SafeAreaView style={styles.root}>
-                <Meter/>
+                <Meter type='ml-min'/>
+                <Meter type='LPM'/>
             </SafeAreaView>
         </NativeBaseProvider>
     )
@@ -16,6 +17,7 @@ const Emulators = () => {
 
 const styles = StyleSheet.create({
     root : {
+        flexDirection: 'row',
         flex : 1,
         alignItems : 'center',
         justifyContent : 'center',

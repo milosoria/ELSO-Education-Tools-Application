@@ -50,10 +50,18 @@ export const create = (
         'marginHorizontal',
         'marginVertical',
         'padding',
+        'paddingLeft',
+        'paddingRight',
         'paddingVertical',
         'paddingHorizontal',
+        'height',
+        'width',
         'borderRadius',
         'shadowRadius',
+        'top',
+        'bottom',
+        'left',
+        'right',
     ]
 ) => {
     const normalizedStyles = {}

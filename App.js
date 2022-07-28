@@ -14,7 +14,6 @@ const App = () => {
 
 const styles = StyleSheet.create({
     container : {
-        flexDirection : 'column-reverse',
         flex : 1,
         backgroundColor : '#fff',
         alignItems : 'center',

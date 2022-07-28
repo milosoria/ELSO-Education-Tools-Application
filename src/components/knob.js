@@ -4,6 +4,7 @@ import Animated, {
     useSharedValue,
 } from 'react-native-reanimated'
 import { Gesture, GestureDetector } from 'react-native-gesture-handler'
+import { create } from '../utils/normalize'
 
 const Knob = ({
     minDeg = 0,
@@ -29,27 +30,32 @@ const Knob = ({
             transform : [{ rotateZ: `${rotation.value}deg` }],
         }
     })
+    const styles = create({
+        container : {
+            shadowOffset : { width: size / 30, height: 5 },
+            shadowRadius : 3,
+            shadowOpacity : 0.3,
+            alignItems : 'center',
+            width : size,
+            height : size,
+            borderRadius : size / 2,
+            ...style,
+        },
+        knobImage : {
+            width : size,
+            height : size,
+            borderRadius : size / 2,
 
+        }
+    })
     return (
         <GestureDetector gesture={rotationGesture}>
             <View
-                style={{
-                    shadowOffset : { width: size / 30, height: 5 },
-                    shadowRadius : 3,
-                    shadowOpacity : 0.3,
-                    backgroundColor : 'white',
-                    alignItems : 'center',
-                    borderRadius : size / 2,
-                    ...style,
-                }}
+                style={styles.container}
             >
                 <Animated.Image
                     style={[
-                        {
-                            width : size,
-                            height : size,
-                            borderRadius : size / 2,
-                        },
+                        styles.knobImage,
                         animatedStyle,
                     ]}
                     source={require('../assets/ml-min/Potenciometro.png')}

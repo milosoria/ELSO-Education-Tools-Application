@@ -4,12 +4,12 @@ import Knob from '../components/knob'
 import { create } from '../utils/normalize'
 // import useOrientation from '../utils/orientation'
 
-const Meter = ({type}) => {
+const Meter = ({ type }) => {
 
     // TODO: make this responsive to change of orientation, in fact, this wont work for iphones.
     // Using the dimensions of the device can be dangerous cause the proportion/ratio of px is
     // not the same
-    const tagsPath =  type === 'ml-min' ? require("../assets/ml-min/Etiquetas.png") : require("../assets/LPM/Etiquetas.png")
+    const tagsPath =  type === 'ml-min' ? require('../assets/ml-min/Etiquetas.png') : require('../assets/LPM/Etiquetas.png')
     const imageLeftOffset =  type === 'ml-min' ? 20  : 10
     let { height } = useWindowDimensions()
     // const isLandscape = useOrientation()
@@ -60,8 +60,8 @@ const Meter = ({type}) => {
 
 
     return (
-        <ImageBackground source={require(`../assets/ml-min/Background.png`)} style={styles.background} imageStyle={styles.backgroundImage}>
-            <Animated.Image source={require(`../assets/ml-min/Burbuja-medidor.png`)} style={[styles.bubble,animatedStyle]}/>
+        <ImageBackground source={require('../assets/ml-min/Background.png')} style={styles.background} imageStyle={styles.backgroundImage}>
+            <Animated.Image source={require('../assets/ml-min/Burbuja-medidor.png')} style={[styles.bubble,animatedStyle]}/>
             <Image source={tagsPath} style={styles.tags} />
             <Knob rotation={rotation} minDeg={degRange[0]} maxDeg={degRange[1]} size={knobSize} style={styles.knob}/>
         </ImageBackground>

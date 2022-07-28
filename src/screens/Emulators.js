@@ -17,7 +17,7 @@ const Emulators = () => {
 
 const styles = StyleSheet.create({
     root : {
-        flexDirection: 'row',
+        flexDirection : 'row',
         flex : 1,
         alignItems : 'center',
         justifyContent : 'center',

@@ -14,7 +14,7 @@ const Meter = ({ type,dimension }) => {
 
     const degRange = [0,248]
     // TODO: this shouldnt be calculated like this
-    const ticksRange = [0,dimension*(0.405)]
+    const ticksRange = [0,dimension*(0.407)]
     const knobSize = dimension*(0.1)
 
     const rotation = useSharedValue(0)

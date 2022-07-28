@@ -1,9 +1,12 @@
-import { Image,   Modal, Text, View } from 'react-native'
+import { Image,   Modal, Text, View,useWindowDimensions } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { create } from '../utils/normalize'
 import colors from '../config/color-palette'
 
 const InstructionsModal = ({ modalVisible, setModalVisible }) => {
+    const { width } = useWindowDimensions()
+    const imageSize = width *0.4
+
     return (
         <View style={styles.centeredView}>
             <Modal
@@ -20,7 +23,8 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                         <Text style={styles.subTitle}>Use two fingers</Text>
                         <Image
                             source={require('../assets/instructions/fingers-gesture.png')}
-                            style={styles.image}
+                            style={{ width: imageSize }}
+                            resizeMode='contain'
                         />
                         <View style={styles.divider}/>
                         <TouchableOpacity
@@ -44,31 +48,30 @@ const styles = create({
         marginTop : 22,
     },
     image : {
-        width : 150,
         resizeMode : 'contain'
     },
     modalView : {
         margin : 20,
         backgroundColor : colors.primary.white,
-        borderRadius : 10,
+        borderRadius : 8,
         paddingTop : 25,
         paddingHorizontal : 30,
-        paddingBottom : 15,
+        paddingBottom : 6,
         alignItems : 'center',
         shadowColor : colors.primary.gray,
-        shadowOpacity : 0.5,
-        shadowRadius : 5,
+        shadowOpacity : 0.8,
+        shadowRadius : 8,
         elevation : 5,
-    },
-    button : {
-        padding : 10,
-        elevation : 2,
     },
     divider : {
         backgroundColor : colors.primary.gray,
         opacity : 0.5,
         height : 0.8,
         width : 250
+    },
+    button : {
+        padding : 10,
+        elevation : 2,
     },
     buttonText : {
         color : colors.secondary.blue,
@@ -77,15 +80,15 @@ const styles = create({
         fontWeight : '600',
         textAlign : 'center',
     },
-    subTitle : {
-        fontSize : 13,
-        fontWeight : '500',
-        textAlign : 'center',
-    },
     title : {
         fontWeight : '700',
         color : 'black',
         fontSize : 20,
+    },
+    subTitle : {
+        fontSize : 13,
+        fontWeight : '500',
+        textAlign : 'center',
     },
 })
 

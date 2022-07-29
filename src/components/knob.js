@@ -7,14 +7,13 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler'
 import { create } from '../utils/normalize'
 
 const Knob = ({
-    minDeg = 0,
-    maxDeg = 270,
-    size = 100,
-    style = {},
+    minDeg ,
+    maxDeg ,
+    size ,
+    style,
     rotation,
     imagePath
 }) => {
-    // const margin = size * 0.15;
     const savedRotation = useSharedValue(0)
     const rotationGesture = Gesture.Rotation()
         .onUpdate((e) => {

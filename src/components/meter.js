@@ -10,7 +10,7 @@ const Meter = ({ type,dimension }) => {
     const knobPath = require('../assets/knob.png')
     const tagsPath =  type === 'ml-min' ? require('../assets/ml-min/tags.png') : require('../assets/LPM/tags.png')
 
-    const imageLeftOffset =  type === 'ml-min' ? 20  : 10
+    const imageLeftOffset =  type === 'ml-min' ? dimension*0.02  : dimension*0.01
 
     const degRange = [0,248]
     // TODO: this shouldnt be calculated like this

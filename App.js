@@ -5,27 +5,24 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import Emulators from './src/screens/Emulators'
 import InstructionsModal from './src/components/instructionsModal'
 import { useState } from 'react'
-import normalize, { create } from './src/utils/normalize'
-import useOrientation from './src/utils/orientation'
+import { create } from './src/utils/normalize'
 import colors from './src/config/color-palette'
 
-const BUTTONSIZE = 50
-
 const App = () => {
-    const isLandscape = useOrientation()
     const [modalVisible,setModalVisible] = useState(false)
     const handlePress = () => {
         setModalVisible(!modalVisible)
     }
-    const rightPos = isLandscape ? normalize(125) : normalize(20) 
 
     return (
         <NativeBaseProvider>
             <SafeAreaView style={styles.container}>
                 <View style={styles.column}>
-                    <Emulators/>
-                    <View style={[styles.row, { left: -rightPos }]}>
-                        <TouchableOpacity style={[styles.button]} onPress={handlePress}>
+                    <View style={styles.centered}>
+                        <Emulators/>
+                    </View >
+                    <View style={[styles.row ]}>
+                        <TouchableOpacity style={styles.button} onPress={handlePress}>
                             <Image source={require('./src/assets/help_button.png')} resizeMode='contain'/>
                         </TouchableOpacity>
                     </View >
@@ -40,20 +37,23 @@ const App = () => {
 const styles = create({
     container : {
         backgroundColor : colors.primary.background,
-        alignItems : 'center',
         justifyContent : 'center',
+    },
+    centered : {
+        alignSelf : 'center'
     },
     column : {
         flexDirection : 'column',
     },
     row : {
         position : 'absolute',
-        bottom : 0,
+        bottom : 5,
+        left : 10
     },
     button : {
-        width : BUTTONSIZE,
-        height : BUTTONSIZE,
-        borderRadius : BUTTONSIZE/2,
+        width : 50,
+        height : 50,
+        borderRadius : 50/2,
     },
 })
 

@@ -5,7 +5,7 @@ import colors from '../config/color-palette'
 
 const InstructionsModal = ({ modalVisible, setModalVisible }) => {
     const { width } = useWindowDimensions()
-    const imageSize = width *0.4
+    const imageSize = width * 0.4
 
     return (
         <View style={styles.centeredView}>
@@ -15,8 +15,7 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                 visible={modalVisible}
                 onRequestClose={() => {
                     setModalVisible(!modalVisible)
-                }}
-            >
+                }}>
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <Text style={styles.title}>Remember</Text>
@@ -26,7 +25,7 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                             style={{ width: imageSize }}
                             resizeMode='contain'
                         />
-                        <View style={styles.divider}/>
+                        <View style={[styles.divider,{ width: imageSize }]}/>
                         <TouchableOpacity
                             style={styles.button}
                             onPress={() => setModalVisible(!modalVisible)}
@@ -67,7 +66,6 @@ const styles = create({
         backgroundColor : colors.primary.gray,
         opacity : 0.5,
         height : 0.8,
-        width : 250
     },
     button : {
         padding : 10,

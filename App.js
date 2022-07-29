@@ -1,18 +1,25 @@
 import { StatusBar } from 'expo-status-bar'
 import { NativeBaseProvider } from 'native-base'
-import { Image , SafeAreaView ,View } from 'react-native'
+import { Image , SafeAreaView ,View ,useWindowDimensions } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import Emulators from './src/screens/Emulators'
 import InstructionsModal from './src/components/instructionsModal'
 import { useState } from 'react'
 import { create } from './src/utils/normalize'
 import colors from './src/config/color-palette'
+import useOrientation from './src/utils/orientation'
 
 const App = () => {
     const [modalVisible,setModalVisible] = useState(false)
+
     const handlePress = () => {
         setModalVisible(!modalVisible)
     }
+
+    const isLandscape = useOrientation()
+    const { height,width } = useWindowDimensions()
+    const dimension = isLandscape ? 0.9* width : 0.9* height
+    const buttonSize = dimension * 0.09
 
     return (
         <NativeBaseProvider>
@@ -21,8 +28,8 @@ const App = () => {
                     <View style={styles.centered}>
                         <Emulators/>
                     </View >
-                    <View style={[styles.row ]}>
-                        <TouchableOpacity style={styles.button} onPress={handlePress}>
+                    <View style={styles.button}>
+                        <TouchableOpacity style={{ width: buttonSize, height: buttonSize, borderRadius: buttonSize/2 }} onPress={handlePress}>
                             <Image source={require('./src/assets/help_button.png')} resizeMode='contain'/>
                         </TouchableOpacity>
                     </View >
@@ -45,15 +52,10 @@ const styles = create({
     column : {
         flexDirection : 'column',
     },
-    row : {
-        position : 'absolute',
-        bottom : 5,
-        left : 10
-    },
     button : {
-        width : 50,
-        height : 50,
-        borderRadius : 50/2,
+        position : 'absolute',
+        bottom : -20,
+        left : 10
     },
 })
 

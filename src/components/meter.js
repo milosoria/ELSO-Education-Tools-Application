@@ -13,8 +13,7 @@ const Meter = ({ type,dimension }) => {
     const imageLeftOffset =  type === 'ml-min' ? dimension*0.02  : dimension*0.01
 
     const degRange = [0,248]
-    // TODO: this shouldnt be calculated like this
-    const ticksRange = [0,dimension*(0.407)]
+    const ticksRange = [0,dimension*(0.405)]
     const knobSize = dimension*(0.1)
 
     const rotation = useSharedValue(0)
@@ -27,21 +26,22 @@ const Meter = ({ type,dimension }) => {
 
     const styles = create({
         backgroundImage : {
-            resizeMode : 'contain',
+            resizeMode : 'stretch',
         },
         background : {
             alignItems : 'center',
             shadowRadius : 5,
             shadowOpacity : 0.3,
             height : dimension*0.6,
-            marginHorizontal : 5
+            width : dimension*0.15,
+            marginHorizontal : dimension*0.015
         } ,
         bubble : {
             resizeMode : 'contain',
             position : 'absolute',
             top : dimension*0.445,
-            width : 12,
-            height : 12,
+            width : dimension*0.01,
+            height : dimension*0.01,
         },
         tags : {
             resizeMode : 'contain',

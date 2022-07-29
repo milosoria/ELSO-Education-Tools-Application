@@ -24,7 +24,8 @@ const Mixer = ({ dimension }) => {
             shadowOpacity : 0.3,
             height : dimension*0.6,
             width : dimension*0.25,
-            marginTop : dimension*0.25 
+            marginTop : dimension*0.25,
+            marginLeft : dimension*0.005
         },
         knob : {
             position : 'absolute',

@@ -39,13 +39,12 @@ const Knob = ({
             alignItems : 'center',
             width : size,
             height : size,
-            borderRadius : size / 2,
+            borderRadius : size / 2
         },
         knobImage : {
             width : size,
             height : size,
-            borderRadius : size / 2,
-
+            borderRadius : size / 2
         }
     })
 

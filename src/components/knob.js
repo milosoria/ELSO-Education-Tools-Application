@@ -45,7 +45,7 @@ const Knob = ({
             width : size,
             height : size,
             borderRadius : size / 2,
-            resizeMode: 'stretch'
+            resizeMode : 'stretch'
         }
     })
 

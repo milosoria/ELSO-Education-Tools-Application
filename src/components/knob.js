@@ -30,6 +30,7 @@ const Knob = ({
             transform : [{ rotateZ: `${rotation.value}deg` }],
         }
     })
+
     const styles = create({
         container : {
             shadowOffset : { width: size / 30, height: 5 },
@@ -39,7 +40,6 @@ const Knob = ({
             width : size,
             height : size,
             borderRadius : size / 2,
-            ...style,
         },
         knobImage : {
             width : size,
@@ -48,10 +48,11 @@ const Knob = ({
 
         }
     })
+
     return (
         <GestureDetector gesture={rotationGesture}>
             <View
-                style={styles.container}
+                style={[styles.container, style]}
             >
                 <Animated.Image
                     style={[

@@ -28,8 +28,7 @@ const Mixer = ({ dimension }) => {
             marginLeft : dimension*0.005
         },
         knob : {
-            position : 'absolute',
-            top : dimension* 0.165
+            top : dimension* 0.21
         }
     })
 

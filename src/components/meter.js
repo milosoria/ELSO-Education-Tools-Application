@@ -37,8 +37,7 @@ const Meter = ({ type,dimension }) => {
             marginHorizontal : dimension*0.015
         } ,
         bubble : {
-            resizeMode : 'contain',
-            position : 'absolute',
+            resizeMode : 'stretch',
             top : dimension*0.445,
             width : dimension*0.01,
             height : dimension*0.01,
@@ -46,12 +45,11 @@ const Meter = ({ type,dimension }) => {
         tags : {
             resizeMode : 'contain',
             height : dimension*0.35,
-            top : dimension*0.12,
+            top : dimension*0.11,
             marginLeft : imageLeftOffset,
         },
         knob : {
-            position : 'absolute',
-            top : dimension* 0.38
+            top : dimension* 0.11
         }
     })
 

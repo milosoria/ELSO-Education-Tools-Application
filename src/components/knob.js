@@ -44,7 +44,8 @@ const Knob = ({
         knobImage : {
             width : size,
             height : size,
-            borderRadius : size / 2
+            borderRadius : size / 2,
+            resizeMode: 'stretch'
         }
     })
 

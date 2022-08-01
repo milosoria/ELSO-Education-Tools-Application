@@ -1,9 +1,9 @@
 import Meter from '../components/meter'
 import Mixer from '../components/mixer'
-import { StyleSheet, View,useWindowDimensions } from 'react-native'
+import { StyleSheet, View, useWindowDimensions } from 'react-native'
 import useOrientation from '../utils/orientation'
 
-const Emulators = () => {
+const Blender = () => {
 
     const isLandscape = useOrientation()
     const { height,width } = useWindowDimensions()
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Emulators
+export default Blender

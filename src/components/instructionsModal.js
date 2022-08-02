@@ -1,7 +1,7 @@
 import { Image,   Modal, Text, View,useWindowDimensions } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { create } from '../utils/normalize'
-import colors from '../config/color-palette'
+import colors from '../utils/color-palette'
 
 const InstructionsModal = ({ modalVisible, setModalVisible }) => {
     const { width } = useWindowDimensions()
@@ -21,7 +21,7 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                         <Text style={styles.title}>Remember</Text>
                         <Text style={styles.subTitle}>Use two fingers</Text>
                         <Image
-                            source={require('../assets/instructions/fingers-gesture.png')}
+                            source={require('../assets/help/fingers-gesture.png')}
                             style={{ width: imageSize }}
                             resizeMode='contain'
                         />

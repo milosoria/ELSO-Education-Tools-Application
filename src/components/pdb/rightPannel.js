@@ -3,9 +3,12 @@ import { useSharedValue } from 'react-native-reanimated'
 import Knob from '../knob'
 import IntervalKnob from '../intervalKnob'
 import { create } from '../../utils/normalize'
+import DimensionContext from '../../contexts/dimensionContext'
+import { useContext } from 'react'
 
-const RightPannel = ({ dimension }) => {
+const RightPannel = () => {
 
+    const { dimension } = useContext(DimensionContext)
     // Images' Paths
     const backgroundPath = require('../../assets/pdb/right-knob-pannel/background.png')
     const zeroKnobPath = require('../../assets/pdb/right-knob-pannel/zero-knob.png')

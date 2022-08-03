@@ -7,23 +7,22 @@ import DimensionContext from '../contexts/dimensionContext'
 import colors from '../utils/color-palette'
 
 const Blender = () => {
-    const { dimension } = useContext(DimensionContext)
     const [modalVisible,setModalVisible] = useState(false)
+    const { dimension } = useContext(DimensionContext)
+    const buttonSize = dimension * 0.09
 
     const handlePress = () => {
         setModalVisible(!modalVisible)
     }
-
-    const buttonSize = dimension * 0.09
 
     return (
         <>
             <SafeAreaView style={styles.column}>
                 <View style={styles.centered}>
                     <View style={styles.root}>
-                        <Meter type='ml-min' dimension={dimension}/>
-                        <Meter type='LPM' dimension={dimension}/>
-                        <Mixer dimension={dimension}/>
+                        <Meter type='ml-min' />
+                        <Meter type='LPM' />
+                        <Mixer />
                     </View>
                 </View>
                 <View style={styles.button}>

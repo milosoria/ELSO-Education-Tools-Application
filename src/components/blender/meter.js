@@ -2,9 +2,12 @@ import { Image,ImageBackground } from 'react-native'
 import Animated,{ interpolate, useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
 import Knob from '../knob'
 import { create } from '../../utils/normalize'
+import DimensionContext from '../../contexts/dimensionContext'
+import { useContext } from 'react'
 
-const Meter = ({ type,dimension }) => {
+const Meter = ({ type }) => {
 
+    const { dimension } = useContext(DimensionContext)
     const backgroundPath = require('../../assets/blender/background.png')
     const bubblePath = require('../../assets/blender/bubble.png')
     const knobPath = require('../../assets/blender/knob.png')

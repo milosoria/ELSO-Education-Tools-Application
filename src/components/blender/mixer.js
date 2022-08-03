@@ -2,9 +2,12 @@ import { ImageBackground  } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import Knob from '../knob'
 import { create } from '../../utils/normalize'
+import DimensionContext from '../../contexts/dimensionContext'
+import { useContext } from 'react'
 
-const Mixer = ({ dimension }) => {
+const Mixer = () => {
 
+    const { dimension } = useContext(DimensionContext)
     // Images' Paths
     const backgroundPath = require('../../assets/blender/Mixer/background.png')
     const knobPath = require('../../assets/blender/Mixer/knob.png')

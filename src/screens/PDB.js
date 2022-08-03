@@ -1,19 +1,25 @@
-import { StyleSheet, View } from 'react-native'
+import { ActivityIndicator, StyleSheet,View } from 'react-native'
 import LeftPannel from '../components/pdb/leftPannel'
 import CenterPannel from '../components/pdb/centerPannel'
 import RightPannel from '../components/pdb/rightPannel'
-import { useContext } from 'react'
-import DimensionContext from '../contexts/dimensionContext'
 import colors from '../utils/color-palette'
+import { useFonts } from 'expo-font'
 
 const PDB = () => {
-    const { dimension } = useContext(DimensionContext)
+
+    let [fontsLoaded] = useFonts({
+        'Digital-Numbers' : require('../../assets/fonts/DigitalNumbers-Regular.ttf'),
+    })
+
+    if (!fontsLoaded) {
+        return <ActivityIndicator/>
+    }
 
     return (
         <View style={styles.container}>
-            <LeftPannel dimension={dimension}/>
-            <CenterPannel dimension={dimension}/>
-            <RightPannel dimension={dimension}/>
+            <LeftPannel/>
+            <CenterPannel/>
+            <RightPannel/>
         </View>
     )
 }

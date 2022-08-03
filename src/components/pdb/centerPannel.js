@@ -2,13 +2,12 @@ import { Image, ImageBackground, Text,View } from 'react-native'
 import GestureRecognizer  from 'react-native-swipe-gestures'
 import { create } from '../../utils/normalize'
 import { useState } from 'react'
-import { useFonts } from 'expo-font'
+import DimensionContext from '../../contexts/dimensionContext'
+import { useContext } from 'react'
 
-const CenterPannel = ({ dimension }) => {
+const CenterPannel = () => {
 
-    useFonts({
-        'Digital-Numbers' : require('../../../assets/fonts/DigitalNumbers-Regular.ttf'),
-    })
+    const { dimension } = useContext(DimensionContext)
     const [active, setActive] = useState(false)
     // Images' Paths
     const backgroundPath = require('../../assets/pdb/center-display-pannel/background.png')

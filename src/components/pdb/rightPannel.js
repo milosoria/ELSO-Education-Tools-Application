@@ -9,16 +9,21 @@ import { useContext } from 'react'
 const RightPannel = () => {
 
     const { dimension } = useContext(DimensionContext)
+    
     // Images' Paths
     const backgroundPath = require('../../assets/pdb/right-knob-pannel/background.png')
     const zeroKnobPath = require('../../assets/pdb/right-knob-pannel/zero-knob.png')
     const alarmFuncKnobPath = require('../../assets/pdb/right-knob-pannel/alarm-and-function-knob.png')
 
+    // Degrees Ranges
     const degRange = [0,360]
-    const funcDegRange = [0,180]
+    const funcDegRange = [0,216]
+    
+    // Size
     const zeroKnobSize = dimension*(0.09)
     const alarmFuncKnobSize = dimension*(0.08)
 
+    // Rotation Shared Values
     const zeroRotation = useSharedValue(0)
     const alarmRotation = useSharedValue(0)
     const funcRotation = useSharedValue(0)

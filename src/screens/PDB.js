@@ -12,7 +12,11 @@ const PDB = () => {
     })
 
     if (!fontsLoaded) {
-        return <ActivityIndicator/>
+        return (
+            <View style={styles.container}>
+                <ActivityIndicator/>
+            </View>
+        )
     }
 
     return (

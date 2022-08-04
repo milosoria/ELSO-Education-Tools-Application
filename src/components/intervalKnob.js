@@ -10,7 +10,7 @@ const IntervalKnob = ({ degRange , size , style, rotation, imagePath }) => {
 
     const rotationGesture = Gesture.Rotation()
         .onUpdate((e) => {
-            const degrees = (e.rotation / Math.PI) * (maxDeg - minDeg) + savedRotation.value
+            const degrees = ((e.rotation/5) / Math.PI) * (maxDeg - minDeg) + savedRotation.value
             rotation.value = Math.ceil(Math.min(Math.max(minDeg, degrees), maxDeg))
         })
         .onEnd(() => {

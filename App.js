@@ -1,8 +1,7 @@
 import { StatusBar } from 'expo-status-bar'
-import { NativeBaseProvider } from 'native-base'
 import { Image , SafeAreaView ,View ,useWindowDimensions } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import Emulators from './src/screens/Emulators'
+import Blender from './src/screens/Blender'
 import InstructionsModal from './src/components/instructionsModal'
 import { useState } from 'react'
 import { create } from './src/utils/normalize'
@@ -22,11 +21,10 @@ const App = () => {
     const buttonSize = dimension * 0.09
 
     return (
-        <NativeBaseProvider>
             <SafeAreaView style={styles.container}>
                 <View style={styles.column}>
                     <View style={styles.centered}>
-                        <Emulators/>
+                        <Blender/>
                     </View >
                     <View style={styles.button}>
                         <TouchableOpacity style={{ width: buttonSize, height: buttonSize, borderRadius: buttonSize/2 }} onPress={handlePress}>
@@ -37,7 +35,6 @@ const App = () => {
                 <InstructionsModal modalVisible={modalVisible} setModalVisible={setModalVisible}/>
                 <StatusBar style="auto" />
             </SafeAreaView>
-        </NativeBaseProvider>
     )
 }
 

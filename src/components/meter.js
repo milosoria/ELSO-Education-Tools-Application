@@ -12,8 +12,8 @@ const Meter = ({ type,dimension }) => {
 
     const imageLeftOffset =  type === 'ml-min' ? dimension*0.02  : dimension*0.01
 
-    const degRange = [0,248]
-    const ticksRange = [0,dimension*(0.405)]
+    const degRange = [0,720]
+    const ticksRange = [0,dimension*(0.47)]
     const knobSize = dimension*(0.1)
 
     const rotation = useSharedValue(0)

@@ -6,7 +6,7 @@ import { create } from '../utils/normalize'
 const IntervalKnob = ({ degRange , size , style, rotation, imagePath }) => {
     const savedRotation = useSharedValue(0)
     const [minDeg, maxDeg] = degRange
-    const steps = [0,36,72, 108, 144,180]
+    const steps = [0,36,72, 108, 144,180,216]
 
     const rotationGesture = Gesture.Rotation()
         .onUpdate((e) => {

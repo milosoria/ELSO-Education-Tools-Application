@@ -4,6 +4,7 @@ import { create } from '../../utils/normalize'
 import { useEffect, useState } from 'react'
 import DimensionContext from '../../contexts/dimensionContext'
 import { useContext } from 'react'
+import {Audio} from 'expo-av'
 
 const ROOTPATH = '../../assets/pdb/center-display-pannel'
 
@@ -11,10 +12,33 @@ const CenterPannel = () => {
     const { dimension } = useContext(DimensionContext)
     const [active, setActive] = useState(false)
     const [ledOn, setLedOn] = useState(false)
+    const [sound,setSound] = useState()
+
     // Images' Paths
     const backgroundPath = require(`${ROOTPATH}/background.png`)
     const alarmPath = active ? require(`${ROOTPATH}/on-alarm.png`) : require(`${ROOTPATH}/off-alarm.png`)
     const ledPath = ledOn ? require(`${ROOTPATH}/on-led.png`) : require(`${ROOTPATH}/off-led.png`)
+    const leverSoundPath = require(`${ROOTPATH}/lever.mp3`)
+
+    const handleSwipeDown = () => {
+        setActive(false)
+        playSound()
+    }
+
+    const handleSwipeUp = () => {
+        setActive(true)
+        playSound()
+    }
+
+    const playSound = async () => {
+        const { sound } = await Audio.Sound.createAsync(leverSoundPath)
+        setSound(sound)
+        await sound.playAsync()
+    }
+
+    useEffect(() => {
+        return sound ? () => sound.unloadAsync() : undefined
+    }, [sound])
 
 
     useEffect(()=>{
@@ -120,7 +144,7 @@ const CenterPannel = () => {
             </View>
             <Image source={alarmPath} style={styles.alarm}/>
             <Image source={ledPath} style={styles.led}/>
-            <GestureRecognizer onSwipeDown={()=> setActive(false)} onSwipeUp={()=>setActive(true)}>
+            <GestureRecognizer  onSwipeDown={handleSwipeDown} onSwipeUp={handleSwipeUp}>
                 <View style={styles.pressable}/>
             </GestureRecognizer>
         </ImageBackground>

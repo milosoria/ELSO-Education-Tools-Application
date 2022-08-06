@@ -1,12 +1,25 @@
 import { View } from 'react-native'
-import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
+import Animated, { runOnJS, useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
 import { Gesture, GestureDetector } from 'react-native-gesture-handler'
 import { create } from '../utils/normalize'
+import {useEffect, useState} from 'react'
+import {Audio} from 'expo-av'
 
-const IntervalKnob = ({ degRange , size , style, rotation, imagePath }) => {
+const IntervalKnob = ({soundPath, degRange , size , style, imagePath,steps }) => {
+    const rotation = useSharedValue(0)
     const savedRotation = useSharedValue(0)
     const [minDeg, maxDeg] = degRange
-    const steps = [0,36,72, 108, 144,180,216]
+    const [sound,setSound] = useState()
+
+    useEffect(() => {
+        return sound ? () => sound.unloadAsync() : undefined
+    }, [sound])
+
+    const playSound = async () => {
+        const { sound } = await Audio.Sound.createAsync(soundPath)
+        setSound(sound)
+        await sound.playAsync()
+    }
 
     const rotationGesture = Gesture.Rotation()
         .onUpdate((e) => {
@@ -16,6 +29,7 @@ const IntervalKnob = ({ degRange , size , style, rotation, imagePath }) => {
         .onEnd(() => {
             rotation.value = steps.reduce((a, b) => Math.abs(b - rotation.value) < Math.abs(a -rotation.value) ? b : a)
             savedRotation.value =  rotation.value
+            runOnJS(playSound)()
         })
 
     const animatedStyle = useAnimatedStyle(() => {

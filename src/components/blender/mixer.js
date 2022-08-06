@@ -1,5 +1,4 @@
 import { ImageBackground  } from 'react-native'
-import { useSharedValue } from 'react-native-reanimated'
 import Knob from '../knob'
 import { create } from '../../utils/normalize'
 import DimensionContext from '../../contexts/dimensionContext'
@@ -15,8 +14,6 @@ const Mixer = () => {
 
     const degRange = [0,248]
     const knobSize = dimension*(0.25)
-
-    const rotation = useSharedValue(0)
 
     const styles = create({
         backgroundImage : {
@@ -38,7 +35,7 @@ const Mixer = () => {
 
     return (
         <ImageBackground source={backgroundPath} style={styles.background} imageStyle={styles.backgroundImage}>
-            <Knob imagePath={knobPath} rotation={rotation}  degRange={degRange} size={knobSize} style={styles.knob}/>
+            <Knob imagePath={knobPath}  degRange={degRange} size={knobSize} style={styles.knob}/>
         </ImageBackground>
     )
 }

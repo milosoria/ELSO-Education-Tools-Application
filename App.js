@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
-import { useWindowDimensions } from 'react-native'
+import { useFonts } from 'expo-font'
+import { ActivityIndicator,useWindowDimensions } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { create } from './src/utils/normalize'
@@ -16,6 +17,16 @@ const App = () => {
     const isLandscape = useOrientation()
     const { height,width } = useWindowDimensions()
     const dimension = isLandscape ? 0.9* width : 0.9* height
+
+    let [fontsLoaded] = useFonts({
+        'Digital-Numbers' : require('./assets/fonts/DigitalNumbers-Regular.ttf'),
+    })
+
+    if (!fontsLoaded) {
+        return (
+            <ActivityIndicator/>
+        )
+    }
 
     return (
         <NavigationContainer>

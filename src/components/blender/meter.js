@@ -63,7 +63,7 @@ const Meter = ({ type }) => {
         <ImageBackground source={backgroundPath} style={styles.background} imageStyle={styles.backgroundImage}>
             <Animated.Image source={bubblePath} style={[styles.bubble,animatedStyle]}/>
             <Image source={tagsPath} style={styles.tags} />
-            <Knob imagePath={knobPath} rotation={rotation} degRange={degRange} size={knobSize} style={styles.knob}/>
+            <Knob imagePath={knobPath} specialRotation={rotation} degRange={degRange} size={knobSize} style={styles.knob}/>
         </ImageBackground>
     )
 }

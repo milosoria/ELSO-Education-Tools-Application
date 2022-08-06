@@ -6,8 +6,8 @@ import Animated, {
 import { Gesture, GestureDetector } from 'react-native-gesture-handler'
 import { create } from '../utils/normalize'
 
-const Knob = ({ degRange , size , style, rotation, imagePath }) => {
-
+const Knob = ({ degRange ,specialRotation, size , style,  imagePath }) => {
+    const rotation = specialRotation ? specialRotation : useSharedValue(0)
     const savedRotation = useSharedValue(0)
     const [minDeg, maxDeg] = degRange
     const rotationGesture = Gesture.Rotation()

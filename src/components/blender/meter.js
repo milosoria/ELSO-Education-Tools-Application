@@ -5,13 +5,14 @@ import { create } from '../../utils/normalize'
 import DimensionContext from '../../contexts/dimensionContext'
 import { useContext } from 'react'
 
+const ROOTPATH = '../../assets/blender'
 const Meter = ({ type }) => {
 
     const { dimension } = useContext(DimensionContext)
-    const backgroundPath = require('../../assets/blender/background.png')
-    const bubblePath = require('../../assets/blender/bubble.png')
-    const knobPath = require('../../assets/blender/knob.png')
-    const tagsPath =  type === 'ml-min' ? require('../../assets/blender/ml-min/tags.png') : require('../../assets/blender/LPM/tags.png')
+    const backgroundPath = require(`${ROOTPATH}/background.png`)
+    const bubblePath = require(`${ROOTPATH}/bubble.png`)
+    const knobPath = require(`${ROOTPATH}/knob.png`)
+    const tagsPath =  type === 'ml-min' ? require(`${ROOTPATH}/ml-min/tags.png`) : require(`${ROOTPATH}/LPM/tags.png`)
 
     const imageLeftOffset =  type === 'ml-min' ? dimension*0.02  : dimension*0.01
 

@@ -5,12 +5,13 @@ import { create } from '../../utils/normalize'
 import DimensionContext from '../../contexts/dimensionContext'
 import { useContext } from 'react'
 
+const ROOTPATH = '../../assets/pdb/left-lock-pannel'
 const LeftPannel = () => {
 
     const { dimension } = useContext(DimensionContext)
     // Images' Paths
-    const backgroundPath = require('../../assets/pdb/left-lock-pannel/background.png')
-    const knobPath = require('../../assets/pdb/left-lock-pannel/big-knob.png')
+    const backgroundPath = require(`${ROOTPATH}/background.png`)
+    const knobPath = require(`${ROOTPATH}/big-knob.png`)
 
     const degRange = [0,72]
     const knobSize = dimension*(0.16)

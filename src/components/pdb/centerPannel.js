@@ -1,18 +1,35 @@
 import { Image, ImageBackground, Text,View } from 'react-native'
 import GestureRecognizer  from 'react-native-swipe-gestures'
 import { create } from '../../utils/normalize'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import DimensionContext from '../../contexts/dimensionContext'
 import { useContext } from 'react'
 
-const CenterPannel = () => {
+const ROOTPATH = '../../assets/pdb/center-display-pannel'
 
+const CenterPannel = () => {
     const { dimension } = useContext(DimensionContext)
     const [active, setActive] = useState(false)
+    const [ledOn, setLedOn] = useState(false)
     // Images' Paths
-    const backgroundPath = require('../../assets/pdb/center-display-pannel/background.png')
-    const alarmPath = active ? require('../../assets/pdb/center-display-pannel/on-alarm.png') : require('../../assets/pdb/center-display-pannel/off-alarm.png')
+    const backgroundPath = require(`${ROOTPATH}/background.png`)
+    const alarmPath = active ? require(`${ROOTPATH}/on-alarm.png`) : require(`${ROOTPATH}/off-alarm.png`)
+    const ledPath = ledOn ? require(`${ROOTPATH}/on-led.png`) : require(`${ROOTPATH}/off-led.png`)
 
+
+    useEffect(()=>{
+        if (active) {
+            let state = true
+            setLedOn(state)
+            const id = setInterval(()=>{
+                setLedOn(!state)
+                state  = !state
+            },1000)
+            return () => clearInterval(id)
+        } else {
+            setLedOn(false)
+        } 
+    },[active])
 
     const styles = create({
         backgroundImage : {
@@ -32,11 +49,18 @@ const CenterPannel = () => {
             top : dimension* 0.275,
             left : dimension* 0.04
         },
+        led : {
+            resizeMode : 'stretch',
+            height : dimension* 0.06,
+            width : dimension* 0.1,
+            top : dimension* 0.215,
+            left : dimension* 0.04
+        },
         pressable : {
             height : dimension* 0.06,
-            width : dimension* 0.04,
-            top : dimension* 0.21,
-            left : dimension* 0.065
+            width : dimension* 0.05,
+            top : dimension* 0.15,
+            left : dimension* 0.065,
         },
         zeroDisplay : {
             top : dimension*0.075,
@@ -95,6 +119,7 @@ const CenterPannel = () => {
                 </View>
             </View>
             <Image source={alarmPath} style={styles.alarm}/>
+            <Image source={ledPath} style={styles.led}/>
             <GestureRecognizer onSwipeDown={()=> setActive(false)} onSwipeUp={()=>setActive(true)}>
                 <View style={styles.pressable}/>
             </GestureRecognizer>

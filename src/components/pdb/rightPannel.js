@@ -6,22 +6,21 @@ import { create } from '../../utils/normalize'
 import DimensionContext from '../../contexts/dimensionContext'
 import { useContext } from 'react'
 
+const ROOTPATH = '../../assets/pdb/right-knob-pannel'
 const RightPannel = () => {
 
     const { dimension } = useContext(DimensionContext)
     
     // Images' Paths
-    const backgroundPath = require('../../assets/pdb/right-knob-pannel/background.png')
-    const zeroKnobPath = require('../../assets/pdb/right-knob-pannel/zero-knob.png')
-    const alarmFuncKnobPath = require('../../assets/pdb/right-knob-pannel/alarm-and-function-knob.png')
+    const backgroundPath = require(`${ROOTPATH}/background.png`)
+    const functionKnob = require(`${ROOTPATH}/function-knob.png`)
 
     // Degrees Ranges
     const degRange = [0,360]
     const funcDegRange = [0,216]
     
     // Size
-    const zeroKnobSize = dimension*(0.09)
-    const alarmFuncKnobSize = dimension*(0.08)
+    const knobSize = dimension*(0.08)
 
     // Rotation Shared Values
     const zeroRotation = useSharedValue(0)
@@ -42,22 +41,22 @@ const RightPannel = () => {
         },
         zeroKnob : {
             resizeMode : 'stretch',
-            top : dimension* 0.080,
+            top : dimension* 0.083,
         },
         alarmKnob : {
-            top : dimension* 0.105
+            top : dimension* 0.12
         },
         funcKnob : {
-            top : dimension* 0.175,
+            top : dimension* 0.185,
             transform : [{ rotateZ: '90deg' }]
         }
     })
 
     return (
         <ImageBackground source={backgroundPath} style={styles.background} imageStyle={styles.backgroundImage}>
-            <Knob imagePath={zeroKnobPath} rotation={zeroRotation}  degRange={degRange} size={zeroKnobSize} style={styles.zeroKnob}/>
-            <Knob imagePath={alarmFuncKnobPath} rotation={alarmRotation}  degRange={degRange} size={alarmFuncKnobSize} style={styles.alarmKnob}/>
-            <IntervalKnob imagePath={alarmFuncKnobPath} rotation={funcRotation}  degRange={funcDegRange} size={alarmFuncKnobSize} style={styles.funcKnob}/>
+            <Knob imagePath={functionKnob} rotation={zeroRotation}  degRange={degRange} size={knobSize} style={styles.zeroKnob}/>
+            <Knob imagePath={functionKnob} rotation={alarmRotation}  degRange={degRange} size={knobSize} style={styles.alarmKnob}/>
+            <IntervalKnob imagePath={functionKnob} rotation={funcRotation}  degRange={funcDegRange} size={knobSize} style={styles.funcKnob}/>
         </ImageBackground>
     )
 }

@@ -5,12 +5,13 @@ import { create } from '../../utils/normalize'
 import DimensionContext from '../../contexts/dimensionContext'
 import { useContext } from 'react'
 
+const ROOTPATH = '../../assets/blender/Mixer'
 const Mixer = () => {
 
     const { dimension } = useContext(DimensionContext)
     // Images' Paths
-    const backgroundPath = require('../../assets/blender/Mixer/background.png')
-    const knobPath = require('../../assets/blender/Mixer/knob.png')
+    const backgroundPath = require(`${ROOTPATH}/background.png`)
+    const knobPath = require(`${ROOTPATH}/knob.png`)
 
     const degRange = [0,248]
     const knobSize = dimension*(0.25)

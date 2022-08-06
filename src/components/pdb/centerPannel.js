@@ -4,7 +4,7 @@ import { create } from '../../utils/normalize'
 import { useEffect, useState } from 'react'
 import DimensionContext from '../../contexts/dimensionContext'
 import { useContext } from 'react'
-import {Audio} from 'expo-av'
+import { Audio } from 'expo-av'
 
 const ROOTPATH = '../../assets/pdb/center-display-pannel'
 

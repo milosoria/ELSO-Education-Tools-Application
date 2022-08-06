@@ -15,7 +15,6 @@ const RightPannel = () => {
     const funcKnobPath = require(`${ROOTPATH}/function-knob.png`)
     const alarmSoundPath = require(`${ROOTPATH}/alarm-knob.mp3`)
     const funcSoundPath =  require(`${ROOTPATH}/func-knob.mp3`)
-    const zeroSoundPath =  require(`${ROOTPATH}/zero-knob.mp3`)
 
     // Degrees Ranges
     const degRange = [0,360]

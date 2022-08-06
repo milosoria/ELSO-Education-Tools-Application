@@ -2,10 +2,10 @@ import { View } from 'react-native'
 import Animated, { runOnJS, useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
 import { Gesture, GestureDetector } from 'react-native-gesture-handler'
 import { create } from '../utils/normalize'
-import {useEffect, useState} from 'react'
-import {Audio} from 'expo-av'
+import { useEffect, useState } from 'react'
+import { Audio } from 'expo-av'
 
-const IntervalKnob = ({soundPath, degRange , size , style, imagePath,steps }) => {
+const IntervalKnob = ({ soundPath, degRange , size , style, imagePath,steps }) => {
     const rotation = useSharedValue(0)
     const savedRotation = useSharedValue(0)
     const [minDeg, maxDeg] = degRange

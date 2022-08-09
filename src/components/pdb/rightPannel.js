@@ -1,6 +1,6 @@
 import { ImageBackground  } from 'react-native'
-import Knob from '../knob'
 import IntervalKnob from '../intervalKnob'
+import FunctionKnob from '../functionKnob'
 import { create } from '../../utils/normalize'
 import DimensionContext from '../../contexts/dimensionContext'
 import { useContext } from 'react'
@@ -9,24 +9,33 @@ const ROOTPATH = '../../assets/pdb/right-knob-pannel'
 const RightPannel = () => {
 
     const { dimension } = useContext(DimensionContext)
-    
-    // Paths
     const backgroundPath = require(`${ROOTPATH}/background.png`)
-    const funcKnobPath = require(`${ROOTPATH}/function-knob.png`)
-    const alarmSoundPath = require(`${ROOTPATH}/alarm-knob.mp3`)
-    const funcSoundPath =  require(`${ROOTPATH}/func-knob.mp3`)
 
-    // Degrees Ranges
-    const degRange = [0,360]
-    const funcDegRange = [0,216]
+    // Props
+    const zeroProps = {
+        degRange : [0,360],
+        step : 5,
+        size : dimension*(0.08),
+        soundPath : require(`${ROOTPATH}/zero-knob.mp3`),
+        imagePath : require(`${ROOTPATH}/function-knob.png`),
+        type : 'zero'
+    }
+    const alarmProps = {
+        degRange : [0,360],
+        step : 15,
+        size : dimension*(0.08),
+        soundPath : require(`${ROOTPATH}/alarm-knob.mp3`),
+        imagePath : require(`${ROOTPATH}/function-knob.png`),
+        type : 'alarm'
+    }
+    const funcProps = {
+        degRange : [0,216],
+        step : 36,
+        size : dimension*(0.08),
+        soundPath : require(`${ROOTPATH}/func-knob.mp3`),
+        imagePath : require(`${ROOTPATH}/function-knob.png`),
+    }
     
-    // Steps for intervalKnob
-    const stepsFuncKnob = [0,36,72, 108, 144,180,216]
-    const stepsAlarmKnob = new Array(25).fill(0).map((value,i)=> value + 15*i)
-
-    // Size
-    const knobSize = dimension*(0.08)
-
 
     const styles = create({
         backgroundImage : {
@@ -55,9 +64,9 @@ const RightPannel = () => {
 
     return (
         <ImageBackground source={backgroundPath} style={styles.background} imageStyle={styles.backgroundImage}>
-            <Knob imagePath={funcKnobPath} degRange={degRange} size={knobSize} style={styles.zeroKnob}/>
-            <IntervalKnob steps={stepsAlarmKnob} soundPath={alarmSoundPath} imagePath={funcKnobPath} degRange={degRange} size={knobSize} style={styles.alarmKnob}/>
-            <IntervalKnob steps={stepsFuncKnob} soundPath={funcSoundPath} imagePath={funcKnobPath} degRange={funcDegRange} size={knobSize} style={styles.funcKnob}/>
+            <IntervalKnob {...zeroProps} style={styles.zeroKnob}/>
+            <IntervalKnob {...alarmProps} style={styles.alarmKnob}/>
+            <FunctionKnob {...funcProps}  style={styles.funcKnob}/>
         </ImageBackground>
     )
 }

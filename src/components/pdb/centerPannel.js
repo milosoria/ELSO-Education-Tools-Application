@@ -154,7 +154,7 @@ const CenterPannel = () => {
         alarmDisplayBox2 : {
             flex : 1,
             alignItems : 'center',
-            marginLeft: 8
+            marginLeft : 8
         },
         alarmDisplayBox3 : {
             flex : 1,

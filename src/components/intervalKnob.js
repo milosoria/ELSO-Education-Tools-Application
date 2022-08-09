@@ -30,6 +30,11 @@ const IntervalKnob = ({ step,type, soundPath, degRange , size , style, imagePath
         return sound ? () => sound.unloadAsync() : undefined
     }, [sound])
 
+    useEffect(()=>{
+        if (functionType.includes('alarm')){
+            savedRotation.value = 0
+        }
+    },[functionType])
     const playSound = async () => {
         const { sound } = await Audio.Sound.createAsync(soundPath)
         setSound(sound)
@@ -132,7 +137,8 @@ const IntervalKnob = ({ step,type, soundPath, degRange , size , style, imagePath
                 }
             } 
         }
-    },[savedRotation.value])
+
+    },[savedRotation.value,functionType])
 
     const animatedStyle = useAnimatedStyle(() => {
         return {

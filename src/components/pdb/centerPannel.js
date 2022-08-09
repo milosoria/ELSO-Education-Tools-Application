@@ -128,7 +128,7 @@ const CenterPannel = () => {
         },
         zeroDisplay : {
             top : dimension*0.075,
-            marginRight : 10,
+            marginRight : functionType.includes('alarm')? 0: 15,
             height : dimension * 0.1,
             width : dimension* 0.25,
             flexDirection : 'column',
@@ -154,6 +154,7 @@ const CenterPannel = () => {
         alarmDisplayBox2 : {
             flex : 1,
             alignItems : 'center',
+            marginLeft: 8
         },
         alarmDisplayBox3 : {
             flex : 1,

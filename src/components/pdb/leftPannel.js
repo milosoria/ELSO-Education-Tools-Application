@@ -7,14 +7,14 @@ import { useContext } from 'react'
 const ROOTPATH = '../../assets/pdb/left-lock-pannel'
 const LeftPannel = () => {
 
-    const { dimension } = useContext(DimensionContext)
+    const { minDimension } = useContext(DimensionContext)
     // Images' Paths
     const backgroundPath = require(`${ROOTPATH}/background.png`)
     const knobPath = require(`${ROOTPATH}/big-knob.png`)
     const axisPath = require(`${ROOTPATH}/axis.png`)
 
     const degRange = [0,72]
-    const knobSize = dimension*(0.16)
+    const knobSize = minDimension*(0.16)
 
     const styles = create({
         backgroundImage : {
@@ -24,18 +24,18 @@ const LeftPannel = () => {
             alignItems : 'center',
             shadowRadius : 5,
             shadowOpacity : 0.3,
-            height : dimension*0.485,
-            width : dimension*0.18,
-            marginRight : dimension*0.01
+            height : minDimension*0.485,
+            width : minDimension*0.18,
+            marginRight : minDimension*0.01
         },
         knob : {
-            top : dimension*0.20
+            top : minDimension*0.20
         },
         axis : {
             resizeMode : 'stretch',
-            top : dimension*0.065,
-            width : dimension*0.11,
-            height : dimension*0.11
+            top : minDimension*0.065,
+            width : minDimension*0.11,
+            height : minDimension*0.11
         }
     })
 

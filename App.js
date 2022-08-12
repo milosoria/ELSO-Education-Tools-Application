@@ -15,8 +15,9 @@ const Stack = createNativeStackNavigator()
 
 const App = () => {
     const isLandscape = useOrientation()
-    const { height,width } = useWindowDimensions()
-    const dimension = isLandscape ? 0.9* width : 0.9* height
+    const { width,height } = useWindowDimensions()
+    const maxDimension = isLandscape ? 0.9 * width : 0.9 * height
+    const minDimension = isLandscape ? 0.9 * width :  1.05*width
 
     let [fontsLoaded] = useFonts({
         'Digital-Numbers' : require('./assets/fonts/DigitalNumbers-Regular.ttf'),
@@ -31,7 +32,7 @@ const App = () => {
     return (
         <NavigationContainer>
             <StatusBar style={styles.statusBar}/>
-            <DimensionContext.Provider value={{ dimension }}>
+            <DimensionContext.Provider value={{ maxDimension, minDimension }}>
                 <Stack.Navigator initialRouteName='Carousel' screenOptions={{ headerShown: false }}>
                     <Stack.Screen name='Carousel' component={Carousel}/>
                     <Stack.Screen name='Blender' component={Blender}/>

@@ -20,7 +20,8 @@
     "ios": {
       "icon": "./assets/icon.png",
       "bundleIdentifier": "org.elso.app",
-      "supportsTablet": true
+      "supportsTablet": true,
+      "requireFullScreen": true
     }
   }
 }

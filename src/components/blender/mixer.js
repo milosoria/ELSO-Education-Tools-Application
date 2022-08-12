@@ -7,13 +7,13 @@ import { useContext } from 'react'
 const ROOTPATH = '../../assets/blender/Mixer'
 const Mixer = () => {
 
-    const { dimension } = useContext(DimensionContext)
+    const { maxDimension } = useContext(DimensionContext)
     // Images' Paths
     const backgroundPath = require(`${ROOTPATH}/background.png`)
     const knobPath = require(`${ROOTPATH}/knob.png`)
 
     const degRange = [0,248]
-    const knobSize = dimension*(0.25)
+    const knobSize = maxDimension*(0.25)
 
     const styles = create({
         backgroundImage : {
@@ -23,13 +23,13 @@ const Mixer = () => {
             alignItems : 'center',
             shadowRadius : 5,
             shadowOpacity : 0.3,
-            height : dimension*0.6,
-            width : dimension*0.24,
-            marginTop : dimension*0.25,
-            marginLeft : dimension*0.005
+            height : maxDimension*0.6,
+            width : maxDimension*0.24,
+            marginTop : maxDimension*0.25,
+            marginLeft : maxDimension*0.005
         },
         knob : {
-            top : dimension* 0.21
+            top : maxDimension* 0.21
         }
     })
 

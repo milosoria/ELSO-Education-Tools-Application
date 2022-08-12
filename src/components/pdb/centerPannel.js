@@ -9,6 +9,11 @@ import { Audio } from 'expo-av'
 import FunctionsContext from '../../contexts/functionalitiesContext'
 
 const ROOTPATH = '../../assets/pdb/center-display-pannel'
+const DELAYMAP = {
+    systolic : 4000,
+    mean : 5000,
+    diastolic : 3000
+} 
 
 const CenterPannel = () => {
     const {
@@ -18,17 +23,13 @@ const CenterPannel = () => {
         inInterval,
         functionType,
     } = useContext(FunctionsContext)
-    const { dimension } = useContext(DimensionContext)
+    const { minDimension } = useContext(DimensionContext)
     const [alarmActive,setAlarmActive] = useState(false)
     const [display, setDisplay] = useState('')
     const [ledOn, setLedOn] = useState(false)
     const [sound,setSound] = useState()
     const [mode,setMode] = useState('')
-    
-    // La palanca solo sirve para mutear o activar la alarma
-    // El led actua igual que el beep de alarma pero de forma visual
-    // 1.Independientemente del estado de la palanca, led parpadea solo si el valor se sale del intervalo
-    // 2.Si la palanca esta arriba, entonces suena del beep de la alarma 
+    const delay = DELAYMAP[functionType]
 
     // Images' Paths
     const backgroundPath = require(`${ROOTPATH}/background.png`)
@@ -36,9 +37,8 @@ const CenterPannel = () => {
     const ledPath = ledOn ? require(`${ROOTPATH}/on-led.png`) : require(`${ROOTPATH}/off-led.png`)
     const leverSoundPath = require(`${ROOTPATH}/lever.mp3`)
     const alarmSoundPath = require(`${ROOTPATH}/alarm.mp3`)
-    const alarmLowValue = functionType == 'off'? '': zeroPad(alarmInterval[0],3)
-    const alarmHighValue = functionType == 'off'? '': zeroPad(alarmInterval[1],3)
-
+    const alarmLowValue = functionType == 'off' ? '' : zeroPad(alarmInterval[0],3)
+    const alarmHighValue = functionType == 'off' ? '' : zeroPad(alarmInterval[1],3)
 
     useEffect(()=>{
         if (functionType == 'off') {
@@ -49,24 +49,35 @@ const CenterPannel = () => {
             setDisplay('----')
             setAlarmInterval(alarmInterval)
         } else {
-            setMode(functionType.toUpperCase().slice(0,3))
-            setDisplay(displayValue) 
+            setMode(functionType.toUpperCase().slice(0,4))
+            if (delay) {
+                const id  = setInterval(()=>{
+                    setDisplay(displayValue)
+                }, delay)
+                return () => clearInterval(id)
+            } else {
+                setDisplay(displayValue)
+            }
         }
     },[functionType,displayValue])
 
     useEffect(()=>{
+        // If the value escapes the interval, then the led must turn blink
         if (!inInterval) {
+            // if the alarm is active, play the sound on loop
+            if (alarmActive) {
+                playSound(alarmSoundPath, true)
+            } 
             let state = true
             setLedOn(state)
             const id = setInterval(()=>{
-                if (alarmActive) {
-                    playSound(alarmSoundPath)
-                } 
                 setLedOn(!state)
                 state  = !state
             },1000)
+
             return () => clearInterval(id)
         } else {
+            if (alarmActive && sound) sound.unloadAsync()
             setLedOn(false)
         }
     },[alarmActive, inInterval])
@@ -75,9 +86,9 @@ const CenterPannel = () => {
         return sound ? () => sound.unloadAsync() : undefined
     }, [sound])
 
-
-    const playSound = async (soundPath) => {
+    const playSound = async (soundPath,loop=false) => {
         const { sound } = await Audio.Sound.createAsync(soundPath)
+        if (loop) await sound.setIsLoopingAsync(true)
         setSound(sound)
         await sound.playAsync()
     }
@@ -92,9 +103,6 @@ const CenterPannel = () => {
         playSound(leverSoundPath)
     }
 
-
-
-
     const styles = create({
         backgroundImage : {
             resizeMode : 'stretch',
@@ -103,46 +111,46 @@ const CenterPannel = () => {
             alignItems : 'center',
             shadowRadius : 5,
             shadowOpacity : 0.3,
-            height : dimension*0.485,
-            width : dimension*0.35,
+            height : minDimension*0.485,
+            width : minDimension*0.35,
         },
         alarm : {
             resizeMode : 'stretch',
-            height : dimension* 0.06,
-            width : dimension* 0.1,
-            top : dimension* 0.275,
-            left : dimension* 0.04
+            height : minDimension* 0.06,
+            width : minDimension* 0.1,
+            top : minDimension* 0.275,
+            left : minDimension* 0.04
         },
         led : {
             resizeMode : 'stretch',
-            height : dimension* 0.06,
-            width : dimension* 0.1,
-            top : dimension* 0.215,
-            left : dimension* 0.04
+            height : minDimension* 0.06,
+            width : minDimension* 0.1,
+            top : minDimension* 0.215,
+            left : minDimension* 0.04
         },
         pressable : {
-            height : dimension* 0.06,
-            width : dimension* 0.05,
-            top : dimension* 0.15,
-            left : dimension* 0.065,
+            height : minDimension* 0.06,
+            width : minDimension* 0.05,
+            top : minDimension* 0.15,
+            left : minDimension* 0.065,
         },
         zeroDisplay : {
-            top : dimension*0.075,
+            top : minDimension*0.075,
             marginRight : functionType.includes('alarm')? 0: 15,
-            height : dimension * 0.1,
-            width : dimension* 0.25,
+            height : minDimension * 0.1,
+            width : minDimension* 0.25,
             flexDirection : 'column',
             alignItems : functionType.includes('alarm')? 'center': 'flex-end'
         },
         zeroDisplayText : {
             fontFamily : 'Digital-Numbers',
-            fontSize : 65,
+            fontSize : Math.floor(minDimension* 0.075),
             opacity : 0.5
         },
         alarmDisplay : {
-            top : dimension*0.15,
-            height : dimension * 0.04,
-            width : dimension* 0.16,
+            top : minDimension*0.15,
+            height : minDimension * 0.04,
+            width : minDimension* 0.16,
             flexDirection : 'row',
             justifyContent : 'center',
             alignItems : 'center'
@@ -154,7 +162,6 @@ const CenterPannel = () => {
         alarmDisplayBox2 : {
             flex : 1,
             alignItems : 'center',
-            marginLeft : 8
         },
         alarmDisplayBox3 : {
             flex : 1,
@@ -162,7 +169,7 @@ const CenterPannel = () => {
         },
         alarmDisplayText : {
             fontFamily : 'Digital-Numbers',
-            fontSize : 12,
+            fontSize : Math.floor(minDimension*0.014),
             opacity : 0.5
         }
     })

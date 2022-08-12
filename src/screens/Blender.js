@@ -8,8 +8,8 @@ import colors from '../utils/color-palette'
 
 const Blender = () => {
     const [modalVisible,setModalVisible] = useState(false)
-    const { dimension } = useContext(DimensionContext)
-    const buttonSize = dimension * 0.09
+    const { maxDimension } = useContext(DimensionContext)
+    const buttonSize = maxDimension * 0.09
 
     const handlePress = () => {
         setModalVisible(!modalVisible)
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     },
     button : {
         position : 'absolute',
-        bottom : -20,
-        left : 10
+        bottom : -15,
+        left : 20
     },
 })
 

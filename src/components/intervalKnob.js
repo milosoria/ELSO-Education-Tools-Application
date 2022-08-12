@@ -34,7 +34,8 @@ const IntervalKnob = ({ step,type, soundPath, degRange , size , style, imagePath
         if (functionType.includes('alarm')){
             savedRotation.value = 0
         }
-    },[functionType])
+    }, [functionType])
+
     const playSound = async () => {
         const { sound } = await Audio.Sound.createAsync(soundPath)
         setSound(sound)
@@ -56,6 +57,7 @@ const IntervalKnob = ({ step,type, soundPath, degRange , size , style, imagePath
 
     // Manage rotation variations
     useEffect(()=>{
+        // TODO: this is not being called for some reason
         const delta = savedRotation.value/step
         // if this knob is the alarm one
         if (type == 'alarm') {

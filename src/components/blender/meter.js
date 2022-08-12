@@ -8,17 +8,17 @@ import { useContext } from 'react'
 const ROOTPATH = '../../assets/blender'
 const Meter = ({ type }) => {
 
-    const { dimension } = useContext(DimensionContext)
+    const { maxDimension } = useContext(DimensionContext)
+    // Images' Paths
     const backgroundPath = require(`${ROOTPATH}/background.png`)
     const bubblePath = require(`${ROOTPATH}/bubble.png`)
     const knobPath = require(`${ROOTPATH}/knob.png`)
     const tagsPath =  type === 'ml-min' ? require(`${ROOTPATH}/ml-min/tags.png`) : require(`${ROOTPATH}/LPM/tags.png`)
-
-    const imageLeftOffset =  type === 'ml-min' ? dimension*0.02  : dimension*0.01
+    const backgroundOffset =  type === 'ml-min' ? maxDimension*0.02: maxDimension*0.012
 
     const degRange = [0,720]
-    const ticksRange = [0,dimension*(0.47)]
-    const knobSize = dimension*(0.1)
+    const ticksRange = [0,maxDimension*(0.47)]
+    const knobSize = maxDimension*(0.1)
 
     const rotation = useSharedValue(0)
     const animatedStyle = useAnimatedStyle(() => {
@@ -36,25 +36,25 @@ const Meter = ({ type }) => {
             alignItems : 'center',
             shadowRadius : 5,
             shadowOpacity : 0.3,
-            height : dimension*0.6,
-            width : dimension*0.15,
-            marginHorizontal : dimension*0.015
+            height : maxDimension*0.6,
+            width : maxDimension*0.15,
+            marginHorizontal : maxDimension*0.015
         } ,
         bubble : {
             resizeMode : 'stretch',
-            top : dimension*0.445,
-            width : dimension*0.01,
-            height : dimension*0.01,
+            top : maxDimension*0.445,
+            width : maxDimension*0.01,
+            height : maxDimension*0.01,
         },
         tags : {
             resizeMode : 'stretch',
-            height : dimension*0.35,
-            top : dimension*0.11,
-            width : dimension*0.10,
-            marginLeft : imageLeftOffset,
+            height : maxDimension*0.35,
+            top : maxDimension*0.11,
+            width : maxDimension*0.10,
+            marginLeft : backgroundOffset
         },
         knob : {
-            top : dimension* 0.11
+            top : maxDimension* 0.11
         }
     })
 

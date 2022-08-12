@@ -7,19 +7,18 @@ import FunctionsContext from '../contexts/functionalitiesContext'
 import { Audio } from 'expo-av'
 
 const FUNCTIONS = ['off', 'alarmLow', 'alarmHigh', 'instantaneous','systolic','mean','diastolic']
-const FUNCTIONSMAP = {}
 
 const FunctionKnob = ({ soundPath, degRange, size , style,imagePath,step, resistance=5 }) => {
     const rotation = useSharedValue(0)
     const savedRotation = useSharedValue(0)
     const [minDeg, maxDeg] = degRange
     const [sound,setSound] = useState()
+    const functionsMap = {}
 
     const steps = [...new Array(Math.ceil((maxDeg - minDeg)/step)+1).fill(0).map((value,index)=> value + index*step)]
     steps.forEach((value,index)=>{
-        FUNCTIONSMAP[value] = FUNCTIONS[index]
+        functionsMap[value] = FUNCTIONS[index]
     })
-
     const {
         setUnblocked,
         setFunctionType
@@ -50,7 +49,7 @@ const FunctionKnob = ({ soundPath, degRange, size , style,imagePath,step, resist
         })
 
     useEffect(()=> {
-        const functionSelected = FUNCTIONSMAP[savedRotation.value]
+        const functionSelected = functionsMap[savedRotation.value]
         setFunctionType(functionSelected)
         if (functionSelected !== 'off') {
             if (functionSelected.includes('alarm')){

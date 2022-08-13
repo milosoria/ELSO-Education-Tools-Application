@@ -42,7 +42,7 @@ const Meter = ({ type }) => {
         } ,
         bubble : {
             resizeMode : 'stretch',
-            top : maxDimension*0.445,
+            top : maxDimension*0.437,
             width : maxDimension*0.01,
             height : maxDimension*0.01,
         },

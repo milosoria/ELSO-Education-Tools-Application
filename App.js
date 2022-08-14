@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import { useFonts } from 'expo-font'
-import { ActivityIndicator,useWindowDimensions } from 'react-native'
+import { ActivityIndicator, useWindowDimensions } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { create } from './src/utils/normalize'
@@ -15,9 +15,9 @@ const Stack = createNativeStackNavigator()
 
 const App = () => {
     const isLandscape = useOrientation()
-    const { width,height } = useWindowDimensions()
+    const { width, height } = useWindowDimensions()
     const maxDimension = isLandscape ? 0.9 * width : 0.9 * height
-    const minDimension = isLandscape ? 0.9 * width :  1.05*width
+    const minDimension = isLandscape ? 0.9 * width : 1.05 * width
 
     let [fontsLoaded] = useFonts({
         'Digital-Numbers' : require('./assets/fonts/DigitalNumbers-Regular.ttf'),
@@ -25,18 +25,18 @@ const App = () => {
 
     if (!fontsLoaded) {
         return (
-            <ActivityIndicator/>
+            <ActivityIndicator />
         )
     }
 
     return (
         <NavigationContainer>
-            <StatusBar style={styles.statusBar}/>
+            <StatusBar style={styles.statusBar} />
             <DimensionContext.Provider value={{ maxDimension, minDimension }}>
                 <Stack.Navigator initialRouteName='Carousel' screenOptions={{ headerShown: false }}>
-                    <Stack.Screen name='Carousel' component={Carousel}/>
-                    <Stack.Screen name='Blender' component={Blender}/>
-                    <Stack.Screen name='PDB' component={PDB}/>
+                    <Stack.Screen name='Carousel' component={Carousel} />
+                    <Stack.Screen name='Blender' component={Blender} />
+                    <Stack.Screen name='PDB' component={PDB} />
                 </Stack.Navigator>
             </DimensionContext.Provider>
         </NavigationContainer>

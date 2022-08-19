@@ -4,9 +4,9 @@ import Animated, {
     useSharedValue,
 } from 'react-native-reanimated'
 import { Gesture, GestureDetector } from 'react-native-gesture-handler'
-import { create } from '../utils/normalize'
+import { create } from '../../utils/normalize'
 
-const Knob = ({ degRange ,specialRotation, size , style,  imagePath }) => {
+const Knob = ({ degRange, specialRotation, size, style, imagePath }) => {
     const rotation = specialRotation ? specialRotation : useSharedValue(0)
     const savedRotation = useSharedValue(0)
     const [minDeg, maxDeg] = degRange

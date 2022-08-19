@@ -1,19 +1,19 @@
-import { Image, ImageBackground, Text,View } from 'react-native'
-import GestureRecognizer  from 'react-native-swipe-gestures'
-import zeroPad from '../../utils/zero-padding'
-import { create } from '../../utils/normalize'
+import { Image, ImageBackground, Text, View } from 'react-native'
+import GestureRecognizer from 'react-native-swipe-gestures'
+import zeroPad from '../../../utils/zero-padding'
+import { create } from '../../../utils/normalize'
 import { useEffect, useState } from 'react'
-import DimensionContext from '../../contexts/dimensionContext'
+import DimensionContext from '../../../contexts/dimensionContext'
 import { useContext } from 'react'
 import { Audio } from 'expo-av'
-import FunctionsContext from '../../contexts/functionalitiesContext'
+import FunctionsContext from '../../../contexts/functionalitiesContext'
 
-const ROOTPATH = '../../assets/pdb/center-display-pannel'
+const ROOTPATH = '../../../assets/pdb/center-display-pannel'
 const DELAYMAP = {
     systolic : 4000,
     mean : 5000,
     diastolic : 3000
-} 
+}
 
 const CenterPannel = () => {
     const {
@@ -24,11 +24,11 @@ const CenterPannel = () => {
         functionType,
     } = useContext(FunctionsContext)
     const { minDimension } = useContext(DimensionContext)
-    const [alarmActive,setAlarmActive] = useState(false)
+    const [alarmActive, setAlarmActive] = useState(false)
     const [display, setDisplay] = useState('')
     const [ledOn, setLedOn] = useState(false)
-    const [sound,setSound] = useState()
-    const [mode,setMode] = useState('')
+    const [sound, setSound] = useState()
+    const [mode, setMode] = useState('')
     const delay = DELAYMAP[functionType]
 
     // Images' Paths
@@ -37,21 +37,21 @@ const CenterPannel = () => {
     const ledPath = ledOn ? require(`${ROOTPATH}/on-led.png`) : require(`${ROOTPATH}/off-led.png`)
     const leverSoundPath = require(`${ROOTPATH}/lever.mp3`)
     const alarmSoundPath = require(`${ROOTPATH}/alarm.mp3`)
-    const alarmLowValue = functionType == 'off' ? '' : zeroPad(alarmInterval[0],3)
-    const alarmHighValue = functionType == 'off' ? '' : zeroPad(alarmInterval[1],3)
+    const alarmLowValue = functionType == 'off' ? '' : zeroPad(alarmInterval[0], 3)
+    const alarmHighValue = functionType == 'off' ? '' : zeroPad(alarmInterval[1], 3)
 
-    useEffect(()=>{
+    useEffect(() => {
         if (functionType == 'off') {
             setMode('')
             setDisplay('')
-        } else if (functionType.includes('alarm')){
-            setMode(functionType == 'alarmLow'? '<---': '--->')
+        } else if (functionType.includes('alarm')) {
+            setMode(functionType == 'alarmLow' ? '<---' : '--->')
             setDisplay('----')
             setAlarmInterval(alarmInterval)
         } else {
-            setMode(functionType.toUpperCase().slice(0,4))
+            setMode(functionType.toUpperCase().slice(0, 4))
             if (delay) {
-                const id  = setInterval(()=>{
+                const id = setInterval(() => {
                     setDisplay(displayValue)
                 }, delay)
                 return () => clearInterval(id)
@@ -59,34 +59,34 @@ const CenterPannel = () => {
                 setDisplay(displayValue)
             }
         }
-    },[functionType,displayValue])
+    }, [functionType, displayValue])
 
-    useEffect(()=>{
+    useEffect(() => {
         // If the value escapes the interval, then the led must turn blink
         if (!inInterval) {
             // if the alarm is active, play the sound on loop
             if (alarmActive) {
                 playSound(alarmSoundPath, true)
-            } 
+            }
             let state = true
             setLedOn(state)
-            const id = setInterval(()=>{
+            const id = setInterval(() => {
                 setLedOn(!state)
-                state  = !state
-            },1000)
+                state = !state
+            }, 1000)
 
             return () => clearInterval(id)
         } else {
             if (alarmActive && sound) sound.unloadAsync()
             setLedOn(false)
         }
-    },[alarmActive, inInterval])
+    }, [alarmActive, inInterval])
 
     useEffect(() => {
         return sound ? () => sound.unloadAsync() : undefined
     }, [sound])
 
-    const playSound = async (soundPath,loop=false) => {
+    const playSound = async (soundPath, loop = false) => {
         const { sound } = await Audio.Sound.createAsync(soundPath)
         if (loop) await sound.setIsLoopingAsync(true)
         setSound(sound)
@@ -111,46 +111,46 @@ const CenterPannel = () => {
             alignItems : 'center',
             shadowRadius : 5,
             shadowOpacity : 0.3,
-            height : minDimension*0.485,
-            width : minDimension*0.35,
+            height : minDimension * 0.485,
+            width : minDimension * 0.35,
         },
         alarm : {
             resizeMode : 'stretch',
-            height : minDimension* 0.06,
-            width : minDimension* 0.1,
-            top : minDimension* 0.275,
-            left : minDimension* 0.04
+            height : minDimension * 0.06,
+            width : minDimension * 0.1,
+            top : minDimension * 0.275,
+            left : minDimension * 0.04
         },
         led : {
             resizeMode : 'stretch',
-            height : minDimension* 0.06,
-            width : minDimension* 0.1,
-            top : minDimension* 0.215,
-            left : minDimension* 0.04
+            height : minDimension * 0.06,
+            width : minDimension * 0.1,
+            top : minDimension * 0.215,
+            left : minDimension * 0.04
         },
         pressable : {
-            height : minDimension* 0.06,
-            width : minDimension* 0.05,
-            top : minDimension* 0.15,
-            left : minDimension* 0.065,
+            height : minDimension * 0.06,
+            width : minDimension * 0.05,
+            top : minDimension * 0.15,
+            left : minDimension * 0.065,
         },
         zeroDisplay : {
-            top : minDimension*0.075,
-            marginRight : functionType.includes('alarm')? 0: 15,
+            top : minDimension * 0.075,
+            marginRight : functionType.includes('alarm') ? 0 : 15,
             height : minDimension * 0.1,
-            width : minDimension* 0.25,
+            width : minDimension * 0.25,
             flexDirection : 'column',
-            alignItems : functionType.includes('alarm')? 'center': 'flex-end'
+            alignItems : functionType.includes('alarm') ? 'center' : 'flex-end'
         },
         zeroDisplayText : {
             fontFamily : 'Digital-Numbers',
-            fontSize : Math.floor(minDimension* 0.075),
+            fontSize : Math.floor(minDimension * 0.075),
             opacity : 0.5
         },
         alarmDisplay : {
-            top : minDimension*0.15,
+            top : minDimension * 0.15,
             height : minDimension * 0.04,
-            width : minDimension* 0.16,
+            width : minDimension * 0.16,
             flexDirection : 'row',
             justifyContent : 'center',
             alignItems : 'center'
@@ -169,7 +169,7 @@ const CenterPannel = () => {
         },
         alarmDisplayText : {
             fontFamily : 'Digital-Numbers',
-            fontSize : Math.floor(minDimension*0.014),
+            fontSize : Math.floor(minDimension * 0.014),
             opacity : 0.5
         }
     })
@@ -177,7 +177,7 @@ const CenterPannel = () => {
     return (
         <ImageBackground source={backgroundPath} style={styles.background} imageStyle={styles.backgroundImage}>
             <View style={styles.zeroDisplay}>
-                <Text style={styles.zeroDisplayText}>{typeof display == 'string'? display : zeroPad(display)}</Text>
+                <Text style={styles.zeroDisplayText}>{typeof display == 'string' ? display : zeroPad(display)}</Text>
             </View>
             <View style={styles.alarmDisplay}>
                 <View style={styles.alarmDisplayBox1}>
@@ -190,10 +190,10 @@ const CenterPannel = () => {
                     <Text style={styles.alarmDisplayText}>{alarmHighValue}</Text>
                 </View>
             </View>
-            <Image source={alarmPath} style={styles.alarm}/>
-            <Image source={ledPath} style={styles.led}/>
-            <GestureRecognizer  onSwipeDown={handleSwipeDown} onSwipeUp={handleSwipeUp}>
-                <View style={styles.pressable}/>
+            <Image source={alarmPath} style={styles.alarm} />
+            <Image source={ledPath} style={styles.led} />
+            <GestureRecognizer onSwipeDown={handleSwipeDown} onSwipeUp={handleSwipeUp}>
+                <View style={styles.pressable} />
             </GestureRecognizer>
         </ImageBackground>
     )

@@ -1,7 +1,8 @@
-import { Image,   Modal, Text, View,useWindowDimensions } from 'react-native'
+import { Image, Modal, Text, View, useWindowDimensions } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { create } from '../utils/normalize'
-import colors from '../utils/color-palette'
+import { create } from '../../utils/normalize'
+import colors from '../../utils/color-palette'
+import fontSizes from '../../utils/font-sizes'
 
 const InstructionsModal = ({ modalVisible, setModalVisible }) => {
     const { width } = useWindowDimensions()
@@ -15,17 +16,18 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                 visible={modalVisible}
                 onRequestClose={() => {
                     setModalVisible(!modalVisible)
-                }}>
+                }}
+            >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <Text style={styles.title}>Remember</Text>
                         <Text style={styles.subTitle}>Use two fingers</Text>
                         <Image
-                            source={require('../assets/help/fingers-gesture.png')}
+                            source={require('../../assets/help/fingers-gesture.png')}
                             style={{ width: imageSize }}
-                            resizeMode='contain'
+                            resizeMode="contain"
                         />
-                        <View style={[styles.divider,{ width: imageSize }]}/>
+                        <View style={[styles.divider, { width: imageSize }]} />
                         <TouchableOpacity
                             style={styles.button}
                             onPress={() => setModalVisible(!modalVisible)}
@@ -47,7 +49,7 @@ const styles = create({
         marginTop : 22,
     },
     image : {
-        resizeMode : 'contain'
+        resizeMode : 'contain',
     },
     modalView : {
         margin : 20,
@@ -73,7 +75,7 @@ const styles = create({
     },
     buttonText : {
         color : colors.secondary.blue,
-        fontSize : 15,
+        fontSize : fontSizes.medium,
         paddingHorizontal : 50,
         fontWeight : '600',
         textAlign : 'center',
@@ -81,10 +83,10 @@ const styles = create({
     title : {
         fontWeight : '700',
         color : 'black',
-        fontSize : 20,
+        fontSize : fontSizes.big,
     },
     subTitle : {
-        fontSize : 13,
+        fontSize : fontSizes.small,
         fontWeight : '500',
         textAlign : 'center',
     },

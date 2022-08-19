@@ -1,13 +1,13 @@
 import { useContext, useState } from 'react'
-import { Image , SafeAreaView ,StyleSheet, TouchableOpacity,View } from 'react-native'
-import InstructionsModal from '../components/instructionsModal'
-import Meter from '../components/blender/meter'
-import Mixer from '../components/blender/mixer'
-import DimensionContext from '../contexts/dimensionContext'
-import colors from '../utils/color-palette'
+import { Image, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native'
+import InstructionsModal from '../../components/simulators/instructionsModal'
+import Meter from '../../components/simulators/blender/meter'
+import Mixer from '../../components/simulators/blender/mixer'
+import DimensionContext from '../../contexts/dimensionContext'
+import colors from '../../utils/color-palette'
 
 const Blender = () => {
-    const [modalVisible,setModalVisible] = useState(false)
+    const [modalVisible, setModalVisible] = useState(false)
     const { maxDimension } = useContext(DimensionContext)
     const buttonSize = maxDimension * 0.09
 
@@ -26,12 +26,12 @@ const Blender = () => {
                     </View>
                 </View>
                 <View style={styles.button}>
-                    <TouchableOpacity style={{ width: buttonSize, height: buttonSize, borderRadius: buttonSize/2 }} onPress={handlePress}>
-                        <Image source={require('../assets/help/help_button.png')} resizeMode='contain'/>
+                    <TouchableOpacity style={{ width: buttonSize, height: buttonSize, borderRadius: buttonSize / 2 }} onPress={handlePress}>
+                        <Image source={require('../../assets/help/help_button.png')} resizeMode='contain' />
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>
-            <InstructionsModal modalVisible={modalVisible} setModalVisible={setModalVisible}/>
+            <InstructionsModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
         </>
     )
 }

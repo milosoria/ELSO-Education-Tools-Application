@@ -1,9 +1,10 @@
-import { FlatList,ImageBackground,Pressable,SafeAreaView, Text,TouchableOpacity,View } from 'react-native'
+import { FlatList, ImageBackground, Pressable, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import { useContext } from 'react'
-import colors from '../utils/color-palette'
-import { create } from '../utils/normalize'
-import DimensionContext from '../contexts/dimensionContext'
+import colors from '../../utils/color-palette'
+import { create } from '../../utils/normalize'
+import DimensionContext from '../../contexts/dimensionContext'
 import { LinearGradient } from 'expo-linear-gradient'
+import fontSizes from '../../utils/font-sizes'
 
 const DATA = [
     {
@@ -13,30 +14,30 @@ const DATA = [
         id : '2',
         name : 'PDB',
         description : 'Pressure display box simulator',
-        imagePath : require('../assets/carousel/pdb-background.png')
+        imagePath : require('../../assets/carousel/pdb-background.png')
     },
     {
         id : '3',
         name : 'Blender',
         description : 'Air-oxygen mixer simulator',
-        imagePath : require('../assets/carousel/blender-background.png')
+        imagePath : require('../../assets/carousel/blender-background.png')
     },
     {
         id : '4',
     },
 ]
-const Carousel = ({ navigation }) => {
+const SimulatorsCarousel = ({ navigation }) => {
     const { maxDimension } = useContext(DimensionContext)
 
     const Item = ({ name, description, imagePath }) => (
-        <LinearGradient style={styles.colorGradient} colors={[colors.primary.gray,colors.primary.black]}>
+        <LinearGradient style={styles.colorGradient} colors={[colors.primary.gray, colors.primary.black]}>
             <ImageBackground style={styles.item} imageStyle={styles.background} source={imagePath} >
-                <View style={styles.cardInfo}> 
-                    <Text style={styles.titleText}>{name? name:'Coming Soon'}</Text>
-                    <Text style={styles.subTitleText}>{description? description : 'New simulators and tools'}</Text>
+                <View style={styles.cardInfo}>
+                    <Text style={styles.titleText}>{name ? name : 'Coming Soon'}</Text>
+                    <Text style={styles.subTitleText}>{description ? description : 'New simulators and tools'}</Text>
                 </View>
-                <Pressable style={[styles.button,{ backgroundColor: name ? colors.secondary.blue:colors.primary.background }]}>
-                    <TouchableOpacity onPress={()=>name? navigation.navigate(name): null}>
+                <Pressable style={[styles.button, { backgroundColor: name ? colors.secondary.blue : colors.primary.background }]}>
+                    <TouchableOpacity onPress={() => name ? navigation.navigate(name) : null}>
                         <Text style={styles.buttonText}>Continue</Text>
                     </TouchableOpacity>
                 </Pressable>
@@ -50,7 +51,7 @@ const Carousel = ({ navigation }) => {
 
     const styles = create({
         button : {
-            top : maxDimension*0.35,
+            top : maxDimension * 0.35,
             alignItems : 'center',
             marginHorizontal : 50,
             backgroundColor : colors.secondary.blue,
@@ -62,11 +63,11 @@ const Carousel = ({ navigation }) => {
         },
         buttonText : {
             color : colors.primary.white,
-            fontSize : 18,
+            fontSize : fontSizes.medium,
             fontWeight : '500'
         },
         container : {
-            backgroundColor : colors.primary.background,
+            backgroundColor : colors.primary.darkBackground,
             flex : 1,
             alignItems : 'center'
         },
@@ -92,16 +93,16 @@ const Carousel = ({ navigation }) => {
         },
         titleText : {
             color : 'white',
-            fontSize : 25,
+            fontSize : fontSizes.body,
             fontWeight : '700'
         },
         subTitleText : {
             color : 'white',
-            fontSize : 14,
+            fontSize : fontSizes.medium,
             fontWeight : '300'
         },
         cardInfo : {
-            top : maxDimension*0.33,
+            top : maxDimension * 0.33,
             marginLeft : 20
         }
     })
@@ -119,4 +120,4 @@ const Carousel = ({ navigation }) => {
 }
 
 
-export default Carousel
+export default SimulatorsCarousel

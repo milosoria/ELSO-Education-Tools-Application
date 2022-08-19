@@ -74,7 +74,7 @@ const styles = create({
         elevation : 2,
     },
     buttonText : {
-        color : colors.secondary.blue,
+        color : colors.primary.blue,
         fontSize : fontSizes.medium,
         paddingHorizontal : 50,
         fontWeight : '600',

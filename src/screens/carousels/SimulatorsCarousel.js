@@ -9,18 +9,17 @@ import fontSizes from '../../utils/font-sizes'
 const DATA = [
     {
         id : '1',
-    },
-    {
-        id : '2',
         name : 'PDB',
         description : 'Pressure display box simulator',
         imagePath : require('../../assets/carousel/pdb-background.png')
     },
     {
-        id : '3',
+        id : '2',
         name : 'Blender',
         description : 'Air-oxygen mixer simulator',
         imagePath : require('../../assets/carousel/blender-background.png')
+    },
+    { id : '3',
     },
     {
         id : '4',
@@ -36,7 +35,7 @@ const SimulatorsCarousel = ({ navigation }) => {
                     <Text style={styles.titleText}>{name ? name : 'Coming Soon'}</Text>
                     <Text style={styles.subTitleText}>{description ? description : 'New simulators and tools'}</Text>
                 </View>
-                <Pressable style={[styles.button, { backgroundColor: name ? colors.secondary.blue : colors.primary.background }]}>
+                <Pressable style={[styles.button, { backgroundColor: name ? colors.primary.blue : colors.primary.gray }]}>
                     <TouchableOpacity onPress={() => name ? navigation.navigate(name) : null}>
                         <Text style={styles.buttonText}>Continue</Text>
                     </TouchableOpacity>
@@ -54,7 +53,7 @@ const SimulatorsCarousel = ({ navigation }) => {
             top : maxDimension * 0.35,
             alignItems : 'center',
             marginHorizontal : 50,
-            backgroundColor : colors.secondary.blue,
+            backgroundColor : colors.primary.blue,
             padding : 10,
             borderRadius : 18,
             shadowRadius : 2,

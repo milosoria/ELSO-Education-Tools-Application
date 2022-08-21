@@ -58,11 +58,11 @@ const SimulatorsCarousel = ({ navigation }) => {
             paddingHorizontal : maxDimension * 0.05,
             borderRadius : 100,
             marginTop : maxDimension * 0.02,
-            marginBottom : maxDimension * 0.02
+            marginBottom : maxDimension * 0.025
         },
         buttonText : {
             color : colors.primary.white,
-            fontSize : fontSizes.medium,
+            fontSize : fontSizes.big,
             fontWeight : '500'
         },
         container : {
@@ -93,12 +93,12 @@ const SimulatorsCarousel = ({ navigation }) => {
         },
         titleText : {
             color : 'white',
-            fontSize : fontSizes.body,
-            fontWeight : '700'
+            fontSize : fontSizes.subtitles,
+            fontWeight : '600'
         },
         subTitleText : {
             color : 'white',
-            fontSize : fontSizes.small,
+            fontSize : fontSizes.medium,
             fontWeight : '300'
         },
         cardInfo : {
@@ -117,12 +117,12 @@ const SimulatorsCarousel = ({ navigation }) => {
         },
         mainTitle : {
             color : 'white',
-            fontSize : fontSizes.subtitles,
+            fontSize : fontSizes.titles,
             fontWeight : '500'
         },
         mainSubTitle : {
             color : 'white',
-            fontSize : fontSizes.big,
+            fontSize : fontSizes.body,
             fontWeight : '400'
         }
     })

@@ -1,4 +1,4 @@
-import { Dimensions, PixelRatio,StyleSheet } from 'react-native'
+import { Dimensions, PixelRatio, StyleSheet } from 'react-native'
 
 const ratio = PixelRatio.get()
 
@@ -43,7 +43,6 @@ const normalize = (size) => {
 export const create = (
     styles,
     targetProperties = [
-        'fontSize',
         'margin',
         'marginLeft',
         'marginRight',

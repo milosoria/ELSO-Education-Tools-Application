@@ -37,12 +37,12 @@ const Menu = ({ navigation }) => {
         titleText : {
             fontWeight : '600',
             color : colors.primary.white,
-            fontSize : fontSizes.body
+            fontSize : fontSizes.subtitles
         },
         subTitleText : {
             fontWeight : '400',
             color : colors.primary.white,
-            fontSize : fontSizes.small,
+            fontSize : fontSizes.medium,
             marginTop : maxDimension * 0.01
         },
         buttonContainer : {
@@ -71,7 +71,7 @@ const Menu = ({ navigation }) => {
         },
         buttonText : {
             color : colors.primary.white,
-            fontSize : fontSizes.medium,
+            fontSize : fontSizes.big,
             fontWeight : '600'
         },
         companyCard : {
@@ -84,7 +84,7 @@ const Menu = ({ navigation }) => {
         },
         companyInfoTitle : {
             alignItems : 'flex-start',
-            width : maxDimension * 0.25,
+            width : maxDimension * 0.3,
             marginLeft : maxDimension * 0.04,
             marginTop : maxDimension * 0.04
         },
@@ -98,9 +98,10 @@ const Menu = ({ navigation }) => {
         companyInfoButtonContainer : {
             flexDirection : 'row',
             justifyContent : 'center',
-            marginTop : maxDimension * 0.04,
+            marginTop : maxDimension * 0.025,
         },
         disabledText : {
+            alignSelf : 'center',
             fontSize : fontSizes.medium,
             color : colors.primary.white,
             fontWeight : '600',

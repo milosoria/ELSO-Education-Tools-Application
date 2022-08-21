@@ -50,8 +50,9 @@ const Header = ({ route, navigation }) => {
             marginRight : maxDimension * 0.005
         },
         backButtonText : {
+            alignSelf : 'center',
             color : colors.primary.white,
-            fontSize : fontSizes.medium,
+            fontSize : fontSizes.big,
             fontWeight : '500',
             marginLeft : maxDimension * 0.005,
             marginRight : maxDimension * 0.015

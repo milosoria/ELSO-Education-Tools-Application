@@ -12,6 +12,8 @@ const colors = {
         red : '#F03E3E',
         yellow : '#F0B33E',
         blue : '#3E90F0',
+        blueGradient : '#2178DC',
+        disabled : '#C1C1C1',
         green : '#62F03E'
     }
 }

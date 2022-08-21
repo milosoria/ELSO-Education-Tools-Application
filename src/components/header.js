@@ -1,19 +1,35 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import DimensionContext from '../contexts/dimensionContext'
 import { create } from '../utils/normalize'
 import colors from '../utils/color-palette'
 import fontSizes from '../utils/font-sizes'
 import Icon from 'react-native-vector-icons/AntDesign'
-import Ionicon from 'react-native-vector-icons/Ionicons'
-import HeaderShownContext from '../contexts/headerContext'
+import { LinearGradient } from 'expo-linear-gradient'
+import useOrientation from '../utils/orientation'
 
 
-const Header = ({ navigation }) => {
-    const { headerShown } = useContext(HeaderShownContext)
+const Header = ({ route, navigation }) => {
+    const { name } = route
+    const isLandscape = useOrientation()
     const { maxDimension } = useContext(DimensionContext)
-    const buttonsContainerSize = maxDimension * 0.15
+    const buttonsContainerSize = maxDimension * 0.2
+    const [backButtonVisible, setBackButtonVisible] = useState(false)
+    const [visible, setVisible] = useState(true)
+
+    useEffect(() => {
+        navigation.canGoBack() ? setBackButtonVisible(true) : setBackButtonVisible(false)
+    }, [navigation])
+
+    useEffect(() => {
+        setVisible(!(isLandscape && name == 'Blender'))
+    })
+
     const styles = create({
+        shadowWrap : {
+            shadowOpacity : 0.2,
+            shadowOffset : { width: 4, height: 4 },
+        },
         container : {
             display : 'flex',
             flexDirection : 'row',
@@ -26,20 +42,19 @@ const Header = ({ navigation }) => {
             justifyContent : 'center',
             backgroundColor : colors.secondary.blue,
             borderRadius : 100,
-            paddingHorizontal : maxDimension * 0.035,
-            paddingVertical : maxDimension * 0.005,
-            marginLeft : maxDimension * 0.01
+            paddingHorizontal : maxDimension * 0.03,
+            paddingVertical : maxDimension * 0.0065,
         },
         backButtonIcon : {
             color : colors.primary.white,
-            right : maxDimension * 0.008
+            marginRight : maxDimension * 0.005
         },
         backButtonText : {
             color : colors.primary.white,
             fontSize : fontSizes.medium,
             fontWeight : '500',
-            marginLeft : maxDimension * 0.01,
-            marginRight : maxDimension * 0.01
+            marginLeft : maxDimension * 0.005,
+            marginRight : maxDimension * 0.015
         },
         buttonContainer : {
             width : buttonsContainerSize,
@@ -47,15 +62,11 @@ const Header = ({ navigation }) => {
             alignItems : 'center',
             justifyContent : 'center',
         },
-        settingsButton : {
-            marginLeft : maxDimension * 0.1
-        },
         logoContainer : {
-            alignItems : 'center',
             justifyContent : 'center',
         },
         logo : {
-            height : maxDimension * 0.05,
+            height : maxDimension * 0.055,
             resizeMode : 'contain',
         }
     })
@@ -65,29 +76,24 @@ const Header = ({ navigation }) => {
     }
 
     return (
-        headerShown && <SafeAreaView style={styles.container}>
+        visible && <SafeAreaView style={styles.container}>
             {
-                navigation.canGoBack() ?
+                backButtonVisible ?
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity
-                            style={styles.backButton}
+                            style={styles.shadowWrap}
                             onPress={handleBackPress}>
-                            <Icon name='arrowleft' size={maxDimension * 0.025} style={styles.backButtonIcon} />
-                            <Text style={styles.backButtonText}>Back</Text>
+                            <LinearGradient style={styles.backButton} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={[colors.primary.blue, colors.secondary.blueGradient]}>
+                                <Icon name='arrowleft' size={maxDimension * 0.025} style={styles.backButtonIcon} />
+                                <Text style={styles.backButtonText}>Back</Text>
+                            </LinearGradient>
                         </TouchableOpacity>
                     </View>
                     : <View style={styles.buttonContainer} />}
             <View style={styles.logoContainer}>
                 <Image source={require('../../assets/logo-header-bar.png')} style={styles.logo} />
             </View>
-
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                    style={styles.settingsButton}
-                    onPress={() => console.log('TODO: must implement settings modal')}>
-                    <Ionicon name='settings-sharp' size={maxDimension * 0.035} style={{ color: colors.primary.gray }} />
-                </TouchableOpacity>
-            </View>
+            <View style={styles.buttonContainer} />
         </SafeAreaView >
     )
 }

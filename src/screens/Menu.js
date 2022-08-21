@@ -5,6 +5,7 @@ import { useContext } from 'react'
 import DimensionContext from '../contexts/dimensionContext'
 import fontSizes from '../utils/font-sizes'
 import { ScrollView } from 'react-native-gesture-handler'
+import { LinearGradient } from 'expo-linear-gradient'
 
 const Menu = ({ navigation }) => {
     const { maxDimension } = useContext(DimensionContext)
@@ -17,21 +18,21 @@ const Menu = ({ navigation }) => {
         },
         card : {
             backgroundColor : colors.primary.gray,
-            height : maxDimension * 0.25,
+            height : maxDimension * 0.22,
             width : maxDimension * 0.55,
-            marginVertical : maxDimension * 0.015,
+            marginVertical : maxDimension * 0.02,
             borderRadius : 10,
             flexDirection : 'row',
             alignItems : 'center'
         },
         cardsContainer : {
-            marginTop : maxDimension * 0.015
+            marginTop : maxDimension * 0.03
         },
         title : {
             alignItems : 'flex-start',
             width : maxDimension * 0.26,
             marginLeft : maxDimension * 0.04,
-            marginBottom : maxDimension * 0.035
+            marginBottom : maxDimension * 0.03
         },
         titleText : {
             fontWeight : '600',
@@ -55,9 +56,18 @@ const Menu = ({ navigation }) => {
             paddingHorizontal : 40,
             paddingVertical : 8,
             borderRadius : 100,
-            shadowRadius : 2,
-            shadowOpacity : 0.5,
-            shadowOffset : { width: 2, height: 2 },
+        },
+        buttonDisabled : {
+            alignItems : 'center',
+            justifyContent : 'center',
+            backgroundColor : colors.secondary.disabled,
+            paddingHorizontal : 40,
+            paddingVertical : 8,
+            borderRadius : 100,
+        },
+        shadowWrap : {
+            shadowOpacity : 0.2,
+            shadowOffset : { width: 4, height: 4 },
         },
         buttonText : {
             color : colors.primary.white,
@@ -66,7 +76,7 @@ const Menu = ({ navigation }) => {
         },
         companyCard : {
             backgroundColor : colors.primary.gray,
-            height : maxDimension * 0.25,
+            height : maxDimension * 0.22,
             width : maxDimension * 0.55,
             marginVertical : 15,
             borderRadius : 10,
@@ -76,29 +86,31 @@ const Menu = ({ navigation }) => {
             alignItems : 'flex-start',
             width : maxDimension * 0.25,
             marginLeft : maxDimension * 0.04,
-            marginTop : maxDimension * 0.03
+            marginTop : maxDimension * 0.04
         },
         companyInfoButton : {
             alignItems : 'center',
             backgroundColor : colors.primary.blue,
-            paddingHorizontal : 45,
-            paddingVertical : 8,
+            paddingHorizontal : maxDimension * 0.04,
+            paddingVertical : maxDimension * 0.008,
             borderRadius : 100,
-            shadowRadius : 2,
-            shadowOpacity : 0.5,
-            shadowOffset : { width: 2, height: 2 },
         },
         companyInfoButtonContainer : {
             flexDirection : 'row',
             justifyContent : 'center',
-            marginTop : maxDimension * 0.065,
+            marginTop : maxDimension * 0.04,
         },
+        disabledText : {
+            fontSize : fontSizes.medium,
+            color : colors.primary.white,
+            fontWeight : '600',
+            top : maxDimension * 0.01
+        }
     })
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView>
-
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.cardsContainer}>
                     <View style={styles.companyCard}>
                         <View style={styles.companyInfoTitle}>
@@ -107,8 +119,10 @@ const Menu = ({ navigation }) => {
                             </Text>
                         </View>
                         <View style={styles.companyInfoButtonContainer}>
-                            <TouchableOpacity style={styles.companyInfoButton} onPress={() => console.log('Pressed')}>
-                                <Text style={styles.buttonText}>Learn about ELSO</Text>
+                            <TouchableOpacity style={styles.shadowWrap} onPress={() => console.log('Pressed')}>
+                                <LinearGradient style={styles.companyInfoButton} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={[colors.primary.blue, colors.secondary.blueGradient]}>
+                                    <Text style={styles.buttonText}>Learn about ELSO</Text>
+                                </LinearGradient>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -122,8 +136,10 @@ const Menu = ({ navigation }) => {
                             </Text>
                         </View>
                         <View style={styles.buttonContainer}>
-                            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SimulatorsCarousel')}>
-                                <Text style={styles.buttonText}>Go</Text>
+                            <TouchableOpacity style={styles.shadowWrap} onPress={() => navigation.navigate('SimulatorsCarousel')}>
+                                <LinearGradient style={styles.button} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={[colors.primary.blue, colors.secondary.blueGradient]}>
+                                    <Text style={styles.buttonText}>Go</Text>
+                                </LinearGradient>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -137,9 +153,14 @@ const Menu = ({ navigation }) => {
                             </Text>
                         </View>
                         <View style={styles.buttonContainer}>
-                            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ToolsCarousel')}>
-                                <Text style={styles.buttonText}>Go</Text>
-                            </TouchableOpacity>
+                            <View style={styles.shadowWrap}>
+                                <View style={styles.buttonDisabled}>
+                                    <TouchableOpacity onPress={() => navigation.navigate('ToolsCarousel')}>
+                                        <Text style={styles.buttonText}>Go</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                            <Text style={styles.disabledText}>Coming Soon!</Text>
                         </View>
                     </View>
                 </View>

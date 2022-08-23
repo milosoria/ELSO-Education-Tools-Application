@@ -56,10 +56,9 @@ const SimulatorsCarousel = ({ navigation }) => {
             shadowOffset : { width: 4, height: 4 },
             marginTop : maxDimension * 0.02,
             marginBottom : maxDimension * 0.025,
-            //TODO: fix this TouchableHighlight width
             marginHorizontal : maxDimension * 0.041,
             flexDirection : 'row',
-            borderRadius : 100,
+            borderRadius : 40,
         },
         button : {
             alignSelf : 'center',
@@ -67,12 +66,12 @@ const SimulatorsCarousel = ({ navigation }) => {
             flex : 1,
             paddingVertical : maxDimension * 0.008,
             paddingHorizontal : maxDimension * 0.045,
-            borderRadius : 100,
+            borderRadius : 40,
         },
         buttonText : {
             fontFamily : 'SFPro-Medium',
             color : colors.primary.white,
-            fontSize : fontSizes.body,
+            fontSize : fontSizes.large,
         },
         container : {
             backgroundColor : colors.primary.darkBackground,
@@ -84,7 +83,8 @@ const SimulatorsCarousel = ({ navigation }) => {
         },
         cardContainer : {
             flexDirection : 'column-reverse',
-            flex : 1
+            flex : 1,
+            marginBottom : maxDimension * 0.015
         },
         item : {
             alignSelf : 'center',
@@ -92,21 +92,20 @@ const SimulatorsCarousel = ({ navigation }) => {
             width : maxDimension * 0.26,
             height : maxDimension * 0.35,
             marginHorizontal : maxDimension * 0.02,
-            shadowOpacity : 0.8,
+            shadowOpacity : 0.2,
             shadowOffset : { height: 4, width: 4 },
         },
         background : {
             borderRadius : 8,
             resizeMode : 'cover',
-            opacity : 0.5
         },
         titleText : {
-            color : 'white',
+            color : colors.primary.white,
             fontSize : fontSizes.subtitles,
             fontFamily : 'SFPro-Bold',
         },
         subTitleText : {
-            color : 'white',
+            color : colors.primary.white,
             fontSize : fontSizes.medium,
             fontWeight : '300',
             fontFamily : 'SFPro-Regular',
@@ -126,12 +125,12 @@ const SimulatorsCarousel = ({ navigation }) => {
             flexDirection : 'column-reverse'
         },
         mainTitle : {
-            color : 'white',
+            color : colors.primary.white,
             fontSize : fontSizes.titles,
             fontFamily : 'SFPro-Bold',
         },
         mainSubTitle : {
-            color : 'white',
+            color : colors.primary.white,
             fontSize : fontSizes.body,
             fontFamily : 'SFPro-Medium',
         }

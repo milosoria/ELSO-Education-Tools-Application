@@ -11,6 +11,8 @@ const FunctionsContext = createContext({
     setDisplayValue : ()=>{},
     unblocked : 0,
     setUnblocked : ()=>{},
+    rotations : { zero: 0,alarm: 0,function: 0 },
+    setRotations : ()=>{}
 })
 
 export default FunctionsContext

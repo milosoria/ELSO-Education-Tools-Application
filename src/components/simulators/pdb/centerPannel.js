@@ -23,6 +23,7 @@ const CenterPannel = () => {
         inInterval,
         functionType,
     } = useContext(FunctionsContext)
+
     const { minDimension } = useContext(DimensionContext)
     const [alarmActive, setAlarmActive] = useState(false)
     const [display, setDisplay] = useState('')

@@ -1,8 +1,10 @@
 const fontSizes = {
+    // +2 variations
     small : 8,
-    // TODO: this should be 12
     medium : 12,
     big : 14,
+    large : 16,
+    // +4 variations
     body : 18,
     subtitles : 24,
     titles : 32

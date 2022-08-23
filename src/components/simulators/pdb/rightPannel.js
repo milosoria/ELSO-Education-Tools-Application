@@ -34,6 +34,7 @@ const RightPannel = () => {
         size : minDimension * (0.08),
         soundPath : require(`${ROOTPATH}/func-knob.mp3`),
         imagePath : require(`${ROOTPATH}/function-knob.png`),
+        type : 'function'
     }
 
 

@@ -15,14 +15,16 @@ const ALARMHIGHMAX = 500
 const IntervalKnob = ({ step, type, soundPath, degRange, size, style, imagePath }) => {
     const {
         unblocked,
+        rotations,
+        setRotations,
         alarmInterval,
         setAlarmInterval,
         setDisplayValue,
         setInInterval,
         functionType,
     } = useContext(FunctionsContext)
-    const rotation = useSharedValue(0)
-    const savedRotation = useSharedValue(0)
+    const rotation = useSharedValue(rotations[type])
+    const savedRotation = useSharedValue(rotations[type])
     const [minDeg, maxDeg] = degRange
     const [sound, setSound] = useState()
 
@@ -57,7 +59,6 @@ const IntervalKnob = ({ step, type, soundPath, degRange, size, style, imagePath 
 
     // Manage rotation variations
     useEffect(() => {
-        // TODO: this is not being called for some reason
         const delta = savedRotation.value / step
         // if this knob is the alarm one
         if (type == 'alarm') {
@@ -139,6 +140,10 @@ const IntervalKnob = ({ step, type, soundPath, degRange, size, style, imagePath 
                 }
             }
         }
+        setRotations((prev) => {
+            prev[type] = savedRotation.value
+            return prev
+        })
 
     }, [savedRotation.value, functionType])
 

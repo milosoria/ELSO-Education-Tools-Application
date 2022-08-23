@@ -55,7 +55,7 @@ const Menu = ({ navigation }) => {
             backgroundColor : colors.primary.blue,
             paddingHorizontal : maxDimension * 0.035,
             paddingVertical : maxDimension * 0.008,
-            borderRadius : 100,
+            borderRadius : 40,
         },
         buttonDisabled : {
             alignItems : 'center',
@@ -63,16 +63,16 @@ const Menu = ({ navigation }) => {
             backgroundColor : colors.secondary.disabled,
             paddingHorizontal : maxDimension * 0.035,
             paddingVertical : maxDimension * 0.008,
-            borderRadius : 100,
+            borderRadius : 40,
         },
         shadowWrap : {
-            borderRadius : 100,
+            borderRadius : 40,
             shadowOpacity : 0.2,
             shadowOffset : { width: 4, height: 4 },
         },
         buttonText : {
             color : colors.primary.white,
-            fontSize : fontSizes.body,
+            fontSize : fontSizes.large,
             fontFamily : 'SFPro-Medium',
         },
         companyCard : {
@@ -94,7 +94,7 @@ const Menu = ({ navigation }) => {
             backgroundColor : colors.primary.blue,
             paddingHorizontal : maxDimension * 0.04,
             paddingVertical : maxDimension * 0.008,
-            borderRadius : 100,
+            borderRadius : 40,
         },
         companyInfoButtonContainer : {
             flexDirection : 'row',

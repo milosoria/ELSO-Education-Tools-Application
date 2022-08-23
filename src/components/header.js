@@ -31,9 +31,9 @@ const Header = ({ route, navigation }) => {
 
     const styles = create({
         shadowWrap : {
-            shadowOpacity : 0.5,
+            shadowOpacity : 0.3,
             shadowOffset : { width: 4, height: 4 },
-            borderRadius : 100
+            borderRadius : 40
         },
         container : {
             display : 'flex',
@@ -45,7 +45,7 @@ const Header = ({ route, navigation }) => {
         backButton : {
             flexDirection : 'row',
             backgroundColor : colors.secondary.blue,
-            borderRadius : 100,
+            borderRadius : 40,
             paddingVertical : maxDimension * 0.006,
             paddingLeft : maxDimension * 0.03,
             paddingRight : maxDimension * 0.05,
@@ -59,7 +59,7 @@ const Header = ({ route, navigation }) => {
             fontFamily : 'SFPro-Medium',
             alignSelf : 'center',
             color : colors.primary.white,
-            fontSize : fontSizes.body,
+            fontSize : fontSizes.large,
             marginLeft : maxDimension * 0.008,
         },
         buttonContainer : {

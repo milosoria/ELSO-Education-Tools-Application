@@ -8,9 +8,16 @@ import { Audio } from 'expo-av'
 
 const FUNCTIONS = ['off', 'alarmLow', 'alarmHigh', 'instantaneous', 'systolic', 'mean', 'diastolic']
 
-const FunctionKnob = ({ soundPath, degRange, size, style, imagePath, step, resistance = 5 }) => {
-    const rotation = useSharedValue(0)
-    const savedRotation = useSharedValue(0)
+const FunctionKnob = ({ type, soundPath, degRange, size, style, imagePath, step, resistance = 5 }) => {
+    const {
+        setUnblocked,
+        setFunctionType,
+        rotations,
+        setRotations
+    } = useContext(FunctionsContext)
+
+    const rotation = useSharedValue(rotations[type])
+    const savedRotation = useSharedValue(rotations[type])
     const [minDeg, maxDeg] = degRange
     const [sound, setSound] = useState()
     const functionsMap = {}
@@ -19,10 +26,6 @@ const FunctionKnob = ({ soundPath, degRange, size, style, imagePath, step, resis
     steps.forEach((value, index) => {
         functionsMap[value] = FUNCTIONS[index]
     })
-    const {
-        setUnblocked,
-        setFunctionType
-    } = useContext(FunctionsContext)
 
     useEffect(() => {
         return sound ? () => sound.unloadAsync() : undefined
@@ -60,6 +63,10 @@ const FunctionKnob = ({ soundPath, degRange, size, style, imagePath, step, resis
         } else {
             setUnblocked('none')
         }
+        setRotations((prev) => {
+            prev[type] = savedRotation.value
+            return prev
+        })
     }, [savedRotation.value])
 
     const animatedStyle = useAnimatedStyle(() => {

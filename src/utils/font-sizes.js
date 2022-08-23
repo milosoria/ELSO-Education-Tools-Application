@@ -1,10 +1,11 @@
 const fontSizes = {
-    small : 12,
-    medium : 16,
-    big : 20,
-    body : 24,
-    subtitles : 36,
-    titles : 48
+    small : 8,
+    // TODO: this should be 12
+    medium : 12,
+    big : 14,
+    body : 18,
+    subtitles : 24,
+    titles : 32
 }
 
 export default fontSizes

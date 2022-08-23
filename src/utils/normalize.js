@@ -43,6 +43,7 @@ const normalize = (size) => {
 export const create = (
     styles,
     targetProperties = [
+        'fontSize',
         'margin',
         'marginLeft',
         'marginRight',
@@ -68,7 +69,7 @@ export const create = (
         normalizedStyles[key] = {}
         Object.keys(styles[key]).forEach((property) => {
             if (targetProperties.includes(property)) {
-                normalizedStyles[key][property] = normalize(styles[key][property])
+                normalizedStyles[key][property] = property == 'fontSize' ? Math.floor(normalize(styles[key][property])) : normalize(styles[key][property])
             } else {
                 normalizedStyles[key][property] = styles[key][property]
             }

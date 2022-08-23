@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
+import { Image, Pressable, SafeAreaView, Text, TouchableHighlight, View } from 'react-native'
 import DimensionContext from '../contexts/dimensionContext'
 import { create } from '../utils/normalize'
 import colors from '../utils/color-palette'
@@ -25,10 +25,15 @@ const Header = ({ route, navigation }) => {
         setVisible(!(isLandscape && name == 'Blender'))
     })
 
+    const handleBackHome = () => {
+        if (route.name !== 'Menu') navigation.popToTop()
+    }
+
     const styles = create({
         shadowWrap : {
-            shadowOpacity : 0.2,
+            shadowOpacity : 0.5,
             shadowOffset : { width: 4, height: 4 },
+            borderRadius : 100
         },
         container : {
             display : 'flex',
@@ -39,23 +44,23 @@ const Header = ({ route, navigation }) => {
         },
         backButton : {
             flexDirection : 'row',
-            justifyContent : 'center',
             backgroundColor : colors.secondary.blue,
             borderRadius : 100,
-            paddingHorizontal : maxDimension * 0.03,
-            paddingVertical : maxDimension * 0.0065,
+            paddingVertical : maxDimension * 0.006,
+            paddingLeft : maxDimension * 0.03,
+            paddingRight : maxDimension * 0.05,
         },
         backButtonIcon : {
             color : colors.primary.white,
-            marginRight : maxDimension * 0.005
+            alignSelf : 'flex-end',
+            marginRight : maxDimension * 0.008
         },
         backButtonText : {
+            fontFamily : 'SFPro-Medium',
             alignSelf : 'center',
             color : colors.primary.white,
-            fontSize : fontSizes.big,
-            fontWeight : '500',
-            marginLeft : maxDimension * 0.005,
-            marginRight : maxDimension * 0.015
+            fontSize : fontSizes.body,
+            marginLeft : maxDimension * 0.008,
         },
         buttonContainer : {
             width : buttonsContainerSize,
@@ -67,7 +72,7 @@ const Header = ({ route, navigation }) => {
             justifyContent : 'center',
         },
         logo : {
-            height : maxDimension * 0.055,
+            height : maxDimension * 0.045,
             resizeMode : 'contain',
         }
     })
@@ -81,19 +86,21 @@ const Header = ({ route, navigation }) => {
             {
                 backButtonVisible ?
                     <View style={styles.buttonContainer}>
-                        <TouchableOpacity
+                        <TouchableHighlight
+                            underlayColor='#FFFFFF'
+                            activeOpacity={0.8}
                             style={styles.shadowWrap}
                             onPress={handleBackPress}>
                             <LinearGradient style={styles.backButton} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={[colors.primary.blue, colors.secondary.blueGradient]}>
-                                <Icon name='arrowleft' size={maxDimension * 0.025} style={styles.backButtonIcon} />
+                                <Icon name='arrowleft' size={maxDimension * 0.03} style={styles.backButtonIcon} />
                                 <Text style={styles.backButtonText}>Back</Text>
                             </LinearGradient>
-                        </TouchableOpacity>
+                        </TouchableHighlight>
                     </View>
                     : <View style={styles.buttonContainer} />}
-            <View style={styles.logoContainer}>
-                <Image source={require('../../assets/logo-header-bar.png')} style={styles.logo} />
-            </View>
+            <Pressable onPress={handleBackHome} style={styles.logoContainer}>
+                <Image source={require('../../assets/logo-header.png')} style={styles.logo} />
+            </Pressable>
             <View style={styles.buttonContainer} />
         </SafeAreaView >
     )

@@ -1,4 +1,4 @@
-import { FlatList, ImageBackground, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, ImageBackground, SafeAreaView, Text, TouchableHighlight, View } from 'react-native'
 import { useContext } from 'react'
 import colors from '../../utils/color-palette'
 import { create } from '../../utils/normalize'
@@ -28,11 +28,11 @@ const SimulatorsCarousel = ({ navigation }) => {
         <ImageBackground style={styles.item} imageStyle={styles.background} source={imagePath} >
             <View style={styles.cardContainer}>
                 {name ? (
-                    <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate(name)}>
+                    <TouchableHighlight style={styles.shadowWrap} underlayColor='#FFFFFF' activeOpacity={0.8} onPress={() => navigation.navigate(name)}>
                         <LinearGradient style={styles.button} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={[colors.primary.blue, colors.secondary.blueGradient]}>
                             <Text style={styles.buttonText}>Continue</Text>
                         </LinearGradient>
-                    </TouchableOpacity>
+                    </TouchableHighlight>
                 ) : (
                     <View style={[styles.button, { backgroundColor: colors.secondary.disabled }]}>
                         <Text style={styles.buttonText}>Continue</Text>
@@ -51,19 +51,28 @@ const SimulatorsCarousel = ({ navigation }) => {
     )
 
     const styles = create({
+        shadowWrap : {
+            shadowOpacity : 0.2,
+            shadowOffset : { width: 4, height: 4 },
+            marginTop : maxDimension * 0.02,
+            marginBottom : maxDimension * 0.025,
+            //TODO: fix this TouchableHighlight width
+            marginHorizontal : maxDimension * 0.041,
+            flexDirection : 'row',
+            borderRadius : 100,
+        },
         button : {
             alignSelf : 'center',
             alignItems : 'center',
+            flex : 1,
             paddingVertical : maxDimension * 0.008,
-            paddingHorizontal : maxDimension * 0.05,
+            paddingHorizontal : maxDimension * 0.045,
             borderRadius : 100,
-            marginTop : maxDimension * 0.02,
-            marginBottom : maxDimension * 0.025
         },
         buttonText : {
+            fontFamily : 'SFPro-Medium',
             color : colors.primary.white,
-            fontSize : fontSizes.big,
-            fontWeight : '500'
+            fontSize : fontSizes.body,
         },
         container : {
             backgroundColor : colors.primary.darkBackground,
@@ -94,12 +103,13 @@ const SimulatorsCarousel = ({ navigation }) => {
         titleText : {
             color : 'white',
             fontSize : fontSizes.subtitles,
-            fontWeight : '600'
+            fontFamily : 'SFPro-Bold',
         },
         subTitleText : {
             color : 'white',
             fontSize : fontSizes.medium,
-            fontWeight : '300'
+            fontWeight : '300',
+            fontFamily : 'SFPro-Regular',
         },
         cardInfo : {
             marginLeft : maxDimension * 0.025,
@@ -118,12 +128,12 @@ const SimulatorsCarousel = ({ navigation }) => {
         mainTitle : {
             color : 'white',
             fontSize : fontSizes.titles,
-            fontWeight : '500'
+            fontFamily : 'SFPro-Bold',
         },
         mainSubTitle : {
             color : 'white',
             fontSize : fontSizes.body,
-            fontWeight : '400'
+            fontFamily : 'SFPro-Medium',
         }
     })
 

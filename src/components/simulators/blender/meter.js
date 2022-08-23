@@ -17,7 +17,7 @@ const Meter = ({ type }) => {
     const backgroundOffset = type === 'ml-min' ? maxDimension * 0.02 : maxDimension * 0.012
 
     const degRange = [0, 720]
-    const ticksRange = [0, maxDimension * (0.47)]
+    const ticksRange = [0, maxDimension * (0.46)]
     const knobSize = maxDimension * (0.1)
 
     const rotation = useSharedValue(0)

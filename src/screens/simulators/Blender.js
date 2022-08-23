@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { Image, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Image, SafeAreaView, StyleSheet, TouchableHighlight, View } from 'react-native'
 import InstructionsModal from '../../components/simulators/instructionsModal'
 import Meter from '../../components/simulators/blender/meter'
 import Mixer from '../../components/simulators/blender/mixer'
@@ -26,9 +26,9 @@ const Blender = () => {
                     </View>
                 </View>
                 <View style={styles.button}>
-                    <TouchableOpacity style={{ width: buttonSize, height: buttonSize, borderRadius: buttonSize / 2 }} onPress={handlePress}>
+                    <TouchableHighlight underlayColor='#FFFFFF' activeOpacity={0.8} style={{ width: buttonSize, height: buttonSize, borderRadius: buttonSize / 2 }} onPress={handlePress}>
                         <Image source={require('../../assets/help/help_button.png')} resizeMode='contain' />
-                    </TouchableOpacity>
+                    </TouchableHighlight>
                 </View>
             </SafeAreaView>
             <InstructionsModal modalVisible={modalVisible} setModalVisible={setModalVisible} />

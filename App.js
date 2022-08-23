@@ -6,7 +6,6 @@ import useOrientation from './src/utils/orientation'
 import DimensionContext from './src/contexts/dimensionContext'
 import CompanyInfo from './src/screens/CompanyInfo'
 import Menu from './src/screens/Menu'
-// import Simulators from './src/navigation/simulatorsStack'
 import Blender from './src/screens/simulators/Blender'
 import PDB from './src/screens/simulators/PDB'
 import SimulatorsCarousel from './src/screens/carousels/SimulatorsCarousel'
@@ -23,6 +22,12 @@ const App = () => {
 
     let [fontsLoaded] = useFonts({
         'Digital-Numbers' : require('./assets/fonts/DigitalNumbers-Regular.ttf'),
+        'SFPro-Bold' : require('./assets/fonts/SFPro-Bold.ttf'),
+        'SFPro-Heavy' : require('./assets/fonts/SFPro-Heavy.ttf'),
+        'SFPro-Light' : require('./assets/fonts/SFPro-Light.ttf'),
+        'SFPro-Medium' : require('./assets/fonts/SFPro-Medium.ttf'),
+        'SFPro-Regular' : require('./assets/fonts/SFPro-Regular.ttf'),
+        'SFPro-Semibold' : require('./assets/fonts/SFPro-Semibold.ttf')
     })
 
     if (!fontsLoaded) {

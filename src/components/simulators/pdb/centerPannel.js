@@ -144,8 +144,8 @@ const CenterPannel = () => {
         },
         zeroDisplayText : {
             fontFamily : 'Digital-Numbers',
-            fontSize : Math.floor(minDimension * 0.075),
-            opacity : 0.5
+            fontSize : Math.floor(minDimension * 0.072),
+            opacity : 0.45
         },
         alarmDisplay : {
             top : minDimension * 0.15,
@@ -162,6 +162,7 @@ const CenterPannel = () => {
         alarmDisplayBox2 : {
             flex : 1,
             alignItems : 'center',
+            marginLeft : minDimension * 0.003
         },
         alarmDisplayBox3 : {
             flex : 1,
@@ -170,7 +171,7 @@ const CenterPannel = () => {
         alarmDisplayText : {
             fontFamily : 'Digital-Numbers',
             fontSize : Math.floor(minDimension * 0.014),
-            opacity : 0.5
+            opacity : 0.45
         }
     })
 

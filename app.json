@@ -1,27 +1,27 @@
 {
-  "expo": {
-    "name": "ELSOapp",
-    "slug": "ELSOapp",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash-elso.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "icon": "./assets/icon.png",
-      "bundleIdentifier": "org.elso.app",
-      "supportsTablet": true,
-      "requireFullScreen": true
+    "expo": {
+        "name": "ELSOapp",
+        "slug": "ELSOapp",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/icon.png",
+        "userInterfaceStyle": "light",
+        "splash": {
+            "image": "./assets/splash-elso.png",
+            "resizeMode": "cover",
+            "backgroundColor": "#ffffff"
+        },
+        "updates": {
+            "fallbackToCacheTimeout": 0
+        },
+        "assetBundlePatterns": [
+            "**/*"
+        ],
+        "ios": {
+            "icon": "./assets/icon.png",
+            "bundleIdentifier": "com.Houseknecht.ELSO",
+            "supportsTablet": true,
+            "requireFullScreen": true
+        }
     }
-  }
 }

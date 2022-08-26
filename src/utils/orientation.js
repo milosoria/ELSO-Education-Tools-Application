@@ -7,7 +7,7 @@ const useOrientation = () =>{
 
     useEffect(() => {
         const subscription = Dimensions.addEventListener('change', ({ window: { width,height } })=>{
-            if (width<height) {
+            if (width < height) {
                 setOrientation(false)
             } else {
                 setOrientation(true)

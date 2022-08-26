@@ -11,13 +11,13 @@ const DATA = [
         id : '1',
         name : 'Blender',
         description : 'Air-oxygen mixer simulator',
-        imagePath : require('../../assets/carousel/blender-background.png')
+        imagePath : require('../../assets/carousel/blender.png')
     },
     {
         id : '2',
         name : 'PDB',
         description : 'Pressure display box simulator',
-        imagePath : require('../../assets/carousel/pdb-background.png')
+        imagePath : require('../../assets/carousel/pdb.png')
     },
 ]
 
@@ -79,7 +79,7 @@ const SimulatorsCarousel = ({ navigation }) => {
         },
         info : {
             flex : 2,
-            backgroundColor : colors.primary.blue
+            backgroundColor : colors.primary.darkBackground
         },
         cardContainer : {
             flexDirection : 'column-reverse',
@@ -138,12 +138,12 @@ const SimulatorsCarousel = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.info}>
+            <ImageBackground source={require('../../assets/navigation/simulators.png')} imageStyle={{ opacity: 0.8 }} style={styles.info}>
                 <View style={styles.titleContainer}>
                     <Text style={styles.mainSubTitle}>Scroll and select a simulator</Text>
                     <Text style={styles.mainTitle}>Simulations</Text>
                 </View>
-            </View>
+            </ImageBackground>
             <FlatList
                 contentContainerStyle={styles.listView}
                 data={DATA}

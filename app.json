@@ -1,7 +1,7 @@
 {
     "expo": {
         "name": "ELSO Educational Tools Application",
-        "slug": "ELSO Educational Tools Application",
+        "slug": "elso-educational-tools",
         "version": "1.0.0",
         "orientation": "portrait",
         "icon": "./assets/icon.png",

@@ -29,50 +29,50 @@ const Header = ({ route, navigation }) => {
     }
 
     const styles = create({
-        shadowWrap : {
-            shadowOpacity : 0.3,
-            shadowOffset : { width: 4, height: 4 },
-            borderRadius : 40
+        shadowWrap: {
+            shadowOpacity: 0.3,
+            shadowOffset: { width: 4, height: 4 },
+            borderRadius: 40
         },
-        container : {
-            display : 'flex',
-            flexDirection : 'row',
-            justifyContent : 'space-between',
-            height : maxDimension * 0.08,
-            backgroundColor : colors.primary.darkHeader
+        container: {
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            height: maxDimension * 0.08,
+            backgroundColor: colors.primary.darkHeader
         },
-        backButton : {
-            flexDirection : 'row',
-            backgroundColor : colors.secondary.blue,
-            borderRadius : 40,
-            paddingVertical : maxDimension * 0.006,
-            paddingLeft : maxDimension * 0.03,
-            paddingRight : maxDimension * 0.05,
+        backButton: {
+            flexDirection: 'row',
+            backgroundColor: colors.secondary.blue,
+            borderRadius: 40,
+            paddingVertical: maxDimension * 0.006,
+            paddingLeft: maxDimension * 0.03,
+            paddingRight: maxDimension * 0.05,
         },
-        backButtonIcon : {
-            color : colors.primary.white,
-            alignSelf : 'flex-end',
-            marginRight : maxDimension * 0.008
+        backButtonIcon: {
+            color: colors.primary.white,
+            alignSelf: 'flex-end',
+            marginRight: maxDimension * 0.008
         },
-        backButtonText : {
-            fontFamily : 'SFPro-Medium',
-            alignSelf : 'center',
-            color : colors.primary.white,
-            fontSize : fontSizes.large,
-            marginLeft : maxDimension * 0.008,
+        backButtonText: {
+            fontFamily: 'SFPro-Medium',
+            alignSelf: 'center',
+            color: colors.primary.white,
+            fontSize: fontSizes.large,
+            marginLeft: maxDimension * 0.008,
         },
-        buttonContainer : {
-            width : buttonsContainerSize,
-            flexDirection : 'row',
-            alignItems : 'center',
-            justifyContent : 'center',
+        buttonContainer: {
+            width: buttonsContainerSize,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
         },
-        logoContainer : {
-            justifyContent : 'center',
+        logoContainer: {
+            justifyContent: 'center',
         },
-        logo : {
-            height : maxDimension * 0.045,
-            resizeMode : 'contain',
+        logo: {
+            height: maxDimension * 0.045,
+            resizeMode: 'contain',
         }
     })
 

@@ -19,7 +19,7 @@
         ],
         "ios": {
             "icon": "./assets/icon.png",
-            "bundleIdentifier": "com.Houseknecht.ELSO",
+            "bundleIdentifier": "org.elso.educational-tools",
             "supportsTablet": true,
             "requireFullScreen": true
         }

@@ -31,7 +31,7 @@ const Menu = ({ navigation }) => {
             alignItems : 'center',
         },
         cardsContainer : {
-            marginTop : maxDimension * 0.03,
+            marginTop : maxDimension * 0.03
         },
         title : {
             alignItems : 'flex-start',

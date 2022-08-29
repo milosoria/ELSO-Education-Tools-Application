@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from 'react'
 import FunctionsContext from '../../contexts/functionalitiesContext'
 import { Audio } from 'expo-av'
 
+// TODO: refactor this
 const FUNCTIONS = ['off', 'alarmLow', 'alarmHigh', 'instantaneous', 'systolic', 'mean', 'diastolic']
 
 const FunctionKnob = ({ type, soundPath, degRange, size, style, imagePath, step, resistance = 5 }) => {

@@ -10,7 +10,6 @@ import useOrientation from '../utils/orientation'
 
 
 const Header = ({ route, navigation }) => {
-    const { name } = route
     const isLandscape = useOrientation()
     const { maxDimension } = useContext(DimensionContext)
     const buttonsContainerSize = maxDimension * 0.2
@@ -22,7 +21,7 @@ const Header = ({ route, navigation }) => {
     }, [navigation])
 
     useEffect(() => {
-        setVisible(!(isLandscape && name == 'Blender'))
+        setVisible(!(isLandscape && route.name == 'Blender'))
     })
 
     const handleBackHome = () => {

@@ -26,7 +26,7 @@ const CenterPannel = () => {
 
     const { minDimension } = useContext(DimensionContext)
     const [alarmActive, setAlarmActive] = useState(false)
-    const [display, setDisplay] = useState('')
+    const [display, setDisplay] = useState(Object.keys(DELAYMAP).includes(functionType) ? displayValue : '')
     const [ledOn, setLedOn] = useState(false)
     const [sound, setSound] = useState()
     const [mode, setMode] = useState('')

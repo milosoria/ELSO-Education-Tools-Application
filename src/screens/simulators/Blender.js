@@ -1,15 +1,12 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { Image, SafeAreaView, StyleSheet, TouchableHighlight, View } from 'react-native'
 import InstructionsModal from '../../components/simulators/instructionsModal'
 import Meter from '../../components/simulators/blender/meter'
 import Mixer from '../../components/simulators/blender/mixer'
-import DimensionContext from '../../contexts/dimensionContext'
 import colors from '../../utils/color-palette'
 
 const Blender = () => {
     const [modalVisible, setModalVisible] = useState(false)
-    const { maxDimension } = useContext(DimensionContext)
-    const buttonSize = maxDimension * 0.09
 
     const handlePress = () => {
         setModalVisible(!modalVisible)
@@ -25,11 +22,9 @@ const Blender = () => {
                         <Mixer />
                     </View>
                 </View>
-                <View style={styles.button}>
-                    <TouchableHighlight underlayColor='#FFFFFF' activeOpacity={0.8} style={{ width: buttonSize, height: buttonSize, borderRadius: buttonSize / 2 }} onPress={handlePress}>
-                        <Image source={require('../../assets/help/help_button.png')} resizeMode='contain' />
-                    </TouchableHighlight>
-                </View>
+                <TouchableHighlight underlayColor='#FFFFFF' activeOpacity={0.8} style={styles.button} onPress={handlePress}>
+                    <Image source={require('../../assets/help/help_button.png')} resizeMode='contain' />
+                </TouchableHighlight>
             </SafeAreaView>
             <InstructionsModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
         </>
@@ -50,9 +45,10 @@ const styles = StyleSheet.create({
         backgroundColor : colors.primary.background
     },
     button : {
+        borderRadius : 20,
         position : 'absolute',
-        bottom : -15,
-        left : 20
+        bottom : 15,
+        left : 20,
     },
 })
 

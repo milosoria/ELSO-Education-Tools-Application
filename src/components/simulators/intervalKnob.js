@@ -12,6 +12,7 @@ const DISPLAYRANGE = [-100, 344]
 const ALARMLOWRANGE = [-100, 14]
 const ALARMHIGHMAX = 500
 
+// TODO: refactor this
 const IntervalKnob = ({ step, type, soundPath, degRange, size, style, imagePath }) => {
     const {
         unblocked,

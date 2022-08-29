@@ -98,7 +98,7 @@ const Header = ({ route, navigation }) => {
                     </View>
                     : <View style={styles.buttonContainer} />}
             <Pressable onPress={handleBackHome} style={styles.logoContainer}>
-                <Image source={require('../../assets/logo-header.png')} style={styles.logo} />
+                <Image source={require('../../assets/header-logo.png')} style={styles.logo} />
             </Pressable>
             <View style={styles.buttonContainer} />
         </SafeAreaView >

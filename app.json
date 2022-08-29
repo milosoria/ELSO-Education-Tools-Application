@@ -7,7 +7,7 @@
         "icon": "./assets/icon.png",
         "userInterfaceStyle": "light",
         "splash": {
-            "image": "./assets/splash-elso.png",
+            "image": "./assets/elso-splash.png",
             "resizeMode": "cover",
             "backgroundColor": "#ffffff"
         },

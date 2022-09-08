@@ -1,27 +1,28 @@
 {
-    "cli": {
-        "version": ">= 0.57.0"
+  "cli": {
+    "version": ">= 0.57.0",
+    "promptToConfigurePushNotfications": false
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
     },
-    "build": {
-        "development": {
-            "developmentClient": true,
-            "distribution": "internal"
-        },
-        "preview": {
-            "distribution": "internal"
-        },
-        "production": {}
+    "preview": {
+      "distribution": "internal"
     },
-    "submit": {
-        "production": {
-            "ios": {
-                "ascAppId": "6443335423",
-                "appleId": "camilo.soria@uc.cl",
-                "appleTeamId": "U2CAB3HY8F",
-                "ascApiKeyPath": "./AuthKey_VUG35MSYA3.p8",
-                "ascApiKeyIssuerId": "8ef88833-f793-4af1-a28d-20bd49793c77",
-                "ascApiKeyId": "VUG35MSYA3"
-            }
-        }
+    "production": {}
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "ascAppId": "6443335423",
+        "appleId": "camilo.soria@uc.cl",
+        "appleTeamId": "U2CAB3HY8F",
+        "ascApiKeyPath": "./AuthKey_VUG35MSYA3.p8",
+        "ascApiKeyIssuerId": "8ef88833-f793-4af1-a28d-20bd49793c77",
+        "ascApiKeyId": "VUG35MSYA3"
+      }
     }
+  }
 }

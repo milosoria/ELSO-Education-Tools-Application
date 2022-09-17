@@ -2,7 +2,7 @@
     "expo": {
         "name": "ELSO Educational Tools Application",
         "slug": "elso-educational-tools",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "orientation": "default",
         "icon": "./assets/icon.png",
         "userInterfaceStyle": "light",
@@ -12,13 +12,13 @@
             "backgroundColor": "#ffffff"
         },
         "updates": {
-            "fallbackToCacheTimeout": 0
+            "fallbackToCacheTimeout": 0,
+            "url": "https://u.expo.dev/1242e9b1-6f48-4ba0-abe7-f0ca38e38f2e"
         },
         "assetBundlePatterns": [
             "**/*"
         ],
         "ios": {
-            "buildNumber": "2",
             "icon": "./assets/icon.png",
             "bundleIdentifier": "org.elso.educational-tools",
             "supportsTablet": true,
@@ -28,6 +28,10 @@
             "eas": {
                 "projectId": "1242e9b1-6f48-4ba0-abe7-f0ca38e38f2e"
             }
-        }
+        },
+        "runtimeVersion": {
+            "policy": "sdkVersion"
+        },
+        "android": {}
     }
 }

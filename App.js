@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font'
 import { useState } from 'react'
-import { ActivityIndicator,  StatusBar, useWindowDimensions } from 'react-native'
+import { ActivityIndicator, StatusBar, useWindowDimensions } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
 import useOrientation from './src/utils/orientation'
@@ -31,14 +31,15 @@ const App = () => {
     const [rotations, setRotations] = useState({ zero: 0, alarm: 0, function: 0 })
 
     let [fontsLoaded] = useFonts({
-        'Digital-Numbers' : require('./assets/fonts/DigitalNumbers-Regular.ttf'),
-        'SFPro-Bold' : require('./assets/fonts/SFPro-Bold.ttf'),
-        'SFPro-Heavy' : require('./assets/fonts/SFPro-Heavy.ttf'),
-        'SFPro-Light' : require('./assets/fonts/SFPro-Light.ttf'),
-        'SFPro-Medium' : require('./assets/fonts/SFPro-Medium.ttf'),
-        'SFPro-Regular' : require('./assets/fonts/SFPro-Regular.ttf'),
-        'SFPro-Semibold' : require('./assets/fonts/SFPro-Semibold.ttf')
+        'Digital-Numbers': require('./assets/fonts/DigitalNumbers-Regular.ttf'),
+        'SFPro-Bold': require('./assets/fonts/SFPro-Bold.ttf'),
+        'SFPro-Heavy': require('./assets/fonts/SFPro-Heavy.ttf'),
+        'SFPro-Light': require('./assets/fonts/SFPro-Light.ttf'),
+        'SFPro-Medium': require('./assets/fonts/SFPro-Medium.ttf'),
+        'SFPro-Regular': require('./assets/fonts/SFPro-Regular.ttf'),
+        'SFPro-Semibold': require('./assets/fonts/SFPro-Semibold.ttf')
     })
+
 
     if (!fontsLoaded) {
         return (
@@ -52,7 +53,7 @@ const App = () => {
                 <NavigationContainer>
                     <StatusBar barStyle="light-content" />
                     <Stack.Navigator screenOptions={{
-                        header : ({ route, navigation }) => <Header navigation={navigation} route={route} />
+                        header: ({ route, navigation }) => <Header navigation={navigation} route={route} />
                     }}>
                         <Stack.Screen name='Menu' component={Menu} />
                         <Stack.Screen name='CompanyInfo' component={CompanyInfo} />

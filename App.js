@@ -13,6 +13,8 @@ import PDB from './src/screens/simulators/PDB'
 import SimulatorsCarousel from './src/screens/carousels/SimulatorsCarousel'
 import ToolsCarousel from './src/screens/carousels/ToolsCarousel'
 import Header from './src/components/header'
+import Client from './src/screens/Client'
+import Server from './src/screens/Server'
 
 const Stack = createNativeStackNavigator()
 
@@ -64,6 +66,10 @@ const App = () => {
                         </Stack.Group>
                         <Stack.Group>
                             <Stack.Screen name='ToolsCarousel' component={ToolsCarousel} />
+                        </Stack.Group>
+                        <Stack.Group>
+                            <Stack.Screen name='Client' component={Client} />
+                            <Stack.Screen name='Server' component={Server} />
                         </Stack.Group>
                     </Stack.Navigator>
                 </NavigationContainer>

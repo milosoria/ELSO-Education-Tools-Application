@@ -150,26 +150,26 @@ const IntervalKnob = ({ step, type, soundPath, degRange, size, style, imagePath 
 
     const animatedStyle = useAnimatedStyle(() => {
         return {
-            transform: [{ rotateZ: `${rotation.value}deg` }],
+            transform : [{ rotateZ: `${rotation.value}deg` }],
         }
     })
 
     const styles = create({
-        container: {
-            shadowOffset: { width: size / 30, height: 5 },
-            shadowRadius: 3,
-            shadowOpacity: 0.3,
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: size + 50,
-            height: size + 50,
-            borderRadius: (size + 50) / 2,
+        container : {
+            shadowOffset : { width: size / 30, height: 5 },
+            shadowRadius : 3,
+            shadowOpacity : 0.3,
+            alignItems : 'center',
+            justifyContent : 'center',
+            width : size + 50,
+            height : size + 50,
+            borderRadius : (size + 50) / 2,
         },
-        knobImage: {
-            width: size,
-            height: size,
-            borderRadius: size / 2,
-            resizeMode: 'stretch'
+        knobImage : {
+            width : size,
+            height : size,
+            borderRadius : size / 2,
+            resizeMode : 'stretch'
         }
     })
 

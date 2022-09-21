@@ -31,18 +31,18 @@ const PDB = () => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: colors.primary.background,
-        flexDirection: 'row',
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+    container : {
+        backgroundColor : colors.primary.background,
+        flexDirection : 'row',
+        flex : 1,
+        alignItems : 'center',
+        justifyContent : 'center',
     },
-    button: {
-        borderRadius: 20,
-        position: 'absolute',
-        bottom: 10,
-        left: 10,
+    button : {
+        borderRadius : 20,
+        position : 'absolute',
+        bottom : 10,
+        left : 10,
     },
 })
 

@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Image, SafeAreaView, StyleSheet, TouchableHighlight, View } from 'react-native'
 import InstructionsModal from '../../components/simulators/instructionsModal'
 import Meter from '../../components/simulators/blender/meter'
@@ -33,23 +33,23 @@ const Blender = () => {
 }
 
 const styles = StyleSheet.create({
-    root: {
-        flexDirection: 'row',
-        flex: 1,
-        alignItems: 'center',
+    root : {
+        flexDirection : 'row',
+        flex : 1,
+        alignItems : 'center',
     },
-    centered: {
-        alignSelf: 'center'
+    centered : {
+        alignSelf : 'center'
     },
-    column: {
-        flexDirection: 'column',
-        backgroundColor: colors.primary.background
+    column : {
+        flexDirection : 'column',
+        backgroundColor : colors.primary.background
     },
-    button: {
-        borderRadius: 20,
-        position: 'absolute',
-        bottom: 10,
-        left: 10,
+    button : {
+        borderRadius : 20,
+        position : 'absolute',
+        bottom : 10,
+        left : 10,
     },
 })
 

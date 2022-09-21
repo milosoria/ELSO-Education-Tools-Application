@@ -13,53 +13,53 @@ const RightPannel = () => {
 
     // Props
     const zeroProps = {
-        degRange: [0, 360],
-        step: 5,
-        size: minDimension * (0.08),
-        soundPath: require(`${ROOTPATH}/zero-knob.mp3`),
-        imagePath: require(`${ROOTPATH}/function-knob.png`),
-        type: 'zero'
+        degRange : [0, 360],
+        step : 5,
+        size : minDimension * (0.08),
+        soundPath : require(`${ROOTPATH}/zero-knob.mp3`),
+        imagePath : require(`${ROOTPATH}/function-knob.png`),
+        type : 'zero'
     }
     const alarmProps = {
-        degRange: [0, 360],
-        step: 15,
-        size: minDimension * (0.08),
-        soundPath: require(`${ROOTPATH}/alarm-knob.mp3`),
-        imagePath: require(`${ROOTPATH}/function-knob.png`),
-        type: 'alarm'
+        degRange : [0, 360],
+        step : 15,
+        size : minDimension * (0.08),
+        soundPath : require(`${ROOTPATH}/alarm-knob.mp3`),
+        imagePath : require(`${ROOTPATH}/function-knob.png`),
+        type : 'alarm'
     }
     const funcProps = {
-        degRange: [0, 216],
-        step: 36,
-        size: minDimension * (0.08),
-        soundPath: require(`${ROOTPATH}/func-knob.mp3`),
-        imagePath: require(`${ROOTPATH}/function-knob.png`),
-        type: 'function'
+        degRange : [0, 216],
+        step : 36,
+        size : minDimension * (0.08),
+        soundPath : require(`${ROOTPATH}/func-knob.mp3`),
+        imagePath : require(`${ROOTPATH}/function-knob.png`),
+        type : 'function'
     }
 
 
     const styles = create({
-        backgroundImage: {
-            resizeMode: 'stretch',
+        backgroundImage : {
+            resizeMode : 'stretch',
         },
-        background: {
-            alignItems: 'center',
-            shadowRadius: 5,
-            shadowOpacity: 0.3,
-            height: minDimension * 0.485,
-            width: minDimension * 0.18,
-            marginLeft: minDimension * 0.01
+        background : {
+            alignItems : 'center',
+            shadowRadius : 5,
+            shadowOpacity : 0.3,
+            height : minDimension * 0.485,
+            width : minDimension * 0.18,
+            marginLeft : minDimension * 0.01
         },
-        zeroKnob: {
-            resizeMode: 'stretch',
-            top: minDimension * 0.052,
+        zeroKnob : {
+            resizeMode : 'stretch',
+            top : minDimension * 0.052,
         },
-        alarmKnob: {
-            top: minDimension * 0.025
+        alarmKnob : {
+            top : minDimension * 0.025
         },
-        funcKnob: {
-            top: minDimension * 0.03,
-            transform: [{ rotateZ: '90deg' }]
+        funcKnob : {
+            top : minDimension * 0.03,
+            transform : [{ rotateZ: '90deg' }]
         }
     })
 

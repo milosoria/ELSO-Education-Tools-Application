@@ -1,13 +1,12 @@
 {
     "name": "ELSOapp",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "main": "node_modules/expo/AppEntry.js",
     "scripts": {
         "start": "expo start",
         "android": "expo start --android",
         "ios": "expo start --ios",
         "web": "expo start --web",
-        "publish": "expo publish",
         "eject": "expo eject",
         "lint": "yarn eslint .",
         "tunnel": "expo start --tunnel",
@@ -35,11 +34,8 @@
         "react-native-screens": "~3.11.1",
         "react-native-svg": "12.3.0",
         "react-native-swipe-gestures": "^1.0.5",
-        "react-native-tcp": "^4.0.0",
         "react-native-vector-icons": "^9.2.0",
-        "react-native-web": "0.17.7",
-        "readable-stream": "^1.0.33",
-        "stream-browserify": "^1.0.0"
+        "react-native-web": "0.17.7"
     },
     "devDependencies": {
         "@babel/core": "^7.12.9",
@@ -48,21 +44,5 @@
         "eslint-plugin-react-native": "^4.0.0",
         "rn-nodeify": "^10.3.0"
     },
-    "react-native": {
-        "_stream_transform": "readable-stream/transform",
-        "_stream_readable": "readable-stream/readable",
-        "_stream_writable": "readable-stream/writable",
-        "_stream_duplex": "readable-stream/duplex",
-        "_stream_passthrough": "readable-stream/passthrough",
-        "stream": "stream-browserify"
-    },
-    "browser": {
-        "_stream_transform": "readable-stream/transform",
-        "_stream_readable": "readable-stream/readable",
-        "_stream_writable": "readable-stream/writable",
-        "_stream_duplex": "readable-stream/duplex",
-        "_stream_passthrough": "readable-stream/passthrough",
-        "stream": "stream-browserify"
-    },
-    "license": "UNLICENSED"
+    "private": true
 }

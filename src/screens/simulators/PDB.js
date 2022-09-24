@@ -1,7 +1,6 @@
 import { Image, StyleSheet, TouchableHighlight, View } from 'react-native'
 import { useContext, useState } from 'react'
 import InstructionsModal from '../../components/simulators/instructionsModal'
-import LeftPannel from '../../components/simulators/pdb/leftPannel'
 import CenterPannel from '../../components/simulators/pdb/centerPannel'
 import RightPannel from '../../components/simulators/pdb/rightPannel'
 import colors from '../../utils/color-palette'
@@ -18,7 +17,6 @@ const PDB = () => {
     return (
         <>
             <View style={styles.container}>
-                <LeftPannel />
                 <CenterPannel />
                 <RightPannel />
             </View>

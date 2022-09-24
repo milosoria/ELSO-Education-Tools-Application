@@ -24,7 +24,7 @@ const CenterPannel = () => {
         functionType,
     } = useContext(FunctionsContext)
 
-    const { minDimension } = useContext(DimensionContext)
+    const { maxDimension } = useContext(DimensionContext)
     const [alarmActive, setAlarmActive] = useState(false)
     const [display, setDisplay] = useState(Object.keys(DELAYMAP).includes(functionType) ? displayValue : '')
     const [ledOn, setLedOn] = useState(false)
@@ -112,46 +112,38 @@ const CenterPannel = () => {
             alignItems : 'center',
             shadowRadius : 5,
             shadowOpacity : 0.3,
-            height : minDimension * 0.485,
-            width : minDimension * 0.35,
+            height : maxDimension * 0.55,
+            width : maxDimension * 0.4,
         },
-        alarm : {
-            resizeMode : 'stretch',
-            height : minDimension * 0.06,
-            width : minDimension * 0.1,
-            top : minDimension * 0.275,
-            left : minDimension * 0.04
+        container : {
+            flexDirection : 'column',
+            justifyContent : 'center',
+            alignItems : 'center',
         },
-        led : {
-            resizeMode : 'stretch',
-            height : minDimension * 0.06,
-            width : minDimension * 0.1,
-            top : minDimension * 0.215,
-            left : minDimension * 0.04
-        },
-        pressable : {
-            height : minDimension * 0.06,
-            width : minDimension * 0.05,
-            top : minDimension * 0.15,
-            left : minDimension * 0.065,
+        displayContainer : {
+            flex : 1,
+            flexDirection : 'column',
+            marginTop : maxDimension * 0.11,
+            height : maxDimension * 0.3,
         },
         zeroDisplay : {
-            top : minDimension * 0.075,
-            marginRight : functionType.includes('alarm') ? 0 : 15,
-            height : minDimension * 0.1,
-            width : minDimension * 0.25,
+            alignSelf : 'flex-start',
+            paddingRight : functionType.includes('alarm') ? 0 : 15,
+            height : maxDimension * 0.1,
+            width : maxDimension * 0.3,
             flexDirection : 'column',
             alignItems : functionType.includes('alarm') ? 'center' : 'flex-end'
         },
         zeroDisplayText : {
             fontFamily : 'Digital-Numbers',
-            fontSize : Math.floor(minDimension * 0.072),
+            fontSize : Math.floor(maxDimension * 0.08),
             opacity : 0.45
         },
         alarmDisplay : {
-            top : minDimension * 0.15,
-            height : minDimension * 0.04,
-            width : minDimension * 0.16,
+            marginBottom : maxDimension * 0.065,
+            flex : 1,
+            alignSelf : 'center',
+            width : maxDimension * 0.18,
             flexDirection : 'row',
             justifyContent : 'center',
             alignItems : 'center'
@@ -163,7 +155,7 @@ const CenterPannel = () => {
         alarmDisplayBox2 : {
             flex : 1,
             alignItems : 'center',
-            marginLeft : minDimension * 0.003
+            marginLeft : maxDimension * 0.003
         },
         alarmDisplayBox3 : {
             flex : 1,
@@ -171,32 +163,64 @@ const CenterPannel = () => {
         },
         alarmDisplayText : {
             fontFamily : 'Digital-Numbers',
-            fontSize : Math.floor(minDimension * 0.014),
+            fontSize : Math.floor(maxDimension * 0.015),
             opacity : 0.45
+        },
+        alarm : {
+            alignSelf : 'flex-end',
+            marginBottom : maxDimension * 0.018,
+            marginRight : maxDimension * 0.055,
+            flexDirection : 'row',
+            resizeMode : 'stretch',
+            height : maxDimension * 0.06,
+            width : maxDimension * 0.1,
+        },
+        ledContainer : {
+            flex : 1,
+            top : maxDimension * 0.01,
+            left : maxDimension * 0.005,
+            justifyContent : 'center'
+        },
+        led : {
+            resizeMode : 'stretch',
+            height : maxDimension * 0.037,
+            width : maxDimension * 0.037,
+        },
+        pressable : {
+            flex : 1,
+            height : maxDimension * 0.06,
+            width : maxDimension * 0.06,
         }
     })
 
     return (
         <ImageBackground source={backgroundPath} style={styles.background} imageStyle={styles.backgroundImage}>
-            <View style={styles.zeroDisplay}>
-                <Text style={styles.zeroDisplayText}>{typeof display == 'string' ? display : zeroPad(display)}</Text>
+            <View style={styles.container}>
+                <View style={styles.displayContainer}>
+                    <View style={styles.zeroDisplay}>
+                        <Text style={styles.zeroDisplayText}>{typeof display == 'string' ? display : zeroPad(display)}</Text>
+                    </View>
+                    <View style={styles.alarmDisplay}>
+                        <View style={styles.alarmDisplayBox1}>
+                            <Text style={styles.alarmDisplayText}>{alarmLowValue}</Text>
+                        </View>
+                        <View style={styles.alarmDisplayBox2}>
+                            <Text style={styles.alarmDisplayText}>{mode}</Text>
+                        </View>
+                        <View style={styles.alarmDisplayBox3}>
+                            <Text style={styles.alarmDisplayText}>{alarmHighValue}</Text>
+                        </View>
+                    </View>
+                </View>
+                <ImageBackground source={alarmPath} style={styles.alarm} >
+                    <View style={styles.ledContainer}>
+                        <Image source={ledPath} style={styles.led} />
+                    </View>
+                    <GestureRecognizer onSwipeDown={handleSwipeDown} onSwipeUp={handleSwipeUp}>
+                        <View style={styles.pressable} />
+                    </GestureRecognizer>
+                </ImageBackground>
             </View>
-            <View style={styles.alarmDisplay}>
-                <View style={styles.alarmDisplayBox1}>
-                    <Text style={styles.alarmDisplayText}>{alarmLowValue}</Text>
-                </View>
-                <View style={styles.alarmDisplayBox2}>
-                    <Text style={styles.alarmDisplayText}>{mode}</Text>
-                </View>
-                <View style={styles.alarmDisplayBox3}>
-                    <Text style={styles.alarmDisplayText}>{alarmHighValue}</Text>
-                </View>
-            </View>
-            <Image source={alarmPath} style={styles.alarm} />
-            <Image source={ledPath} style={styles.led} />
-            <GestureRecognizer onSwipeDown={handleSwipeDown} onSwipeUp={handleSwipeUp}>
-                <View style={styles.pressable} />
-            </GestureRecognizer>
         </ImageBackground>
     )
 }

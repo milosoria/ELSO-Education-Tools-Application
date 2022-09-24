@@ -61,6 +61,7 @@ const Menu = ({ navigation }) => {
             height : maxDimension * 0.23,
             width : maxDimension * 0.55,
             marginVertical : maxDimension * 0.015,
+            marginHorizontal : maxDimension * 0.02,
             borderRadius : 15,
             flexDirection : 'row',
             alignItems : 'center',
@@ -157,6 +158,8 @@ const Menu = ({ navigation }) => {
                             source={require('../assets/navigation/company-info.png')}
                             imageStyle={{ borderRadius: 10 }}
                             style={[
+                                styles.shadowWrap,
+                                { shadowOffset: { width: 2, height: 4 } },
                                 styles.card,
                                 {
                                     alignItems : 'flex-start',
@@ -186,7 +189,11 @@ const Menu = ({ navigation }) => {
                         <ImageBackground
                             source={require('../assets/navigation/simulators.png')}
                             imageStyle={{ borderRadius: 10 }}
-                            style={styles.card}
+                            style={[
+                                styles.shadowWrap,
+                                { shadowOffset: { width: 2, height: 4 } },
+                                styles.card
+                            ]}
                         >
                             <View style={styles.title}>
                                 <Text style={styles.titleText}>ECMO Machines Simulators</Text>
@@ -215,7 +222,12 @@ const Menu = ({ navigation }) => {
                         <ImageBackground
                             source={require('../assets/navigation/clinical-tools.png')}
                             imageStyle={{ borderRadius: 10 }}
-                            style={[styles.card, { opacity: 0.8 }]}
+                            style={[
+                                styles.shadowWrap,
+                                { shadowOffset: { width: 2, height: 4 } },
+                                styles.card,
+                                { opacity: 0.8 }
+                            ]}
                         >
                             <View style={styles.title}>
                                 <Text style={styles.titleText}>Clinical Tools</Text>

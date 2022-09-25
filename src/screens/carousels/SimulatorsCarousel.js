@@ -8,16 +8,16 @@ import fontSizes from '../../utils/font-sizes'
 
 const DATA = [
     {
-        id: '1',
-        name: 'Blender',
-        description: 'Air-oxygen mixer simulator',
-        imagePath: require('../../assets/carousel/blender.png')
+        id : '1',
+        name : 'Blender',
+        description : 'Air-oxygen mixer simulator',
+        imagePath : require('../../assets/carousel/blender.png')
     },
     {
-        id: '2',
-        name: 'PDB',
-        description: 'Pressure display box simulator',
-        imagePath: require('../../assets/carousel/pdb.png')
+        id : '2',
+        name : 'PDB',
+        description : 'Pressure display box simulator',
+        imagePath : require('../../assets/carousel/pdb.png')
     },
 ]
 
@@ -51,88 +51,88 @@ const SimulatorsCarousel = ({ navigation }) => {
     )
 
     const styles = create({
-        shadowWrap: {
-            shadowOpacity: 0.2,
-            shadowOffset: { width: 4, height: 4 },
-            marginTop: maxDimension * 0.02,
-            marginBottom: maxDimension * 0.025,
-            marginHorizontal: maxDimension * 0.041,
-            flexDirection: 'row',
-            borderRadius: 40,
+        shadowWrap : {
+            shadowOpacity : 0.2,
+            shadowOffset : { width: 4, height: 4 },
+            marginTop : maxDimension * 0.02,
+            marginBottom : maxDimension * 0.025,
+            marginHorizontal : maxDimension * 0.041,
+            flexDirection : 'row',
+            borderRadius : 40,
         },
-        button: {
-            alignSelf: 'center',
-            alignItems: 'center',
-            flex: 1,
-            paddingVertical: maxDimension * 0.008,
-            paddingHorizontal: maxDimension * 0.045,
-            borderRadius: 40,
+        button : {
+            alignSelf : 'center',
+            alignItems : 'center',
+            flex : 1,
+            paddingVertical : maxDimension * 0.008,
+            paddingHorizontal : maxDimension * 0.045,
+            borderRadius : 40,
         },
-        buttonText: {
-            fontFamily: 'SFPro-Medium',
-            color: colors.primary.white,
-            fontSize: fontSizes.large,
+        buttonText : {
+            fontFamily : 'SFPro-Medium',
+            color : colors.primary.white,
+            fontSize : fontSizes.large,
         },
-        container: {
-            backgroundColor: colors.primary.darkBackground,
-            flex: 1,
+        container : {
+            backgroundColor : colors.primary.darkBackground,
+            flex : 1,
         },
-        info: {
-            flex: 2,
-            backgroundColor: colors.primary.darkBackground
+        info : {
+            flex : 2,
+            backgroundColor : colors.primary.darkBackground
         },
-        cardContainer: {
-            flexDirection: 'column-reverse',
-            flex: 1,
-            marginBottom: maxDimension * 0.015
+        cardContainer : {
+            flexDirection : 'column-reverse',
+            flex : 1,
+            marginBottom : maxDimension * 0.015
         },
-        item: {
-            alignSelf: 'center',
-            borderRadius: 8,
-            width: maxDimension * 0.26,
-            height: maxDimension * 0.35,
-            marginHorizontal: maxDimension * 0.02,
-            shadowOpacity: 0.2,
-            shadowOffset: { height: 4, width: 4 },
+        item : {
+            alignSelf : 'center',
+            borderRadius : 8,
+            width : maxDimension * 0.26,
+            height : maxDimension * 0.35,
+            marginHorizontal : maxDimension * 0.02,
+            shadowOpacity : 0.2,
+            shadowOffset : { height: 4, width: 4 },
         },
-        background: {
-            borderRadius: 8,
-            resizeMode: 'cover',
+        background : {
+            borderRadius : 8,
+            resizeMode : 'cover',
         },
-        titleText: {
-            color: colors.primary.white,
-            fontSize: fontSizes.subtitles,
-            fontFamily: 'SFPro-Bold',
+        titleText : {
+            color : colors.primary.white,
+            fontSize : fontSizes.subtitles,
+            fontFamily : 'SFPro-Bold',
         },
-        subTitleText: {
-            color: colors.primary.white,
-            fontSize: fontSizes.medium,
-            fontWeight: '300',
-            fontFamily: 'SFPro-Regular',
+        subTitleText : {
+            color : colors.primary.white,
+            fontSize : fontSizes.medium,
+            fontWeight : '300',
+            fontFamily : 'SFPro-Regular',
         },
-        cardInfo: {
-            marginLeft: maxDimension * 0.025,
+        cardInfo : {
+            marginLeft : maxDimension * 0.025,
         },
-        listView: {
-            flexDirection: 'row',
-            flex: 1,
-            justifyContent: 'center',
+        listView : {
+            flexDirection : 'row',
+            flex : 1,
+            justifyContent : 'center',
         },
-        titleContainer: {
-            marginLeft: maxDimension * 0.05,
-            marginBottom: maxDimension * 0.05,
-            flex: 1,
-            flexDirection: 'column-reverse'
+        titleContainer : {
+            marginLeft : maxDimension * 0.05,
+            marginBottom : maxDimension * 0.05,
+            flex : 1,
+            flexDirection : 'column-reverse'
         },
-        mainTitle: {
-            color: colors.primary.white,
-            fontSize: fontSizes.titles,
-            fontFamily: 'SFPro-Bold',
+        mainTitle : {
+            color : colors.primary.white,
+            fontSize : fontSizes.titles,
+            fontFamily : 'SFPro-Bold',
         },
-        mainSubTitle: {
-            color: colors.primary.white,
-            fontSize: fontSizes.body,
-            fontFamily: 'SFPro-Medium',
+        mainSubTitle : {
+            color : colors.primary.white,
+            fontSize : fontSizes.body,
+            fontFamily : 'SFPro-Medium',
         }
     })
 

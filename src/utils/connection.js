@@ -26,6 +26,8 @@ const netHandler = {
     },
     createServer(chats, setChats) {
         const server = createServer((socket) => {
+
+            console.log('DOES get here')
             console.log('server connected on ' + socket.address().address)
 
             socket.on('data', (data) => {

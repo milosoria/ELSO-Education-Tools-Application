@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Button, FlatList, Text, TextInput, View } from 'react-native'
-import { NetworkInfo } from 'react-native-network-info'
+import * as Network from 'expo-network'
 import netHandler from '../utils/connection'
 
 
@@ -11,7 +11,7 @@ const Client = () => {
     const [chats, _] = useState([])
 
     useEffect(async () => {
-        let ip = await NetworkInfo.getGatewayIPAddress()
+        let ip = await Network.getIpAddressAsync()
         setClient(netHandler.createClient(ip))
 
         return () => { }

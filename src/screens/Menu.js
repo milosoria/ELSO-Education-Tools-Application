@@ -176,7 +176,7 @@ const Menu = ({ navigation }) => {
                             <View
                                 style={[
                                     styles.buttonContainer,
-                                    { marginTop: maxDimension * 0.05, marginLeft: 0 },
+                                    { marginTop: maxDimension > 1200 ? maxDimension * 0.09 : maxDimension * 0.05, marginLeft: 0 },
                                 ]}
                             >
                                 <View style={styles.buttonDisabled}>

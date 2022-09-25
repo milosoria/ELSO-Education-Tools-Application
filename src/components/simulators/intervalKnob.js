@@ -5,6 +5,7 @@ import { create } from '../../utils/normalize'
 import { useContext, useEffect, useState } from 'react'
 import FunctionsContext from '../../contexts/functionalitiesContext'
 import { Audio } from 'expo-av'
+import colors from '../../utils/color-palette'
 
 const DEFAULTALARMINTERVAL = [-30, 30]
 const DEFAULTDISPLAYVALUE = 15
@@ -13,7 +14,7 @@ const ALARMLOWRANGE = [-100, 14]
 const ALARMHIGHMAX = 500
 
 // TODO: refactor this
-const IntervalKnob = ({ step, type, soundPath, degRange, size, style, imagePath }) => {
+const IntervalKnob = ({ step, type, soundPath, degRange, size, knobFrameSize, style, imagePath }) => {
     const {
         unblocked,
         rotations,
@@ -161,15 +162,22 @@ const IntervalKnob = ({ step, type, soundPath, degRange, size, style, imagePath 
             shadowOpacity : 0.3,
             alignItems : 'center',
             justifyContent : 'center',
-            width : size + 50,
-            height : size + 50,
-            borderRadius : (size + 50) / 2,
+            width : knobFrameSize,
+            height : knobFrameSize,
+            borderRadius : (knobFrameSize) / 2,
         },
         knobImage : {
             width : size,
             height : size,
             borderRadius : size / 2,
+            opacity : unblocked == type ? 1 : 0.35,
             resizeMode : 'stretch'
+        },
+        knobBackground : {
+            width : size,
+            height : size,
+            borderRadius : size / 2,
+            backgroundColor : colors.secondary.knobDisabled
         }
     })
 
@@ -178,13 +186,15 @@ const IntervalKnob = ({ step, type, soundPath, degRange, size, style, imagePath 
             <View
                 style={[styles.container, style]}
             >
-                <Animated.Image
-                    style={[
-                        styles.knobImage,
-                        animatedStyle,
-                    ]}
-                    source={imagePath}
-                />
+                <View style={styles.knobBackground}>
+                    <Animated.Image
+                        style={[
+                            styles.knobImage,
+                            animatedStyle,
+                        ]}
+                        source={imagePath}
+                    />
+                </View>
             </View>
         </GestureDetector>
     )

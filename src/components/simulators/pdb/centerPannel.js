@@ -3,10 +3,9 @@ import GestureRecognizer from 'react-native-swipe-gestures'
 import zeroPad from '../../../utils/zero-padding'
 import { create } from '../../../utils/normalize'
 import { useEffect, useState } from 'react'
-import DimensionContext from '../../../contexts/dimensionContext'
-import { useContext } from 'react'
 import { Audio } from 'expo-av'
 import FunctionsContext from '../../../contexts/functionalitiesContext'
+import { useContext } from 'react'
 
 const ROOTPATH = '../../../assets/pdb/center-display-pannel'
 const DELAYMAP = {
@@ -15,7 +14,7 @@ const DELAYMAP = {
     diastolic : 3000
 }
 
-const CenterPannel = () => {
+const CenterPannel = ({ dimension }) => {
     const {
         alarmInterval,
         setAlarmInterval,
@@ -24,7 +23,6 @@ const CenterPannel = () => {
         functionType,
     } = useContext(FunctionsContext)
 
-    const { maxDimension } = useContext(DimensionContext)
     const [alarmActive, setAlarmActive] = useState(false)
     const [display, setDisplay] = useState(Object.keys(DELAYMAP).includes(functionType) ? displayValue : '')
     const [ledOn, setLedOn] = useState(false)
@@ -112,8 +110,8 @@ const CenterPannel = () => {
             alignItems : 'center',
             shadowRadius : 5,
             shadowOpacity : 0.3,
-            height : maxDimension * 0.55,
-            width : maxDimension * 0.4,
+            height : dimension * 0.55,
+            width : dimension * 0.4,
         },
         container : {
             flexDirection : 'column',
@@ -123,27 +121,27 @@ const CenterPannel = () => {
         displayContainer : {
             flex : 1,
             flexDirection : 'column',
-            marginTop : maxDimension * 0.11,
-            height : maxDimension * 0.3,
+            marginTop : dimension * 0.11,
+            height : dimension * 0.3,
         },
         zeroDisplay : {
             alignSelf : 'flex-start',
             paddingRight : functionType.includes('alarm') ? 0 : 15,
-            height : maxDimension * 0.1,
-            width : maxDimension * 0.3,
+            height : dimension * 0.1,
+            width : dimension * 0.3,
             flexDirection : 'column',
             alignItems : functionType.includes('alarm') ? 'center' : 'flex-end'
         },
         zeroDisplayText : {
             fontFamily : 'Digital-Numbers',
-            fontSize : Math.floor(maxDimension * 0.08),
+            fontSize : Math.floor(dimension * 0.08),
             opacity : 0.45
         },
         alarmDisplay : {
-            marginBottom : maxDimension * 0.065,
+            marginBottom : dimension * 0.065,
             flex : 1,
             alignSelf : 'center',
-            width : maxDimension * 0.18,
+            width : dimension * 0.18,
             flexDirection : 'row',
             justifyContent : 'center',
             alignItems : 'center'
@@ -155,7 +153,7 @@ const CenterPannel = () => {
         alarmDisplayBox2 : {
             flex : 1,
             alignItems : 'center',
-            marginLeft : maxDimension * 0.003
+            marginLeft : dimension * 0.003
         },
         alarmDisplayBox3 : {
             flex : 1,
@@ -163,33 +161,33 @@ const CenterPannel = () => {
         },
         alarmDisplayText : {
             fontFamily : 'Digital-Numbers',
-            fontSize : Math.floor(maxDimension * 0.015),
+            fontSize : Math.floor(dimension * 0.015),
             opacity : 0.45
         },
         alarm : {
             alignSelf : 'flex-end',
-            marginBottom : maxDimension * 0.018,
-            marginRight : maxDimension * 0.055,
+            marginBottom : dimension * 0.018,
+            marginRight : dimension * 0.055,
             flexDirection : 'row',
             resizeMode : 'stretch',
-            height : maxDimension * 0.06,
-            width : maxDimension * 0.1,
+            height : dimension * 0.06,
+            width : dimension * 0.1,
         },
         ledContainer : {
             flex : 1,
-            top : maxDimension * 0.01,
-            left : maxDimension * 0.005,
+            top : dimension * 0.01,
+            left : dimension * 0.005,
             justifyContent : 'center'
         },
         led : {
             resizeMode : 'stretch',
-            height : maxDimension * 0.037,
-            width : maxDimension * 0.037,
+            height : dimension * 0.037,
+            width : dimension * 0.037,
         },
         pressable : {
             flex : 1,
-            height : maxDimension * 0.06,
-            width : maxDimension * 0.06,
+            height : dimension * 0.06,
+            width : dimension * 0.06,
         }
     })
 

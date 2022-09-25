@@ -8,17 +8,17 @@ import DimensionContext from '../../contexts/dimensionContext'
 
 const PDB = () => {
     const [modalVisible, setModalVisible] = useState(false)
-    const { maxDimension } = useContext(DimensionContext)
+    const { maxDimension, minDimension } = useContext(DimensionContext)
+    const dimension = minDimension < 800 ? (minDimension + 150) : maxDimension
 
     const handlePress = () => {
         setModalVisible(!modalVisible)
     }
-
     return (
         <>
             <View style={styles.container}>
-                <CenterPannel />
-                <RightPannel />
+                <CenterPannel dimension={dimension} />
+                <RightPannel dimension={dimension} />
             </View>
             <TouchableHighlight underlayColor={colors.primary.background} activeOpacity={0.8} style={[styles.button, { borderRadius: 100 }]} onPress={handlePress}>
                 <Image source={require('../../assets/help/help_button.png')} resizeMode='contain' style={{ width: maxDimension * 0.08, height: maxDimension * 0.08, borderRadius: 100 }} />

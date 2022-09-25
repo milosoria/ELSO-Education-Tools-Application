@@ -28,7 +28,11 @@ const SimulatorsCarousel = ({ navigation }) => {
         <ImageBackground style={styles.item} imageStyle={styles.background} source={imagePath} >
             <View style={styles.cardContainer}>
                 {name ? (
-                    <TouchableHighlight style={styles.shadowWrap} underlayColor='#FFFFFF' activeOpacity={0.8} onPress={() => navigation.navigate(name)}>
+                    <TouchableHighlight style={styles.shadowWrap} underlayColor='#FFFFFF' activeOpacity={0.8} onPress={() => {
+                        if (name == 'Blender') navigation.navigate('Client')
+                        else navigation.navigate('Server')
+                    }
+                    }>
                         <LinearGradient style={styles.button} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={[colors.primary.blue, colors.secondary.blueGradient]}>
                             <Text style={styles.buttonText}>Continue</Text>
                         </LinearGradient>

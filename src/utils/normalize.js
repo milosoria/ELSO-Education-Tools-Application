@@ -4,7 +4,6 @@ const ratio = PixelRatio.get()
 
 const normalize = (size) => {
     const { width, height } = Dimensions.get('window')
-
     if (ratio >= 2 && ratio < 3) {
         if (width < 360) {
             return size * 0.95
@@ -37,6 +36,7 @@ const normalize = (size) => {
         return size * 1.4
     }
 
+
     return size
 }
 
@@ -64,12 +64,14 @@ export const create = (
         'right',
     ]
 ) => {
+    const { height } = Dimensions.get('window')
     const normalizedStyles = {}
     Object.keys(styles).forEach((key) => {
         normalizedStyles[key] = {}
         Object.keys(styles[key]).forEach((property) => {
             if (targetProperties.includes(property)) {
-                normalizedStyles[key][property] = property == 'fontSize' ? Math.floor(normalize(styles[key][property])) : normalize(styles[key][property])
+                // bad practice
+                normalizedStyles[key][property] = property == 'fontSize' && height > 1200 ? normalize(styles[key][property]) + 5 : normalize(styles[key][property])
             } else {
                 normalizedStyles[key][property] = styles[key][property]
             }

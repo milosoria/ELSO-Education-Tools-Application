@@ -21,7 +21,7 @@ const Header = ({ route, navigation }) => {
     }, [navigation])
 
     useEffect(() => {
-        setVisible(!(isLandscape && route.name == 'Blender'))
+        setVisible(!(isLandscape && (route.name == 'Blender' || route.name == 'PDB')))
     })
 
     const handleBackHome = () => {

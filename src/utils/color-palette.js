@@ -14,7 +14,8 @@ const colors = {
         blue : '#3E90F0',
         blueGradient : '#2178DC',
         disabled : '#C1C1C1',
-        green : '#62F03E'
+        green : '#62F03E',
+        knobDisabled : '#464646'
     }
 }
 

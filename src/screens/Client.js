@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { Button, FlatList, Text, TextInput, View } from 'react-native'
 import * as Network from 'expo-network'
 import netHandler from '../utils/connection'
-import '../../shim'
 
 
 
@@ -14,6 +13,7 @@ const Client = () => {
     useEffect(() => {
         const configClient = async () => {
             let ip = await Network.getIpAddressAsync()
+            console.log('Client ip is:', ip)
             setClient(netHandler.createClient(ip))
         }
         configClient()

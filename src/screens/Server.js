@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Button, FlatList, Text, View } from 'react-native'
 import netHandler from '../utils/connection'
 import * as Network from 'expo-network'
-import '../../shim'
 
 const ServerScreen = () => {
     const [server, setServer] = useState(null)

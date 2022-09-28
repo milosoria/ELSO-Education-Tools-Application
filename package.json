@@ -40,34 +40,15 @@
     "react-native-screens": "~3.11.1",
     "react-native-svg": "12.3.0",
     "react-native-swipe-gestures": "^1.0.5",
-    "react-native-tcp": "^4.0.0",
+    "react-native-tcp-socket": "^6.0.1",
     "react-native-vector-icons": "^9.2.0",
-    "react-native-web": "0.17.7",
-    "readable-stream": "^1.0.33",
-    "stream-browserify": "^1.0.0"
+    "react-native-web": "0.17.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "eslint": "^8.20.0",
     "eslint-plugin-react": "^7.30.1",
-    "eslint-plugin-react-native": "^4.0.0",
-    "rn-nodeify": "^10.3.0"
+    "eslint-plugin-react-native": "^4.0.0"
   },
-  "private": true,
-  "react-native": {
-    "_stream_transform": "readable-stream/transform",
-    "_stream_readable": "readable-stream/readable",
-    "_stream_writable": "readable-stream/writable",
-    "_stream_duplex": "readable-stream/duplex",
-    "_stream_passthrough": "readable-stream/passthrough",
-    "stream": "stream-browserify"
-  },
-  "browser": {
-    "_stream_transform": "readable-stream/transform",
-    "_stream_readable": "readable-stream/readable",
-    "_stream_writable": "readable-stream/writable",
-    "_stream_duplex": "readable-stream/duplex",
-    "_stream_passthrough": "readable-stream/passthrough",
-    "stream": "stream-browserify"
-  }
+  "private": true
 }

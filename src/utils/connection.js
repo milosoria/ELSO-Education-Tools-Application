@@ -1,40 +1,39 @@
-import { createConnection, createServer } from 'react-native-tcp'
+import TcpSocket from 'react-native-tcp-socket'
+
+
+const PORT = 6666
 
 const netHandler = {
     createClient(ip, chats, setChats) {
-        const client = createConnection(6666, ip, () => {
-            console.log('opened client on ' + JSON.stringify(client.address()))
-            // client.write('Hello, server! Love, Client.');
+        const client = TcpSocket.createConnection({ port: PORT, host: ip }, () => {
+            console.log('opened Client on ' + JSON.stringify(client.address()))
         })
 
         client.on('data', (data) => {
             setChats([...chats, { id: chats.length + 1, msg: data }])
-            // console.log('Client Received: ' + data);
+            console.log('@Client: Received: ' + data)
 
-            // client.destroy(); // kill client after server's response
-            // this.server.close();
         })
 
         client.on('error', (error) => {
-            console.log('client error ' + error)
+            console.log('@Client: error ' + error)
         })
 
         client.on('close', () => {
-            console.log('client close')
+            console.log('@Client: close')
         })
         return client
     },
     createServer(chats, setChats) {
-        const server = createServer((socket) => {
+        const server = TcpSocket.createServer((socket) => {
 
             console.log('DOES get here')
-            console.log('server connected on ' + socket.address().address)
+            console.log('@Server: connected on ' + socket.address().address)
 
             socket.on('data', (data) => {
                 let response = JSON.parse(data)
                 setChats([...chats, { id: chats.length + 1, msg: response.msg }])
-                //   console.log('Server Received: ' + data);
-                //   socket.write('Echo server\r\n');
+                console.log('@Server: Received: ' + data)
             })
 
             socket.on('error', (error) => {
@@ -42,10 +41,10 @@ const netHandler = {
             })
 
             socket.on('close', (error) => {
-                console.log('server client closed ' + (error ? error : ''))
+                console.log('@Server: Client closed ' + (error ? error : ''))
             })
-        }).listen(6666, () => {
-            console.log('opened server on ' + JSON.stringify(server.address()))
+        }).listen({ port: PORT }, () => {
+            console.log('opened Server on ' + JSON.stringify(server.address()))
         })
 
         server.on('error', (error) => {
@@ -53,7 +52,7 @@ const netHandler = {
         })
 
         server.on('close', () => {
-            console.log('server close')
+            console.log('@Server: close')
         })
 
         return server

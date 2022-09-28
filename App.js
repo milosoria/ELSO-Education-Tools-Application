@@ -77,4 +77,5 @@ const App = () => {
         </FunctionsContext.Provider>
     )
 }
+
 export default App

@@ -9,7 +9,7 @@ import '../../shim'
 const Client = () => {
 
     const [client, setClient] = useState(null)
-    const [chats, _] = useState([])
+    const [chats,] = useState([])
 
     useEffect(() => {
         const configClient = async () => {

@@ -27,7 +27,7 @@ const ServerScreen = () => {
 
     return (
         <View>
-            {ip.length > 0 ? <Text>Server Screen: {ip}</Text> : <Text>Server Screen</Text>}
+            {ip.length > 0 ? <Text>SHit: {ip}</Text> : <Text>Server Screen</Text>}
             <Button title="Start Server" onPress={handleStartServer} />
             <Button title="Stop Server" onPress={handleStopServer} />
             {server ? <Text>Server is on</Text> : null}

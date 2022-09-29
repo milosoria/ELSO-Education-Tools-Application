@@ -21,7 +21,7 @@ const Client = () => {
 
     return (
         <View>
-            <Text>Client Screen</Text>
+            {ip.length > 0 ? <Text>Client Screen: {ip}</Text> : <Text>Client Screen No ip yet</Text>}
             <Button title="Stop Client" onPress={() => {
                 if (client) {
                     client.destroy()

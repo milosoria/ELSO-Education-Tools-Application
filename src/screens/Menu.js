@@ -262,12 +262,12 @@ const Menu = ({ navigation }) => {
 
                 <View>
                     {isPad ?
-                        <TouchableHighlight style={{ color: white, fontSize: 40 }} onPress={() => navigation.navigate('Server')}>
-                            <Text>GO TO SERVER</Text>
-                        </TouchableHighlight>
-                        :
                         <TouchableHighlight onPress={() => navigation.navigate('Client')}>
                             <Text style={{ color: white, fontSize: 40 }}>GO TO CLIENT</Text>
+                        </TouchableHighlight>
+                        :
+                        <TouchableHighlight style={{ color: white, fontSize: 40 }} onPress={() => navigation.navigate('Server')}>
+                            <Text>GO TO SERVER</Text>
                         </TouchableHighlight>
                     }
                 </View>

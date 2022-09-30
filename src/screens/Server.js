@@ -10,7 +10,8 @@ const ServerScreen = () => {
 
     const handleStartServer = async () => {
         try {
-            let tempIp = await NetworkInfo.getGatewayIPAddress()()
+            let tempIp = await NetworkInfo.getIPV4Address()
+            console.log('Server ip is:', tempIp)
             setIp(tempIp)
             if (!server) setServer(netHandler.createServer(tempIp, chats, setChats))
         } catch (e) {
@@ -27,7 +28,7 @@ const ServerScreen = () => {
 
     return (
         <View>
-            {ip.length > 0 ? <Text>Server ip: {ip}</Text> : <Text>Server Screen</Text>}
+            {ip && ip.length > 0 ? <Text>Server ip: {ip}</Text> : <Text>Server Screen</Text>}
             <Button title="Start Server" onPress={handleStartServer} />
             <Button title="Stop Server" onPress={handleStopServer} />
             {server ? <Text>Server is on</Text> : null}

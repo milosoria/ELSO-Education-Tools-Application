@@ -14,7 +14,7 @@ const Client = () => {
     useEffect(() => {
         const configClient = async () => {
             try {
-                let ip = await NetworkInfo.getIPV4Address()
+                let ip = await NetworkInfo.getGatewayIPAddress()
                 console.log('Client ip is:', ip)
                 if (!client) setClient(netHandler.createClient(ip))
                 setIp(ip)

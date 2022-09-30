@@ -63,6 +63,8 @@ const Header = ({ route, navigation }) => {
         },
         buttonContainer: {
             width: buttonsContainerSize,
+            marginLeft: Platform.isPad ? 0 : maxDimension * 0.01,
+            marginBottom: Platform.isPad ? 0 : maxDimension * 0.01,
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',

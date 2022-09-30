@@ -6,7 +6,7 @@ const PORT = 6666
 const netHandler = {
     createClient(ip, chats, setChats) {
         const client = TcpSocket.createConnection({ port: PORT, host: ip }, () => {
-            console.log('opened Client on ' + JSON.stringify(client.address()))
+            console.log('@Client: opened on ' + JSON.stringify(client.address()))
         })
 
         client.on('data', (data) => {
@@ -43,11 +43,11 @@ const netHandler = {
                 console.log('@Server: Client closed ' + (error ? error : ''))
             })
         }).listen({ port: PORT, host: ip, }, () => {
-            console.log('opened Server on ' + JSON.stringify(server.address()))
+            console.log('@Server: opened on ' + JSON.stringify(server.address()))
         })
 
         server.on('error', (error) => {
-            console.log('error ' + error)
+            console.log('@Server: error' + error)
         })
 
         server.on('close', () => {

@@ -9,9 +9,9 @@ import { useContext } from 'react'
 
 const ROOTPATH = '../../../assets/pdb/center-display-pannel'
 const DELAYMAP = {
-    systolic: 4000,
-    mean: 5000,
-    diastolic: 3000
+    systolic : 4000,
+    mean : 5000,
+    diastolic : 3000
 }
 
 const CenterPannel = ({ dimension }) => {
@@ -104,93 +104,93 @@ const CenterPannel = ({ dimension }) => {
     }
 
     const styles = create({
-        backgroundImage: {
-            resizeMode: 'stretch',
+        backgroundImage : {
+            resizeMode : 'stretch',
         },
-        background: {
-            alignItems: 'center',
-            shadowRadius: 5,
-            shadowOpacity: 0.3,
-            height: dimension * 0.55,
-            width: dimension * 0.4,
+        background : {
+            alignItems : 'center',
+            shadowRadius : 5,
+            shadowOpacity : 0.3,
+            height : dimension * 0.55,
+            width : dimension * 0.4,
         },
-        container: {
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
+        container : {
+            flexDirection : 'column',
+            justifyContent : 'center',
+            alignItems : 'center',
         },
-        displayContainer: {
-            flex: 1,
-            flexDirection: 'column',
-            marginTop: dimension * 0.11,
-            height: dimension * 0.3,
+        displayContainer : {
+            flex : 1,
+            flexDirection : 'column',
+            marginTop : dimension * 0.11,
+            height : dimension * 0.3,
         },
-        zeroDisplay: {
-            alignSelf: 'flex-start',
-            paddingRight: functionType.includes('alarm') ? 0 : 15,
-            height: dimension * 0.1,
-            width: dimension * 0.3,
-            flexDirection: 'column',
-            alignItems: functionType.includes('alarm') ? 'center' : 'flex-end'
+        zeroDisplay : {
+            alignSelf : 'flex-start',
+            paddingRight : functionType.includes('alarm') ? 0 : 15,
+            height : dimension * 0.1,
+            width : dimension * 0.3,
+            flexDirection : 'column',
+            alignItems : functionType.includes('alarm') ? 'center' : 'flex-end'
         },
-        zeroDisplayText: {
-            fontFamily: 'Digital-Numbers',
-            fontSize: Math.floor(dimension * 0.08),
-            opacity: 0.45
+        zeroDisplayText : {
+            fontFamily : 'Digital-Numbers',
+            fontSize : Math.floor(dimension * 0.08),
+            opacity : 0.45
         },
-        alarmDisplay: {
-            marginBottom: dimension * 0.035,
-            flex: 1,
-            alignSelf: 'center',
-            width: dimension * 0.17,
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center'
+        alarmDisplay : {
+            marginBottom : dimension * 0.035,
+            flex : 1,
+            alignSelf : 'center',
+            width : dimension * 0.17,
+            flexDirection : 'row',
+            justifyContent : 'center',
+            alignItems : 'center'
         },
-        alarmDisplayBox1: {
-            flex: 1,
-            alignItems: 'flex-start',
+        alarmDisplayBox1 : {
+            flex : 1,
+            alignItems : 'flex-start',
         },
-        alarmDisplayBox2: {
-            flex: 1,
-            alignItems: 'center',
-            marginLeft: dimension * 0.003
+        alarmDisplayBox2 : {
+            flex : 1,
+            alignItems : 'center',
+            marginLeft : dimension * 0.003
         },
-        alarmDisplayBox3: {
-            flex: 1,
-            alignItems: 'flex-end'
+        alarmDisplayBox3 : {
+            flex : 1,
+            alignItems : 'flex-end'
         },
-        alarmDisplayText: {
-            fontFamily: 'Digital-Numbers',
-            fontSize: height > 1200 ? Math.floor(dimension * 0.015) - 5 : Math.floor(dimension * 0.015),
-            opacity: 0.45
+        alarmDisplayText : {
+            fontFamily : 'Digital-Numbers',
+            fontSize : height > 1200 ? Math.floor(dimension * 0.015) - 5 : Math.floor(dimension * 0.015),
+            opacity : 0.45
         },
-        alarm: {
-            alignSelf: 'flex-end',
-            marginBottom: dimension * 0.016,
-            marginRight: dimension * 0.054,
-            flexDirection: 'row',
-            resizeMode: 'stretch',
-            height: dimension * 0.08,
-            width: dimension * 0.125,
+        alarm : {
+            alignSelf : 'flex-end',
+            marginBottom : dimension * 0.016,
+            marginRight : dimension * 0.054,
+            flexDirection : 'row',
+            resizeMode : 'stretch',
+            height : dimension * 0.08,
+            width : dimension * 0.125,
         },
-        ledContainer: {
-            flex: 1,
-            top: dimension * 0.01,
-            left: dimension * 0.005,
-            justifyContent: 'center'
+        ledContainer : {
+            flex : 1,
+            top : dimension * 0.01,
+            left : dimension * 0.005,
+            justifyContent : 'center'
         },
-        led: {
-            resizeMode: 'stretch',
-            height: dimension * 0.08,
-            width: dimension * 0.125,
-            marginBottom: dimension * 0.03,
-            right: dimension * 0.005
+        led : {
+            resizeMode : 'stretch',
+            height : dimension * 0.08,
+            width : dimension * 0.125,
+            marginBottom : dimension * 0.03,
+            right : dimension * 0.005
         },
-        pressable: {
-            flex: 1,
-            height: dimension * 0.06,
-            width: dimension * 0.06,
+        pressable : {
+            flex : 1,
+            height : dimension * 0.06,
+            width : dimension * 0.06,
         }
     })
 

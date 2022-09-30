@@ -78,9 +78,9 @@ const FunctionKnob = ({ type, soundPath, degRange, size, knobFrameSize, style, i
 
     const styles = create({
         container : {
-            // shadowOffset : { width: size / 30, height: 5 },
-            // shadowRadius : 3,
-            // shadowOpacity : 0.3,
+            shadowOffset : { width: size / 30, height: 5 },
+            shadowRadius : 3,
+            shadowOpacity : 0.3,
             alignItems : 'center',
             justifyContent : 'center',
             width : knobFrameSize,

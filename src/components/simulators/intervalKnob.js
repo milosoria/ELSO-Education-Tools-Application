@@ -157,9 +157,9 @@ const IntervalKnob = ({ step, type, soundPath, degRange, size, knobFrameSize, st
 
     const styles = create({
         container : {
-            // shadowOffset : { width: size / 30, height: 5 },
-            // shadowRadius : 3,
-            // shadowOpacity : 0.3,
+            shadowOffset : { width: size / 30, height: 5 },
+            shadowRadius : 3,
+            shadowOpacity : type == 'zero'? 0: 0.3,
             alignItems : 'center',
             justifyContent : 'center',
             width : knobFrameSize,

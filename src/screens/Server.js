@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Button, FlatList, Text, View } from 'react-native'
 import netHandler from '../utils/connection'
-import * as Network from 'expo-network'
+import { NetworkInfo } from 'react-native-network-info'
 
 const ServerScreen = () => {
     const [server, setServer] = useState(null)
@@ -9,10 +9,10 @@ const ServerScreen = () => {
     const [ip, setIp] = useState('')
 
     const handleStartServer = async () => {
-        if (!server) setServer(netHandler.createServer(chats, setChats))
         try {
-            let tempIp = await Network.getIpAddressAsync()
+            let tempIp = await NetworkInfo.getGatewayIPAddress()()
             setIp(tempIp)
+            if (!server) setServer(netHandler.createServer(tempIp, chats, setChats))
         } catch (e) {
             console.log(e.message)
         }
@@ -27,7 +27,7 @@ const ServerScreen = () => {
 
     return (
         <View>
-            {ip.length > 0 ? <Text>SHit: {ip}</Text> : <Text>Server Screen</Text>}
+            {ip.length > 0 ? <Text>Server ip: {ip}</Text> : <Text>Server Screen</Text>}
             <Button title="Start Server" onPress={handleStartServer} />
             <Button title="Stop Server" onPress={handleStopServer} />
             {server ? <Text>Server is on</Text> : null}

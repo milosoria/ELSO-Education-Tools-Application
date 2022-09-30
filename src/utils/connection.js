@@ -24,10 +24,9 @@ const netHandler = {
         })
         return client
     },
-    createServer(chats, setChats) {
+    createServer(ip, chats, setChats) {
         const server = TcpSocket.createServer((socket) => {
 
-            console.log('DOES get here')
             console.log('@Server: connected on ' + socket.address().address)
 
             socket.on('data', (data) => {
@@ -43,7 +42,7 @@ const netHandler = {
             socket.on('close', (error) => {
                 console.log('@Server: Client closed ' + (error ? error : ''))
             })
-        }).listen({ port: PORT }, () => {
+        }).listen({ port: PORT, host: ip, }, () => {
             console.log('opened Server on ' + JSON.stringify(server.address()))
         })
 

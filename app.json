@@ -22,16 +22,18 @@
             "icon": "./assets/icon.png",
             "bundleIdentifier": "org.elso.educational-tools",
             "supportsTablet": true,
-            "requireFullScreen": true
+            "requireFullScreen": true,
+            "runtimeVersion": "exposdk:45.0.0"
         },
         "extra": {
             "eas": {
                 "projectId": "1242e9b1-6f48-4ba0-abe7-f0ca38e38f2e"
             }
         },
-        "runtimeVersion": {
-            "policy": "sdkVersion"
-        },
-        "android": {}
+        "android": {
+            "runtimeVersion": {
+                "policy": "sdkVersion"
+            }
+        }
     }
 }

@@ -2,20 +2,20 @@
     "name": "ELSOapp",
     "version": "1.0.4",
     "scripts": {
-        "start": "expo start",
-        "startdev": "expo start --dev-client",
-        "android": "expo run:android",
-        "ios": "expo run:ios",
-        "web": "expo start --web",
-        "eject": "expo eject",
-        "lint": "yarn eslint .",
-        "tunnel": "expo start --tunnel",
-        "format": "yarn eslint --fix .",
-        "fixdeps": "expo doctor --fix-dependencies",
-        "prebuild": "expo prebuild --platform ios",
-        "prebuild clean": "expo prebuild --clean --platform ios",
-        "prevbuild": "eas build --profile preview --platform ios",
-        "prodbuild": "eas build --profile production --platform ios"
+        "start": "npx expo start",
+        "startdev": "npx expo start --dev-client",
+        "android": "npx expo run:android",
+        "ios": "npx expo run:ios",
+        "web": "npx expo start --web",
+        "eject": "npx expo eject",
+        "lint": "pnpm eslint .",
+        "tunnel": "npx expo start --tunnel",
+        "lint-fix": "pnpm eslint --fix .",
+        "fix deps": "npx expo doctor --fix-dependencies",
+        "prebuild": "npx expo prebuild --platform ios",
+        "prebuild clean": "npx expo prebuild --clean --platform ios",
+        "preview build": "npx eas build --profile preview --platform ios",
+        "production build": "npx eas build --profile production --platform ios"
     },
     "dependencies": {
         "@babel/preset-env": "^7.18.9",
@@ -48,6 +48,7 @@
     "devDependencies": {
         "@babel/core": "^7.12.9",
         "eslint": "^8.20.0",
+        "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-react": "^7.30.1",
         "eslint-plugin-react-native": "^4.0.0"
     },

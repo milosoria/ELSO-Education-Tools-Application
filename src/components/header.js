@@ -1,5 +1,13 @@
 import { useContext, useEffect, useState } from 'react'
-import { Image, Platform, Pressable, SafeAreaView, Text, TouchableHighlight, View } from 'react-native'
+import {
+    Image,
+    Platform,
+    Pressable,
+    SafeAreaView,
+    Text,
+    TouchableHighlight,
+    View,
+} from 'react-native'
 import DimensionContext from '../contexts/dimensionContext'
 import { create } from '../utils/normalize'
 import colors from '../utils/color-palette'
@@ -8,20 +16,25 @@ import Icon from 'react-native-vector-icons/AntDesign'
 import { LinearGradient } from 'expo-linear-gradient'
 import useOrientation from '../utils/orientation'
 
-
 const Header = ({ route, navigation }) => {
     const isLandscape = useOrientation()
     const { maxDimension } = useContext(DimensionContext)
-    const buttonsContainerSize = Platform.isPad ? maxDimension * 0.2 : maxDimension * 0.12
+    const buttonsContainerSize = Platform.isPad
+        ? maxDimension * 0.2
+        : maxDimension * 0.12
     const [backButtonVisible, setBackButtonVisible] = useState(false)
     const [visible, setVisible] = useState(true)
 
     useEffect(() => {
-        navigation.canGoBack() ? setBackButtonVisible(true) : setBackButtonVisible(false)
+        navigation.canGoBack()
+            ? setBackButtonVisible(true)
+            : setBackButtonVisible(false)
     }, [navigation])
 
     useEffect(() => {
-        setVisible(!(isLandscape && (route.name == 'Blender' || route.name == 'PDB')))
+        setVisible(
+            !(isLandscape && (route.name == 'Blender' || route.name == 'PDB'))
+        )
     })
 
     const handleBackHome = () => {
@@ -32,27 +45,29 @@ const Header = ({ route, navigation }) => {
         shadowWrap : {
             shadowOpacity : 0.3,
             shadowOffset : { width: 4, height: 4 },
-            borderRadius : 40
+            borderRadius : 40,
         },
         container : {
             display : 'flex',
             flexDirection : 'row',
             justifyContent : 'space-between',
             height : Platform.isPad ? maxDimension * 0.08 : maxDimension * 0.09,
-            backgroundColor : colors.primary.darkHeader
+            backgroundColor : colors.primary.darkHeader,
         },
         backButton : {
             flexDirection : 'row',
             backgroundColor : colors.secondary.blue,
             borderRadius : 40,
-            paddingVertical : Platform.isPad ? maxDimension * 0.006 : maxDimension * 0.004,
+            paddingVertical : Platform.isPad
+                ? maxDimension * 0.006
+                : maxDimension * 0.004,
             paddingLeft : Platform.isPad ? maxDimension * 0.03 : maxDimension * 0.01,
             paddingRight : Platform.isPad ? maxDimension * 0.05 : maxDimension * 0.03,
         },
         backButtonIcon : {
             color : colors.primary.white,
             alignSelf : 'flex-end',
-            marginRight : maxDimension * 0.008
+            marginRight : maxDimension * 0.008,
         },
         backButtonText : {
             fontFamily : 'SFPro-Medium',
@@ -71,12 +86,12 @@ const Header = ({ route, navigation }) => {
         },
         logoContainer : {
             justifyContent : 'center',
-            paddingBottom : maxDimension * 0.01
+            paddingBottom : maxDimension * 0.01,
         },
         logo : {
             height : maxDimension * 0.045,
             resizeMode : 'contain',
-        }
+        },
     })
 
     const handleBackPress = () => {
@@ -84,27 +99,43 @@ const Header = ({ route, navigation }) => {
     }
 
     return (
-        visible && <SafeAreaView style={styles.container}>
-            {
-                backButtonVisible ?
+        visible && (
+            <SafeAreaView style={styles.container}>
+                {backButtonVisible ? (
                     <View style={styles.buttonContainer}>
                         <TouchableHighlight
-                            underlayColor='#FFFFFF'
+                            underlayColor="#FFFFFF"
                             activeOpacity={0.8}
                             style={styles.shadowWrap}
-                            onPress={handleBackPress}>
-                            <LinearGradient style={styles.backButton} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={[colors.primary.blue, colors.secondary.blueGradient]}>
-                                <Icon name='arrowleft' size={maxDimension * 0.03} style={styles.backButtonIcon} />
+                            onPress={handleBackPress}
+                        >
+                            <LinearGradient
+                                style={styles.backButton}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 1, y: 1 }}
+                                colors={[colors.primary.blue, colors.secondary.blueGradient]}
+                            >
+                                <Icon
+                                    name="arrowleft"
+                                    size={maxDimension * 0.03}
+                                    style={styles.backButtonIcon}
+                                />
                                 <Text style={styles.backButtonText}>Back</Text>
                             </LinearGradient>
                         </TouchableHighlight>
                     </View>
-                    : <View style={styles.buttonContainer} />}
-            <Pressable onPress={handleBackHome} style={styles.logoContainer}>
-                <Image source={require('../../assets/header-logo.png')} style={styles.logo} />
-            </Pressable>
-            <View style={styles.buttonContainer} />
-        </SafeAreaView >
+                ) : (
+                    <View style={styles.buttonContainer} />
+                )}
+                <Pressable onPress={handleBackHome} style={styles.logoContainer}>
+                    <Image
+                        source={require('../../assets/header-logo.png')}
+                        style={styles.logo}
+                    />
+                </Pressable>
+                <View style={styles.buttonContainer} />
+            </SafeAreaView>
+        )
     )
 }
 

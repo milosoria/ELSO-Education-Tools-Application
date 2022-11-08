@@ -42,55 +42,59 @@ const Header = ({ route, navigation }) => {
     }
 
     const styles = create({
-        shadowWrap : {
-            shadowOpacity : 0.3,
-            shadowOffset : { width: 4, height: 4 },
-            borderRadius : 40,
+        shadowWrap: {
+            shadowOpacity: 0.3,
+            shadowOffset: { width: 4, height: 4 },
+            borderRadius: 40,
         },
-        container : {
-            display : 'flex',
-            flexDirection : 'row',
-            justifyContent : 'space-between',
-            height : Platform.isPad ? maxDimension * 0.08 : maxDimension * 0.09,
-            backgroundColor : colors.primary.darkHeader,
+        container: {
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            height: Platform.isPad ? maxDimension * 0.08 : maxDimension * 0.09,
+            backgroundColor: colors.primary.darkHeader,
         },
-        backButton : {
-            flexDirection : 'row',
-            backgroundColor : colors.secondary.blue,
-            borderRadius : 40,
-            paddingVertical : Platform.isPad
+        backButton: {
+            flexDirection: 'row',
+            backgroundColor: colors.secondary.blue,
+            borderRadius: 40,
+            paddingVertical: Platform.isPad
                 ? maxDimension * 0.006
                 : maxDimension * 0.004,
-            paddingLeft : Platform.isPad ? maxDimension * 0.03 : maxDimension * 0.01,
-            paddingRight : Platform.isPad ? maxDimension * 0.05 : maxDimension * 0.03,
+            paddingLeft: Platform.isPad
+                ? maxDimension * 0.03
+                : maxDimension * 0.01,
+            paddingRight: Platform.isPad
+                ? maxDimension * 0.05
+                : maxDimension * 0.03,
         },
-        backButtonIcon : {
-            color : colors.primary.white,
-            alignSelf : 'flex-end',
-            marginRight : maxDimension * 0.008,
+        backButtonIcon: {
+            color: colors.primary.white,
+            alignSelf: 'flex-end',
+            marginRight: maxDimension * 0.008,
         },
-        backButtonText : {
-            fontFamily : 'SFPro-Medium',
-            alignSelf : 'center',
-            color : colors.primary.white,
-            fontSize : Platform.isPad ? fontSizes.large : fontSizes.medium,
-            marginLeft : maxDimension * 0.008,
+        backButtonText: {
+            fontFamily: 'SFPro-Medium',
+            alignSelf: 'center',
+            color: colors.primary.white,
+            fontSize: Platform.isPad ? fontSizes.large : fontSizes.medium,
+            marginLeft: maxDimension * 0.008,
         },
-        buttonContainer : {
-            width : buttonsContainerSize,
-            marginLeft : Platform.isPad ? 0 : maxDimension * 0.01,
-            marginBottom : Platform.isPad ? 0 : maxDimension * 0.01,
-            flexDirection : 'row',
-            alignItems : 'center',
-            justifyContent : 'center',
+        buttonContainer: {
+            width: buttonsContainerSize,
+            marginLeft: Platform.isPad ? 0 : maxDimension * 0.01,
+            marginBottom: Platform.isPad ? 0 : maxDimension * 0.01,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
         },
-        logoContainer : {
-            justifyContent : 'center',
-            paddingBottom : maxDimension * 0.01,
+        logoContainer: {
+            justifyContent: 'center',
+            paddingBottom: maxDimension * 0.01,
         },
-        logo : {
-            height : maxDimension * 0.045,
-            resizeMode : 'contain',
+        logo: {
+            height: maxDimension * 0.045,
+            resizeMode: 'contain',
         },
     })
 
@@ -113,7 +117,10 @@ const Header = ({ route, navigation }) => {
                                 style={styles.backButton}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
-                                colors={[colors.primary.blue, colors.secondary.blueGradient]}
+                                colors={[
+                                    colors.primary.blue,
+                                    colors.secondary.blueGradient,
+                                ]}
                             >
                                 <Icon
                                     name="arrowleft"
@@ -127,7 +134,10 @@ const Header = ({ route, navigation }) => {
                 ) : (
                     <View style={styles.buttonContainer} />
                 )}
-                <Pressable onPress={handleBackHome} style={styles.logoContainer}>
+                <Pressable
+                    onPress={handleBackHome}
+                    style={styles.logoContainer}
+                >
                     <Image
                         source={require('../../assets/header-logo.png')}
                         style={styles.logo}

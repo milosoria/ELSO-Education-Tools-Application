@@ -30,46 +30,75 @@ const App = () => {
     const [displayValue, setDisplayValue] = useState(15)
     const [functionType, setFunctionType] = useState('off')
     const [unblocked, setUnblocked] = useState('all')
-    const [rotations, setRotations] = useState({ zero: 0, alarm: 0, function: 0 })
-
-    let [fontsLoaded] = useFonts({
-        'Digital-Numbers' : require('./assets/fonts/DigitalNumbers-Regular.ttf'),
-        'SFPro-Bold' : require('./assets/fonts/SFPro-Bold.ttf'),
-        'SFPro-Heavy' : require('./assets/fonts/SFPro-Heavy.ttf'),
-        'SFPro-Light' : require('./assets/fonts/SFPro-Light.ttf'),
-        'SFPro-Medium' : require('./assets/fonts/SFPro-Medium.ttf'),
-        'SFPro-Regular' : require('./assets/fonts/SFPro-Regular.ttf'),
-        'SFPro-Semibold' : require('./assets/fonts/SFPro-Semibold.ttf')
+    const [rotations, setRotations] = useState({
+        zero: 0,
+        alarm: 0,
+        function: 0,
     })
 
+    let [fontsLoaded] = useFonts({
+        'Digital-Numbers': require('./assets/fonts/DigitalNumbers-Regular.ttf'),
+        'SFPro-Bold': require('./assets/fonts/SFPro-Bold.ttf'),
+        'SFPro-Heavy': require('./assets/fonts/SFPro-Heavy.ttf'),
+        'SFPro-Light': require('./assets/fonts/SFPro-Light.ttf'),
+        'SFPro-Medium': require('./assets/fonts/SFPro-Medium.ttf'),
+        'SFPro-Regular': require('./assets/fonts/SFPro-Regular.ttf'),
+        'SFPro-Semibold': require('./assets/fonts/SFPro-Semibold.ttf'),
+    })
 
     if (!fontsLoaded) {
-        return (
-            <ActivityIndicator />
-        )
+        return <ActivityIndicator />
     }
 
     return (
-        <FunctionsContext.Provider value={{ rotations, setRotations, unblocked, setUnblocked, alarmInterval, setAlarmInterval, displayValue, setDisplayValue, inInterval, setInInterval, functionType, setFunctionType }}>
+        <FunctionsContext.Provider
+            value={{
+                rotations,
+                setRotations,
+                unblocked,
+                setUnblocked,
+                alarmInterval,
+                setAlarmInterval,
+                displayValue,
+                setDisplayValue,
+                inInterval,
+                setInInterval,
+                functionType,
+                setFunctionType,
+            }}
+        >
             <DimensionContext.Provider value={{ maxDimension, minDimension }}>
                 <NavigationContainer>
                     <StatusBar barStyle="light-content" />
-                    <Stack.Navigator screenOptions={{
-                        header : ({ route, navigation }) => <Header navigation={navigation} route={route} />
-                    }}>
-                        <Stack.Screen name='Menu' component={Menu} />
-                        <Stack.Screen name='CompanyInfo' component={CompanyInfo} />
+                    <Stack.Navigator
+                        screenOptions={{
+                            header: ({ route, navigation }) => (
+                                <Header navigation={navigation} route={route} />
+                            ),
+                        }}
+                    >
+                        <Stack.Screen name="Menu" component={Menu} />
+                        <Stack.Screen
+                            name="CompanyInfo"
+                            component={CompanyInfo}
+                        />
                         <Stack.Group>
-                            <Stack.Screen name='SimulatorsCarousel' component={SimulatorsCarousel} />
-                            <Stack.Screen name='Blender' component={Blender} />
-                            <Stack.Screen name='PDB' component={PDB} />
+                            <Stack.Screen
+                                name="SimulatorsCarousel"
+                                component={SimulatorsCarousel}
+                            />
+                            <Stack.Screen name="Blender" component={Blender} />
+                            <Stack.Screen name="PDB" component={PDB} />
                         </Stack.Group>
                         <Stack.Group>
-                            <Stack.Screen name='ToolsCarousel' component={ToolsCarousel} />
+                            <Stack.Screen
+                                name="ToolsCarousel"
+                                component={ToolsCarousel}
+                            />
                         </Stack.Group>
                         <Stack.Group>
-                            <Stack.Screen name='Client' component={Client} />
-                            <Stack.Screen name='Server' component={Server} />
+                            <Stack.Screen name="Client" component={Client} />
+                            <Stack.Screen name="Server" component={Server} />
                         </Stack.Group>
                     </Stack.Navigator>
                 </NavigationContainer>

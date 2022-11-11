@@ -26,7 +26,7 @@ const Menu = ({ navigation }) => {
             flex: 1,
         },
         card: {
-            height: maxDimension * 0.25,
+            height: maxDimension * 0.24,
             width: '100%',
             marginVertical: '2%',
             flexDirection: 'row',

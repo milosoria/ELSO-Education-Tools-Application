@@ -21,7 +21,7 @@ const Button = ({
         },
         buttonText: {
             color: colors.primary.white,
-            fontSize: fontSizes.large,
+            fontSize: fontSizes.body,
             fontFamily: 'SFPro-Medium',
             paddingHorizontal: '6%',
             paddingVertical: '2%',

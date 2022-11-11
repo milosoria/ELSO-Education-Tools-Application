@@ -36,7 +36,6 @@ const normalize = (size) => {
         return size * 1.4
     }
 
-
     return size
 }
 
@@ -70,8 +69,17 @@ export const create = (
         normalizedStyles[key] = {}
         Object.keys(styles[key]).forEach((property) => {
             if (targetProperties.includes(property)) {
-                // bad practice
-                normalizedStyles[key][property] = property == 'fontSize' && height > 1200 ? normalize(styles[key][property]) + 5 : normalize(styles[key][property])
+                if (
+                    typeof styles[key][property] == 'string' &&
+                    styles[key][property].includes('%')
+                ) {
+                    normalizedStyles[key][property] = styles[key][property]
+                } else {
+                    normalizedStyles[key][property] =
+                        property == 'fontSize' && height > 1200
+                            ? normalize(styles[key][property]) + 5
+                            : normalize(styles[key][property])
+                }
             } else {
                 normalizedStyles[key][property] = styles[key][property]
             }

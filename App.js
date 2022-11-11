@@ -10,11 +10,11 @@ import CompanyInfo from './src/screens/CompanyInfo'
 import Menu from './src/screens/Menu'
 import Blender from './src/screens/simulators/Blender'
 import PDB from './src/screens/simulators/PDB'
-import SimulatorsCarousel from './src/screens/carousels/SimulatorsCarousel'
-import ToolsCarousel from './src/screens/carousels/ToolsCarousel'
+import Simulators from './src/screens/carousels/Simulators'
+import ClinicalTools from './src/screens/carousels/ClinicalTools'
 import Header from './src/components/header'
-import Client from './src/screens/Client'
-import Server from './src/screens/Server'
+// import Client from './src/screens/Client'
+// import Server from './src/screens/Server'
 
 const Stack = createNativeStackNavigator()
 
@@ -84,26 +84,25 @@ const App = () => {
                         />
                         <Stack.Group>
                             <Stack.Screen
-                                name="SimulatorsCarousel"
-                                component={SimulatorsCarousel}
+                                name="Simulators"
+                                component={Simulators}
                             />
                             <Stack.Screen name="Blender" component={Blender} />
                             <Stack.Screen name="PDB" component={PDB} />
                         </Stack.Group>
                         <Stack.Group>
                             <Stack.Screen
-                                name="ToolsCarousel"
-                                component={ToolsCarousel}
+                                name="ClinicalTools"
+                                component={ClinicalTools}
                             />
                         </Stack.Group>
-                        <Stack.Group>
-                            <Stack.Screen name="Client" component={Client} />
-                            <Stack.Screen name="Server" component={Server} />
-                        </Stack.Group>
+                        <Stack.Group></Stack.Group>
                     </Stack.Navigator>
                 </NavigationContainer>
             </DimensionContext.Provider>
         </FunctionsContext.Provider>
     )
 }
+// <Stack.Screen name="Client" component={Client} />
+// <Stack.Screen name="Server" component={Server} />
 export default App

@@ -93,11 +93,11 @@ const Menu = ({ navigation }) => {
                                 </Text>
                             </View>
                             <Button
-                                navigation
+                                navigation={navigation}
                                 screen="CompanyInfo"
                                 text="Learn about ELSO"
-                                buttonStyles={{
-                                    top: '200%',
+                                containerStyles={{
+                                    top: '35%',
                                 }}
                                 textStyles={{
                                     paddingHorizontal: 0,
@@ -118,7 +118,11 @@ const Menu = ({ navigation }) => {
                                     Air-Oxygen Blender - Pressure Display Box
                                 </Text>
                             </View>
-                            <Button navigation screen="Simulators" text="Go" />
+                            <Button
+                                navigation={navigation}
+                                screen="Simulators"
+                                text="Go"
+                            />
                         </ImageBackground>
                         <ImageBackground
                             source={require('../assets/navigation/clinical-tools.png')}
@@ -134,7 +138,7 @@ const Menu = ({ navigation }) => {
                                 </Text>
                             </View>
                             <Button
-                                navigation
+                                navigation={navigation}
                                 screen="ClinicalTools"
                                 text="Go"
                             />

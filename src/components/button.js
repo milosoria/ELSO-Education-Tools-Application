@@ -1,14 +1,14 @@
 import fontSizes from '../utils/font-sizes'
 import { create } from '../utils/normalize'
 import colors from '../utils/color-palette'
-import { Text, TouchableHighlight } from 'react-native'
+import { Text, TouchableHighlight, View } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 
 const Button = ({
     navigation,
     screen,
     text,
-    buttonStyles = {},
+    containerStyles = {},
     textStyles = {},
 }) => {
     const styles = create({
@@ -28,25 +28,31 @@ const Button = ({
         },
     })
     return (
-        <TouchableHighlight
-            underlayColor="#FFFFFF"
-            activeOpacity={0.8}
-            style={{
-                borderRadius: 40,
-                shadowOpacity: 0.2,
-                shadowOffset: { width: 4, height: 4 },
-            }}
-            onPress={() => navigation.navigate(screen)}
-        >
-            <LinearGradient
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                style={[styles.button, buttonStyles]}
-                colors={[colors.primary.blue, colors.secondary.blueGradient]}
+        <View style={containerStyles}>
+            <TouchableHighlight
+                underlayColor="#FFFFFF"
+                activeOpacity={0.8}
+                style={{
+                    alignSelf: 'flex-end',
+                    borderRadius: 40,
+                    shadowOpacity: 0.2,
+                    shadowOffset: { width: 4, height: 4 },
+                }}
+                onPress={() => navigation.navigate(screen)}
             >
-                <Text style={[styles.buttonText, textStyles]}>{text}</Text>
-            </LinearGradient>
-        </TouchableHighlight>
+                <LinearGradient
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                    style={styles.button}
+                    colors={[
+                        colors.primary.blue,
+                        colors.secondary.blueGradient,
+                    ]}
+                >
+                    <Text style={[styles.buttonText, textStyles]}>{text}</Text>
+                </LinearGradient>
+            </TouchableHighlight>
+        </View>
     )
 }
 

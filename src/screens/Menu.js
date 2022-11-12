@@ -19,6 +19,11 @@ const Menu = ({ navigation }) => {
     const { isPad } = Platform
 
     const styles = create({
+        image: {
+            borderRadius: 15,
+            width: '100%',
+            height: '100%',
+        },
         container: {
             backgroundColor: colors.primary.darkBackground,
             alignItems: 'center',
@@ -26,7 +31,7 @@ const Menu = ({ navigation }) => {
             flex: 1,
         },
         card: {
-            height: maxDimension * 0.24,
+            height: '30%',
             width: '100%',
             marginVertical: '2%',
             flexDirection: 'row',
@@ -77,9 +82,7 @@ const Menu = ({ navigation }) => {
                     <View style={{ marginTop: '2.5%' }}>
                         <ImageBackground
                             source={require('../assets/navigation/company-info.png')}
-                            imageStyle={{
-                                borderRadius: 15,
-                            }}
+                            imageStyle={styles.image}
                             style={[
                                 styles.card,
                                 {
@@ -111,7 +114,7 @@ const Menu = ({ navigation }) => {
                         </ImageBackground>
                         <ImageBackground
                             source={require('../assets/navigation/simulators.png')}
-                            imageStyle={{ borderRadius: 15 }}
+                            imageStyle={styles.image}
                             style={styles.card}
                         >
                             <View style={styles.title}>
@@ -130,7 +133,7 @@ const Menu = ({ navigation }) => {
                         </ImageBackground>
                         <ImageBackground
                             source={require('../assets/navigation/clinical-tools.png')}
-                            imageStyle={{ borderRadius: 15 }}
+                            imageStyle={styles.image}
                             style={styles.card}
                         >
                             <View style={styles.title}>

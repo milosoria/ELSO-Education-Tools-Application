@@ -29,8 +29,6 @@ const DATA = [
 ]
 
 const Simulators = ({ navigation }) => {
-    const { maxDimension } = useContext(DimensionContext)
-
     const Item = ({ name, description, imagePath }) => (
         <ImageBackground
             style={styles.item}

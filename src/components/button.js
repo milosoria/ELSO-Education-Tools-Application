@@ -10,6 +10,7 @@ const Button = ({
     text,
     containerStyles = {},
     textStyles = {},
+    buttonStyles = {},
 }) => {
     const styles = create({
         button: {
@@ -43,7 +44,7 @@ const Button = ({
                 <LinearGradient
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 1 }}
-                    style={styles.button}
+                    style={[styles.button, buttonStyles]}
                     colors={[
                         colors.primary.blue,
                         colors.secondary.blueGradient,

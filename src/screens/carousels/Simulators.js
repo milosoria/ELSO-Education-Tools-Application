@@ -6,7 +6,7 @@ import {
     TouchableHighlight,
     View,
 } from 'react-native'
-import { useContext } from 'react'
+import { useCallback, useContext } from 'react'
 import colors from '../../utils/color-palette'
 import { create } from '../../utils/normalize'
 import DimensionContext from '../../contexts/dimensionContext'
@@ -79,54 +79,31 @@ const Simulators = ({ navigation }) => {
         </ImageBackground>
     )
 
-    const renderItem = ({ item }) => <Item {...item} />
+    const renderItem = useCallback(({ item }) => <Item {...item} />, [])
 
     const styles = create({
-        shadowWrap: {
-            shadowOpacity: 0.2,
-            shadowOffset: { width: 4, height: 4 },
-            marginTop: maxDimension * 0.02,
-            marginBottom: maxDimension * 0.025,
-            marginHorizontal: maxDimension * 0.041,
-            flexDirection: 'row',
-            borderRadius: 40,
-        },
-        button: {
-            alignSelf: 'center',
-            alignItems: 'center',
-            flex: 1,
-            paddingVertical: maxDimension * 0.008,
-            paddingHorizontal: maxDimension * 0.045,
-            borderRadius: 40,
-        },
-        buttonText: {
-            fontFamily: 'SFPro-Medium',
-            color: colors.primary.white,
-            fontSize: fontSizes.large,
-        },
         container: {
             backgroundColor: colors.primary.darkBackground,
             flex: 1,
         },
         info: {
-            flex: 2,
+            height: '40%',
             backgroundColor: colors.primary.darkBackground,
         },
         cardContainer: {
             flexDirection: 'column-reverse',
             flex: 1,
-            marginBottom: maxDimension * 0.015,
         },
         item: {
-            alignSelf: 'center',
-            borderRadius: 8,
-            width: maxDimension * 0.26,
-            height: maxDimension * 0.35,
-            marginHorizontal: maxDimension * 0.02,
+            borderRadius: 10,
+            width: '65%',
+            height: '70%',
             shadowOpacity: 0.2,
             shadowOffset: { height: 4, width: 4 },
         },
         background: {
+            height: '100%',
+            width: '100%',
             borderRadius: 8,
             resizeMode: 'cover',
         },
@@ -142,16 +119,17 @@ const Simulators = ({ navigation }) => {
             fontFamily: 'SFPro-Regular',
         },
         cardInfo: {
-            marginLeft: maxDimension * 0.025,
+            marginLeft: '10%',
         },
         listView: {
+            justifyContent: 'space-around',
             flexDirection: 'row',
             flex: 1,
-            justifyContent: 'center',
+            alignItems: 'center',
         },
         titleContainer: {
-            marginLeft: maxDimension * 0.05,
-            marginBottom: maxDimension * 0.05,
+            marginLeft: '5%',
+            marginBottom: '5%',
             flex: 1,
             flexDirection: 'column-reverse',
         },
@@ -165,13 +143,35 @@ const Simulators = ({ navigation }) => {
             fontSize: fontSizes.body,
             fontFamily: 'SFPro-Medium',
         },
+        shadowWrap: {
+            shadowOpacity: 0.2,
+            shadowOffset: { width: 4, height: 4 },
+            marginTop: '5%',
+            marginBottom: '10%',
+            marginHorizontal: '15%',
+            flexDirection: 'row',
+            borderRadius: 40,
+        },
+        button: {
+            alignSelf: 'center',
+            alignItems: 'center',
+            flex: 1,
+            paddingVertical: '4%',
+            paddingHorizontal: '10%',
+            borderRadius: 40,
+        },
+        buttonText: {
+            fontFamily: 'SFPro-Medium',
+            color: colors.primary.white,
+            fontSize: fontSizes.large,
+        },
     })
 
     return (
         <SafeAreaView style={styles.container}>
             <ImageBackground
                 source={require('../../assets/navigation/simulators.png')}
-                imageStyle={{ opacity: 0.8 }}
+                imageStyle={{ height: '100%', opacity: 0.8 }}
                 style={styles.info}
             >
                 <View style={styles.titleContainer}>

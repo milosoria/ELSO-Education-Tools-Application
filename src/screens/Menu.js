@@ -99,6 +99,10 @@ const Menu = ({ navigation }) => {
                                 containerStyles={{
                                     top: '35%',
                                 }}
+                                buttonStyles={{
+                                    paddingHorizontal: '5%',
+                                    paddingVertical: '1.5%',
+                                }}
                                 textStyles={{
                                     paddingHorizontal: 0,
                                     paddingVertical: 0,

@@ -180,6 +180,7 @@ const Simulators = ({ navigation }) => {
                 </View>
             </ImageBackground>
             <FlatList
+        centerContent={true}
                 contentContainerStyle={styles.listView}
                 data={DATA}
                 horizontal={true}

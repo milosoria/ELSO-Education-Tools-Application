@@ -17,15 +17,16 @@ const Button = ({
             alignItems: 'center',
             alignSelf: 'flex-end',
             borderRadius: 40,
-            paddingHorizontal: '10%',
+            paddingHorizontal: '6%',
             paddingVertical: '2%',
         },
         buttonText: {
+            alignSelf: 'center',
             color: colors.primary.white,
             fontSize: fontSizes.body,
             fontFamily: 'SFPro-Medium',
-            paddingHorizontal: '6%',
-            paddingVertical: '2%',
+            paddingHorizontal: '5%',
+            paddingVertical: '1%',
         },
     })
     return (

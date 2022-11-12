@@ -4,13 +4,13 @@ import {
     ImageBackground,
     Platform,
     SafeAreaView,
+    ScrollView,
     Text,
     View,
 } from 'react-native'
 import { useContext } from 'react'
 import IphoneModal from '../components/iphoneModal'
 import DimensionContext from '../contexts/dimensionContext'
-import { ScrollView } from 'react-native-gesture-handler'
 import fontSizes from '../utils/font-sizes'
 import Button from '../components/button'
 
@@ -31,7 +31,7 @@ const Menu = ({ navigation }) => {
             flex: 1,
         },
         card: {
-            height: '30%',
+            height: '60%',
             width: '100%',
             marginVertical: '2%',
             flexDirection: 'row',
@@ -74,87 +74,96 @@ const Menu = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView
-                showsVerticalScrollIndicator={false}
-                style={{ width: '90%' }}
-            >
-                {isPad ? (
-                    <View style={{ marginTop: '2.5%' }}>
-                        <ImageBackground
-                            source={require('../assets/navigation/company-info.png')}
-                            imageStyle={styles.image}
-                            style={[
-                                styles.card,
-                                {
-                                    flexDirection: 'column',
-                                },
-                            ]}
-                        >
-                            <View style={styles.companyInfoTitle}>
-                                <Text style={styles.titleText}>
-                                    Welcome to ELSO educational tools app!
-                                </Text>
-                            </View>
-                            <Button
-                                navigation={navigation}
-                                screen="CompanyInfo"
-                                text="Learn about ELSO"
-                                containerStyles={{
-                                    top: '35%',
-                                }}
-                                buttonStyles={{
-                                    paddingHorizontal: '5%',
-                                    paddingVertical: '1.5%',
-                                }}
-                                textStyles={{
-                                    paddingHorizontal: 0,
-                                    paddingVertical: 0,
-                                }}
-                            />
-                        </ImageBackground>
-                        <ImageBackground
-                            source={require('../assets/navigation/simulators.png')}
-                            imageStyle={styles.image}
-                            style={styles.card}
-                        >
-                            <View style={styles.title}>
-                                <Text style={styles.titleText}>
-                                    ECMO Machines Simulators
-                                </Text>
-                                <Text style={styles.subTitleText}>
-                                    Air-Oxygen Blender - Pressure Display Box
-                                </Text>
-                            </View>
-                            <Button
-                                navigation={navigation}
-                                screen="Simulators"
-                                text="Go"
-                            />
-                        </ImageBackground>
-                        <ImageBackground
-                            source={require('../assets/navigation/clinical-tools.png')}
-                            imageStyle={styles.image}
-                            style={styles.card}
-                        >
-                            <View style={styles.title}>
-                                <Text style={styles.titleText}>
-                                    Clinical Tools
-                                </Text>
-                                <Text style={styles.subTitleText}>
-                                    Suggestive Canula
-                                </Text>
-                            </View>
-                            <Button
-                                navigation={navigation}
-                                screen="ClinicalTools"
-                                text="Go"
-                            />
-                        </ImageBackground>
-                    </View>
-                ) : (
-                    <IphoneModal />
-                )}
-            </ScrollView>
+            {isPad ? (
+                <ScrollView
+                    showsVerticalScrollIndicator={false}
+                    style={{ width: '90%' }}
+                    scrollToOverflowEnabled={true}
+                >
+                    <ImageBackground
+                        source={require('../assets/navigation/company-info.png')}
+                        imageStyle={styles.image}
+                        style={[
+                            styles.card,
+                            {
+                                flexDirection: 'column',
+                            },
+                        ]}
+                    >
+                        <View style={styles.companyInfoTitle}>
+                            <Text style={styles.titleText}>
+                                Welcome to ELSO educational tools app!
+                            </Text>
+                        </View>
+                        <Button
+                            navigation={navigation}
+                            screen="CompanyInfo"
+                            text="Learn about ELSO"
+                            containerStyles={{
+                                top: '25%',
+                            }}
+                            buttonStyles={{
+                                paddingHorizontal: '5%',
+                                paddingVertical: '1.5%',
+                            }}
+                            textStyles={{
+                                paddingHorizontal: 0,
+                                paddingVertical: 0,
+                            }}
+                        />
+                    </ImageBackground>
+                    <ImageBackground
+                        source={require('../assets/navigation/simulators.png')}
+                        imageStyle={styles.image}
+                        style={styles.card}
+                    >
+                        <View style={styles.title}>
+                            <Text style={styles.titleText}>
+                                ECMO Machines Simulators
+                            </Text>
+                            <Text style={styles.subTitleText}>
+                                Air-Oxygen Blender - Pressure Display Box
+                            </Text>
+                        </View>
+                        <Button
+                            navigation={navigation}
+                            screen="Simulators"
+                            text="Go"
+                            containerStyles={{
+                                left: '30%',
+                            }}
+                            buttonStyles={{
+                                paddingHorizontal: '2%',
+                            }}
+                        />
+                    </ImageBackground>
+                    <ImageBackground
+                        source={require('../assets/navigation/clinical-tools.png')}
+                        imageStyle={styles.image}
+                        style={styles.card}
+                    >
+                        <View style={styles.title}>
+                            <Text style={styles.titleText}>Clinical Tools</Text>
+                            <Text style={styles.subTitleText}>
+                                Suggestive Canula
+                            </Text>
+                        </View>
+                        <Button
+                            navigation={navigation}
+                            screen="ClinicalTools"
+                            text="Go"
+                            containerStyles={{
+                                left: '30%',
+                            }}
+                            buttonStyles={{
+                                paddingHorizontal: '2%',
+                            }}
+                        />
+                    </ImageBackground>
+                </ScrollView>
+            ) : (
+                <IphoneModal />
+            )}
         </SafeAreaView>
     )
 }

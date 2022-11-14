@@ -6,10 +6,9 @@ import {
     TouchableHighlight,
     View,
 } from 'react-native'
-import { useCallback, useContext } from 'react'
+import { useCallback } from 'react'
 import colors from '../../utils/color-palette'
 import { create } from '../../utils/normalize'
-import DimensionContext from '../../contexts/dimensionContext'
 import { LinearGradient } from 'expo-linear-gradient'
 import fontSizes from '../../utils/font-sizes'
 
@@ -29,6 +28,94 @@ const DATA = [
 ]
 
 const Simulators = ({ navigation }) => {
+    const styles = create({
+        container: {
+            backgroundColor: colors.primary.darkBackground,
+            flex: 1,
+        },
+        info: {
+            height: '40%',
+            backgroundColor: colors.primary.darkBackground,
+        },
+        cardContainer: {
+            flexDirection: 'column-reverse',
+            flex: 1,
+            top: '5%',
+        },
+        item: {
+            borderRadius: 10,
+            width: '60%',
+            height: '70%',
+            shadowOpacity: 0.2,
+            shadowOffset: { height: 4, width: 4 },
+        },
+        background: {
+            height: '100%',
+            width: '100%',
+            borderRadius: 8,
+            resizeMode: 'cover',
+        },
+        titleText: {
+            color: colors.primary.white,
+            fontSize: fontSizes.subtitles,
+            fontFamily: 'SFPro-Bold',
+        },
+        subTitleText: {
+            color: colors.primary.white,
+            fontSize: fontSizes.medium,
+            fontWeight: '300',
+            fontFamily: 'SFPro-Regular',
+        },
+        cardInfo: {
+            marginLeft: '10%',
+            marginBottom: '2.5%',
+        },
+        listView: {
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'center',
+            // justifyContent: 'center',
+        },
+        titleContainer: {
+            marginLeft: '5%',
+            marginBottom: '5%',
+            flex: 1,
+            flexDirection: 'column-reverse',
+        },
+        mainTitle: {
+            color: colors.primary.white,
+            fontSize: fontSizes.titles,
+            fontFamily: 'SFPro-Bold',
+        },
+        mainSubTitle: {
+            color: colors.primary.white,
+            fontSize: fontSizes.body,
+            fontFamily: 'SFPro-Medium',
+        },
+        shadowWrap: {
+            shadowOpacity: 0.2,
+            shadowOffset: { width: 4, height: 4 },
+            marginTop: '5%',
+            width: '60%',
+            alignSelf: 'center',
+            flexDirection: 'row',
+            borderRadius: 40,
+        },
+        button: {
+            alignSelf: 'center',
+            alignItems: 'center',
+            flex: 1,
+            paddingVertical: '4%',
+            paddingHorizontal: '10%',
+            borderRadius: 40,
+        },
+        buttonText: {
+            fontFamily: 'SFPro-Medium',
+            color: colors.primary.white,
+            fontSize: fontSizes.large,
+        },
+    })
+
     const Item = ({ name, description, imagePath }) => (
         <ImageBackground
             style={styles.item}
@@ -79,92 +166,6 @@ const Simulators = ({ navigation }) => {
 
     const renderItem = useCallback(({ item }) => <Item {...item} />, [])
 
-    const styles = create({
-        container: {
-            backgroundColor: colors.primary.darkBackground,
-            flex: 1,
-        },
-        info: {
-            height: '40%',
-            backgroundColor: colors.primary.darkBackground,
-        },
-        cardContainer: {
-            flexDirection: 'column-reverse',
-            flex: 1,
-        },
-        item: {
-            borderRadius: 10,
-            width: '65%',
-            height: '70%',
-            shadowOpacity: 0.2,
-            shadowOffset: { height: 4, width: 4 },
-        },
-        background: {
-            height: '100%',
-            width: '100%',
-            borderRadius: 8,
-            resizeMode: 'cover',
-        },
-        titleText: {
-            color: colors.primary.white,
-            fontSize: fontSizes.subtitles,
-            fontFamily: 'SFPro-Bold',
-        },
-        subTitleText: {
-            color: colors.primary.white,
-            fontSize: fontSizes.medium,
-            fontWeight: '300',
-            fontFamily: 'SFPro-Regular',
-        },
-        cardInfo: {
-            marginLeft: '10%',
-        },
-        listView: {
-            justifyContent: 'space-around',
-            flexDirection: 'row',
-            flex: 1,
-            alignItems: 'center',
-        },
-        titleContainer: {
-            marginLeft: '5%',
-            marginBottom: '5%',
-            flex: 1,
-            flexDirection: 'column-reverse',
-        },
-        mainTitle: {
-            color: colors.primary.white,
-            fontSize: fontSizes.titles,
-            fontFamily: 'SFPro-Bold',
-        },
-        mainSubTitle: {
-            color: colors.primary.white,
-            fontSize: fontSizes.body,
-            fontFamily: 'SFPro-Medium',
-        },
-        shadowWrap: {
-            shadowOpacity: 0.2,
-            shadowOffset: { width: 4, height: 4 },
-            marginTop: '5%',
-            marginBottom: '10%',
-            marginHorizontal: '15%',
-            flexDirection: 'row',
-            borderRadius: 40,
-        },
-        button: {
-            alignSelf: 'center',
-            alignItems: 'center',
-            flex: 1,
-            paddingVertical: '4%',
-            paddingHorizontal: '10%',
-            borderRadius: 40,
-        },
-        buttonText: {
-            fontFamily: 'SFPro-Medium',
-            color: colors.primary.white,
-            fontSize: fontSizes.large,
-        },
-    })
-
     return (
         <SafeAreaView style={styles.container}>
             <ImageBackground
@@ -180,10 +181,9 @@ const Simulators = ({ navigation }) => {
                 </View>
             </ImageBackground>
             <FlatList
-        centerContent={true}
                 contentContainerStyle={styles.listView}
                 data={DATA}
-                horizontal={true}
+                horizontal
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
             />

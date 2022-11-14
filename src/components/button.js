@@ -4,6 +4,7 @@ import colors from '../utils/color-palette'
 import { Text, TouchableHighlight, View } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 
+// TODO: create button atom to and refactor every button used through the app
 const Button = ({
     navigation,
     screen,

@@ -12,7 +12,7 @@ import { create } from '../../utils/normalize'
 import { LinearGradient } from 'expo-linear-gradient'
 import fontSizes from '../../utils/font-sizes'
 
-const DATA = [
+const SIMULATORS = [
     {
         id: '1',
         name: 'Blender',
@@ -72,9 +72,12 @@ const Simulators = ({ navigation }) => {
         },
         listView: {
             flex: 1,
+            //TODO: fix this
+            left: '11%',
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-around',
+            flexGrow: 1,
         },
         titleContainer: {
             marginLeft: '5%',
@@ -182,7 +185,7 @@ const Simulators = ({ navigation }) => {
             </ImageBackground>
             <FlatList
                 contentContainerStyle={styles.listView}
-                data={DATA}
+                data={SIMULATORS}
                 horizontal
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}

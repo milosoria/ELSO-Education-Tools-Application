@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
     Image,
     Platform,
@@ -8,7 +8,6 @@ import {
     TouchableHighlight,
     View,
 } from 'react-native'
-import DimensionContext from '../contexts/dimensionContext'
 import { create } from '../utils/normalize'
 import colors from '../utils/color-palette'
 import fontSizes from '../utils/font-sizes'
@@ -18,10 +17,6 @@ import useOrientation from '../utils/orientation'
 
 const Header = ({ route, navigation }) => {
     const isLandscape = useOrientation()
-    const { maxDimension } = useContext(DimensionContext)
-    const buttonsContainerSize = Platform.isPad
-        ? maxDimension * 0.2
-        : maxDimension * 0.12
     const [backButtonVisible, setBackButtonVisible] = useState(false)
     const [visible, setVisible] = useState(true)
 
@@ -42,58 +37,50 @@ const Header = ({ route, navigation }) => {
     }
 
     const styles = create({
+        container: {
+            flexGrow: 1,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            height: isLandscape ? '10%' : '8%',
+            backgroundColor: colors.primary.darkHeader,
+        },
+        buttonContainer: {
+            flex: 1,
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+        },
         shadowWrap: {
+            marginLeft: '5%',
+            alignSelf: 'flex-start',
             shadowOpacity: 0.3,
             shadowOffset: { width: 4, height: 4 },
             borderRadius: 40,
-        },
-        container: {
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            height: Platform.isPad ? maxDimension * 0.08 : maxDimension * 0.09,
-            backgroundColor: colors.primary.darkHeader,
         },
         backButton: {
             flexDirection: 'row',
             backgroundColor: colors.secondary.blue,
             borderRadius: 40,
-            paddingVertical: Platform.isPad
-                ? maxDimension * 0.006
-                : maxDimension * 0.004,
-            paddingLeft: Platform.isPad
-                ? maxDimension * 0.03
-                : maxDimension * 0.01,
-            paddingRight: Platform.isPad
-                ? maxDimension * 0.05
-                : maxDimension * 0.03,
+            paddingVertical: isLandscape ? '1%' : '2%',
+            paddingLeft: isLandscape ? '6%' : '10%',
+            paddingRight: isLandscape ? '10%' : '14%',
         },
         backButtonIcon: {
             color: colors.primary.white,
             alignSelf: 'flex-end',
-            marginRight: maxDimension * 0.008,
+            paddingRight: '4%',
         },
         backButtonText: {
             fontFamily: 'SFPro-Medium',
             alignSelf: 'center',
             color: colors.primary.white,
             fontSize: Platform.isPad ? fontSizes.large : fontSizes.medium,
-            marginLeft: maxDimension * 0.008,
-        },
-        buttonContainer: {
-            width: buttonsContainerSize,
-            marginLeft: Platform.isPad ? 0 : maxDimension * 0.01,
-            marginBottom: Platform.isPad ? 0 : maxDimension * 0.01,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
         },
         logoContainer: {
             justifyContent: 'center',
-            paddingBottom: maxDimension * 0.01,
+            paddingBottom: '0.5%',
         },
         logo: {
-            height: maxDimension * 0.045,
+            height: '90%',
             resizeMode: 'contain',
         },
     })
@@ -124,7 +111,7 @@ const Header = ({ route, navigation }) => {
                             >
                                 <Icon
                                     name="arrowleft"
-                                    size={maxDimension * 0.03}
+                                    size={30}
                                     style={styles.backButtonIcon}
                                 />
                                 <Text style={styles.backButtonText}>Back</Text>

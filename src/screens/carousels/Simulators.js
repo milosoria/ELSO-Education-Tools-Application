@@ -44,7 +44,7 @@ const Simulators = ({ navigation }) => {
         },
         item: {
             borderRadius: 10,
-            width: '60%',
+            width: '65%',
             height: '70%',
             shadowOpacity: 0.2,
             shadowOffset: { height: 4, width: 4 },
@@ -74,7 +74,7 @@ const Simulators = ({ navigation }) => {
             flex: 1,
             flexDirection: 'row',
             alignItems: 'center',
-            // justifyContent: 'center',
+            justifyContent: 'space-around',
         },
         titleContainer: {
             marginLeft: '5%',

@@ -21,7 +21,6 @@ const Button = ({
             paddingVertical: '2%',
         },
         buttonText: {
-            alignSelf: 'center',
             color: colors.primary.white,
             fontSize: fontSizes.body,
             fontFamily: 'SFPro-Medium',
@@ -35,7 +34,7 @@ const Button = ({
                 underlayColor="#FFFFFF"
                 activeOpacity={0.8}
                 style={{
-                    alignSelf: 'flex-end',
+                    alignSelf: 'center',
                     borderRadius: 40,
                     shadowOpacity: 0.2,
                     shadowOffset: { width: 4, height: 4 },

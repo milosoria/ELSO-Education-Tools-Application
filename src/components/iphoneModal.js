@@ -1,42 +1,54 @@
 import { create } from '../utils/normalize'
 import colors from '../utils/color-palette'
 import { Linking, Text, TouchableHighlight, View } from 'react-native'
-import { useContext } from 'react'
-import DimensionContext from '../contexts/dimensionContext'
 import fontSizes from '../utils/font-sizes'
 
-const IphoneModal = () => {
-    const { maxDimension } = useContext(DimensionContext)
+const Modal = () => {
     const handlePress = () => {
         Linking.openURL('https://www.elso.org/default.aspx')
     }
     const styles = create({
+        container: {
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
         iphoneModal: {
             backgroundColor: colors.primary.background,
-            marginTop: maxDimension * 0.1,
             borderRadius: 40,
-            width: maxDimension * 0.35,
-            height: maxDimension * 0.5,
+            width: '80%',
+            height: '60%',
+            flexDirection: 'column',
         },
         modalTitle: {
+            alignSelf: 'flex-start',
+            top: '6%',
+            left: '8%',
             fontSize: fontSizes.titles,
             fontWeight: '600',
-            marginRight: maxDimension * 0.04,
-            marginLeft: maxDimension * 0.04,
-            marginTop: maxDimension * 0.04,
         },
         modalText: {
-            marginLeft: maxDimension * 0.04,
-            marginRight: maxDimension * 0.04,
-            marginTop: maxDimension * 0.03,
+            alignSelf: 'flex-start',
+            marginRight: '20%',
+            top: '8%',
+            left: '8%',
             fontSize: 20,
             fontWeight: '400',
         },
+        shadowWrap: {
+            alignSelf: 'center',
+            top: '35%',
+            height: '10%',
+            width: '50%',
+            justifyContent: 'center',
+            borderRadius: 40,
+            shadowOpacity: 0.2,
+            shadowOffset: { width: 4, height: 4 },
+        },
         modalButton: {
+            flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
-            height: maxDimension * 0.05,
-            width: maxDimension * 0.25,
             backgroundColor: colors.primary.blue,
             borderRadius: 40,
         },
@@ -44,35 +56,34 @@ const IphoneModal = () => {
             fontSize: fontSizes.body,
             fontWeight: '600',
             color: 'white',
-        },
-        shadowWrap: {
-            alignSelf: 'center',
-            marginTop: maxDimension * 0.2,
-            height: maxDimension * 0.05,
-            width: maxDimension * 0.25,
-            borderRadius: 40,
-            shadowOpacity: 0.2,
-            shadowOffset: { width: 4, height: 4 },
+            paddingHorizontal: '15%',
         },
     })
     return (
-        <View style={styles.iphoneModal}>
-            <Text style={styles.modalTitle}>App not available!</Text>
-            <Text style={styles.modalText}>
-                This app was designed and intended to be used on iPad devices
-            </Text>
-            <TouchableHighlight
-                underlayColor="#FFFFFF"
-                activeOpacity={0.8}
-                style={styles.shadowWrap}
-                onPress={handlePress}
-            >
-                <View style={styles.modalButton}>
-                    <Text style={styles.modalButtonText}>Go to ELSO</Text>
-                </View>
-            </TouchableHighlight>
+        <View style={styles.container}>
+            <View style={styles.iphoneModal}>
+                <Text numberOfLines={2} style={styles.modalTitle}>
+                    App not
+                    {'\n'}
+                    available!
+                </Text>
+                <Text numberOfLines={3} style={styles.modalText}>
+                    This app was designed and intended to be used on iPad
+                    devices
+                </Text>
+                <TouchableHighlight
+                    underlayColor="#FFFFFF"
+                    activeOpacity={0.8}
+                    style={styles.shadowWrap}
+                    onPress={handlePress}
+                >
+                    <View style={styles.modalButton}>
+                        <Text style={styles.modalButtonText}>Go to ELSO</Text>
+                    </View>
+                </TouchableHighlight>
+            </View>
         </View>
     )
 }
 
-export default IphoneModal
+export default Modal

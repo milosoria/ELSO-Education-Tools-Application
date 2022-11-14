@@ -8,14 +8,11 @@ import {
     Text,
     View,
 } from 'react-native'
-import { useContext } from 'react'
-import IphoneModal from '../components/iphoneModal'
-import DimensionContext from '../contexts/dimensionContext'
+import Modal from '../components/iphoneModal'
 import fontSizes from '../utils/font-sizes'
 import Button from '../components/button'
 
 const Menu = ({ navigation }) => {
-    const { maxDimension } = useContext(DimensionContext)
     const { isPad } = Platform
 
     const styles = create({
@@ -62,13 +59,6 @@ const Menu = ({ navigation }) => {
             width: '50%',
             marginLeft: '6%',
             marginTop: '8%',
-        },
-        iphoneModal: {
-            backgroundColor: colors.primary.background,
-            marginTop: maxDimension * 0.1,
-            borderRadius: 40,
-            width: maxDimension * 0.35,
-            height: maxDimension * 0.5,
         },
     })
 
@@ -162,7 +152,7 @@ const Menu = ({ navigation }) => {
                     </ImageBackground>
                 </ScrollView>
             ) : (
-                <IphoneModal />
+                <Modal />
             )}
         </SafeAreaView>
     )

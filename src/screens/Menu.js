@@ -123,7 +123,8 @@ const Menu = ({ navigation }) => {
                                 left: '30%',
                             }}
                             buttonStyles={{
-                                paddingHorizontal: '2%',
+                                paddingHorizontal: '15%',
+                                paddingVertical: '2.5%',
                             }}
                         />
                     </ImageBackground>
@@ -146,7 +147,8 @@ const Menu = ({ navigation }) => {
                                 left: '30%',
                             }}
                             buttonStyles={{
-                                paddingHorizontal: '2%',
+                                paddingHorizontal: '15%',
+                                paddingVertical: '2.5%',
                             }}
                         />
                     </ImageBackground>

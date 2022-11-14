@@ -14,32 +14,34 @@ const Button = ({
     buttonStyles = {},
 }) => {
     const styles = create({
-        button: {
+        shadowWrap: {
+            flexDirection: 'row',
             alignItems: 'center',
-            alignSelf: 'flex-end',
+            justifyContent: 'center',
             borderRadius: 40,
-            paddingHorizontal: '6%',
-            paddingVertical: '2%',
+            shadowOpacity: 0.2,
+            shadowOffset: { width: 4, height: 4 },
+        },
+        button: {
+            borderRadius: 40,
         },
         buttonText: {
             color: colors.primary.white,
             fontSize: fontSizes.body,
             fontFamily: 'SFPro-Medium',
-            paddingHorizontal: '5%',
-            paddingVertical: '1%',
         },
     })
     return (
-        <View style={containerStyles}>
+        <View
+            style={[
+                { alignItems: 'center', justifyContent: 'center' },
+                containerStyles,
+            ]}
+        >
             <TouchableHighlight
                 underlayColor="#FFFFFF"
                 activeOpacity={0.8}
-                style={{
-                    alignSelf: 'center',
-                    borderRadius: 40,
-                    shadowOpacity: 0.2,
-                    shadowOffset: { width: 4, height: 4 },
-                }}
+                style={styles.shadowWrap}
                 onPress={() => navigation.navigate(screen)}
             >
                 <LinearGradient

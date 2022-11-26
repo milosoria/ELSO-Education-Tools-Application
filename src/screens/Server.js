@@ -1,21 +1,16 @@
 import { useState } from 'react'
-import { FlatList, Text } from 'react-native'
+import { FlatList, Text, View } from 'react-native'
 import netHandler from '../utils/connection'
-import { NetworkInfo } from 'react-native-network-info'
-import { Box, Button } from '../atoms'
+import { Box, Button, ButtonText } from '../atoms'
+import fontSizes from '../utils/font-sizes'
 
-const ServerScreen = () => {
+const Server = () => {
     const [server, setServer] = useState(null)
     const [chats, setChats] = useState([])
-    const [ip, setIp] = useState('')
 
     const handleStartServer = async () => {
         try {
-            let tempIp = await NetworkInfo.getIPV4Address()
-            console.log('Server ip is:', tempIp)
-            setIp(tempIp)
-            if (!server)
-                setServer(netHandler.createServer(tempIp, chats, setChats))
+            if (!server) setServer(netHandler.createServer(setChats))
         } catch (e) {
             console.log(e.message)
         }
@@ -25,36 +20,76 @@ const ServerScreen = () => {
         if (server) {
             server.close()
             setServer(null)
+            setChats([])
         }
     }
 
     return (
-        <Box>
-            {ip && ip.length > 0 ? (
-                <Text>Server ip: {ip}</Text>
-            ) : (
-                <Text>Server Screen</Text>
-            )}
-            <Button onPress={handleStartServer}>
-                <Text>Start Server</Text>
-            </Button>
-            <Button onPress={handleStopServer}>
-                <Text>Stop Server</Text>
-            </Button>
-            {server ? <Text>Server is on</Text> : null}
-            <FlatList
-                data={chats}
-                renderItem={({ item }) => {
-                    return (
-                        <Text style={{ margin: 10, fontSize: 20 }}>
-                            {item.msg}
-                        </Text>
-                    )
-                }}
-                keyExtractor={(item) => item.id}
-            />
-        </Box>
+        <View
+            style={{
+                justifyContent: 'center',
+                bottom: '10%',
+                flex: 1,
+            }}
+        >
+            <Box>
+                <Text
+                    style={{
+                        fontSize: fontSizes.titles,
+                        marginBottom: '2%',
+                    }}
+                >
+                    Server Screen
+                </Text>
+                <View
+                    style={{
+                        width: '40%',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <Button
+                        style={{
+                            marginRight: '5%',
+                        }}
+                        onPress={handleStartServer}
+                    >
+                        <ButtonText text="Start Server" />
+                    </Button>
+                    <Button
+                        style={{
+                            marginLeft: '5%',
+                        }}
+                        onPress={handleStopServer}
+                    >
+                        <ButtonText text="Stop Server" />
+                    </Button>
+                </View>
+                {server ? (
+                    <Text
+                        style={{
+                            marginTop: '2.5%',
+                            fontSize: fontSizes.body,
+                        }}
+                    >
+                        {' '}
+                        Server listening for messages!
+                    </Text>
+                ) : null}
+                <FlatList
+                    data={chats}
+                    renderItem={({ item }) => {
+                        return (
+                            <Text style={{ margin: 10, fontSize: 20 }}>
+                                {item.msg}
+                            </Text>
+                        )
+                    }}
+                    keyExtractor={(item) => item.id}
+                />
+            </Box>
+        </View>
     )
 }
 
-export default ServerScreen
+export default Server

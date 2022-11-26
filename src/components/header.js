@@ -7,6 +7,7 @@ import {
     Text,
     View,
 } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { create } from '../utils/normalize'
 import colors from '../utils/color-palette'
 import fontSizes from '../utils/font-sizes'
@@ -18,7 +19,12 @@ const Header = ({ route, navigation }) => {
     const isLandscape = useOrientation()
     const [backButtonVisible, setBackButtonVisible] = useState(false)
     const [visible, setVisible] = useState(true)
-
+    const { top: statusBarHeight } = useSafeAreaInsets()
+    const height = Platform.isPad
+        ? isLandscape
+            ? '10%'
+            : '8%'
+        : statusBarHeight * 1.5
     useEffect(() => {
         navigation.canGoBack()
             ? setBackButtonVisible(true)
@@ -34,13 +40,12 @@ const Header = ({ route, navigation }) => {
     const handleBackHome = () => {
         if (route.name !== 'Menu') navigation.popToTop()
     }
-
     const styles = create({
         container: {
             flexGrow: 1,
             flexDirection: 'row',
             justifyContent: 'space-between',
-            height: isLandscape ? '10%' : '8%',
+            height,
             backgroundColor: colors.primary.darkHeader,
         },
         buttonContainer: {
@@ -75,7 +80,6 @@ const Header = ({ route, navigation }) => {
             color: colors.primary.white,
             fontSize: Platform.isPad ? fontSizes.large : fontSizes.medium,
         },
-        //TODO: fix loz size on iphone by checking status bar height
         logoContainer: {
             justifyContent: 'center',
             paddingBottom: '0.5%',
@@ -101,7 +105,7 @@ const Header = ({ route, navigation }) => {
                         >
                             <View
                                 style={{
-                                    flex:1,
+                                    flex: 1,
                                     flexDirection: 'row',
                                     // paddingVertical: isLandscape ? '1%' : '2%',
                                     // paddingLeft: isLandscape ? '6%' : '10%',

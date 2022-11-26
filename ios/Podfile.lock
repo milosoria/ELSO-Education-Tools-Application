@@ -24,7 +24,7 @@ PODS:
   - EXJSONUtils (0.3.0)
   - EXManifests (0.3.1):
     - EXJSONUtils
-  - Expo (45.0.8):
+  - Expo (45.0.0):
     - ExpoModulesCore
   - expo-dev-client (1.0.1):
     - EXManifests
@@ -102,7 +102,7 @@ PODS:
     - ExpoModulesCore
   - ExpoLinearGradient (11.3.0):
     - ExpoModulesCore
-  - ExpoModulesCore (0.9.2):
+  - ExpoModulesCore (0.9.1):
     - React-Core
     - ReactCommon/turbomodule/core
   - EXSplashScreen (0.15.1):
@@ -343,7 +343,7 @@ PODS:
     - RCTTypeSafety
     - React
     - ReactCommon/turbomodule/core
-  - react-native-tcp-socket (6.0.1):
+  - react-native-tcp-socket (6.0.3):
     - CocoaAsyncSocket
     - React-Core
   - React-perflogger (0.68.2)
@@ -688,14 +688,14 @@ SPEC CHECKSUMS:
   EXFont: 04235cc22e6fef86028feb67db452978dc6f240f
   EXJSONUtils: 2a74b8f40f1523cc3f92af99c91aa78201737a77
   EXManifests: b38dc61303f5eede990b4c8ecbfac32f82160e65
-  Expo: 1133eaf0e12dc265ac82a256f3815401b7570f96
+  Expo: c9946016d7453c44b71ed0c8282089b22aefd3ad
   expo-dev-client: 56e713e8ab330e3d2522e4d1c568dc1f5e0116b1
   expo-dev-launcher: 3c6059a3f2cc3093a2a22d23e57cb54bcba5b33f
   expo-dev-menu: ba291761e0ffbdd7011fd33576687f939cadf044
   expo-dev-menu-interface: db5495dd7206992a94ce35c51391f139ae26f2b7
   ExpoKeepAwake: c0c494b442ecd8122974c13b93ccfb57bd408e88
   ExpoLinearGradient: 0debcf7d6cd7fea3050c218544f0db2de9a64f42
-  ExpoModulesCore: e4278a668e8c13c0269ed8b8a4200989deea2973
+  ExpoModulesCore: 5597629698cc026bd3dff1ef182fe2cc67c31084
   EXSplashScreen: 34f460788db8d682883871708dddbfac72095bb7
   EXStructuredHeaders: 5d86829469399370a9fc7cb1e4391b09de87681d
   EXUpdates: f8d0170faaf3032912284693ef07f4d57288e14e
@@ -719,7 +719,7 @@ SPEC CHECKSUMS:
   React-logger: a0833912d93b36b791b7a521672d8ee89107aff1
   react-native-network-info: d1290ffc0bd0709e11436f5b8d7f605dcc5c4530
   react-native-safe-area-context: f98b0b16d1546d208fc293b4661e3f81a895afd9
-  react-native-tcp-socket: 32e99cbdf594060a2c61391a799fd873f771b2c2
+  react-native-tcp-socket: bf814462aa7bb427f004976d3a8765153baffe81
   React-perflogger: a18b4f0bd933b8b24ecf9f3c54f9bf65180f3fe6
   React-RCTActionSheet: 547fe42fdb4b6089598d79f8e1d855d7c23e2162
   React-RCTAnimation: bc9440a1c37b06ae9ebbb532d244f607805c6034

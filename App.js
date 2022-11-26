@@ -18,8 +18,8 @@ import ClinicalTools from './src/screens/carousels/ClinicalTools'
 import Header from './src/components/header'
 import useOrientation from './src/utils/orientation'
 import DimensionContext from './src/contexts/dimensionContext'
-// import Client from './src/screens/Client'
-// import Server from './src/screens/Server'
+import Client from './src/screens/Client'
+import Server from './src/screens/Server'
 
 const Stack = createNativeStackNavigator()
 
@@ -76,7 +76,7 @@ const App = () => {
                 <NavigationContainer>
                     <StatusBar barStyle="light-content" />
                     <Stack.Navigator
-                        initialRouteName={Platform.isPad ? 'Server' : 'Client'}
+                        initialRouteName={Platform.isPad ? 'Client' : 'Server'}
                         screenOptions={{
                             header: ({ route, navigation }) => (
                                 <Header navigation={navigation} route={route} />
@@ -102,13 +102,14 @@ const App = () => {
                                 component={ClinicalTools}
                             />
                         </Stack.Group>
-                        <Stack.Group></Stack.Group>
+                        <Stack.Group>
+                            <Stack.Screen name="Client" component={Client} />
+                            <Stack.Screen name="Server" component={Server} />
+                        </Stack.Group>
                     </Stack.Navigator>
                 </NavigationContainer>
             </FunctionsContext.Provider>
         </DimensionContext.Provider>
     )
 }
-// <Stack.Screen name="Client" component={Client} />
-// <Stack.Screen name="Server" component={Server} />
 export default App

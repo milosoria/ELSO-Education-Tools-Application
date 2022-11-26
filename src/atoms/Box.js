@@ -3,8 +3,13 @@ import { View } from 'react-native'
 const Box = (props) => {
     return (
         <View
-            {...props}
-            style={{ alignItems: 'center', justifyContent: 'center' }}
+            style={[
+                {
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                },
+                props.style,
+            ]}
         >
             {props.children}
         </View>

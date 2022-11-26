@@ -71,7 +71,7 @@ const Header = ({ route, navigation }) => {
         },
         backButtonIcon: {
             color: colors.primary.white,
-            alignSelf: 'flex-end',
+            alignSelf: 'center',
             paddingRight: '10%',
         },
         backButtonText: {

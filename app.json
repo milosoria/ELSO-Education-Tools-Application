@@ -2,7 +2,7 @@
     "expo": {
         "name": "ELSO Educational Tools Application",
         "slug": "elso-educational-tools",
-        "version": "1.0.3",
+        "version": "1.0.4",
         "orientation": "default",
         "icon": "./assets/icon.png",
         "userInterfaceStyle": "light",
@@ -15,9 +15,7 @@
             "fallbackToCacheTimeout": 0,
             "url": "https://u.expo.dev/1242e9b1-6f48-4ba0-abe7-f0ca38e38f2e"
         },
-        "assetBundlePatterns": [
-            "**/*"
-        ],
+        "assetBundlePatterns": ["**/*"],
         "ios": {
             "icon": "./assets/icon.png",
             "bundleIdentifier": "org.elso.educational-tools",

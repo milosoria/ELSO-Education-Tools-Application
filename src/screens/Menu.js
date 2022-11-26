@@ -10,8 +10,9 @@ import {
 } from 'react-native'
 import Modal from '../components/iphoneModal'
 import fontSizes from '../utils/font-sizes'
-import Button from '../components/button'
+import { Button } from '../atoms/'
 
+// TODO: fix scrolling
 const Menu = ({ navigation }) => {
     const { isPad } = Platform
 
@@ -60,6 +61,11 @@ const Menu = ({ navigation }) => {
             marginLeft: '6%',
             marginTop: '8%',
         },
+        buttonText: {
+            color: colors.primary.white,
+            fontSize: fontSizes.body,
+            fontFamily: 'SFPro-Medium',
+        },
     })
 
     return (
@@ -86,21 +92,23 @@ const Menu = ({ navigation }) => {
                             </Text>
                         </View>
                         <Button
-                            navigation={navigation}
-                            screen="CompanyInfo"
-                            text="Learn about ELSO"
-                            containerStyles={{
-                                top: '25%',
+                            onPress={() => navigation.navigate('CompanyInfo')}
+                            style={{
+                                top: '10%',
+                                width: '50%',
                             }}
-                            buttonStyles={{
-                                paddingHorizontal: '5%',
-                                paddingVertical: '1.5%',
-                            }}
-                            textStyles={{
-                                paddingHorizontal: 0,
-                                paddingVertical: 0,
-                            }}
-                        />
+                        >
+                            <Text
+                                style={[
+                                    styles.buttonText,
+                                    {
+                                        paddingVertical: '2%',
+                                    },
+                                ]}
+                            >
+                                Learn about ELSO
+                            </Text>
+                        </Button>
                     </ImageBackground>
                     <ImageBackground
                         source={require('../assets/navigation/simulators.png')}
@@ -116,17 +124,21 @@ const Menu = ({ navigation }) => {
                             </Text>
                         </View>
                         <Button
-                            navigation={navigation}
-                            screen="Simulators"
-                            text="Go"
-                            containerStyles={{
-                                left: '30%',
+                            onPress={() => navigation.navigate('Simulators')}
+                            style={{
+                                width: '15%',
+                                left: '20%',
                             }}
-                            buttonStyles={{
-                                paddingHorizontal: '15%',
-                                paddingVertical: '2.5%',
-                            }}
-                        />
+                        >
+                            <Text
+                                style={[
+                                    styles.buttonText,
+                                    { paddingVertical: '4.5%' },
+                                ]}
+                            >
+                                Go
+                            </Text>
+                        </Button>
                     </ImageBackground>
                     <ImageBackground
                         source={require('../assets/navigation/clinical-tools.png')}
@@ -140,17 +152,21 @@ const Menu = ({ navigation }) => {
                             </Text>
                         </View>
                         <Button
-                            navigation={navigation}
-                            screen="ClinicalTools"
-                            text="Go"
-                            containerStyles={{
-                                left: '30%',
+                            onPress={() => navigation.navigate('ClinicalTools')}
+                            style={{
+                                width: '15%',
+                                left: '20%',
                             }}
-                            buttonStyles={{
-                                paddingHorizontal: '15%',
-                                paddingVertical: '2.5%',
-                            }}
-                        />
+                        >
+                            <Text
+                                style={[
+                                    styles.buttonText,
+                                    { paddingVertical: '4.5%' },
+                                ]}
+                            >
+                                Go
+                            </Text>
+                        </Button>
                     </ImageBackground>
                 </ScrollView>
             ) : (

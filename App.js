@@ -3,8 +3,6 @@ import { useState } from 'react'
 import { ActivityIndicator, StatusBar, useWindowDimensions } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
-import useOrientation from './src/utils/orientation'
-import DimensionContext from './src/contexts/dimensionContext'
 import FunctionsContext from './src/contexts/functionalitiesContext'
 import CompanyInfo from './src/screens/CompanyInfo'
 import Menu from './src/screens/Menu'
@@ -13,6 +11,8 @@ import PDB from './src/screens/simulators/PDB'
 import Simulators from './src/screens/carousels/Simulators'
 import ClinicalTools from './src/screens/carousels/ClinicalTools'
 import Header from './src/components/header'
+import useOrientation from './src/utils/orientation'
+import DimensionContext from './src/contexts/dimensionContext'
 // import Client from './src/screens/Client'
 // import Server from './src/screens/Server'
 
@@ -24,7 +24,7 @@ const App = () => {
     const maxDimension = isLandscape ? 0.9 * width : 0.9 * height
     const minDimension = isLandscape ? 0.9 * width : 1.05 * width
 
-    // PDB
+    // PDB functionalities
     const [inInterval, setInInterval] = useState(true)
     const [alarmInterval, setAlarmInterval] = useState([-30, 30])
     const [displayValue, setDisplayValue] = useState(15)
@@ -51,23 +51,23 @@ const App = () => {
     }
 
     return (
-        <FunctionsContext.Provider
-            value={{
-                rotations,
-                setRotations,
-                unblocked,
-                setUnblocked,
-                alarmInterval,
-                setAlarmInterval,
-                displayValue,
-                setDisplayValue,
-                inInterval,
-                setInInterval,
-                functionType,
-                setFunctionType,
-            }}
-        >
-            <DimensionContext.Provider value={{ maxDimension, minDimension }}>
+        <DimensionContext.Provider value={{ maxDimension, minDimension }}>
+            <FunctionsContext.Provider
+                value={{
+                    rotations,
+                    setRotations,
+                    unblocked,
+                    setUnblocked,
+                    alarmInterval,
+                    setAlarmInterval,
+                    displayValue,
+                    setDisplayValue,
+                    inInterval,
+                    setInInterval,
+                    functionType,
+                    setFunctionType,
+                }}
+            >
                 <NavigationContainer>
                     <StatusBar barStyle="light-content" />
                     <Stack.Navigator
@@ -99,8 +99,8 @@ const App = () => {
                         <Stack.Group></Stack.Group>
                     </Stack.Navigator>
                 </NavigationContainer>
-            </DimensionContext.Provider>
-        </FunctionsContext.Provider>
+            </FunctionsContext.Provider>
+        </DimensionContext.Provider>
     )
 }
 // <Stack.Screen name="Client" component={Client} />

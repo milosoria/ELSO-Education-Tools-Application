@@ -5,15 +5,14 @@ import {
     Pressable,
     SafeAreaView,
     Text,
-    TouchableHighlight,
     View,
 } from 'react-native'
 import { create } from '../utils/normalize'
 import colors from '../utils/color-palette'
 import fontSizes from '../utils/font-sizes'
 import Icon from 'react-native-vector-icons/AntDesign'
-import { LinearGradient } from 'expo-linear-gradient'
 import useOrientation from '../utils/orientation'
+import { Button } from '../atoms'
 
 const Header = ({ route, navigation }) => {
     const isLandscape = useOrientation()
@@ -57,17 +56,18 @@ const Header = ({ route, navigation }) => {
             borderRadius: 40,
         },
         backButton: {
+            width: isLandscape ? '30%' : '50%',
+            height: isLandscape ? '75%' : '60%',
+            alignSelf: 'flex-start',
+            marginLeft: '5%',
             flexDirection: 'row',
             backgroundColor: colors.secondary.blue,
             borderRadius: 40,
-            paddingVertical: isLandscape ? '1%' : '2%',
-            paddingLeft: isLandscape ? '6%' : '10%',
-            paddingRight: isLandscape ? '10%' : '14%',
         },
         backButtonIcon: {
             color: colors.primary.white,
             alignSelf: 'flex-end',
-            paddingRight: '4%',
+            paddingRight: '10%',
         },
         backButtonText: {
             fontFamily: 'SFPro-Medium',
@@ -75,6 +75,7 @@ const Header = ({ route, navigation }) => {
             color: colors.primary.white,
             fontSize: Platform.isPad ? fontSizes.large : fontSizes.medium,
         },
+        //TODO: fix loz size on iphone by checking status bar height
         logoContainer: {
             justifyContent: 'center',
             paddingBottom: '0.5%',
@@ -94,20 +95,18 @@ const Header = ({ route, navigation }) => {
             <SafeAreaView style={styles.container}>
                 {backButtonVisible ? (
                     <View style={styles.buttonContainer}>
-                        <TouchableHighlight
-                            underlayColor="#FFFFFF"
-                            activeOpacity={0.8}
-                            style={styles.shadowWrap}
+                        <Button
+                            style={styles.backButton}
                             onPress={handleBackPress}
                         >
-                            <LinearGradient
-                                style={styles.backButton}
-                                start={{ x: 0, y: 0 }}
-                                end={{ x: 1, y: 1 }}
-                                colors={[
-                                    colors.primary.blue,
-                                    colors.secondary.blueGradient,
-                                ]}
+                            <View
+                                style={{
+                                    flex:1,
+                                    flexDirection: 'row',
+                                    // paddingVertical: isLandscape ? '1%' : '2%',
+                                    // paddingLeft: isLandscape ? '6%' : '10%',
+                                    // paddingRight: isLandscape ? '10%' : '14%',
+                                }}
                             >
                                 <Icon
                                     name="arrowleft"
@@ -115,8 +114,8 @@ const Header = ({ route, navigation }) => {
                                     style={styles.backButtonIcon}
                                 />
                                 <Text style={styles.backButtonText}>Back</Text>
-                            </LinearGradient>
-                        </TouchableHighlight>
+                            </View>
+                        </Button>
                     </View>
                 ) : (
                     <View style={styles.buttonContainer} />

@@ -3,14 +3,13 @@ import {
     ImageBackground,
     SafeAreaView,
     Text,
-    TouchableHighlight,
     View,
 } from 'react-native'
 import { useCallback } from 'react'
 import colors from '../../utils/color-palette'
 import { create } from '../../utils/normalize'
-import { LinearGradient } from 'expo-linear-gradient'
 import fontSizes from '../../utils/font-sizes'
+import { Button } from '../../atoms/'
 
 const SIMULATORS = [
     {
@@ -113,6 +112,7 @@ const Simulators = ({ navigation }) => {
             borderRadius: 40,
         },
         buttonText: {
+            marginVertical: '2.5%',
             fontFamily: 'SFPro-Medium',
             color: colors.primary.white,
             fontSize: fontSizes.large,
@@ -126,42 +126,18 @@ const Simulators = ({ navigation }) => {
             source={imagePath}
         >
             <View style={styles.cardContainer}>
-                {name ? (
-                    <TouchableHighlight
-                        style={styles.shadowWrap}
-                        underlayColor="#FFFFFF"
-                        activeOpacity={0.8}
-                        onPress={() => navigation.navigate(name)}
-                    >
-                        <LinearGradient
-                            style={styles.button}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 1 }}
-                            colors={[
-                                colors.primary.blue,
-                                colors.secondary.blueGradient,
-                            ]}
-                        >
-                            <Text style={styles.buttonText}>Continue</Text>
-                        </LinearGradient>
-                    </TouchableHighlight>
-                ) : (
-                    <View
-                        style={[
-                            styles.button,
-                            { backgroundColor: colors.secondary.disabled },
-                        ]}
-                    >
-                        <Text style={styles.buttonText}>Continue</Text>
-                    </View>
-                )}
+                <Button
+                    style={{
+                        marginTop: '5%',
+                        width: '55%',
+                    }}
+                    onPress={() => navigation.navigate(name)}
+                >
+                    <Text style={styles.buttonText}>Continue</Text>
+                </Button>
                 <View style={styles.cardInfo}>
-                    <Text style={styles.titleText}>
-                        {name ? name : 'Coming Soon'}
-                    </Text>
-                    <Text style={styles.subTitleText}>
-                        {description ? description : 'New simulators and tools'}
-                    </Text>
+                    <Text style={styles.titleText}>{name}</Text>
+                    <Text style={styles.subTitleText}>{description}</Text>
                 </View>
             </View>
         </ImageBackground>

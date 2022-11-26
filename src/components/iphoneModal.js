@@ -1,7 +1,8 @@
 import { create } from '../utils/normalize'
 import colors from '../utils/color-palette'
-import { Linking, Text, TouchableHighlight, View } from 'react-native'
+import { Linking, Text, View } from 'react-native'
 import fontSizes from '../utils/font-sizes'
+import { Button } from '../atoms'
 
 const Modal = () => {
     const handlePress = () => {
@@ -17,7 +18,7 @@ const Modal = () => {
             backgroundColor: colors.primary.background,
             borderRadius: 40,
             width: '80%',
-            height: '60%',
+            height: '55%',
             flexDirection: 'column',
         },
         modalTitle: {
@@ -62,25 +63,20 @@ const Modal = () => {
     return (
         <View style={styles.container}>
             <View style={styles.iphoneModal}>
-                <Text numberOfLines={2} style={styles.modalTitle}>
+                <Text style={styles.modalTitle}>
                     App not
                     {'\n'}
                     available!
                 </Text>
-                <Text numberOfLines={3} style={styles.modalText}>
+                <Text style={styles.modalText}>
                     This app was designed and intended to be used on iPad
                     devices
                 </Text>
-                <TouchableHighlight
-                    underlayColor="#FFFFFF"
-                    activeOpacity={0.8}
-                    style={styles.shadowWrap}
-                    onPress={handlePress}
-                >
+                <Button style={styles.shadowWrap} onPress={handlePress}>
                     <View style={styles.modalButton}>
                         <Text style={styles.modalButtonText}>Go to ELSO</Text>
                     </View>
-                </TouchableHighlight>
+                </Button>
             </View>
         </View>
     )

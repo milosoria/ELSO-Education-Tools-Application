@@ -1,9 +1,4 @@
-const { makeMetroConfig } = require('@rnx-kit/metro-config')
-const MetroSymlinksResolver = require('@rnx-kit/metro-resolver-symlinks')
+// Learn more https://docs.expo.io/guides/customizing-metro
+const { getDefaultConfig } = require('expo/metro-config')
 
-module.exports = makeMetroConfig({
-    projectRoot: __dirname,
-    resolver: {
-        resolveRequest: MetroSymlinksResolver(),
-    },
-})
+module.exports = getDefaultConfig(__dirname)

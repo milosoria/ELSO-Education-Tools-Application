@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Button, FlatList, Text, TextInput, View } from 'react-native'
+import { FlatList, Text, TextInput } from 'react-native'
 import { NetworkInfo } from 'react-native-network-info'
+import { Box, Button } from '../atoms'
 import netHandler from '../utils/connection'
 
-
-
 const Client = () => {
-
     const [client, setClient] = useState(null)
-    const [chats,] = useState([])
+    const [chats] = useState([])
     const [ip, setIp] = useState('')
 
     useEffect(() => {
@@ -26,32 +24,46 @@ const Client = () => {
     }, [])
 
     return (
-        <View>
-            {ip.length > 0 ? <Text>Client Screen: {ip}</Text> : <Text>Client Screen No ip yet</Text>}
-            <Button title="Stop Client" onPress={() => {
-                if (client) {
-                    client.destroy()
-                    setClient(null)
-                }
-            }} />
-            {client ? <Text>Client is on</Text> : null}
+        <Box>
+            {ip.length > 0 ? (
+                <Text>Client Screen: {ip}</Text>
+            ) : (
+                <Text>Client Screen No ip yet</Text>
+            )}
+            <Button
+                onPress={() => {
+                    if (client) {
+                        client.destroy()
+                        setClient(null)
+                    }
+                }}
+            >
+                <Text>Stop Client</Text>
+            </Button>
+            {client ? <Text>Client is on!</Text> : null}
             <FlatList
                 data={chats}
                 renderItem={({ item }) => {
-                    return <Text style={{ margin: 10, fontSize: 20 }}>{item.msg}</Text>
+                    return (
+                        <Text style={{ margin: 10, fontSize: 20 }}>
+                            {item.msg}
+                        </Text>
+                    )
                 }}
-                keyExtractor={item => item.id}
+                keyExtractor={(item) => item.id}
             />
-            <TextInput placeholder="Enter a number" placeholderTextColor="black" style={{ margin: 10, borderWidth: 2, color: 'black' }} onSubmitEditing={
-                ({ nativeEvent: { text } }) => {
+            <TextInput
+                placeholder="Enter a number"
+                placeholderTextColor="black"
+                style={{ margin: 10, borderWidth: 2, color: 'black' }}
+                onSubmitEditing={({ nativeEvent: { text } }) => {
                     if (client) {
                         client.write(JSON.stringify({ msg: text, id: 1 }))
                     }
-                }} />
-        </View>
+                }}
+            />
+        </Box>
     )
 }
-
-
 
 export default Client

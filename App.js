@@ -1,6 +1,11 @@
 import { useFonts } from 'expo-font'
 import { useState } from 'react'
-import { ActivityIndicator, StatusBar, useWindowDimensions } from 'react-native'
+import {
+    ActivityIndicator,
+    Platform,
+    StatusBar,
+    useWindowDimensions,
+} from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
 import FunctionsContext from './src/contexts/functionalitiesContext'
@@ -71,6 +76,7 @@ const App = () => {
                 <NavigationContainer>
                     <StatusBar barStyle="light-content" />
                     <Stack.Navigator
+                        initialRouteName={Platform.isPad ? 'Server' : 'Client'}
                         screenOptions={{
                             header: ({ route, navigation }) => (
                                 <Header navigation={navigation} route={route} />

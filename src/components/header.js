@@ -20,11 +20,21 @@ const Header = ({ route, navigation }) => {
     const [backButtonVisible, setBackButtonVisible] = useState(false)
     const [visible, setVisible] = useState(true)
     const { top: statusBarHeight } = useSafeAreaInsets()
-    const height = Platform.isPad
-        ? isLandscape
-            ? '10%'
-            : '8%'
-        : statusBarHeight * 1.5
+    let height
+    if (Platform.isPad) {
+        if (isLandscape) {
+            height = '10%'
+        } else {
+            height = '8%'
+        }
+    } else {
+        if (statusBarHeight > 20) {
+            height = statusBarHeight * 1.5
+        } else {
+            height = statusBarHeight * 2.5
+        }
+    }
+
     useEffect(() => {
         navigation.canGoBack()
             ? setBackButtonVisible(true)
@@ -107,9 +117,6 @@ const Header = ({ route, navigation }) => {
                                 style={{
                                     flex: 1,
                                     flexDirection: 'row',
-                                    // paddingVertical: isLandscape ? '1%' : '2%',
-                                    // paddingLeft: isLandscape ? '6%' : '10%',
-                                    // paddingRight: isLandscape ? '10%' : '14%',
                                 }}
                             >
                                 <Icon

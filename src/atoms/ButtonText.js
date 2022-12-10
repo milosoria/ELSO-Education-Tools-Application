@@ -3,7 +3,6 @@ import colors from '../utils/color-palette'
 import fontSizes from '../utils/font-sizes'
 
 const ButtonText = (props) => {
-    console.log(props.text)
     return (
         <Text
             style={[

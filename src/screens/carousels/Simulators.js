@@ -64,6 +64,7 @@ const Simulators = ({ navigation }) => {
         subTitleText: {
             color: colors.primary.white,
             fontSize: fontSizes.medium,
+            // TODO: fix font
             fontWeight: '300',
             fontFamily: 'SFPro-Regular',
         },

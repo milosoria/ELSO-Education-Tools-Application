@@ -34,6 +34,7 @@ const Modal = () => {
             top: '8%',
             left: '8%',
             fontSize: 20,
+            // TODO: fix font
             fontWeight: '400',
         },
         shadowWrap: {
@@ -55,6 +56,7 @@ const Modal = () => {
         },
         modalButtonText: {
             fontSize: fontSizes.body,
+            // TODO: fix font
             fontWeight: '600',
             color: 'white',
             paddingHorizontal: '15%',

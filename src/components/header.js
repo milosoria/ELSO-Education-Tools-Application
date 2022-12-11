@@ -1,23 +1,28 @@
 import { useEffect, useState } from 'react'
-import {
-    Image,
-    Platform,
-    Pressable,
-    SafeAreaView,
-    Text,
-    View,
-} from 'react-native'
+import { Platform, SafeAreaView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { create } from '../utils/normalize'
 import colors from '../utils/color-palette'
-import fontSizes from '../utils/font-sizes'
 import Icon from 'react-native-vector-icons/AntDesign'
 import useOrientation from '../utils/orientation'
 import { Button } from '../atoms'
-import normalize from '../utils/normalize'
+import {
+    Box,
+    Image,
+    Pressable,
+    Text,
+    useBreakpointValue,
+    useToken,
+} from 'native-base'
 
 const Header = ({ route, navigation }) => {
+    const [darkBg] = useToken('colors', ['primary.black.100'])
     const isLandscape = useOrientation()
+    const backIconSize = useBreakpointValue({
+        base: 25,
+        lg: isLandscape ? 25 : 35,
+        xl: 30,
+    })
     const [backButtonVisible, setBackButtonVisible] = useState(false)
     const [visible, setVisible] = useState(true)
     const { top: statusBarHeight } = useSafeAreaInsets()
@@ -57,43 +62,12 @@ const Header = ({ route, navigation }) => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             height,
-            backgroundColor: colors.primary.darkHeader,
-        },
-        buttonContainer: {
-            flex: 1,
-            alignItems: 'flex-start',
-            justifyContent: 'center',
-        },
-        shadowWrap: {
-            marginLeft: '5%',
-            alignSelf: 'flex-start',
-            shadowOpacity: 0.3,
-            shadowOffset: { width: 4, height: 4 },
-            borderRadius: 40,
-        },
-        backButton: {
-            width: isLandscape ? '30%' : '50%',
-            height: isLandscape ? '60%' : '60%',
-            alignSelf: 'flex-start',
-            marginLeft: '5%',
-            flexDirection: 'row',
-            backgroundColor: colors.secondary.blue,
-            borderRadius: 40,
+            backgroundColor: darkBg,
         },
         backButtonIcon: {
             color: colors.primary.white,
             alignSelf: 'center',
-            paddingRight: '10%',
-        },
-        backButtonText: {
-            fontFamily: 'SFPro-Medium',
-            alignSelf: 'center',
-            color: colors.primary.white,
-            fontSize: Platform.isPad ? fontSizes.large : fontSizes.medium,
-        },
-        logoContainer: {
-            justifyContent: 'center',
-            paddingBottom: '0.5%',
+            paddingRight: isLandscape ? '5%' : '10%',
         },
         logo: {
             height: '90%',
@@ -109,39 +83,59 @@ const Header = ({ route, navigation }) => {
         visible && (
             <SafeAreaView style={styles.container}>
                 {backButtonVisible ? (
-                    <View style={styles.buttonContainer}>
+                    <Box
+                        flex={1}
+                        alignItems="flex-start"
+                        justifyContent="center"
+                    >
                         <Button
-                            style={styles.backButton}
+                            style={{
+                                alignSelf: 'flex-start',
+                                width: isLandscape ? '30%' : '40%',
+                                marginLeft: 20,
+                            }}
                             onPress={handleBackPress}
                         >
-                            <View
-                                style={{
-                                    flex: 1,
-                                    flexDirection: 'row',
-                                }}
-                            >
+                            <Box flexDirection="row">
                                 <Icon
                                     name="arrowleft"
-                                    size={normalize(25)}
+                                    size={backIconSize}
                                     style={styles.backButtonIcon}
                                 />
-                                <Text style={styles.backButtonText}>Back</Text>
-                            </View>
+
+                                <Text
+                                    color="white"
+                                    fontSize={{
+                                        base: isLandscape ? 'md' : 'xl',
+                                        lg: isLandscape ? 'xl' : '2xl',
+                                        xl: isLandscape ? '2xl' : '2xl',
+                                    }}
+                                    fontWeight="600"
+                                >
+                                    Back
+                                </Text>
+                            </Box>
                         </Button>
-                    </View>
+                    </Box>
                 ) : (
-                    <View style={styles.buttonContainer} />
+                    <Box
+                        flex={1}
+                        alignItems="flex-start"
+                        justifyContent="center"
+                    />
                 )}
                 <Pressable
                     onPress={handleBackHome}
-                    style={styles.logoContainer}
+                    justifyContent="center"
+                    paddingBottom="0.5%"
                 >
                     <Image
+                        alt="logo"
                         source={require('../../assets/header-logo.png')}
                         style={styles.logo}
                     />
                 </Pressable>
-                <View style={styles.buttonContainer} />
+                <Box flex={1} alignItems="flex-start" justifyContent="center" />
             </SafeAreaView>
         )
     )

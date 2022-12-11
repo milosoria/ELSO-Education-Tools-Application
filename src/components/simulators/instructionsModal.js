@@ -42,6 +42,7 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
             textAlign: 'center',
         },
         title: {
+            // TODO: fix font
             fontWeight: '700',
             fontFamily: 'SFPro-Bold',
             fontSize: fontSizes.body,

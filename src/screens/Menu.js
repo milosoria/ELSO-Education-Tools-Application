@@ -5,17 +5,16 @@ import {
     Platform,
     SafeAreaView,
     ScrollView,
-    Text,
-    View,
 } from 'react-native'
 import Modal from '../components/iphoneModal'
-import fontSizes from '../utils/font-sizes'
 import { Button } from '../atoms/'
+import useOrientation from '../utils/orientation'
+import { Box, Text } from 'native-base'
 
 // TODO: fix scrolling
 const Menu = ({ navigation }) => {
     const { isPad } = Platform
-
+    const isLandscape = useOrientation()
     const styles = create({
         image: {
             borderRadius: 15,
@@ -29,7 +28,7 @@ const Menu = ({ navigation }) => {
             flex: 1,
         },
         card: {
-            height: '60%',
+            height: '65%',
             width: '100%',
             marginVertical: '2%',
             flexDirection: 'row',
@@ -38,34 +37,6 @@ const Menu = ({ navigation }) => {
             shadowOffset: { width: 2, height: 4 },
             opacity: 0.8,
         },
-        title: {
-            alignItems: 'flex-start',
-            width: '50%',
-            marginLeft: '6%',
-            marginBottom: '5%',
-        },
-        titleText: {
-            fontFamily: 'SFPro-Semibold',
-            color: colors.primary.white,
-            fontSize: fontSizes.subtitles,
-        },
-        subTitleText: {
-            fontFamily: 'SFPro-Medium',
-            color: colors.primary.white,
-            fontSize: fontSizes.medium,
-            marginTop: '2%',
-        },
-        companyInfoTitle: {
-            alignSelf: 'flex-start',
-            width: '50%',
-            marginLeft: '6%',
-            marginTop: '8%',
-        },
-        buttonText: {
-            color: colors.primary.white,
-            fontSize: fontSizes.body,
-            fontFamily: 'SFPro-Medium',
-        },
     })
 
     return (
@@ -73,7 +44,7 @@ const Menu = ({ navigation }) => {
             {isPad ? (
                 <ScrollView
                     showsVerticalScrollIndicator={false}
-                    style={{ width: '90%' }}
+                    style={{ width: isLandscape ? '80%' : '90%' }}
                     scrollToOverflowEnabled={true}
                 >
                     <ImageBackground
@@ -86,72 +57,119 @@ const Menu = ({ navigation }) => {
                             },
                         ]}
                     >
-                        <View style={styles.companyInfoTitle}>
-                            <Text style={styles.titleText}>
+                        <Box
+                            alignSelf="flex-start"
+                            marginLeft="12"
+                            marginTop="12"
+                        >
+                            <Text
+                                maxW={{
+                                    base: 'md',
+                                    lg: 'lg',
+                                }}
+                                fontFamily="body"
+                                color="white"
+                                lineHeight="sm"
+                                fontSize={{
+                                    base: '3xl',
+                                    lg: '4xl',
+                                }}
+                                fontWeight="600"
+                            >
                                 Welcome to ELSO educational tools app!
                             </Text>
-                        </View>
+                        </Box>
                         <Button
                             disabled={true}
                             // onPress={() => navigation.navigate('CompanyInfo')}
                             style={{
                                 top: '10%',
-                                width: '50%',
+                                width: '40%',
                             }}
-                        >
-                            <Text
-                                style={[
-                                    styles.buttonText,
-                                    {
-                                        paddingVertical: '2%',
-                                    },
-                                ]}
-                            >
-                                Learn about ELSO
-                            </Text>
-                        </Button>
+                            text="Learn about ELSO"
+                        />
                     </ImageBackground>
                     <ImageBackground
                         source={require('../assets/navigation/simulators.png')}
                         imageStyle={styles.image}
                         style={styles.card}
                     >
-                        <View style={styles.title}>
-                            <Text style={styles.titleText}>
+                        <Box
+                            width="50%"
+                            alignItems="flex-start"
+                            marginLeft="12"
+                        >
+                            <Text
+                                maxW={{
+                                    base: 'xs',
+                                    lg: 'md',
+                                }}
+                                fontFamily="body"
+                                color="white"
+                                lineHeight="sm"
+                                fontSize={{
+                                    base: '3xl',
+                                    lg: '4xl',
+                                }}
+                                fontWeight="600"
+                            >
                                 ECMO Machines Simulators
                             </Text>
-                            <Text style={styles.subTitleText}>
+                            <Text
+                                fontSize={{
+                                    base: 'md',
+                                    lg: 'xl',
+                                }}
+                                fontWeight="400"
+                            >
                                 Air-Oxygen Blender - Pressure Display Box
                             </Text>
-                        </View>
+                        </Box>
                         <Button
                             onPress={() => navigation.navigate('Simulators')}
                             style={{
                                 width: '15%',
                                 left: '20%',
                             }}
-                        >
-                            <Text
-                                style={[
-                                    styles.buttonText,
-                                    { paddingVertical: '4.5%' },
-                                ]}
-                            >
-                                Go
-                            </Text>
-                        </Button>
+                            text="Go"
+                        />
                     </ImageBackground>
                     <ImageBackground
                         source={require('../assets/navigation/clinical-tools.png')}
                         imageStyle={styles.image}
                         style={styles.card}
                     >
-                        <View style={styles.title}>
-                            <Text style={styles.titleText}>Clinical Tools</Text>
-                            <Text style={styles.subTitleText}>
+                        <Box
+                            width="50%"
+                            alignItems="flex-start"
+                            marginLeft="12"
+                        >
+                            <Text
+                                maxW={{
+                                    base: 'xs',
+                                    lg: 'md',
+                                }}
+                                fontFamily="body"
+                                color="white"
+                                lineHeight="sm"
+                                fontSize={{
+                                    base: '3xl',
+                                    lg: '4xl',
+                                }}
+                                fontWeight="600"
+                            >
+                                Clinical Tools
+                            </Text>
+                            <Text
+                                fontSize={{
+                                    base: 'md',
+                                    lg: 'xl',
+                                }}
+                                fontWeight="400"
+                            >
                                 Suggestive Canula
                             </Text>
-                        </View>
+                        </Box>
                         <Button
                             disabled={true}
                             // onPress={() => navigation.navigate('ClinicalTools')}
@@ -159,16 +177,8 @@ const Menu = ({ navigation }) => {
                                 width: '15%',
                                 left: '20%',
                             }}
-                        >
-                            <Text
-                                style={[
-                                    styles.buttonText,
-                                    { paddingVertical: '4.5%' },
-                                ]}
-                            >
-                                Go
-                            </Text>
-                        </Button>
+                            text="Go"
+                        />
                     </ImageBackground>
                 </ScrollView>
             ) : (

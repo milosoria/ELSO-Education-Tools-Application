@@ -1,4 +1,4 @@
-import { Dimensions, Image, ImageBackground } from 'react-native'
+import { Image, ImageBackground, useWindowDimensions } from 'react-native'
 import Animated, {
     interpolate,
     useAnimatedStyle,
@@ -12,7 +12,7 @@ import { useContext } from 'react'
 const ROOTPATH = '../../../assets/blender'
 
 const Meter = ({ type }) => {
-    const { width } = Dimensions.get('screen')
+    const { width } = useWindowDimensions()
     const { maxDimension } = useContext(DimensionContext)
     // Images' Paths
     const backgroundPath = require(`${ROOTPATH}/background.png`)

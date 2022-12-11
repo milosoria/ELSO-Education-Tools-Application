@@ -1,8 +1,9 @@
 import colors from '../utils/color-palette'
-import { TouchableHighlight } from 'react-native'
+import { TouchableHighlight, View } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 
 const Button = (props) => {
+    const disabled = props.disabled || false
     return (
         <TouchableHighlight
             underlayColor="#FFFFFF"
@@ -21,19 +22,36 @@ const Button = (props) => {
             ]}
             onPress={props.onPress}
         >
-            <LinearGradient
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                style={{
-                    flex: 1,
-                    borderRadius: 40,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}
-                colors={[colors.primary.blue, colors.secondary.blueGradient]}
-            >
-                {props.children}
-            </LinearGradient>
+            {disabled ? (
+                <View
+                    style={{
+                        flex: 1,
+                        borderRadius: 40,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: colors.secondary.disabled,
+                    }}
+                >
+                    {props.children}
+                </View>
+            ) : (
+                <LinearGradient
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                    style={{
+                        flex: 1,
+                        borderRadius: 40,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                    colors={[
+                        colors.primary.blue,
+                        colors.secondary.blueGradient,
+                    ]}
+                >
+                    {props.children}
+                </LinearGradient>
+            )}
         </TouchableHighlight>
     )
 }

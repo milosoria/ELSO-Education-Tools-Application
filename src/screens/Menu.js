@@ -92,7 +92,8 @@ const Menu = ({ navigation }) => {
                             </Text>
                         </View>
                         <Button
-                            onPress={() => navigation.navigate('CompanyInfo')}
+                            disabled={true}
+                            // onPress={() => navigation.navigate('CompanyInfo')}
                             style={{
                                 top: '10%',
                                 width: '50%',
@@ -152,7 +153,8 @@ const Menu = ({ navigation }) => {
                             </Text>
                         </View>
                         <Button
-                            onPress={() => navigation.navigate('ClinicalTools')}
+                            disabled={true}
+                            // onPress={() => navigation.navigate('ClinicalTools')}
                             style={{
                                 width: '15%',
                                 left: '20%',

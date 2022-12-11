@@ -1,4 +1,4 @@
-import { Image, ImageBackground } from 'react-native'
+import { Dimensions, Image, ImageBackground } from 'react-native'
 import Animated, {
     interpolate,
     useAnimatedStyle,
@@ -10,7 +10,9 @@ import DimensionContext from '../../../contexts/dimensionContext'
 import { useContext } from 'react'
 
 const ROOTPATH = '../../../assets/blender'
+
 const Meter = ({ type }) => {
+    const { width } = Dimensions.get('screen')
     const { maxDimension } = useContext(DimensionContext)
     // Images' Paths
     const backgroundPath = require(`${ROOTPATH}/background.png`)
@@ -26,7 +28,6 @@ const Meter = ({ type }) => {
     const degRange = [0, 720]
     const ticksRange = [0, maxDimension * 0.46]
     const knobSize = maxDimension * 0.1
-
     const rotation = useSharedValue(0)
     const animatedStyle = useAnimatedStyle(() => {
         const translation = interpolate(rotation.value, degRange, ticksRange)
@@ -45,7 +46,8 @@ const Meter = ({ type }) => {
             shadowOpacity: 0.3,
             height: maxDimension * 0.6,
             width: maxDimension * 0.15,
-            marginHorizontal: maxDimension * 0.015,
+            marginHorizontal:
+                width < 800 ? maxDimension * 0.01 : maxDimension * 0.015,
         },
         bubble: {
             resizeMode: 'stretch',

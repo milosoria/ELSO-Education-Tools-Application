@@ -14,6 +14,7 @@ import fontSizes from '../utils/font-sizes'
 import Icon from 'react-native-vector-icons/AntDesign'
 import useOrientation from '../utils/orientation'
 import { Button } from '../atoms'
+import normalize from '../utils/normalize'
 
 const Header = ({ route, navigation }) => {
     const isLandscape = useOrientation()
@@ -72,7 +73,7 @@ const Header = ({ route, navigation }) => {
         },
         backButton: {
             width: isLandscape ? '30%' : '50%',
-            height: isLandscape ? '75%' : '60%',
+            height: isLandscape ? '60%' : '60%',
             alignSelf: 'flex-start',
             marginLeft: '5%',
             flexDirection: 'row',
@@ -121,7 +122,7 @@ const Header = ({ route, navigation }) => {
                             >
                                 <Icon
                                     name="arrowleft"
-                                    size={30}
+                                    size={normalize(25)}
                                     style={styles.backButtonIcon}
                                 />
                                 <Text style={styles.backButtonText}>Back</Text>

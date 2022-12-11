@@ -10,6 +10,7 @@ import colors from '../../utils/color-palette'
 import { create } from '../../utils/normalize'
 import fontSizes from '../../utils/font-sizes'
 import { Button } from '../../atoms/'
+import useOrientation from '../../utils/orientation'
 
 const SIMULATORS = [
     {
@@ -27,6 +28,7 @@ const SIMULATORS = [
 ]
 
 const Simulators = ({ navigation }) => {
+    const isLandscape = useOrientation()
     const styles = create({
         container: {
             backgroundColor: colors.primary.darkBackground,
@@ -43,8 +45,8 @@ const Simulators = ({ navigation }) => {
         },
         item: {
             borderRadius: 10,
-            width: '65%',
-            height: '70%',
+            width: isLandscape ? '55%' : '65%',
+            height: isLandscape ? '85%' : '70%',
             shadowOpacity: 0.2,
             shadowOffset: { height: 4, width: 4 },
         },
@@ -71,7 +73,6 @@ const Simulators = ({ navigation }) => {
         },
         listView: {
             flex: 1,
-            //TODO: fix this
             left: '11%',
             flexDirection: 'row',
             alignItems: 'center',

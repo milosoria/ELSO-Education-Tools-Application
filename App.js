@@ -97,7 +97,6 @@ const App = () => {
                                 component={ClinicalTools}
                             />
                         </Stack.Group>
-                        <Stack.Group></Stack.Group>
                     </Stack.Navigator>
                 </NavigationContainer>
             </FunctionsContext.Provider>

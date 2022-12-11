@@ -2,7 +2,7 @@
     "name": "ELSOapp",
     "version": "1.0.4",
     "scripts": {
-        "start": "expo start --dev-client",
+        "start": "expo start",
         "startdev": "expo start --dev-client",
         "android": "expo run:android",
         "ios": "expo run:ios",

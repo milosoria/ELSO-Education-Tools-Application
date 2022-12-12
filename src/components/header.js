@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { Platform, SafeAreaView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { create } from '../utils/normalize'
-import colors from '../utils/color-palette'
 import Icon from 'react-native-vector-icons/AntDesign'
 import useOrientation from '../utils/orientation'
 import { Button } from '../atoms'
@@ -16,7 +15,10 @@ import {
 } from 'native-base'
 
 const Header = ({ route, navigation }) => {
-    const [darkBg] = useToken('colors', ['primary.black.100'])
+    const [darkBg, iconColor] = useToken('colors', [
+        'primary.black.100',
+        'primary.gray.50',
+    ])
     const isLandscape = useOrientation()
     const backIconSize = useBreakpointValue({
         base: 25,
@@ -65,7 +67,7 @@ const Header = ({ route, navigation }) => {
             backgroundColor: darkBg,
         },
         backButtonIcon: {
-            color: colors.primary.white,
+            color: iconColor,
             alignSelf: 'center',
             paddingRight: isLandscape ? '5%' : '10%',
         },

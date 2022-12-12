@@ -1,23 +1,18 @@
 import { create } from '../utils/normalize'
-import colors from '../utils/color-palette'
-import {
-    ImageBackground,
-    Platform,
-    SafeAreaView,
-    ScrollView,
-} from 'react-native'
+import { ImageBackground, Platform, ScrollView } from 'react-native'
 import Modal from '../components/iphoneModal'
 import { Button } from '../atoms/'
 import useOrientation from '../utils/orientation'
-import { Box, Text, useBreakpointValue } from 'native-base'
+import { Box, Text, useBreakpointValue, useToken } from 'native-base'
 
-// TODO: fix scrolling
 const Menu = ({ navigation }) => {
     const { isPad } = Platform
+    const [darkBg] = useToken('colors', ['primary.black.50'])
     const isLandscape = useOrientation()
     const cardHeight = useBreakpointValue({
-        base: '70%',
-        lg: '75%',
+        base: isLandscape ? 300 : 250,
+        lg: isLandscape ? 300 : 300,
+        xl: isLandscape ? 350 : 350,
     })
     const styles = create({
         image: {
@@ -26,9 +21,8 @@ const Menu = ({ navigation }) => {
             height: '100%',
         },
         container: {
-            backgroundColor: colors.primary.darkBackground,
+            backgroundColor: darkBg,
             alignItems: 'center',
-            justifyContent: 'center',
             flex: 1,
         },
         card: {
@@ -44,11 +38,17 @@ const Menu = ({ navigation }) => {
     })
 
     return (
-        <SafeAreaView style={styles.container}>
+        <Box style={styles.container}>
             {isPad ? (
                 <ScrollView
                     showsVerticalScrollIndicator={false}
-                    style={{ width: isLandscape ? '80%' : '90%' }}
+                    style={{
+                        alignSelf: 'center',
+                        width: isLandscape ? '80%' : '90%',
+                    }}
+                    contentContainerStyle={{
+                        flexGrow: 1,
+                    }}
                 >
                     <ImageBackground
                         source={require('../assets/navigation/company-info.png')}
@@ -187,7 +187,7 @@ const Menu = ({ navigation }) => {
             ) : (
                 <Modal />
             )}
-        </SafeAreaView>
+        </Box>
     )
 }
 

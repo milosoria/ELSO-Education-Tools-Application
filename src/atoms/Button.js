@@ -58,8 +58,8 @@ const Button = (props) => {
                         color="white"
                         fontSize={{
                             base: isLandscape ? 'md' : 'xl',
-                            lg: isLandscape ? 'xl' : '2xl',
-                            xl: isLandscape ? '2xl' : '2xl',
+                            lg: isLandscape ? '2xl' : '2xl',
+                            xl: isLandscape ? '3xl' : '2xl',
                         }}
                         fontWeight="600"
                     >

@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { FlatList, Text, View } from 'react-native'
 import netHandler from '../utils/connection'
 import { Box, Button, ButtonText } from '../atoms'
-import fontSizes from '../utils/font-sizes'
 
 const Server = () => {
     const [server, setServer] = useState(null)
@@ -35,7 +34,7 @@ const Server = () => {
             <Box>
                 <Text
                     style={{
-                        fontSize: fontSizes.titles,
+                        fontSize: 25,
                         marginBottom: '2%',
                     }}
                 >
@@ -69,7 +68,7 @@ const Server = () => {
                     <Text
                         style={{
                             marginTop: '2.5%',
-                            fontSize: fontSizes.body,
+                            fontSize: 20,
                         }}
                     >
                         {' '}

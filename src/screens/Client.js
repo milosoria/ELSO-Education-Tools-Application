@@ -3,7 +3,6 @@ import { FlatList, Text, TextInput, View } from 'react-native'
 import { NetworkInfo } from 'react-native-network-info'
 import { Box, Button, ButtonText } from '../atoms'
 import netHandler from '../utils/connection'
-import fontSizes from '../utils/font-sizes'
 
 const Client = () => {
     const [client, setClient] = useState(null)
@@ -32,7 +31,7 @@ const Client = () => {
             <Box>
                 <Text
                     style={{
-                        fontSize: fontSizes.titles,
+                        fontSize: 25,
                         marginBottom: '2%',
                     }}
                 >
@@ -72,7 +71,7 @@ const Client = () => {
                 {client && ip ? (
                     <Text
                         style={{
-                            fontSize: fontSizes.body,
+                            fontSize: 20,
                             marginTop: '2.5%',
                         }}
                     >
@@ -83,7 +82,7 @@ const Client = () => {
                     placeholder="Enter a message"
                     placeholderTextColor="black"
                     style={{
-                        fontSize: fontSizes.body,
+                        fontSize: 20,
                         margin: 10,
                         borderWidth: 2,
                         color: 'black',

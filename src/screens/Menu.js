@@ -9,12 +9,16 @@ import {
 import Modal from '../components/iphoneModal'
 import { Button } from '../atoms/'
 import useOrientation from '../utils/orientation'
-import { Box, Text } from 'native-base'
+import { Box, Text, useBreakpointValue } from 'native-base'
 
 // TODO: fix scrolling
 const Menu = ({ navigation }) => {
     const { isPad } = Platform
     const isLandscape = useOrientation()
+    const cardHeight = useBreakpointValue({
+        base: '70%',
+        lg: '75%',
+    })
     const styles = create({
         image: {
             borderRadius: 15,
@@ -28,7 +32,7 @@ const Menu = ({ navigation }) => {
             flex: 1,
         },
         card: {
-            height: '65%',
+            height: cardHeight,
             width: '100%',
             marginVertical: '2%',
             flexDirection: 'row',
@@ -45,7 +49,6 @@ const Menu = ({ navigation }) => {
                 <ScrollView
                     showsVerticalScrollIndicator={false}
                     style={{ width: isLandscape ? '80%' : '90%' }}
-                    scrollToOverflowEnabled={true}
                 >
                     <ImageBackground
                         source={require('../assets/navigation/company-info.png')}
@@ -83,7 +86,7 @@ const Menu = ({ navigation }) => {
                             disabled={true}
                             // onPress={() => navigation.navigate('CompanyInfo')}
                             style={{
-                                top: '10%',
+                                top: '14%',
                                 width: '40%',
                             }}
                             text="Learn about ELSO"

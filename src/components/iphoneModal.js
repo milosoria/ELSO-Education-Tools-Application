@@ -1,86 +1,60 @@
-import { create } from '../utils/normalize'
-import colors from '../utils/color-palette'
-import { Linking, Text, View } from 'react-native'
-import fontSizes from '../utils/font-sizes'
+import { Linking } from 'react-native'
 import { Button } from '../atoms'
+import { Box, Text, VStack } from 'native-base'
 
 const Modal = () => {
     const handlePress = () => {
         Linking.openURL('https://www.elso.org/default.aspx')
     }
-    const styles = create({
-        container: {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-        },
-        iphoneModal: {
-            backgroundColor: colors.primary.background,
-            borderRadius: 40,
-            width: '80%',
-            height: '55%',
-            flexDirection: 'column',
-        },
-        modalTitle: {
-            alignSelf: 'flex-start',
-            top: '6%',
-            left: '8%',
-            fontSize: fontSizes.titles,
-            fontWeight: '600',
-        },
-        modalText: {
-            alignSelf: 'flex-start',
-            marginRight: '20%',
-            top: '8%',
-            left: '8%',
-            fontSize: 20,
-            // TODO: fix font
-            fontWeight: '400',
-        },
-        shadowWrap: {
-            alignSelf: 'center',
-            top: '35%',
-            height: '10%',
-            width: '50%',
-            justifyContent: 'center',
-            borderRadius: 40,
-            shadowOpacity: 0.2,
-            shadowOffset: { width: 4, height: 4 },
-        },
-        modalButton: {
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: colors.primary.blue,
-            borderRadius: 40,
-        },
-        modalButtonText: {
-            fontSize: fontSizes.body,
-            // TODO: fix font
-            fontWeight: '600',
-            color: 'white',
-            paddingHorizontal: '15%',
-        },
-    })
     return (
-        <View style={styles.container}>
-            <View style={styles.iphoneModal}>
-                <Text style={styles.modalTitle}>
+        <Box flex={1} justifyContent="center" alignItems="center">
+            <VStack
+                space={8}
+                bg="primary.gray.100"
+                p={10}
+                rounded="3xl"
+                width="85%"
+                height="60%"
+            >
+                <Text
+                    alignSelf="flex-start"
+                    color="primary.black.100"
+                    lineHeight="sm"
+                    fontSize={{
+                        base: '4xl',
+                        lg: '2xl',
+                        xl: '2xl',
+                    }}
+                    fontWeight="700"
+                >
                     App not
                     {'\n'}
                     available!
                 </Text>
-                <Text style={styles.modalText}>
+                <Text
+                    alignSelf="flex-start"
+                    color="primary.black.100"
+                    lineHeight="sm"
+                    fontSize={{
+                        base: '2xl',
+                        lg: '2xl',
+                        xl: '2xl',
+                    }}
+                    fontWeight="400"
+                >
                     This app was designed and intended to be used on iPad
                     devices
                 </Text>
-                <Button style={styles.shadowWrap} onPress={handlePress}>
-                    <View style={styles.modalButton}>
-                        <Text style={styles.modalButtonText}>Go to ELSO</Text>
-                    </View>
-                </Button>
-            </View>
-        </View>
+                <Button
+                    style={{
+                        top: 10,
+                        width: '80%',
+                    }}
+                    text="Go to ELSO"
+                    onPress={handlePress}
+                />
+            </VStack>
+        </Box>
     )
 }
 

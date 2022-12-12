@@ -1,4 +1,4 @@
-import { Image, StyleSheet, TouchableHighlight, View } from 'react-native'
+import { Image, StyleSheet, TouchableHighlight, Box } from 'react-native'
 import { useContext, useState } from 'react'
 import InstructionsModal from '../../components/simulators/instructionsModal'
 import CenterPannel from '../../components/simulators/pdb/centerPannel'
@@ -16,10 +16,10 @@ const PDB = () => {
     }
     return (
         <>
-            <View style={styles.container}>
+            <Box style={styles.container}>
                 <CenterPannel dimension={dimension} />
                 <RightPannel dimension={dimension} />
-            </View>
+            </Box>
             <TouchableHighlight
                 underlayColor={colors.primary.background}
                 activeOpacity={0.8}

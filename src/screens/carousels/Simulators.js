@@ -1,16 +1,8 @@
-import {
-    FlatList,
-    ImageBackground,
-    SafeAreaView,
-    Text,
-    View,
-} from 'react-native'
-import { useCallback } from 'react'
-import colors from '../../utils/color-palette'
+import { ImageBackground, SafeAreaView, ScrollView } from 'react-native'
 import { create } from '../../utils/normalize'
-import fontSizes from '../../utils/font-sizes'
 import { Button } from '../../atoms/'
 import useOrientation from '../../utils/orientation'
+import { Box, Text, VStack, useBreakpointValue, useToken } from 'native-base'
 
 const SIMULATORS = [
     {
@@ -28,25 +20,33 @@ const SIMULATORS = [
 ]
 
 const Simulators = ({ navigation }) => {
+    const [darkBg] = useToken('colors', ['primary.black.50'])
     const isLandscape = useOrientation()
+    const itemHeight = useBreakpointValue({
+        base: isLandscape ? 280 : 320,
+        md: isLandscape ? 300 : 350,
+        lg: isLandscape ? 300 : 450,
+        xl: isLandscape ? 400 : 450,
+    })
+    const itemWidth = useBreakpointValue({
+        base: isLandscape ? 200 : 250,
+        md: isLandscape ? 230 : 280,
+        lg: isLandscape ? 280 : 350,
+        xl: isLandscape ? 350 : 350,
+    })
     const styles = create({
         container: {
-            backgroundColor: colors.primary.darkBackground,
+            backgroundColor: darkBg,
             flex: 1,
         },
         info: {
             height: '40%',
-            backgroundColor: colors.primary.darkBackground,
-        },
-        cardContainer: {
-            flexDirection: 'column-reverse',
-            flex: 1,
-            top: '5%',
+            backgroundColor: darkBg,
         },
         item: {
             borderRadius: 10,
-            width: isLandscape ? '55%' : '65%',
-            height: isLandscape ? '85%' : '70%',
+            width: itemWidth,
+            height: itemHeight,
             shadowOpacity: 0.2,
             shadowOffset: { height: 4, width: 4 },
         },
@@ -56,96 +56,76 @@ const Simulators = ({ navigation }) => {
             borderRadius: 8,
             resizeMode: 'cover',
         },
-        titleText: {
-            color: colors.primary.white,
-            fontSize: fontSizes.subtitles,
-            fontFamily: 'SFPro-Bold',
-        },
-        subTitleText: {
-            color: colors.primary.white,
-            fontSize: fontSizes.medium,
-            // TODO: fix font
-            fontWeight: '300',
-            fontFamily: 'SFPro-Regular',
-        },
-        cardInfo: {
-            marginLeft: '10%',
-            marginBottom: '2.5%',
-        },
         listView: {
-            flex: 1,
-            left: '11%',
+            width: '100%',
             flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'space-around',
-            flexGrow: 1,
-        },
-        titleContainer: {
-            marginLeft: '5%',
-            marginBottom: '5%',
-            flex: 1,
-            flexDirection: 'column-reverse',
-        },
-        mainTitle: {
-            color: colors.primary.white,
-            fontSize: fontSizes.titles,
-            fontFamily: 'SFPro-Bold',
-        },
-        mainSubTitle: {
-            color: colors.primary.white,
-            fontSize: fontSizes.body,
-            fontFamily: 'SFPro-Medium',
-        },
-        shadowWrap: {
-            shadowOpacity: 0.2,
-            shadowOffset: { width: 4, height: 4 },
-            marginTop: '5%',
-            width: '60%',
-            alignSelf: 'center',
-            flexDirection: 'row',
-            borderRadius: 40,
-        },
-        button: {
-            alignSelf: 'center',
-            alignItems: 'center',
-            flex: 1,
-            paddingVertical: '4%',
-            paddingHorizontal: '10%',
-            borderRadius: 40,
-        },
-        buttonText: {
-            marginVertical: '2.5%',
-            fontFamily: 'SFPro-Medium',
-            color: colors.primary.white,
-            fontSize: fontSizes.large,
+            justifyContent: 'space-evenly',
         },
     })
-
     const Item = ({ name, description, imagePath }) => (
         <ImageBackground
             style={styles.item}
             imageStyle={styles.background}
             source={imagePath}
         >
-            <View style={styles.cardContainer}>
+            <VStack
+                pb={{
+                    base: isLandscape ? 4 : 6,
+                    md: isLandscape ? 1 : 6,
+                    lg: isLandscape ? 4 : 8,
+                    xl: isLandscape ? 5 : 8,
+                }}
+                pl={5}
+                space={{
+                    base: isLandscape ? 1 : 2,
+                    md: isLandscape ? 1 : 3,
+                    lg: isLandscape ? 1 : 4,
+                    xl: isLandscape ? 3 : 4,
+                }}
+                flexDirection="column-reverse"
+                flex={1}
+            >
                 <Button
                     style={{
-                        marginTop: '5%',
                         width: '55%',
                     }}
                     onPress={() => navigation.navigate(name)}
-                >
-                    <Text style={styles.buttonText}>Continue</Text>
-                </Button>
-                <View style={styles.cardInfo}>
-                    <Text style={styles.titleText}>{name}</Text>
-                    <Text style={styles.subTitleText}>{description}</Text>
-                </View>
-            </View>
+                    text="Continue"
+                />
+                <Box ml={2.5} mb={2}>
+                    <Text
+                        fontFamily="body"
+                        color="white"
+                        lineHeight="sm"
+                        fontSize={{
+                            base: isLandscape ? '3xl' : '3xl',
+                            md: isLandscape ? '3xl' : '4xl',
+                            lg: isLandscape ? '3xl' : '4xl',
+                            xl: isLandscape ? '4xl' : '5xl',
+                        }}
+                        fontWeight="600"
+                    >
+                        {name}
+                    </Text>
+                    <Text
+                        fontFamily="body"
+                        color="white"
+                        lineHeight="sm"
+                        fontSize={{
+                            base: isLandscape ? 'lg' : 'lg',
+                            md: isLandscape ? 'xl' : 'xl',
+                            lg: isLandscape ? 'xl' : '2xl',
+                            xl: isLandscape ? '2xl' : '5xl',
+                        }}
+                        fontWeight="300"
+                    >
+                        {description}
+                    </Text>
+                </Box>
+            </VStack>
         </ImageBackground>
     )
-
-    const renderItem = useCallback(({ item }) => <Item {...item} />, [])
 
     return (
         <SafeAreaView style={styles.container}>
@@ -154,20 +134,48 @@ const Simulators = ({ navigation }) => {
                 imageStyle={{ height: '100%', opacity: 0.8 }}
                 style={styles.info}
             >
-                <View style={styles.titleContainer}>
-                    <Text style={styles.mainSubTitle}>
+                <VStack
+                    space={1}
+                    pl={10}
+                    pb={10}
+                    flex={1}
+                    flexDirection="column-reverse"
+                >
+                    <Text
+                        fontFamily="body"
+                        color="white"
+                        lineHeight="sm"
+                        fontSize={{
+                            base: isLandscape ? 'lg' : 'lg',
+                            md: isLandscape ? 'xl' : 'xl',
+                            lg: isLandscape ? 'xl' : '2xl',
+                            xl: isLandscape ? '2xl' : '5xl',
+                        }}
+                        fontWeight="300"
+                    >
                         Scroll and select a simulator
                     </Text>
-                    <Text style={styles.mainTitle}>Simulations</Text>
-                </View>
+                    <Text
+                        fontFamily="body"
+                        color="white"
+                        lineHeight="sm"
+                        fontSize={{
+                            base: isLandscape ? '3xl' : '3xl',
+                            md: isLandscape ? '3xl' : '4xl',
+                            lg: isLandscape ? '3xl' : '5xl',
+                            xl: isLandscape ? '4xl' : '5xl',
+                        }}
+                        fontWeight="600"
+                    >
+                        Simulations
+                    </Text>
+                </VStack>
             </ImageBackground>
-            <FlatList
-                contentContainerStyle={styles.listView}
-                data={SIMULATORS}
-                horizontal
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-            />
+            <ScrollView contentContainerStyle={styles.listView} horizontal>
+                {SIMULATORS.map((item) => (
+                    <Item key={item.id} {...item} />
+                ))}
+            </ScrollView>
         </SafeAreaView>
     )
 }

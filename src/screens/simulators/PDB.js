@@ -1,4 +1,4 @@
-import { View, Image, StyleSheet, TouchableHighlight } from 'react-native'
+import { Image, StyleSheet, TouchableHighlight, View } from 'react-native'
 import { useContext, useState } from 'react'
 import InstructionsModal from '../../components/simulators/instructionsModal'
 import CenterPannel from '../../components/simulators/pdb/centerPannel'

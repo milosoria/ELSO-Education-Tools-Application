@@ -1,36 +1,17 @@
-import { Image, Modal, Text, TouchableOpacity, View } from 'react-native'
+import { Image, Modal, TouchableOpacity } from 'react-native'
 import { create } from '../../utils/normalize'
 import colors from '../../utils/color-palette'
 import fontSizes from '../../utils/font-sizes'
 import { BlurView } from 'expo-blur'
+import { Box, Divider, Text } from 'native-base'
 
 const InstructionsModal = ({ modalVisible, setModalVisible }) => {
     const styles = create({
-        centeredView: {
+        centeredBox: {
             flex: 1,
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-        },
-        image: {
-            resizeMode: 'contain',
-        },
-        modalView: {
-            width: '50%',
-            backgroundColor: colors.primary.white,
-            borderRadius: 8,
-            paddingTop: 25,
-            paddingBottom: 6,
-            alignItems: 'center',
-            shadowOpacity: 0.2,
-            shadowOffset: { width: 4, height: 4 },
-            elevation: 5,
-        },
-        divider: {
-            backgroundColor: colors.primary.gray,
-            opacity: 0.45,
-            width: '100%',
-            height: 0.8,
         },
         button: {
             paddingVertical: 10,
@@ -38,17 +19,6 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
         buttonText: {
             color: colors.primary.blue,
             fontSize: fontSizes.big,
-            fontFamily: 'SFPro-Medium',
-            textAlign: 'center',
-        },
-        title: {
-            // TODO: fix font
-            fontWeight: '700',
-            fontFamily: 'SFPro-Bold',
-            fontSize: fontSizes.body,
-        },
-        subTitle: {
-            fontSize: fontSizes.medium,
             fontFamily: 'SFPro-Medium',
             textAlign: 'center',
         },
@@ -63,25 +33,62 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                 setModalVisible(!modalVisible)
             }}
         >
-            <BlurView intensity={10} tint="light" style={styles.centeredView}>
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text style={styles.title}>Remember</Text>
-                        <Text style={styles.subTitle}>Use two fingers</Text>
+            <BlurView intensity={10} tint="light" style={styles.centeredBox}>
+                <Box
+                    flex={1}
+                    flexDirection="row"
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    <Box
+                        maxW="500"
+                        width="50%"
+                        bg="primary.gray.50"
+                        borderRadius="xl"
+                        pt={25}
+                        alignItems="center"
+                        shadow={5}
+                    >
+                        <Text
+                            color="primary.black.100"
+                            fontWeight="500"
+                            fontFamily="body"
+                            fontSize={{
+                                base: '2xl',
+                                lg: '3xl',
+                            }}
+                        >
+                            Remember
+                        </Text>
+                        <Text
+                            color="primary.black.100"
+                            fontWeight="400"
+                            fontFamily="body"
+                            fontSize={{
+                                base: 'sm',
+                                lg: 'md',
+                            }}
+                        >
+                            Use two fingers
+                        </Text>
                         <Image
                             source={require('../../assets/help/fingers-gesture.png')}
                             style={{ width: '35%' }}
                             resizeMode="contain"
                         />
-                        <View style={styles.divider} />
+                        <Divider
+                            orientation="horizontal"
+                            width="100%"
+                            opacity={0.25}
+                        />
                         <TouchableOpacity
                             style={styles.button}
                             onPress={() => setModalVisible(!modalVisible)}
                         >
                             <Text style={styles.buttonText}>OK</Text>
                         </TouchableOpacity>
-                    </View>
-                </View>
+                    </Box>
+                </Box>
             </BlurView>
         </Modal>
     )

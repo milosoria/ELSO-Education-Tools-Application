@@ -1,12 +1,10 @@
 import { useFonts } from 'expo-font'
-import { ActivityIndicator, Platform } from 'react-native'
+import { ActivityIndicator } from 'react-native'
 import { NativeBaseProvider } from 'native-base'
 import ContextProvider from './src/contexts/context-provider'
 import NavigationContainer from './src/navigation/navigation-container'
 import theme from './theme'
 import { LinearGradient } from 'expo-linear-gradient'
-import * as ScreenOrientation from 'expo-screen-orientation'
-import { useEffect } from 'react'
 
 const App = () => {
     let [fontsLoaded] = useFonts({
@@ -21,17 +19,6 @@ const App = () => {
 
     if (!fontsLoaded) {
         return <ActivityIndicator />
-    }
-
-    if (!Platform.isPad) {
-        console.log('What')
-        ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
-            .then((result) => {
-                console.log(result)
-            })
-            .catch((error) => {
-                console.log(error)
-            })
     }
 
     return (

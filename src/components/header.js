@@ -38,17 +38,17 @@ const Header = ({ route, navigation }) => {
         lg: isLandscape ? 25 : 35,
         xl: 30,
     })
-    // const [backButtonVisible, setBackButtonVisible] = useState(true)
+    const [backButtonVisible, setBackButtonVisible] = useState(false)
     const [visible, setVisible] = useState(true)
     const { top: statusBarHeight } = useSafeAreaInsets()
 
     let height = heightCalc(isLandscape, statusBarHeight)
 
-    // useEffect(() => {
-    //     navigation.canGoBack()
-    //         ? setBackButtonVisible(true)
-    //         : setBackButtonVisible(false)
-    // }, [navigation])
+    useEffect(() => {
+        navigation.canGoBack()
+            ? setBackButtonVisible(true)
+            : setBackButtonVisible(false)
+    }, [navigation])
 
     const styles = {
         container: {
@@ -87,47 +87,56 @@ const Header = ({ route, navigation }) => {
                     backgroundColor: darkBg,
                 }}
             >
-                <Box flex={1} justifyContent="center" alignSelf="center">
-                    <Button
-                        style={{
-                            alignSelf: 'flex-start',
-                            width: styles.button.width,
-                            marginLeft: 20,
-                            bottom: Platform.isPad ? 0 : 2,
-                        }}
-                        onPress={handleBackPress}
-                    >
-                        <Box flexDirection="row">
-                            <Icon
-                                name="arrowleft"
-                                size={arrowSize}
-                                style={{
-                                    color: arrowColor,
-                                    alignSelf: 'center',
-                                    paddingRight: styles.icon.pr,
-                                }}
-                            />
-
-                            {Platform.isPad && (
-                                <Text
-                                    color="white"
-                                    fontSize={{
-                                        base: isLandscape ? 'sm' : 'md',
-                                        md: isLandscape ? 'md' : 'xl',
-                                        lg: isLandscape ? 'xl' : '2xl',
-                                        xl: isLandscape ? '2xl' : '2xl',
+                {backButtonVisible ? (
+                    <Box flex={1} justifyContent="center" alignSelf="center">
+                        <Button
+                            style={{
+                                alignSelf: 'flex-start',
+                                width: styles.button.width,
+                                marginLeft: 20,
+                                bottom: Platform.isPad ? 0 : 2,
+                            }}
+                            onPress={handleBackPress}
+                        >
+                            <Box flexDirection="row">
+                                <Icon
+                                    name="arrowleft"
+                                    size={arrowSize}
+                                    style={{
+                                        color: arrowColor,
+                                        alignSelf: 'center',
+                                        paddingRight: styles.icon.pr,
                                     }}
-                                    fontWeight="600"
-                                >
-                                    Back
-                                </Text>
-                            )}
-                        </Box>
-                    </Button>
-                </Box>
+                                />
+
+                                {Platform.isPad && (
+                                    <Text
+                                        color="white"
+                                        fontSize={{
+                                            base: isLandscape ? 'sm' : 'md',
+                                            md: isLandscape ? 'md' : 'xl',
+                                            lg: isLandscape ? 'xl' : '2xl',
+                                            xl: isLandscape ? '2xl' : '2xl',
+                                        }}
+                                        fontWeight="600"
+                                    >
+                                        Back
+                                    </Text>
+                                )}
+                            </Box>
+                        </Button>
+                    </Box>
+                ) : (
+                    <Box
+                        flex={1}
+                        alignItems="flex-start"
+                        justifyContent="center"
+                    />
+                )}
                 <Pressable
                     onPress={handleBackHome}
                     justifyContent="center"
+                    alignSelf="center"
                     paddingBottom="0.5%"
                 >
                     <Image

@@ -1,14 +1,14 @@
 import { create } from '../utils/normalize'
 import { ImageBackground, Platform, ScrollView } from 'react-native'
-import Modal from '../components/iphoneModal'
 import { Button } from '../atoms/'
 import useOrientation from '../utils/orientation'
 import { Box, Text, useBreakpointValue, useToken } from 'native-base'
 import * as ScreenOrientation from 'expo-screen-orientation'
+import Icon from 'react-native-vector-icons/AntDesign'
 
 const Menu = ({ navigation }) => {
     const { isPad } = Platform
-    // lock screen only for iphone
+    const [arrowColor] = useToken('colors', ['primary.gray.50'])
     if (!isPad)
         ScreenOrientation.lockAsync(
             ScreenOrientation.OrientationLock.PORTRAIT_UP
@@ -16,7 +16,8 @@ const Menu = ({ navigation }) => {
     const [darkBg] = useToken('colors', ['primary.black.50'])
     const isLandscape = useOrientation()
     const cardHeight = useBreakpointValue({
-        base: isLandscape ? 300 : 250,
+        base: '25%',
+        md: isLandscape ? 300 : 250,
         lg: isLandscape ? 300 : 300,
         xl: isLandscape ? 350 : 350,
     })
@@ -26,15 +27,10 @@ const Menu = ({ navigation }) => {
             width: '100%',
             height: '100%',
         },
-        container: {
-            backgroundColor: darkBg,
-            alignItems: 'center',
-            flex: 1,
-        },
         card: {
             height: cardHeight,
             width: '100%',
-            marginVertical: '2%',
+            marginVertical: isPad ? '2%' : '3%',
             flexDirection: 'row',
             alignItems: 'center',
             borderRadius: 40,
@@ -43,33 +39,66 @@ const Menu = ({ navigation }) => {
         },
     })
 
+    const IPhoneButton = (props) => (
+        <Button
+            {...props}
+            style={{
+                left: '20%',
+                width: '15%',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }}
+        >
+            <Icon
+                name="arrowright"
+                size={25}
+                style={{
+                    color: arrowColor,
+                    alignSelf: 'center',
+                }}
+            />
+        </Button>
+    )
     return (
-        <Box style={styles.container}>
-            {isPad ? (
-                <ScrollView
-                    showsVerticalScrollIndicator={false}
-                    style={{
-                        alignSelf: 'center',
-                        width: isLandscape ? '80%' : '90%',
-                    }}
-                    contentContainerStyle={{
-                        flexGrow: 1,
-                    }}
+        <Box
+            style={{
+                paddingTop: 20,
+                backgroundColor: darkBg,
+                alignItems: 'center',
+                flex: 1,
+            }}
+        >
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                style={{
+                    alignSelf: 'center',
+                    width: isLandscape ? '80%' : '90%',
+                }}
+                contentContainerStyle={{
+                    flexGrow: 1,
+                }}
+            >
+                <ImageBackground
+                    source={require('../assets/navigation/company-info.png')}
+                    imageStyle={styles.image}
+                    style={[
+                        styles.card,
+                        {
+                            flexDirection: isPad ? 'column' : 'row',
+                        },
+                    ]}
                 >
-                    <ImageBackground
-                        source={require('../assets/navigation/company-info.png')}
-                        imageStyle={styles.image}
-                        style={[
-                            styles.card,
-                            {
-                                flexDirection: 'column',
-                            },
-                        ]}
-                    >
+                    {isPad ? (
                         <Box
                             alignSelf="flex-start"
-                            marginLeft="12"
-                            marginTop="12"
+                            ml={{
+                                base: '8',
+                                md: '12',
+                            }}
+                            mt={{
+                                base: '6',
+                                md: '12',
+                            }}
                         >
                             <Text
                                 maxW={{
@@ -80,7 +109,8 @@ const Menu = ({ navigation }) => {
                                 color="white"
                                 lineHeight="sm"
                                 fontSize={{
-                                    base: '3xl',
+                                    base: 'xl',
+                                    md: '3xl',
                                     lg: '4xl',
                                 }}
                                 fontWeight="600"
@@ -88,6 +118,32 @@ const Menu = ({ navigation }) => {
                                 Welcome to ELSO educational tools app!
                             </Text>
                         </Box>
+                    ) : (
+                        <Box
+                            width="50%"
+                            alignItems="flex-start"
+                            ml={{ base: '8', md: '12' }}
+                        >
+                            <Text
+                                maxW={{
+                                    base: 'xs',
+                                    lg: 'md',
+                                }}
+                                fontFamily="body"
+                                color="white"
+                                lineHeight="sm"
+                                fontSize={{
+                                    base: 'xl',
+                                    md: '3xl',
+                                    lg: '4xl',
+                                }}
+                                fontWeight="600"
+                            >
+                                Learn about ELSO
+                            </Text>
+                        </Box>
+                    )}
+                    {isPad ? (
                         <Button
                             disabled={true}
                             // onPress={() => navigation.navigate('CompanyInfo')}
@@ -97,43 +153,49 @@ const Menu = ({ navigation }) => {
                             }}
                             text="Learn about ELSO"
                         />
-                    </ImageBackground>
-                    <ImageBackground
-                        source={require('../assets/navigation/simulators.png')}
-                        imageStyle={styles.image}
-                        style={styles.card}
+                    ) : (
+                        <IPhoneButton />
+                    )}
+                </ImageBackground>
+                <ImageBackground
+                    source={require('../assets/navigation/simulators.png')}
+                    imageStyle={styles.image}
+                    style={styles.card}
+                >
+                    <Box
+                        width="50%"
+                        alignItems="flex-start"
+                        ml={{ base: '8', md: '12' }}
                     >
-                        <Box
-                            width="50%"
-                            alignItems="flex-start"
-                            marginLeft="12"
+                        <Text
+                            maxW={{
+                                base: 'xs',
+                                lg: 'md',
+                            }}
+                            fontFamily="body"
+                            color="white"
+                            lineHeight="sm"
+                            fontSize={{
+                                base: 'xl',
+                                md: '3xl',
+                                lg: '4xl',
+                            }}
+                            fontWeight="600"
                         >
-                            <Text
-                                maxW={{
-                                    base: 'xs',
-                                    lg: 'md',
-                                }}
-                                fontFamily="body"
-                                color="white"
-                                lineHeight="sm"
-                                fontSize={{
-                                    base: '3xl',
-                                    lg: '4xl',
-                                }}
-                                fontWeight="600"
-                            >
-                                ECMO Machines Simulators
-                            </Text>
-                            <Text
-                                fontSize={{
-                                    base: 'md',
-                                    lg: 'xl',
-                                }}
-                                fontWeight="400"
-                            >
-                                Air-Oxygen Blender - Pressure Display Box
-                            </Text>
-                        </Box>
+                            ECMO Machines Simulators
+                        </Text>
+                        <Text
+                            fontSize={{
+                                base: 'xs',
+                                md: 'md',
+                                lg: 'xl',
+                            }}
+                            fontWeight="400"
+                        >
+                            Air-Oxygen Blender - Pressure Display Box
+                        </Text>
+                    </Box>
+                    {isPad ? (
                         <Button
                             onPress={() => navigation.navigate('Simulators')}
                             style={{
@@ -142,43 +204,52 @@ const Menu = ({ navigation }) => {
                             }}
                             text="Go"
                         />
-                    </ImageBackground>
-                    <ImageBackground
-                        source={require('../assets/navigation/clinical-tools.png')}
-                        imageStyle={styles.image}
-                        style={styles.card}
+                    ) : (
+                        <IPhoneButton />
+                    )}
+                </ImageBackground>
+                <ImageBackground
+                    source={require('../assets/navigation/clinical-tools.png')}
+                    imageStyle={styles.image}
+                    style={styles.card}
+                >
+                    <Box
+                        width="50%"
+                        alignItems="flex-start"
+                        ml={{
+                            base: '8',
+                            md: '12',
+                        }}
                     >
-                        <Box
-                            width="50%"
-                            alignItems="flex-start"
-                            marginLeft="12"
+                        <Text
+                            maxW={{
+                                base: 'xs',
+                                lg: 'md',
+                            }}
+                            fontFamily="body"
+                            color="white"
+                            lineHeight="sm"
+                            fontSize={{
+                                base: 'xl',
+                                md: '3xl',
+                                lg: '4xl',
+                            }}
+                            fontWeight="600"
                         >
-                            <Text
-                                maxW={{
-                                    base: 'xs',
-                                    lg: 'md',
-                                }}
-                                fontFamily="body"
-                                color="white"
-                                lineHeight="sm"
-                                fontSize={{
-                                    base: '3xl',
-                                    lg: '4xl',
-                                }}
-                                fontWeight="600"
-                            >
-                                Clinical Tools
-                            </Text>
-                            <Text
-                                fontSize={{
-                                    base: 'md',
-                                    lg: 'xl',
-                                }}
-                                fontWeight="400"
-                            >
-                                Suggestive Canula
-                            </Text>
-                        </Box>
+                            Clinical Tools
+                        </Text>
+                        <Text
+                            fontSize={{
+                                base: 'xs',
+                                md: 'md',
+                                lg: 'xl',
+                            }}
+                            fontWeight="400"
+                        >
+                            Suggestive Canula
+                        </Text>
+                    </Box>
+                    {isPad ? (
                         <Button
                             disabled={true}
                             // onPress={() => navigation.navigate('ClinicalTools')}
@@ -188,11 +259,11 @@ const Menu = ({ navigation }) => {
                             }}
                             text="Go"
                         />
-                    </ImageBackground>
-                </ScrollView>
-            ) : (
-                <Modal />
-            )}
+                    ) : (
+                        <IPhoneButton />
+                    )}
+                </ImageBackground>
+            </ScrollView>
         </Box>
     )
 }

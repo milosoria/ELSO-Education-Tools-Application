@@ -1,4 +1,4 @@
-import {  TouchableHighlight } from 'react-native'
+import { TouchableHighlight } from 'react-native'
 import { Box, Text } from 'native-base'
 import useOrientation from '../utils/orientation'
 

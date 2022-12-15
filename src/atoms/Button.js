@@ -1,4 +1,4 @@
-import { TouchableHighlight } from 'react-native'
+import {  TouchableHighlight } from 'react-native'
 import { Box, Text } from 'native-base'
 import useOrientation from '../utils/orientation'
 
@@ -40,10 +40,12 @@ const Button = (props) => {
                 }
                 flex={1}
                 px={{
-                    base: isLandscape ? 0 : 9,
+                    base: 0,
+                    md: isLandscape ? 0 : 9,
                 }}
                 py={{
                     base: isLandscape ? 0 : 1,
+                    md: isLandscape ? 0 : 1,
                     lg: isLandscape ? 0.5 : 1,
                     xl: isLandscape ? 0.5 : 2,
                 }}

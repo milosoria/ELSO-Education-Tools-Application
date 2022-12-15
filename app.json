@@ -33,13 +33,13 @@
                 "policy": "sdkVersion"
             }
         },
-    "plugins": [
-      [
-        "expo-screen-orientation",
-        {
-          "initialOrientation": "DEFAULT"
-        }
-      ]
-    ]
+        "plugins": [
+            [
+                "expo-screen-orientation",
+                {
+                    "initialOrientation": "DEFAULT"
+                }
+            ]
+        ]
     }
 }

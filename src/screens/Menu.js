@@ -4,9 +4,15 @@ import Modal from '../components/iphoneModal'
 import { Button } from '../atoms/'
 import useOrientation from '../utils/orientation'
 import { Box, Text, useBreakpointValue, useToken } from 'native-base'
+import * as ScreenOrientation from 'expo-screen-orientation'
 
 const Menu = ({ navigation }) => {
     const { isPad } = Platform
+    // lock screen only for iphone
+    if (!isPad)
+        ScreenOrientation.lockAsync(
+            ScreenOrientation.OrientationLock.PORTRAIT_UP
+        )
     const [darkBg] = useToken('colors', ['primary.black.50'])
     const isLandscape = useOrientation()
     const cardHeight = useBreakpointValue({

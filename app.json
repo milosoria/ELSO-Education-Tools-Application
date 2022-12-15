@@ -32,6 +32,14 @@
             "runtimeVersion": {
                 "policy": "sdkVersion"
             }
+        },
+    "plugins": [
+      [
+        "expo-screen-orientation",
+        {
+          "initialOrientation": "DEFAULT"
         }
+      ]
+    ]
     }
 }

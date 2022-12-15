@@ -14,6 +14,20 @@ import {
     useToken,
 } from 'native-base'
 
+const heightCalc = (isLandscape, statusBarHeight) => {
+    let height
+    if (Platform.isPad) {
+        height = isLandscape ? '10%' : '8%'
+    } else {
+        if (20 <= statusBarHeight && statusBarHeight < 30) {
+            height = statusBarHeight * 2.8
+        } else if (30 <= statusBarHeight && statusBarHeight <= 50)
+            height = statusBarHeight * 1.7
+        else height = statusBarHeight * 1.5
+    }
+    return height
+}
+
 const Header = ({ route, navigation }) => {
     const [darkBg, iconColor] = useToken('colors', [
         'primary.black.100',
@@ -28,20 +42,8 @@ const Header = ({ route, navigation }) => {
     const [backButtonVisible, setBackButtonVisible] = useState(false)
     const [visible, setVisible] = useState(true)
     const { top: statusBarHeight } = useSafeAreaInsets()
-    let height
-    if (Platform.isPad) {
-        if (isLandscape) {
-            height = '10%'
-        } else {
-            height = '8%'
-        }
-    } else {
-        if (statusBarHeight > 20) {
-            height = statusBarHeight * 1.5
-        } else {
-            height = statusBarHeight * 2.5
-        }
-    }
+
+    let height = heightCalc(isLandscape, statusBarHeight)
 
     useEffect(() => {
         navigation.canGoBack()

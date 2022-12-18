@@ -127,7 +127,6 @@ const Menu = ({ navigation }) => {
                             <Text
                                 maxW={{
                                     base: 'xs',
-                                    lg: 'md',
                                 }}
                                 fontFamily="body"
                                 color="white"
@@ -205,7 +204,9 @@ const Menu = ({ navigation }) => {
                             text="Go"
                         />
                     ) : (
-                        <IPhoneButton />
+                        <IPhoneButton
+                            onPress={() => navigation.navigate('Simulators')}
+                        />
                     )}
                 </ImageBackground>
                 <ImageBackground

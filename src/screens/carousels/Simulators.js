@@ -1,35 +1,58 @@
-import { ImageBackground, SafeAreaView, ScrollView } from 'react-native'
+import {
+    Dimensions,
+    ImageBackground,
+    Platform,
+    SafeAreaView,
+} from 'react-native'
 import { create } from '../../utils/normalize'
 import { Button } from '../../atoms/'
 import useOrientation from '../../utils/orientation'
-import { Box, Text, VStack, useBreakpointValue, useToken } from 'native-base'
+import {
+    Box,
+    HStack,
+    Text,
+    VStack,
+    useBreakpointValue,
+    useToken,
+} from 'native-base'
 
 const SIMULATORS = [
     {
         id: '1',
-        name: 'Blender',
-        description: 'Air-oxygen mixer simulator',
-        imagePath: require('../../assets/carousel/blender.png'),
+        name: 'PDB',
+        description: 'Pressure display box',
+        imagePath: require('../../assets/carousel/pdb.png'),
     },
     {
         id: '2',
-        name: 'PDB',
-        description: 'Pressure display box simulator',
-        imagePath: require('../../assets/carousel/pdb.png'),
+        name: 'Blender',
+        description: 'Air-oxygen mixer',
+        imagePath: require('../../assets/carousel/blender.png'),
     },
 ]
 
 const Simulators = ({ navigation }) => {
+    const { isPad } = Platform
     const [darkBg] = useToken('colors', ['primary.black.50'])
+    const { height } = Dimensions.get('window')
     const isLandscape = useOrientation()
+    const imageHeight = useBreakpointValue({
+        base: '45%',
+        sm: '45%',
+        md: '45%',
+        lg: '45%',
+        xl: '45%',
+    })
     const itemHeight = useBreakpointValue({
-        base: isLandscape ? 280 : 320,
+        base: '35%',
+        sm: isLandscape ? 280 : 340,
         md: isLandscape ? 300 : 350,
         lg: isLandscape ? 300 : 450,
         xl: isLandscape ? 400 : 450,
     })
     const itemWidth = useBreakpointValue({
-        base: isLandscape ? 200 : 250,
+        base: '80%',
+        sm: isLandscape ? 200 : 260,
         md: isLandscape ? 230 : 280,
         lg: isLandscape ? 280 : 350,
         xl: isLandscape ? 350 : 350,
@@ -40,7 +63,7 @@ const Simulators = ({ navigation }) => {
             flex: 1,
         },
         info: {
-            height: '40%',
+            height: imageHeight,
             backgroundColor: darkBg,
         },
         item: {
@@ -56,13 +79,8 @@ const Simulators = ({ navigation }) => {
             borderRadius: 8,
             resizeMode: 'cover',
         },
-        listView: {
-            width: '100%',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-evenly',
-        },
     })
+    const Stack = isPad ? HStack : VStack
     const Item = ({ name, description, imagePath }) => (
         <ImageBackground
             style={styles.item}
@@ -71,19 +89,22 @@ const Simulators = ({ navigation }) => {
         >
             <VStack
                 pb={{
-                    base: isLandscape ? 4 : 6,
+                    base: 6,
+                    sm: isLandscape ? 4 : 6,
                     md: isLandscape ? 1 : 6,
                     lg: isLandscape ? 4 : 8,
                     xl: isLandscape ? 5 : 8,
                 }}
-                pl={5}
+                pl={isPad ? 5 : 0}
                 space={{
-                    base: isLandscape ? 1 : 2,
+                    base: '25%',
+                    sm: isLandscape ? 1 : 2,
                     md: isLandscape ? 1 : 3,
                     lg: isLandscape ? 1 : 4,
                     xl: isLandscape ? 3 : 4,
                 }}
                 flexDirection="column-reverse"
+                alignItems={isPad ? 'flex-start' : 'center'}
                 flex={1}
             >
                 <Button
@@ -93,14 +114,19 @@ const Simulators = ({ navigation }) => {
                     onPress={() => navigation.navigate(name)}
                     text="Continue"
                 />
-                <Box ml={2.5} mb={2}>
+                <Box
+                    alignItems={isPad ? 'flex-start' : 'center'}
+                    ml={isPad ? 2.5 : 0}
+                    mb={2}
+                >
                     <Text
                         fontFamily="body"
                         color="white"
                         lineHeight="sm"
                         fontSize={{
-                            base: isLandscape ? '3xl' : '3xl',
-                            md: isLandscape ? '3xl' : '4xl',
+                            base: height > 900 ? '3xl' : '2xl',
+                            sm: isLandscape ? '3xl' : '3xl',
+                            md: isLandscape ? '3xl' : '3xl',
                             lg: isLandscape ? '3xl' : '4xl',
                             xl: isLandscape ? '4xl' : '5xl',
                         }}
@@ -113,12 +139,13 @@ const Simulators = ({ navigation }) => {
                         color="white"
                         lineHeight="sm"
                         fontSize={{
-                            base: isLandscape ? 'lg' : 'lg',
+                            base: height > 900 ? 'lg' : 'md',
+                            sm: isLandscape ? 'lg' : 'lg',
                             md: isLandscape ? 'xl' : 'xl',
                             lg: isLandscape ? 'xl' : '2xl',
                             xl: isLandscape ? '2xl' : '5xl',
                         }}
-                        fontWeight="300"
+                        fontWeight="400"
                     >
                         {description}
                     </Text>
@@ -129,53 +156,77 @@ const Simulators = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ImageBackground
-                source={require('../../assets/navigation/simulators.png')}
-                imageStyle={{ height: '100%', opacity: 0.8 }}
-                style={styles.info}
-            >
-                <VStack
-                    space={1}
-                    pl={10}
-                    pb={10}
-                    flex={1}
-                    flexDirection="column-reverse"
+            {isPad && (
+                <ImageBackground
+                    source={require('../../assets/navigation/simulators.png')}
+                    imageStyle={{ height: '100%', opacity: 0.8 }}
+                    style={styles.info}
                 >
-                    <Text
-                        fontFamily="body"
-                        color="white"
-                        lineHeight="sm"
-                        fontSize={{
-                            base: isLandscape ? 'lg' : 'lg',
-                            md: isLandscape ? 'xl' : 'xl',
-                            lg: isLandscape ? 'xl' : '2xl',
-                            xl: isLandscape ? '2xl' : '5xl',
-                        }}
-                        fontWeight="300"
+                    <VStack
+                        space={1}
+                        pl={10}
+                        pb={10}
+                        flex={1}
+                        flexDirection="column-reverse"
                     >
-                        Scroll and select a simulator
-                    </Text>
-                    <Text
-                        fontFamily="body"
-                        color="white"
-                        lineHeight="sm"
-                        fontSize={{
-                            base: isLandscape ? '3xl' : '3xl',
-                            md: isLandscape ? '3xl' : '4xl',
-                            lg: isLandscape ? '3xl' : '5xl',
-                            xl: isLandscape ? '4xl' : '5xl',
-                        }}
-                        fontWeight="600"
-                    >
-                        Simulations
-                    </Text>
-                </VStack>
-            </ImageBackground>
-            <ScrollView contentContainerStyle={styles.listView} horizontal>
+                        <Text
+                            fontFamily="body"
+                            color="white"
+                            lineHeight="sm"
+                            fontSize={{
+                                base: 'lg',
+                                sm: isLandscape ? 'lg' : 'xl',
+                                md: isLandscape ? 'xl' : 'xl',
+                                lg: isLandscape ? 'xl' : '2xl',
+                                xl: isLandscape ? '2xl' : '5xl',
+                            }}
+                            fontWeight="300"
+                        >
+                            Scroll and select a simulator
+                        </Text>
+                        <Text
+                            fontFamily="body"
+                            color="white"
+                            lineHeight="sm"
+                            fontSize={{
+                                base: '3xl',
+                                sm: isLandscape ? '3xl' : '4xl',
+                                md: isLandscape ? '3xl' : '4xl',
+                                lg: isLandscape ? '3xl' : '5xl',
+                                xl: isLandscape ? '4xl' : '5xl',
+                            }}
+                            fontWeight="600"
+                        >
+                            Simulations
+                        </Text>
+                    </VStack>
+                </ImageBackground>
+            )}
+            <Stack
+                width="100%"
+                flexDirection={isPad ? 'row' : 'column'}
+                alignItems="center"
+                justifyContent="space-evenly"
+                space={isPad ? 0 : 5}
+                horizontal={isPad}
+            >
+                {!isPad && (
+                    <VStack mt={4} width={itemWidth}>
+                        <Text
+                            fontSize={height > 900 ? '4xl' : '3xl'}
+                            fontWeight="600"
+                        >
+                            ECMO Simulators
+                        </Text>
+                        <Text fontSize="xl" fontWeight="500">
+                            Scroll and select a simulator
+                        </Text>
+                    </VStack>
+                )}
                 {SIMULATORS.map((item) => (
                     <Item key={item.id} {...item} />
                 ))}
-            </ScrollView>
+            </Stack>
         </SafeAreaView>
     )
 }

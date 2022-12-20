@@ -33,7 +33,7 @@ const SIMULATORS = [
 
 const Simulators = ({ navigation }) => {
     const { isPad } = Platform
-    const [darkBg] = useToken('colors', ['primary.black.50'])
+    const [black50] = useToken('colors', ['primary.black.50'])
     const { height } = Dimensions.get('window')
     const isLandscape = useOrientation()
     const imageHeight = useBreakpointValue({
@@ -59,12 +59,12 @@ const Simulators = ({ navigation }) => {
     })
     const styles = create({
         container: {
-            backgroundColor: darkBg,
+            backgroundColor: black50,
             flex: 1,
         },
         info: {
             height: imageHeight,
-            backgroundColor: darkBg,
+            backgroundColor: black50,
         },
         item: {
             borderRadius: 10,
@@ -206,6 +206,7 @@ const Simulators = ({ navigation }) => {
                 width="100%"
                 flexDirection={isPad ? 'row' : 'column'}
                 alignItems="center"
+                mt={isPad ? '5%' : 0}
                 justifyContent="space-evenly"
                 space={isPad ? 0 : 5}
                 horizontal={isPad}

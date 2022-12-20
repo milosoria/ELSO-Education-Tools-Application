@@ -1,11 +1,23 @@
 import { Dimensions, TouchableHighlight } from 'react-native'
-import { Box, Text } from 'native-base'
+import { Box, Text, useToken } from 'native-base'
 import useOrientation from '../utils/orientation'
 
 const Button = (props) => {
     const isLandscape = useOrientation()
     const disabled = props.disabled || false
+    const [blue50, blue200, gray200] = useToken('colors', [
+        'primary.blue.50',
+        'primary.blue.200',
+        'primary.gray.200',
+    ])
     const { height } = Dimensions.get('window')
+    const colouredButton = {
+        linearGradient: {
+            colors: [blue50, blue200],
+            start: [0, 0],
+            end: [1, 1],
+        },
+    }
     return (
         <TouchableHighlight
             underlayColor="#FFFFFF"
@@ -25,31 +37,18 @@ const Button = (props) => {
             onPress={props.onPress}
         >
             <Box
-                bg={
-                    disabled
-                        ? 'primary.gray.200'
-                        : {
-                              linearGradient: {
-                                  colors: [
-                                      'primary.blue.50',
-                                      'primary.blue.200',
-                                  ],
-                                  start: [0, 0],
-                                  end: [1, 1],
-                              },
-                          }
-                }
+                bg={disabled ? gray200 : colouredButton}
                 flex={1}
                 px={{
                     base: 0,
                     md: isLandscape ? 0 : 9,
                 }}
                 py={{
-                    base: 1,
-                    sm: isLandscape ? 0 : 1,
-                    md: isLandscape ? 0 : 1,
-                    lg: isLandscape ? 0.5 : 1,
-                    xl: isLandscape ? 0.5 : 2,
+                    base: 1.5,
+                    sm: isLandscape ? 0 : 2,
+                    md: isLandscape ? 0 : 2,
+                    lg: isLandscape ? 2 : 2,
+                    xl: isLandscape ? 2 : 2,
                 }}
                 alignItems="center"
                 justifyContent="center"

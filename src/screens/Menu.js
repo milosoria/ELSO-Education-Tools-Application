@@ -9,7 +9,7 @@ import Icon from 'react-native-vector-icons/AntDesign'
 const Menu = ({ navigation }) => {
     const { isPad } = Platform
     const { height } = Dimensions.get('window')
-    const [darkBg, arrowColor] = useToken('colors', [
+    const [black50, gray50] = useToken('colors', [
         'primary.black.50',
         'primary.gray.50',
     ])
@@ -49,7 +49,7 @@ const Menu = ({ navigation }) => {
             style={[
                 {
                     left: '20%',
-                    width: '15%',
+                    width: '16%',
                     alignItems: 'center',
                     justifyContent: 'center',
                 },
@@ -60,7 +60,7 @@ const Menu = ({ navigation }) => {
                 name="arrowright"
                 size={25}
                 style={{
-                    color: arrowColor,
+                    color: gray50,
                     alignSelf: 'center',
                 }}
             />
@@ -70,7 +70,7 @@ const Menu = ({ navigation }) => {
         <Box
             style={{
                 paddingTop: 20,
-                backgroundColor: darkBg,
+                backgroundColor: black50,
                 alignItems: 'center',
                 flex: 1,
             }}

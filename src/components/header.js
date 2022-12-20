@@ -28,10 +28,11 @@ const heightCalc = (isLandscape, statusBarHeight) => {
 }
 
 const Header = ({ route, navigation }) => {
-    const [darkBg, arrowColor] = useToken('colors', [
+    const [black100, gray50] = useToken('colors', [
         'primary.black.100',
         'primary.gray.50',
     ])
+    const { isPad } = Platform
     const isLandscape = useOrientation()
     const [backButtonVisible, setBackButtonVisible] = useState(false)
     const [visible, setVisible] = useState(true)
@@ -62,10 +63,10 @@ const Header = ({ route, navigation }) => {
             height: height,
         },
         icon: {
-            pr: Platform.isPad ? (isLandscape ? '5%' : '10%') : '0%',
+            pr: isPad ? (isLandscape ? '5%' : '10%') : '0%',
         },
         button: {
-            width: Platform.isPad ? (isLandscape ? '30%' : '42%') : '50%',
+            width: isPad ? (isLandscape ? '30%' : '42%') : '50%',
         },
     }
 
@@ -91,7 +92,7 @@ const Header = ({ route, navigation }) => {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     height: styles.container.height,
-                    backgroundColor: darkBg,
+                    backgroundColor: black100,
                 }}
             >
                 {backButtonVisible ? (
@@ -101,7 +102,7 @@ const Header = ({ route, navigation }) => {
                                 alignSelf: 'flex-start',
                                 width: styles.button.width,
                                 marginLeft: mlBackButton,
-                                bottom: Platform.isPad ? 0 : 2,
+                                bottom: isPad ? 0 : 2,
                             }}
                             onPress={handleBackPress}
                         >
@@ -110,13 +111,13 @@ const Header = ({ route, navigation }) => {
                                     name="arrowleft"
                                     size={arrowSize}
                                     style={{
-                                        color: arrowColor,
+                                        color: gray50,
                                         alignSelf: 'center',
                                         paddingRight: styles.icon.pr,
                                     }}
                                 />
 
-                                {Platform.isPad && (
+                                {isPad && (
                                     <Text
                                         color="white"
                                         fontSize={{

@@ -8,18 +8,21 @@ import Icon from 'react-native-vector-icons/AntDesign'
 
 const Menu = ({ navigation }) => {
     const { isPad } = Platform
-    const [arrowColor] = useToken('colors', ['primary.gray.50'])
+    const [darkBg, arrowColor] = useToken('colors', [
+        'primary.black.50',
+        'primary.gray.50',
+    ])
     if (!isPad)
         ScreenOrientation.lockAsync(
             ScreenOrientation.OrientationLock.PORTRAIT_UP
         )
-    const [darkBg] = useToken('colors', ['primary.black.50'])
     const isLandscape = useOrientation()
     const cardHeight = useBreakpointValue({
-        base: '25%',
-        md: isLandscape ? 300 : 250,
-        lg: isLandscape ? 300 : 300,
-        xl: isLandscape ? 350 : 350,
+        base: '26%',
+        sm: '30%',
+        md: isLandscape ? 300 : '30%',
+        lg: isLandscape ? 300 : '30%',
+        xl: isLandscape ? 350 : '30%',
     })
     const styles = create({
         image: {
@@ -92,26 +95,35 @@ const Menu = ({ navigation }) => {
                         <Box
                             alignSelf="flex-start"
                             ml={{
-                                base: '8',
-                                md: '12',
+                                base: 8,
+                                sm: 10,
+                                md: 12,
+                                lg: 12,
                             }}
                             mt={{
-                                base: '6',
-                                md: '12',
+                                base: 6,
+                                sm: 12,
+                                md: 12,
+                                lg: 12,
                             }}
                         >
                             <Text
                                 maxW={{
                                     base: 'md',
+                                    sm: 'md',
+                                    md: 'md',
                                     lg: 'lg',
+                                    xl: 'xl',
                                 }}
                                 fontFamily="body"
                                 color="white"
                                 lineHeight="sm"
                                 fontSize={{
                                     base: 'xl',
+                                    sm: '3xl',
                                     md: '3xl',
                                     lg: '4xl',
+                                    xl: '4xl',
                                 }}
                                 fontWeight="600"
                             >
@@ -133,6 +145,7 @@ const Menu = ({ navigation }) => {
                                 lineHeight="sm"
                                 fontSize={{
                                     base: 'xl',
+                                    sm: '3xl',
                                     md: '3xl',
                                     lg: '4xl',
                                 }}
@@ -169,6 +182,8 @@ const Menu = ({ navigation }) => {
                         <Text
                             maxW={{
                                 base: 'xs',
+                                sm: 'md',
+                                md: 'md',
                                 lg: 'md',
                             }}
                             fontFamily="body"
@@ -176,8 +191,10 @@ const Menu = ({ navigation }) => {
                             lineHeight="sm"
                             fontSize={{
                                 base: 'xl',
+                                sm: '3xl',
                                 md: '3xl',
                                 lg: '4xl',
+                                xl: '4xl',
                             }}
                             fontWeight="600"
                         >
@@ -186,6 +203,7 @@ const Menu = ({ navigation }) => {
                         <Text
                             fontSize={{
                                 base: 'xs',
+                                sm: 'md',
                                 md: 'md',
                                 lg: 'xl',
                             }}
@@ -232,8 +250,10 @@ const Menu = ({ navigation }) => {
                             lineHeight="sm"
                             fontSize={{
                                 base: 'xl',
+                                sm: '3xl',
                                 md: '3xl',
                                 lg: '4xl',
+                                xl: '4xl',
                             }}
                             fontWeight="600"
                         >
@@ -242,6 +262,7 @@ const Menu = ({ navigation }) => {
                         <Text
                             fontSize={{
                                 base: 'xs',
+                                sm: 'md',
                                 md: 'md',
                                 lg: 'xl',
                             }}

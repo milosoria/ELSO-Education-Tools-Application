@@ -1,10 +1,12 @@
-import { TouchableHighlight } from 'react-native'
+import { Dimensions, TouchableHighlight } from 'react-native'
 import { Box, Text } from 'native-base'
 import useOrientation from '../utils/orientation'
 
 const Button = (props) => {
     const isLandscape = useOrientation()
     const disabled = props.disabled || false
+    const { height } = Dimensions.get('window')
+    console.log(height)
     return (
         <TouchableHighlight
             underlayColor="#FFFFFF"
@@ -44,7 +46,8 @@ const Button = (props) => {
                     md: isLandscape ? 0 : 9,
                 }}
                 py={{
-                    base: isLandscape ? 0 : 1,
+                    base: 1,
+                    sm: isLandscape ? 0 : 1,
                     md: isLandscape ? 0 : 1,
                     lg: isLandscape ? 0.5 : 1,
                     xl: isLandscape ? 0.5 : 2,
@@ -59,7 +62,9 @@ const Button = (props) => {
                     <Text
                         color="white"
                         fontSize={{
-                            base: isLandscape ? 'md' : 'xl',
+                            base: height > 900 ? 'lg' : 'md',
+                            sm: isLandscape ? 'md' : 'xl',
+                            md: isLandscape ? 'md' : 'xl',
                             lg: isLandscape ? '2xl' : '2xl',
                             xl: isLandscape ? '3xl' : '2xl',
                         }}

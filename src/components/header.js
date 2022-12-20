@@ -22,7 +22,7 @@ const heightCalc = (isLandscape, statusBarHeight) => {
             height = statusBarHeight * 3.2
         } else if (30 <= statusBarHeight && statusBarHeight <= 50)
             height = statusBarHeight * 2
-        else height = statusBarHeight * 1.5
+        else height = statusBarHeight * 1.8
     }
     return height
 }
@@ -33,14 +33,21 @@ const Header = ({ route, navigation }) => {
         'primary.gray.50',
     ])
     const isLandscape = useOrientation()
-    const arrowSize = useBreakpointValue({
-        base: 25,
-        lg: isLandscape ? 25 : 35,
-        xl: 30,
-    })
     const [backButtonVisible, setBackButtonVisible] = useState(false)
     const [visible, setVisible] = useState(true)
     const { top: statusBarHeight } = useSafeAreaInsets()
+    const arrowSize = useBreakpointValue({
+        base: 23,
+        sm: 30,
+        md: 30,
+        lg: isLandscape ? 25 : 35,
+        xl: 30,
+    })
+    const mlBackButton = useBreakpointValue({
+        base: 10,
+        sm: 15,
+        md: 20,
+    })
 
     let height = heightCalc(isLandscape, statusBarHeight)
 
@@ -58,7 +65,7 @@ const Header = ({ route, navigation }) => {
             pr: Platform.isPad ? (isLandscape ? '5%' : '10%') : '0%',
         },
         button: {
-            width: Platform.isPad ? (isLandscape ? '30%' : '40%') : '50%',
+            width: Platform.isPad ? (isLandscape ? '30%' : '42%') : '50%',
         },
     }
 
@@ -93,7 +100,7 @@ const Header = ({ route, navigation }) => {
                             style={{
                                 alignSelf: 'flex-start',
                                 width: styles.button.width,
-                                marginLeft: 20,
+                                marginLeft: mlBackButton,
                                 bottom: Platform.isPad ? 0 : 2,
                             }}
                             onPress={handleBackPress}
@@ -113,7 +120,8 @@ const Header = ({ route, navigation }) => {
                                     <Text
                                         color="white"
                                         fontSize={{
-                                            base: isLandscape ? 'sm' : 'md',
+                                            base: isLandscape ? 'sm' : 'xl',
+                                            sm: isLandscape ? 'sm' : 'xl',
                                             md: isLandscape ? 'md' : 'xl',
                                             lg: isLandscape ? 'xl' : '2xl',
                                             xl: isLandscape ? '2xl' : '2xl',

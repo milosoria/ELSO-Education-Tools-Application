@@ -6,7 +6,6 @@ const Button = (props) => {
     const isLandscape = useOrientation()
     const disabled = props.disabled || false
     const { height } = Dimensions.get('window')
-    console.log(height)
     return (
         <TouchableHighlight
             underlayColor="#FFFFFF"

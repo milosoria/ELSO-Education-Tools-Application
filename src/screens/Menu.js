@@ -1,5 +1,5 @@
 import { create } from '../utils/normalize'
-import { ImageBackground, Platform, ScrollView } from 'react-native'
+import { Dimensions, ImageBackground, Platform, ScrollView } from 'react-native'
 import { Button } from '../atoms/'
 import useOrientation from '../utils/orientation'
 import { Box, Text, useBreakpointValue, useToken } from 'native-base'
@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/AntDesign'
 
 const Menu = ({ navigation }) => {
     const { isPad } = Platform
+    const { height } = Dimensions.get('window')
     const [darkBg, arrowColor] = useToken('colors', [
         'primary.black.50',
         'primary.gray.50',
@@ -45,12 +46,15 @@ const Menu = ({ navigation }) => {
     const IPhoneButton = (props) => (
         <Button
             {...props}
-            style={{
-                left: '20%',
-                width: '15%',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}
+            style={[
+                {
+                    left: '20%',
+                    width: '15%',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                },
+                props.style,
+            ]}
         >
             <Icon
                 name="arrowright"
@@ -132,19 +136,16 @@ const Menu = ({ navigation }) => {
                         </Box>
                     ) : (
                         <Box
-                            width="50%"
+                            width="55%"
                             alignItems="flex-start"
                             ml={{ base: '8', md: '12' }}
                         >
                             <Text
-                                maxW={{
-                                    base: 'xs',
-                                }}
                                 fontFamily="body"
                                 color="white"
                                 lineHeight="sm"
                                 fontSize={{
-                                    base: 'xl',
+                                    base: height > 900 ? '2xl' : 'xl',
                                     sm: '3xl',
                                     md: '3xl',
                                     lg: '4xl',
@@ -166,7 +167,11 @@ const Menu = ({ navigation }) => {
                             text="Learn about ELSO"
                         />
                     ) : (
-                        <IPhoneButton />
+                        <IPhoneButton
+                            style={{
+                                left: '15%',
+                            }}
+                        />
                     )}
                 </ImageBackground>
                 <ImageBackground
@@ -190,7 +195,7 @@ const Menu = ({ navigation }) => {
                             color="white"
                             lineHeight="sm"
                             fontSize={{
-                                base: 'xl',
+                                base: height > 900 ? '2xl' : 'xl',
                                 sm: '3xl',
                                 md: '3xl',
                                 lg: '4xl',
@@ -200,17 +205,19 @@ const Menu = ({ navigation }) => {
                         >
                             ECMO Machines Simulators
                         </Text>
-                        <Text
-                            fontSize={{
-                                base: 'xs',
-                                sm: 'md',
-                                md: 'md',
-                                lg: 'xl',
-                            }}
-                            fontWeight="400"
-                        >
-                            Air-Oxygen Blender - Pressure Display Box
-                        </Text>
+                        {isPad && (
+                            <Text
+                                fontSize={{
+                                    base: 'xs',
+                                    sm: 'md',
+                                    md: 'md',
+                                    lg: 'xl',
+                                }}
+                                fontWeight="400"
+                            >
+                                Air-Oxygen Blender - Pressure Display Box
+                            </Text>
+                        )}
                     </Box>
                     {isPad ? (
                         <Button
@@ -249,7 +256,7 @@ const Menu = ({ navigation }) => {
                             color="white"
                             lineHeight="sm"
                             fontSize={{
-                                base: 'xl',
+                                base: height > 900 ? '2xl' : 'xl',
                                 sm: '3xl',
                                 md: '3xl',
                                 lg: '4xl',
@@ -259,17 +266,19 @@ const Menu = ({ navigation }) => {
                         >
                             Clinical Tools
                         </Text>
-                        <Text
-                            fontSize={{
-                                base: 'xs',
-                                sm: 'md',
-                                md: 'md',
-                                lg: 'xl',
-                            }}
-                            fontWeight="400"
-                        >
-                            Suggestive Canula
-                        </Text>
+                        {isPad && (
+                            <Text
+                                fontSize={{
+                                    base: 'xs',
+                                    sm: 'md',
+                                    md: 'md',
+                                    lg: 'xl',
+                                }}
+                                fontWeight="400"
+                            >
+                                Suggestive Canula
+                            </Text>
+                        )}
                     </Box>
                     {isPad ? (
                         <Button

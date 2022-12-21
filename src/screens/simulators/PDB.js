@@ -10,11 +10,11 @@ const PDB = () => {
     const [modalVisible, setModalVisible] = useState(false)
     const { maxDimension, minDimension } = useContext(DimensionContext)
     const dimension = minDimension < 800 ? minDimension + 150 : maxDimension
-    const [brightBg] = useToken('colors', ['primary.white.50'])
+    const [white50] = useToken('colors', ['primary.white.50'])
 
     const styles = StyleSheet.create({
         container: {
-            backgroundColor: brightBg,
+            backgroundColor: white50,
             flexDirection: 'row',
             flex: 1,
             alignItems: 'center',
@@ -37,7 +37,7 @@ const PDB = () => {
                 <RightPannel dimension={dimension} />
             </View>
             <TouchableHighlight
-                underlayColor={brightBg}
+                underlayColor={white50}
                 activeOpacity={0.8}
                 style={[styles.button, { borderRadius: 100 }]}
                 onPress={handlePress}

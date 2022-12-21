@@ -29,8 +29,11 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                     alignItems="center"
                 >
                     <Box
-                        maxW="500"
-                        width="50%"
+                        width={{
+                            base: '80%',
+                            sm: '60%',
+                            md: '50%',
+                        }}
                         bg="primary.gray.50"
                         borderRadius="xl"
                         pt={25}
@@ -43,6 +46,8 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                             fontFamily="body"
                             fontSize={{
                                 base: '2xl',
+                                sm: '3xl',
+                                md: '3xl',
                                 lg: '3xl',
                             }}
                         >
@@ -54,7 +59,9 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                             fontFamily="body"
                             fontSize={{
                                 base: 'sm',
-                                lg: 'md',
+                                sm: 'lg',
+                                md: 'lg',
+                                lg: 'xl',
                             }}
                         >
                             Use two fingers
@@ -72,6 +79,7 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                         <TouchableOpacity
                             style={{
                                 paddingVertical: 10,
+                                paddingHorizontal: 100,
                             }}
                             onPress={() => setModalVisible(!modalVisible)}
                         >
@@ -80,7 +88,9 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                                 fontWeight="600"
                                 fontFamily="body"
                                 fontSize={{
-                                    base: 'xl',
+                                    base: 'lg',
+                                    sm: '2xl',
+                                    md: '2xl',
                                     lg: '2xl',
                                 }}
                             >

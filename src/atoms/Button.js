@@ -18,6 +18,7 @@ const Button = (props) => {
             end: [1, 1],
         },
     }
+
     return (
         <TouchableHighlight
             underlayColor="#FFFFFF"
@@ -45,8 +46,8 @@ const Button = (props) => {
                 }}
                 py={{
                     base: 1.5,
-                    sm: isLandscape ? 0 : 2,
-                    md: isLandscape ? 0 : 2,
+                    sm: 2,
+                    md: 2,
                     lg: isLandscape ? 2 : 2,
                     xl: isLandscape ? 2 : 2,
                 }}
@@ -60,7 +61,7 @@ const Button = (props) => {
                     <Text
                         color="white"
                         fontSize={{
-                            base: height > 900 ? 'lg' : 'md',
+                            base: height > 900 ? 'xl' : 'md',
                             sm: isLandscape ? 'md' : 'xl',
                             md: isLandscape ? 'md' : 'xl',
                             lg: isLandscape ? '2xl' : '2xl',

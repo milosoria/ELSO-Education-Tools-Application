@@ -58,7 +58,7 @@ const Menu = ({ navigation }) => {
         >
             <Icon
                 name="arrowright"
-                size={25}
+                size={height > 900 ? 25 : 23}
                 style={{
                     color: gray50,
                     alignSelf: 'center',

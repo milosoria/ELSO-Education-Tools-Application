@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Platform, SafeAreaView } from 'react-native'
+import { Dimensions, Platform, SafeAreaView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/AntDesign'
 import useOrientation from '../utils/orientation'
@@ -37,8 +37,9 @@ const Header = ({ route, navigation }) => {
     const [backButtonVisible, setBackButtonVisible] = useState(false)
     const [visible, setVisible] = useState(true)
     const { top: statusBarHeight } = useSafeAreaInsets()
+    const { height: windowHeight } = Dimensions.get('window')
     const arrowSize = useBreakpointValue({
-        base: 23,
+        base: windowHeight > 900 ? 25 : 23,
         sm: 30,
         md: 30,
         lg: isLandscape ? 25 : 35,

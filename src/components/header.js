@@ -22,7 +22,7 @@ const heightCalc = (isLandscape, statusBarHeight) => {
             height = statusBarHeight * 3.2
         } else if (30 <= statusBarHeight && statusBarHeight <= 50)
             height = statusBarHeight * 2
-        else height = statusBarHeight * 1.8
+        else height = statusBarHeight * 1.9
     }
     return height
 }
@@ -117,7 +117,6 @@ const Header = ({ route, navigation }) => {
                                         paddingRight: styles.icon.pr,
                                     }}
                                 />
-
                                 {isPad && (
                                     <Text
                                         color="white"

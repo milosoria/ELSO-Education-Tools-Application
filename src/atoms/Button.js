@@ -45,7 +45,7 @@ const Button = (props) => {
                     md: isLandscape ? 0 : 9,
                 }}
                 py={{
-                    base: 1.5,
+                    base: 2,
                     sm: 2,
                     md: 2,
                     lg: isLandscape ? 2 : 2,

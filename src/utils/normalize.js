@@ -2,7 +2,7 @@ import { Dimensions, PixelRatio, StyleSheet } from 'react-native'
 
 const ratio = PixelRatio.get()
 
-const normalize = (size) => {
+export const normalize = (size) => {
     const { width, height } = Dimensions.get('window')
     if (ratio >= 2 && ratio < 3) {
         if (width < 360) {

@@ -1,4 +1,5 @@
 import { extendTheme } from 'native-base'
+import normalize from './src/utils/normalize'
 
 const config = {
     initialColorMode: 'dark',
@@ -40,6 +41,22 @@ const fonts = {
             heading: 'SFPro',
             body: 'SFPro',
             mono: 'SFPro',
+        },
+        fontSizes: {
+            '2xs': normalize(10),
+            xs: normalize(12),
+            sm: normalize(14),
+            md: normalize(16),
+            lg: normalize(18),
+            xl: normalize(20),
+            '2xl': normalize(24),
+            '3xl': normalize(30),
+            '4xl': normalize(36),
+            '5xl': normalize(48),
+            '6xl': normalize(60),
+            '7xl': normalize(72),
+            '8xl': normalize(96),
+            '9xl': normalize(128),
         },
     },
 }

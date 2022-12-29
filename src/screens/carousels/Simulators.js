@@ -37,11 +37,9 @@ const Simulators = ({ navigation }) => {
     const { height } = Dimensions.get('window')
     const isLandscape = useOrientation()
     const imageHeight = useBreakpointValue({
-        base: '45%',
-        sm: '45%',
         md: '45%',
-        lg: '45%',
-        xl: '45%',
+        lg: isLandscape ? '40%' : '45%',
+        xl: isLandscape ? '40%' : '45%',
     })
     const itemHeight = useBreakpointValue({
         base: '35%',
@@ -51,7 +49,7 @@ const Simulators = ({ navigation }) => {
         xl: isLandscape ? 400 : 450,
     })
     const itemWidth = useBreakpointValue({
-        base: '80%',
+        base: '85%',
         sm: isLandscape ? 200 : 260,
         md: isLandscape ? 230 : 280,
         lg: isLandscape ? 280 : 350,
@@ -95,9 +93,8 @@ const Simulators = ({ navigation }) => {
                     lg: isLandscape ? 4 : 8,
                     xl: isLandscape ? 5 : 8,
                 }}
-                pl={isPad ? 5 : 0}
                 space={{
-                    base: '25%',
+                    base: '20%',
                     sm: isLandscape ? 1 : 2,
                     md: isLandscape ? 1 : 3,
                     lg: isLandscape ? 1 : 4,
@@ -109,28 +106,28 @@ const Simulators = ({ navigation }) => {
             >
                 <Button
                     style={{
-                        width: '55%',
+                        width: isPad ? '60%' : '50%',
+                        marginTop: isPad ? 10 : 0,
                     }}
                     onPress={() => navigation.navigate(name)}
                     text="Continue"
                 />
                 <Box
                     alignItems={isPad ? 'flex-start' : 'center'}
-                    ml={isPad ? 2.5 : 0}
-                    mb={2}
+                    pl={isPad ? '6%' : '0%'}
                 >
                     <Text
                         fontFamily="body"
                         color="white"
                         lineHeight="sm"
                         fontSize={{
-                            base: height > 900 ? '3xl' : '2xl',
+                            base: height > 800 ? '4xl' : '3xl',
                             sm: isLandscape ? '3xl' : '3xl',
                             md: isLandscape ? '3xl' : '3xl',
                             lg: isLandscape ? '3xl' : '4xl',
                             xl: isLandscape ? '4xl' : '5xl',
                         }}
-                        fontWeight="600"
+                        fontWeight="700"
                     >
                         {name}
                     </Text>
@@ -139,13 +136,13 @@ const Simulators = ({ navigation }) => {
                         color="white"
                         lineHeight="sm"
                         fontSize={{
-                            base: height > 900 ? 'lg' : 'md',
+                            base: height > 800 ? 'lg' : 'md',
                             sm: isLandscape ? 'lg' : 'lg',
                             md: isLandscape ? 'xl' : 'xl',
                             lg: isLandscape ? 'xl' : '2xl',
                             xl: isLandscape ? '2xl' : '5xl',
                         }}
-                        fontWeight="400"
+                        fontWeight={isPad ? '400' : '600'}
                     >
                         {description}
                     </Text>
@@ -206,7 +203,7 @@ const Simulators = ({ navigation }) => {
                 width="100%"
                 flexDirection={isPad ? 'row' : 'column'}
                 alignItems="center"
-                mt={isPad ? '5%' : 0}
+                mt={isPad ? (isLandscape ? '2%' : '5%') : 0}
                 justifyContent="space-evenly"
                 space={isPad ? 0 : 5}
                 horizontal={isPad}

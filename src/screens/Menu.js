@@ -162,7 +162,7 @@ const Menu = ({ navigation }) => {
                             // onPress={() => navigation.navigate('CompanyInfo')}
                             style={{
                                 top: '14%',
-                                width: '40%',
+                                width: '35%',
                             }}
                             text="Learn about ELSO"
                         />

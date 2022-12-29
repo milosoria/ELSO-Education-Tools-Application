@@ -16,13 +16,13 @@ import {
 const heightCalc = (isLandscape, statusBarHeight) => {
     let height
     if (Platform.isPad) {
-        height = isLandscape ? '10%' : '8%'
+        height = isLandscape ? '11%' : '8%'
     } else {
         if (20 <= statusBarHeight && statusBarHeight < 30) {
-            height = statusBarHeight * 3.2
+            height = statusBarHeight * 3.5
         } else if (30 <= statusBarHeight && statusBarHeight <= 50)
-            height = statusBarHeight * 2
-        else height = statusBarHeight * 1.9
+            height = statusBarHeight * 2.2
+        else height = statusBarHeight * 2
     }
     return height
 }
@@ -42,8 +42,8 @@ const Header = ({ route, navigation }) => {
         base: windowHeight > 900 ? 25 : 23,
         sm: 30,
         md: 30,
-        lg: isLandscape ? 25 : 35,
-        xl: 30,
+        lg: isLandscape ? 30 : 35,
+        xl: 35,
     })
     const mlBackButton = useBreakpointValue({
         base: 10,
@@ -67,7 +67,7 @@ const Header = ({ route, navigation }) => {
             pr: isPad ? (isLandscape ? '5%' : '10%') : '0%',
         },
         button: {
-            width: isPad ? (isLandscape ? '30%' : '42%') : '50%',
+            width: isPad ? (isLandscape ? '35%' : '50%') : '50%',
         },
     }
 
@@ -103,11 +103,11 @@ const Header = ({ route, navigation }) => {
                                 alignSelf: 'flex-start',
                                 width: styles.button.width,
                                 marginLeft: mlBackButton,
-                                bottom: isPad ? 0 : 2,
                             }}
+                            type="back"
                             onPress={handleBackPress}
                         >
-                            <Box flexDirection="row">
+                            <Box right={isPad && '30%'} flexDirection="row">
                                 <Icon
                                     name="arrowleft"
                                     size={arrowSize}
@@ -121,9 +121,9 @@ const Header = ({ route, navigation }) => {
                                     <Text
                                         color="white"
                                         fontSize={{
-                                            base: isLandscape ? 'sm' : 'xl',
-                                            sm: isLandscape ? 'sm' : 'xl',
-                                            md: isLandscape ? 'md' : 'xl',
+                                            base: 'xl',
+                                            sm: 'xl',
+                                            md: 'xl',
                                             lg: isLandscape ? 'xl' : '2xl',
                                             xl: isLandscape ? '2xl' : '2xl',
                                         }}

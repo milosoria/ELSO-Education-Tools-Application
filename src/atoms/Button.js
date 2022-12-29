@@ -27,11 +27,11 @@ const Button = (props) => {
                 {
                     flexDirection: 'row',
                     alignSelf: 'center',
-                    alignItems: 'center',
                     justifyContent: 'center',
                     borderRadius: 40,
                     shadowOpacity: 0.2,
                     shadowOffset: { width: 4, height: 4 },
+                    maxWidth: 220,
                 },
                 props.style,
             ]}
@@ -40,10 +40,6 @@ const Button = (props) => {
             <Box
                 bg={disabled ? gray200 : colouredButton}
                 flex={1}
-                px={{
-                    base: 0,
-                    md: isLandscape ? 0 : 9,
-                }}
                 py={{
                     base: 2,
                     sm: 2,
@@ -61,11 +57,11 @@ const Button = (props) => {
                     <Text
                         color="white"
                         fontSize={{
-                            base: height > 900 ? 'xl' : 'md',
-                            sm: isLandscape ? 'md' : 'xl',
-                            md: isLandscape ? 'md' : 'xl',
-                            lg: isLandscape ? '2xl' : '2xl',
-                            xl: isLandscape ? '3xl' : '2xl',
+                            base: height > 800 ? 'md' : 'md',
+                            sm: 'xl',
+                            md: 'xl',
+                            lg: isLandscape ? 'xl' : '2xl',
+                            xl: isLandscape ? '2xl' : 'xl',
                         }}
                         fontWeight="600"
                     >

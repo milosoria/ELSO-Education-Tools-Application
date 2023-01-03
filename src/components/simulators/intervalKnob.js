@@ -26,6 +26,7 @@ const IntervalKnob = ({
     knobFrameSize,
     style,
     imagePath,
+    resistance = 5,
 }) => {
     const {
         unblocked,
@@ -41,7 +42,6 @@ const IntervalKnob = ({
     const savedRotation = useSharedValue(rotations[type])
     const [minDeg, maxDeg] = degRange
     const [sound, setSound] = useState()
-
     useEffect(() => {
         return sound ? () => sound.unloadAsync() : undefined
     }, [sound])
@@ -57,35 +57,33 @@ const IntervalKnob = ({
         setSound(sound)
         await sound.playAsync()
     }
-
     const rotationGesture = Gesture.Rotation()
         .onUpdate((e) => {
             let degrees =
-                (e.rotation / 5 / Math.PI) * (maxDeg - minDeg) +
+                (e.rotation / resistance / Math.PI) * (maxDeg - minDeg) +
                 savedRotation.value
             // if type is not unblocked and the function selected is not off, then update value
             if (type == unblocked && unblocked !== 'none')
                 rotation.value = Math.ceil(degrees)
         })
         .onEnd(() => {
-            const inferior =
-                rotation.value - step * Math.ceil(rotation.value / step) >
-                step * Math.floor(rotation.value / step) - rotation.value
-            rotation.value = inferior
-                ? step * Math.ceil(rotation.value / step)
-                : step * Math.floor(rotation.value / step)
+            const superior = step * Math.ceil(rotation.value / step)
+            const inferior = step * Math.floor(rotation.value / step)
+            const closerToInf =
+                superior - rotation.value > rotation.value - inferior
+            rotation.value = closerToInf ? superior : inferior
             savedRotation.value = rotation.value
             if (type == unblocked && unblocked !== 'none') runOnJS(playSound)()
         })
 
     // Manage rotation variations
     useEffect(() => {
-        const delta = savedRotation.value / step
+        const ratio = savedRotation.value / step
         // if this knob is the alarm one
         if (type == 'alarm') {
             // if the chosen function is alarmLow or high
             if (functionType == 'alarmLow') {
-                const newLowValue = DEFAULTALARMINTERVAL[0] + delta
+                const newLowValue = DEFAULTALARMINTERVAL[0] + ratio
                 if (
                     ALARMLOWRANGE[0] <= newLowValue &&
                     newLowValue <= ALARMLOWRANGE[1] &&
@@ -98,24 +96,24 @@ const IntervalKnob = ({
                         // if  its lower than the left limit
                         // 1. set the value to the left limit of the alarm low range
                         // 2. stop subtracting rotation to the values
+                        const newRotation =
+                            (ALARMLOWRANGE[0] - DEFAULTALARMINTERVAL[0]) * step
                         setAlarmInterval([ALARMLOWRANGE[0], alarmInterval[1]])
-                        savedRotation.value =
-                            (ALARMLOWRANGE[0] - DEFAULTALARMINTERVAL[0]) * step
-                        rotation.value =
-                            (ALARMLOWRANGE[0] - DEFAULTALARMINTERVAL[0]) * step
+                        savedRotation.value = newRotation
+                        rotation.value = newRotation
                     } else if (newLowValue > ALARMLOWRANGE[1]) {
                         // if  its greater than the right limit
                         // 1. set the value to the right limit of the alarm low range
                         // 2. stop adding rotation to the values
+                        const newRotation =
+                            (ALARMLOWRANGE[1] - DEFAULTALARMINTERVAL[0]) * step
                         setAlarmInterval([ALARMLOWRANGE[1], alarmInterval[1]])
-                        savedRotation.value =
-                            (ALARMLOWRANGE[1] - DEFAULTALARMINTERVAL[0]) * step
-                        rotation.value =
-                            (ALARMLOWRANGE[1] - DEFAULTALARMINTERVAL[0]) * step
+                        savedRotation.value = newRotation
+                        rotation.value = newRotation
                     }
                 }
             } else if (functionType == 'alarmHigh') {
-                const newHighValue = DEFAULTALARMINTERVAL[1] + delta
+                const newHighValue = DEFAULTALARMINTERVAL[1] + ratio
                 if (
                     alarmInterval[0] < newHighValue &&
                     newHighValue <= ALARMHIGHMAX
@@ -128,39 +126,34 @@ const IntervalKnob = ({
                         // if  its lower than the left limit
                         // 1. set the value to the left limit of the alarm interval
                         // 2. stop subtracting rotation to the values
+                        const newRotation =
+                            (alarmInterval[0] - DEFAULTALARMINTERVAL[1]) * step
                         setAlarmInterval([
                             alarmInterval[0],
                             alarmInterval[0] - 1,
                         ])
-                        savedRotation.value =
-                            (alarmInterval[0] - DEFAULTALARMINTERVAL[1]) * step
-                        rotation.value =
-                            (alarmInterval[0] - DEFAULTALARMINTERVAL[1]) * step
+                        savedRotation.value = newRotation
+                        rotation.value = newRotation
                     } else if (newHighValue > ALARMHIGHMAX) {
                         // if  its greater than the right limit
                         // 1. set the value to the alarm high maximum
                         // 2. stop adding rotation to the values
+                        const newRotation =
+                            (ALARMHIGHMAX - DEFAULTALARMINTERVAL[1]) * step
                         setAlarmInterval([alarmInterval[0], ALARMHIGHMAX])
-                        savedRotation.value =
-                            (ALARMHIGHMAX - DEFAULTALARMINTERVAL[1]) * step
-                        rotation.value =
-                            (ALARMHIGHMAX - DEFAULTALARMINTERVAL[1]) * step
+                        savedRotation.value = newRotation
+                        rotation.value = newRotation
                     }
                 }
             }
         } else {
             // if it is the zero knob
-            const newDisplayValue = DEFAULTDISPLAYVALUE + delta
+            const newDisplayValue = DEFAULTDISPLAYVALUE + ratio
             // Check if the new display value is in the alarm interval
-            if (
-                newDisplayValue < alarmInterval[0] ||
-                newDisplayValue > alarmInterval[1]
-            ) {
-                setInInterval(false)
-            } else {
-                setInInterval(true)
-            }
-
+            setInInterval(
+                alarmInterval[0] < newDisplayValue &&
+                    newDisplayValue < alarmInterval[1]
+            )
             if (
                 DISPLAYRANGE[0] <= newDisplayValue &&
                 newDisplayValue <= DISPLAYRANGE[1]
@@ -172,20 +165,20 @@ const IntervalKnob = ({
                     // if  its lower than the left limit
                     // 1. set the display value to the left limit
                     // 2. stop subtracting rotation to the values
+                    const newRotation =
+                        (DISPLAYRANGE[0] - DEFAULTDISPLAYVALUE) * step
                     setDisplayValue(DISPLAYRANGE[0])
-                    savedRotation.value =
-                        (DISPLAYRANGE[0] - DEFAULTDISPLAYVALUE) * step
-                    rotation.value =
-                        (DISPLAYRANGE[0] - DEFAULTDISPLAYVALUE) * step
+                    savedRotation.value = newRotation
+                    rotation.value = newRotation
                 } else if (newDisplayValue > DISPLAYRANGE[1]) {
                     // if  its greater than the right limit
                     // 1. set the display value to the right limit
                     // 2. stop adding rotation to the values
+                    const newRotation =
+                        (DISPLAYRANGE[1] - DEFAULTDISPLAYVALUE) * step
                     setDisplayValue(DISPLAYRANGE[1])
-                    savedRotation.value =
-                        (DISPLAYRANGE[1] - DEFAULTDISPLAYVALUE) * step
-                    rotation.value =
-                        (DISPLAYRANGE[1] - DEFAULTDISPLAYVALUE) * step
+                    savedRotation.value = newRotation
+                    rotation.value = newRotation
                 }
             }
         }

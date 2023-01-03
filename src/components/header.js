@@ -16,7 +16,7 @@ import {
 const heightCalc = (isLandscape, statusBarHeight) => {
     let height
     if (Platform.isPad) {
-        height = isLandscape ? '11%' : '8%'
+        height = isLandscape ? '12%' : '8%'
     } else {
         if (20 <= statusBarHeight && statusBarHeight < 30) {
             height = statusBarHeight * 3.5
@@ -26,7 +26,6 @@ const heightCalc = (isLandscape, statusBarHeight) => {
     }
     return height
 }
-
 const Header = ({ route, navigation }) => {
     const [black100, gray50] = useToken('colors', [
         'primary.black.100',
@@ -50,6 +49,11 @@ const Header = ({ route, navigation }) => {
         sm: 15,
         md: 20,
     })
+    const buttonWidth = useBreakpointValue({
+        sm: '50%',
+        md: isLandscape ? '50%' : '45%',
+        lg: isLandscape ? '35%' : '45%',
+    })
 
     let height = heightCalc(isLandscape, statusBarHeight)
 
@@ -64,10 +68,10 @@ const Header = ({ route, navigation }) => {
             height: height,
         },
         icon: {
-            pr: isPad ? (isLandscape ? '5%' : '10%') : '0%',
+            pr: isPad ? (isLandscape ? '5%' : '10%') : 0,
         },
         button: {
-            width: isPad ? (isLandscape ? '35%' : '50%') : '50%',
+            width: isPad ? buttonWidth : '50%',
         },
     }
 

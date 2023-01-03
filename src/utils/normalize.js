@@ -63,7 +63,6 @@ export const create = (
         'right',
     ]
 ) => {
-    const { height } = Dimensions.get('window')
     const normalizedStyles = {}
     Object.keys(styles).forEach((key) => {
         normalizedStyles[key] = {}
@@ -75,10 +74,9 @@ export const create = (
                 ) {
                     normalizedStyles[key][property] = styles[key][property]
                 } else {
-                    normalizedStyles[key][property] =
-                        property == 'fontSize' && height > 1200
-                            ? normalize(styles[key][property]) + 5
-                            : normalize(styles[key][property])
+                    normalizedStyles[key][property] = normalize(
+                        styles[key][property]
+                    )
                 }
             } else {
                 normalizedStyles[key][property] = styles[key][property]

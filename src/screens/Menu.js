@@ -25,6 +25,12 @@ const Menu = ({ navigation }) => {
         lg: isLandscape ? 300 : '30%',
         xl: isLandscape ? 350 : '30%',
     })
+    const buttonTop = useBreakpointValue({
+        sm: '14%',
+        md: '12%',
+        lg: '14%',
+    })
+
     const styles = create({
         image: {
             borderRadius: 15,
@@ -161,8 +167,8 @@ const Menu = ({ navigation }) => {
                             disabled={true}
                             // onPress={() => navigation.navigate('CompanyInfo')}
                             style={{
-                                top: '14%',
-                                width: '35%',
+                                top: buttonTop,
+                                width: '30%',
                             }}
                             text="Learn about ELSO"
                         />

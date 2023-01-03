@@ -31,7 +31,7 @@ const Button = (props) => {
                     borderRadius: 40,
                     shadowOpacity: 0.2,
                     shadowOffset: { width: 4, height: 4 },
-                    maxWidth: 220,
+                    maxWidth: 300,
                 },
                 props.style,
             ]}
@@ -45,7 +45,7 @@ const Button = (props) => {
                     sm: 2,
                     md: 2,
                     lg: isLandscape ? 2 : 2,
-                    xl: isLandscape ? 2 : 2,
+                    xl: 3,
                 }}
                 alignItems="center"
                 justifyContent="center"
@@ -57,7 +57,7 @@ const Button = (props) => {
                     <Text
                         color="white"
                         fontSize={{
-                            base: height > 800 ? 'md' : 'md',
+                            base: height > 900 ? 'md' : 'md',
                             sm: 'xl',
                             md: 'xl',
                             lg: isLandscape ? 'xl' : '2xl',

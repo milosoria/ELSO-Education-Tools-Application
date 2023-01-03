@@ -37,7 +37,7 @@ const Simulators = ({ navigation }) => {
     const { height } = Dimensions.get('window')
     const isLandscape = useOrientation()
     const imageHeight = useBreakpointValue({
-        md: '45%',
+        base: '45%',
         lg: isLandscape ? '40%' : '45%',
         xl: isLandscape ? '40%' : '45%',
     })
@@ -121,7 +121,7 @@ const Simulators = ({ navigation }) => {
                         color="white"
                         lineHeight="sm"
                         fontSize={{
-                            base: height > 800 ? '4xl' : '3xl',
+                            base: height > 900 ? '4xl' : '3xl',
                             sm: isLandscape ? '3xl' : '3xl',
                             md: isLandscape ? '3xl' : '3xl',
                             lg: isLandscape ? '3xl' : '4xl',
@@ -136,7 +136,7 @@ const Simulators = ({ navigation }) => {
                         color="white"
                         lineHeight="sm"
                         fontSize={{
-                            base: height > 800 ? 'lg' : 'md',
+                            base: height > 900 ? 'lg' : 'md',
                             sm: isLandscape ? 'lg' : 'lg',
                             md: isLandscape ? 'xl' : 'xl',
                             lg: isLandscape ? 'xl' : '2xl',
@@ -204,8 +204,8 @@ const Simulators = ({ navigation }) => {
                 flexDirection={isPad ? 'row' : 'column'}
                 alignItems="center"
                 mt={isPad ? (isLandscape ? '2%' : '5%') : 0}
-                justifyContent="space-evenly"
-                space={isPad ? 0 : 5}
+                justifyContent={isLandscape ? 'center' : 'space-evenly'}
+                space={isPad ? (isLandscape ? '5%' : 0) : 5}
                 horizontal={isPad}
             >
                 {!isPad && (

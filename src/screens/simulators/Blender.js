@@ -13,7 +13,7 @@ import DimensionContext from '../../contexts/dimensionContext'
 import { useToken } from 'native-base'
 
 const Blender = () => {
-    const [black50] = useToken('colors', ['primary.black.50'])
+    const [gray100] = useToken('colors', ['primary.gray.100'])
     const [modalVisible, setModalVisible] = useState(false)
     const { maxDimension } = useContext(DimensionContext)
     const handlePress = () => {
@@ -31,7 +31,7 @@ const Blender = () => {
         },
         column: {
             flexDirection: 'column',
-            backgroundColor: black50,
+            backgroundColor: gray100,
         },
         button: {
             borderRadius: 20,
@@ -51,7 +51,7 @@ const Blender = () => {
                     </View>
                 </View>
                 <TouchableHighlight
-                    underlayColor={black50}
+                    underlayColor={gray100}
                     activeOpacity={0.8}
                     style={[styles.button, { borderRadius: 100 }]}
                     onPress={handlePress}

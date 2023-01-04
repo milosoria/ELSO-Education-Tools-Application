@@ -6,9 +6,7 @@ import {
     TouchableHighlight,
     View,
 } from 'react-native'
-import InstructionsModal from '../../components/simulators/instructionsModal'
-import Meter from '../../components/simulators/blender/meter'
-import Mixer from '../../components/simulators/blender/mixer'
+import { InstructionsModal, Meter, Mixer } from '../../components/'
 import DimensionContext from '../../contexts/dimensionContext'
 import { useToken } from 'native-base'
 

@@ -1,8 +1,6 @@
 import { Image, StyleSheet, TouchableHighlight, View } from 'react-native'
 import { useContext, useState } from 'react'
-import InstructionsModal from '../../components/simulators/instructionsModal'
-import CenterPannel from '../../components/simulators/pdb/centerPannel'
-import RightPannel from '../../components/simulators/pdb/rightPannel'
+import { CenterPannel, InstructionsModal, RightPannel } from '../../components/'
 import DimensionContext from '../../contexts/dimensionContext'
 import { useToken } from 'native-base'
 

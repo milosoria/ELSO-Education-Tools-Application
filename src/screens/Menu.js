@@ -4,15 +4,12 @@ import { Button } from '../atoms/'
 import useOrientation from '../utils/orientation'
 import { Box, Text, useBreakpointValue, useToken } from 'native-base'
 import * as ScreenOrientation from 'expo-screen-orientation'
-import Icon from 'react-native-vector-icons/AntDesign'
+import { IPhoneButton } from '../components/'
 
 const Menu = ({ navigation }) => {
     const { isPad } = Platform
     const { height } = Dimensions.get('window')
-    const [black50, gray50] = useToken('colors', [
-        'primary.black.50',
-        'primary.gray.50',
-    ])
+    const [black50] = useToken('colors', 'primary.black.50')
     if (!isPad)
         ScreenOrientation.lockAsync(
             ScreenOrientation.OrientationLock.PORTRAIT_UP
@@ -49,29 +46,6 @@ const Menu = ({ navigation }) => {
         },
     })
 
-    const IPhoneButton = (props) => (
-        <Button
-            {...props}
-            style={[
-                {
-                    left: '20%',
-                    width: '16%',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                },
-                props.style,
-            ]}
-        >
-            <Icon
-                name="arrowright"
-                size={height > 900 ? 25 : 23}
-                style={{
-                    color: gray50,
-                    alignSelf: 'center',
-                }}
-            />
-        </Button>
-    )
     return (
         <Box
             style={{

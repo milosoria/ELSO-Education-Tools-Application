@@ -5,6 +5,6 @@ const config = {
     singleQuote: true,
     semi: false,
     bracketSpacing: true,
-};
+}
 
-module.exports = config;
+module.exports = config

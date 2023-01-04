@@ -1,7 +1,7 @@
-import  { createContext } from 'react'
+import { createContext } from 'react'
 
 const DimensionContext = createContext({
-    maxDimension : 0,
-    minDimension : 0
+    maxDimension: 0,
+    minDimension: 0,
 })
-export default DimensionContext 
+export default DimensionContext

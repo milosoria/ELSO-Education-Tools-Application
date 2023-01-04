@@ -1,7 +1,5 @@
 const CompanyInfo = () => {
-    return (
-        <></>
-    )
+    return <></>
 }
 
 export default CompanyInfo

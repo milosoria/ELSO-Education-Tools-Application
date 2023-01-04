@@ -11,6 +11,7 @@
         "lint": "eslint .",
         "tunnel": "expo start --tunnel",
         "lint-fix": "eslint --fix .",
+        "format": "npx prettier  --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
         "fix-deps": "expo doctor --fix-dependencies",
         "prebuild": "expo prebuild --platform ios",
         "prebuild-clean": "expo prebuild --clean --platform ios",

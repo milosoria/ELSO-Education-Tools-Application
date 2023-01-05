@@ -109,7 +109,9 @@ const Simulators = ({ navigation }) => {
                         width: isPad ? '60%' : '50%',
                         marginTop: isPad ? 10 : 0,
                     }}
-                    onPress={() => navigation.navigate(name)}
+                    onPress={() =>
+                        navigation.navigate('Selector', { name: name })
+                    }
                     text="Continue"
                 />
                 <Box

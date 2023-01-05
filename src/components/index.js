@@ -11,6 +11,7 @@ import Knob from './simulators/knob'
 import Header from './header'
 import IPhoneButton from './iphoneButton'
 
+// FIXME: this does not work
 export {
     Meter,
     Mixer,

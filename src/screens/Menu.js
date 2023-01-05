@@ -1,15 +1,21 @@
 import { create } from '../utils/normalize'
-import { Dimensions, ImageBackground, Platform, ScrollView } from 'react-native'
+import { Dimensions, ImageBackground, Platform } from 'react-native'
 import { Button } from '../atoms/'
 import useOrientation from '../utils/orientation'
-import { Box, Text, useBreakpointValue, useToken } from 'native-base'
+import {
+    Box,
+    ScrollView,
+    Text,
+    useBreakpointValue,
+    useToken,
+} from 'native-base'
 import * as ScreenOrientation from 'expo-screen-orientation'
 import { IPhoneButton } from '../components/'
 
 const Menu = ({ navigation }) => {
     const { isPad } = Platform
     const { height } = Dimensions.get('window')
-    const [black50] = useToken('colors', 'primary.black.50')
+    const [black50] = useToken('colors', ['primary.black.50'])
     if (!isPad)
         ScreenOrientation.lockAsync(
             ScreenOrientation.OrientationLock.PORTRAIT_UP
@@ -57,10 +63,8 @@ const Menu = ({ navigation }) => {
         >
             <ScrollView
                 showsVerticalScrollIndicator={false}
-                style={{
-                    alignSelf: 'center',
-                    width: isLandscape ? '80%' : '90%',
-                }}
+                alignSelf="center"
+                width={isLandscape ? '80%' : '90%'}
                 contentContainerStyle={{
                     flexGrow: 1,
                 }}

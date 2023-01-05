@@ -38,7 +38,7 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                         borderRadius="xl"
                         pt={25}
                         alignItems="center"
-                        shadow={5}
+                        shadow={9}
                     >
                         <Text
                             color="primary.black.100"

@@ -1,5 +1,6 @@
 import { ImageBackground, View } from 'react-native'
-import { FunctionKnob, IntervalKnob } from '../../'
+import FunctionKnob from '../functionKnob'
+import IntervalKnob from '../intervalKnob'
 import { create } from '../../../utils/normalize'
 
 const ROOTPATH = '../../../assets/pdb/right-knob-pannel'

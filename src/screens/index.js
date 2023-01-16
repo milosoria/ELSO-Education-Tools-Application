@@ -11,7 +11,6 @@ import ClinicalTools from './carousels/ClinicalTools'
 import Menu from './Menu'
 import CompanyInfo from './CompanyInfo'
 
-// FIXME: this does not work
 export {
     PDB,
     Blender,

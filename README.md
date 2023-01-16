@@ -4,6 +4,7 @@
 
 1.  [x] Native Base implementation
 2.  [ ] Change menu images with machines designs
+3.  [ ] Theme development
 
 ## TODO 1.1.0 (Antes del 28 Enero)
 
@@ -21,6 +22,11 @@
 ## TODO 1.1.1
 
 1.  [ ] Suggestive cannula tool: cannula selector based on dropdown fields and guided filters
+2.  [ ] Backend: Cronjob that reads a weekly updated database (specify every step)
+    -   [ ] Backend light framework for cronjobs
+    -   [ ] Access to google sheets or some other form of cloud storage service
+    -   [ ] Host on aws or another convenient option
+3.  [ ] Cards: cards for cannulas profiles
 
 ## TODO 1.1.2
 

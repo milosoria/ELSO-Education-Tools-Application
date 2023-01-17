@@ -21,12 +21,17 @@
 
 ## TODO 1.1.1
 
-1.  [ ] Suggestive cannula tool: cannula selector based on dropdown fields and guided filters
-2.  [ ] Backend: Cronjob that reads a weekly updated database (specify every step)
-    -   [ ] Backend light framework for cronjobs
-    -   [ ] Access to google sheets or some other form of cloud storage service
-    -   [ ] Host on aws or another convenient option
-3.  [ ] Cards: cards for cannulas profiles
+### Suggestive cannula tool: cannula selector based on dropdown fields and guided filters
+
+1.  [ ] Backend: Cronjob that reads a weekly updated database (specify every step)
+    -   [ ] Set up Express js/Node js project
+    -   [ ] Determine a usable data format
+    -   [ ] Create googlesheets consuming protocol using google API services (Google Cloud Account) with parser
+    -   [ ] Set up a cronjob (automatic and periodically executed task) to update the information every week
+    -   [ ] Add routing so it can be consumed '/cannulas'
+    -   [ ] Host on aws (++work but cheaper), (Deta)[https://www.deta.sh/] or (Railway)[https://railway.app/pricing]
+    -   [ ] Test
+2.  [ ] Cards: cards for cannulas profiles
 
 ## TODO 1.1.2
 

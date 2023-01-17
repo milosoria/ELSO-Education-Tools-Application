@@ -45,7 +45,6 @@ const Selector = ({ route, navigation }) => {
                         ml={{ base: '8', md: '12' }}
                     >
                         <Text
-                            fontFamily="body"
                             color="white"
                             lineHeight="sm"
                             fontSize={{
@@ -87,7 +86,6 @@ const Selector = ({ route, navigation }) => {
                                 md: 'md',
                                 lg: 'md',
                             }}
-                            fontFamily="body"
                             color="white"
                             lineHeight="sm"
                             fontSize={{
@@ -109,7 +107,6 @@ const Selector = ({ route, navigation }) => {
                                 md: 'md',
                                 lg: 'md',
                             }}
-                            fontFamily="body"
                             color="white"
                             lineHeight="sm"
                             fontSize={{
@@ -154,7 +151,6 @@ const Selector = ({ route, navigation }) => {
                                 md: 'md',
                                 lg: 'md',
                             }}
-                            fontFamily="body"
                             color="white"
                             lineHeight="sm"
                             fontSize={{
@@ -174,7 +170,6 @@ const Selector = ({ route, navigation }) => {
                                 base: 'xs',
                                 lg: 'md',
                             }}
-                            fontFamily="body"
                             color="white"
                             lineHeight="sm"
                             fontSize={{

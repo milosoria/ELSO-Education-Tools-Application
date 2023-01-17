@@ -2,6 +2,7 @@ import TcpSocket from 'react-native-tcp-socket'
 
 const PORT = 6666
 
+// TODO: finish netHandler, handle errors, etc.
 const netHandler = {
     createClient(ip, setChats) {
         const client = TcpSocket.createConnection(

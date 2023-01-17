@@ -109,9 +109,8 @@ const Simulators = ({ navigation }) => {
                         width: isPad ? '60%' : '50%',
                         marginTop: isPad ? 10 : 0,
                     }}
-                    onPress={() =>
-                        navigation.navigate('Selector', { name: name })
-                    }
+                    //FIXME: fix this, not opening pdb nor blender
+                    onPress={() => navigation.navigate(name)}
                     text="Continue"
                 />
                 <Box
@@ -119,7 +118,6 @@ const Simulators = ({ navigation }) => {
                     pl={isPad ? '6%' : '0%'}
                 >
                     <Text
-                        fontFamily="body"
                         color="white"
                         lineHeight="sm"
                         fontSize={{
@@ -134,7 +132,6 @@ const Simulators = ({ navigation }) => {
                         {name}
                     </Text>
                     <Text
-                        fontFamily="body"
                         color="white"
                         lineHeight="sm"
                         fontSize={{
@@ -169,22 +166,20 @@ const Simulators = ({ navigation }) => {
                         flexDirection="column-reverse"
                     >
                         <Text
-                            fontFamily="body"
                             color="white"
                             lineHeight="sm"
                             fontSize={{
-                                base: 'lg',
-                                sm: isLandscape ? 'lg' : 'xl',
+                                base: height > 900 ? 'lg' : 'md',
+                                sm: isLandscape ? 'lg' : 'lg',
                                 md: isLandscape ? 'xl' : 'xl',
                                 lg: isLandscape ? 'xl' : '2xl',
                                 xl: isLandscape ? '2xl' : '5xl',
                             }}
-                            fontWeight="300"
+                            fontWeight="400"
                         >
                             Scroll and select a simulator
                         </Text>
                         <Text
-                            fontFamily="body"
                             color="white"
                             lineHeight="sm"
                             fontSize={{

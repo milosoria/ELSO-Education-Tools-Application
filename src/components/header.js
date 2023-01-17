@@ -51,8 +51,9 @@ const Header = ({ route, navigation }) => {
     })
     const buttonWidth = useBreakpointValue({
         sm: '50%',
-        md: isLandscape ? '50%' : '45%',
-        lg: isLandscape ? '35%' : '45%',
+        md: '45%',
+        lg: isLandscape ? '35%' : '40%',
+        xl: isLandscape ? '35%' : '40%',
     })
 
     let height = heightCalc(isLandscape, statusBarHeight)
@@ -71,7 +72,7 @@ const Header = ({ route, navigation }) => {
             pr: isPad ? (isLandscape ? '5%' : '10%') : 0,
         },
         button: {
-            width: isPad ? buttonWidth : '50%',
+            width: buttonWidth,
         },
     }
 

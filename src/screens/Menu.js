@@ -103,7 +103,6 @@ const Menu = ({ navigation }) => {
                                     lg: 'lg',
                                     xl: 'xl',
                                 }}
-                                fontFamily="body"
                                 color="white"
                                 lineHeight="sm"
                                 fontSize={{
@@ -125,7 +124,6 @@ const Menu = ({ navigation }) => {
                             ml={{ base: '8', md: '12' }}
                         >
                             <Text
-                                fontFamily="body"
                                 color="white"
                                 lineHeight="sm"
                                 fontSize={{
@@ -133,6 +131,7 @@ const Menu = ({ navigation }) => {
                                     sm: '3xl',
                                     md: '3xl',
                                     lg: '4xl',
+                                    xl: '4xl',
                                 }}
                                 fontWeight="600"
                             >
@@ -236,7 +235,6 @@ const Menu = ({ navigation }) => {
                                 base: 'xs',
                                 lg: 'md',
                             }}
-                            fontFamily="body"
                             color="white"
                             lineHeight="sm"
                             fontSize={{

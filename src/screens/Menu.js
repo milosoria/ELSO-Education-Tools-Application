@@ -258,7 +258,7 @@ const Menu = ({ navigation }) => {
                                 }}
                                 fontWeight="400"
                             >
-                                Suggestive Canula
+                                Suggestive Cannula
                             </Text>
                         )}
                     </Box>

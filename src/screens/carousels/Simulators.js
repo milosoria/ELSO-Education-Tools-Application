@@ -16,6 +16,7 @@ import {
     useToken,
 } from 'native-base'
 
+//FIXME: Simulators are still using view and react native components, and use maxDimension and minDimension
 const SIMULATORS = [
     {
         id: '1',
@@ -109,7 +110,6 @@ const Simulators = ({ navigation }) => {
                         width: isPad ? '60%' : '50%',
                         marginTop: isPad ? 10 : 0,
                     }}
-                    //FIXME: fix this, not opening pdb nor blender
                     onPress={() => navigation.navigate(name)}
                     text="Continue"
                 />

@@ -6,6 +6,7 @@ import RightPannel from './simulators/pdb/rightPannel'
 import FunctionKnob from './simulators/functionKnob'
 import IntervalKnob from './simulators/intervalKnob'
 import Knob from './simulators/knob'
+import InstructionsModal from './simulators/instructionsModal'
 
 // general
 import Header from './header'
@@ -18,6 +19,7 @@ export {
     RightPannel,
     FunctionKnob,
     IntervalKnob,
+    InstructionsModal,
     Knob,
     Header,
     IPhoneButton,

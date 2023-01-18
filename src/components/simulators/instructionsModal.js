@@ -43,7 +43,6 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                         <Text
                             color="primary.black.100"
                             fontWeight="500"
-                            fontFamily="body"
                             fontSize={{
                                 base: '2xl',
                                 sm: '3xl',
@@ -56,7 +55,6 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                         <Text
                             color="primary.black.100"
                             fontWeight="400"
-                            fontFamily="body"
                             fontSize={{
                                 base: 'sm',
                                 sm: 'lg',
@@ -86,7 +84,6 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                             <Text
                                 color="primary.blue.50"
                                 fontWeight="600"
-                                fontFamily="body"
                                 fontSize={{
                                     base: 'lg',
                                     sm: '2xl',

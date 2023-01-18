@@ -1,5 +1,5 @@
 import { create } from '../utils/normalize'
-import { Dimensions, ImageBackground, Platform } from 'react-native'
+import { ImageBackground, Platform } from 'react-native'
 import { Button, Text } from '../atoms/'
 import useOrientation from '../utils/orientation'
 import { Box, ScrollView, useBreakpointValue, useToken } from 'native-base'
@@ -8,7 +8,6 @@ import { IPhoneButton } from '../components/'
 
 const Menu = ({ navigation }) => {
     const { isPad } = Platform
-    const { height } = Dimensions.get('window')
     const [black50] = useToken('colors', ['primary.black.50'])
     if (!isPad)
         ScreenOrientation.lockAsync(

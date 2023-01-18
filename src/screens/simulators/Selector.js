@@ -1,4 +1,3 @@
-import { Dimensions } from 'react-native'
 import useOrientation from '../../utils/orientation'
 import { Text } from '../../atoms/'
 import { Box, ScrollView, useToken } from 'native-base'
@@ -6,7 +5,6 @@ import { IPhoneButton } from '../../components/'
 
 const Selector = ({ route, navigation }) => {
     const { name } = route.params
-    const { height } = Dimensions.get('window')
     const [black100, gray300] = useToken('colors', [
         'primary.black.100',
         'primary.gray.300',

@@ -1,4 +1,4 @@
-import { Dimensions, TouchableHighlight } from 'react-native'
+import { TouchableHighlight } from 'react-native'
 import Text from './Text'
 import { Box, useToken } from 'native-base'
 import useOrientation from '../utils/orientation'
@@ -11,7 +11,6 @@ const Button = (props) => {
         'primary.blue.200',
         'primary.gray.200',
     ])
-    const { height } = Dimensions.get('window')
     const colouredButton = {
         linearGradient: {
             colors: [blue50, blue200],

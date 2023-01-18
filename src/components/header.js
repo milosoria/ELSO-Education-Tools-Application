@@ -3,12 +3,11 @@ import { Dimensions, Platform, SafeAreaView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/AntDesign'
 import useOrientation from '../utils/orientation'
-import { Button } from '../atoms'
+import { Button, Text } from '../atoms'
 import {
     Box,
     Image,
     Pressable,
-    Text,
     useBreakpointValue,
     useToken,
 } from 'native-base'
@@ -50,6 +49,7 @@ const Header = ({ route, navigation }) => {
         md: 20,
     })
     const buttonWidth = useBreakpointValue({
+        base: '50%',
         sm: '50%',
         md: '45%',
         lg: isLandscape ? '35%' : '40%',
@@ -122,21 +122,7 @@ const Header = ({ route, navigation }) => {
                                         paddingRight: styles.icon.pr,
                                     }}
                                 />
-                                {isPad && (
-                                    <Text
-                                        color="white"
-                                        fontSize={{
-                                            base: 'xl',
-                                            sm: 'xl',
-                                            md: 'xl',
-                                            lg: isLandscape ? 'xl' : '2xl',
-                                            xl: isLandscape ? '2xl' : '2xl',
-                                        }}
-                                        fontWeight="600"
-                                    >
-                                        Back
-                                    </Text>
-                                )}
+                                {isPad && <Text type="subtitle" text="Back" />}
                             </Box>
                         </Button>
                     </Box>

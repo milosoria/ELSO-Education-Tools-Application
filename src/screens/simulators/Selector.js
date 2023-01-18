@@ -1,6 +1,7 @@
 import { Dimensions } from 'react-native'
 import useOrientation from '../../utils/orientation'
-import { Box, ScrollView, Text, useToken } from 'native-base'
+import { Text } from '../../atoms/'
+import { Box, ScrollView, useToken } from 'native-base'
 import { IPhoneButton } from '../../components/'
 
 const Selector = ({ route, navigation }) => {
@@ -44,19 +45,7 @@ const Selector = ({ route, navigation }) => {
                         alignItems="flex-start"
                         ml={{ base: '8', md: '12' }}
                     >
-                        <Text
-                            color="white"
-                            lineHeight="sm"
-                            fontSize={{
-                                base: height > 900 ? '2xl' : 'xl',
-                                sm: '3xl',
-                                md: '3xl',
-                                lg: '4xl',
-                            }}
-                            fontWeight="600"
-                        >
-                            Remote controller settings
-                        </Text>
+                        <Text type="title" text="Remote controller settings" />
                     </Box>
                     <IPhoneButton
                         style={{
@@ -86,20 +75,10 @@ const Selector = ({ route, navigation }) => {
                                 md: 'md',
                                 lg: 'md',
                             }}
-                            color="white"
-                            lineHeight="sm"
-                            fontSize={{
-                                base: height > 900 ? 'xl' : 'lg',
-                                sm: '3xl',
-                                md: '3xl',
-                                lg: '4xl',
-                                xl: '4xl',
-                            }}
-                            fontWeight="600"
+                            type="title"
                             mb="2"
-                        >
-                            {name}
-                        </Text>
+                            text={name}
+                        />
                         <Text
                             maxW={{
                                 base: 'xs',
@@ -107,19 +86,9 @@ const Selector = ({ route, navigation }) => {
                                 md: 'md',
                                 lg: 'md',
                             }}
-                            color="white"
-                            lineHeight="sm"
-                            fontSize={{
-                                base: height > 900 ? '4xl' : '3xl',
-                                sm: '3xl',
-                                md: '3xl',
-                                lg: '4xl',
-                                xl: '4xl',
-                            }}
-                            fontWeight="600"
-                        >
-                            Regular Simulator
-                        </Text>
+                            type="large title"
+                            text="Regular Simulator"
+                        />
                     </Box>
                     <IPhoneButton
                         style={{ left: '15%' }}
@@ -151,38 +120,19 @@ const Selector = ({ route, navigation }) => {
                                 md: 'md',
                                 lg: 'md',
                             }}
-                            color="white"
-                            lineHeight="sm"
-                            fontSize={{
-                                base: height > 900 ? '2xl' : 'xl',
-                                sm: '3xl',
-                                md: '3xl',
-                                lg: '4xl',
-                                xl: '4xl',
-                            }}
+                            type="title"
                             mb="2"
-                            fontWeight="600"
-                        >
-                            {name}
-                        </Text>
+                            text={name}
+                        />
                         <Text
                             maxW={{
                                 base: 'xs',
                                 lg: 'md',
                             }}
-                            color="white"
-                            lineHeight="sm"
-                            fontSize={{
-                                base: height > 900 ? '4xl' : '3xl',
-                                sm: '3xl',
-                                md: '3xl',
-                                lg: '4xl',
-                                xl: '4xl',
-                            }}
+                            type="large title"
                             fontWeight="600"
-                        >
-                            Modular Controller
-                        </Text>
+                            text="Modular Controller"
+                        />
                     </Box>
                     <IPhoneButton style={{ left: '15%' }} />
                 </Box>

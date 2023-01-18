@@ -1,5 +1,6 @@
 import { Dimensions, TouchableHighlight } from 'react-native'
-import { Box, Text, useToken } from 'native-base'
+import Text from './Text'
+import { Box, useToken } from 'native-base'
 import useOrientation from '../utils/orientation'
 
 const Button = (props) => {
@@ -54,19 +55,7 @@ const Button = (props) => {
                 {props.children ? (
                     props.children
                 ) : (
-                    <Text
-                        color="white"
-                        fontSize={{
-                            base: height > 900 ? 'md' : 'md',
-                            sm: 'xl',
-                            md: 'xl',
-                            lg: isLandscape ? 'xl' : '2xl',
-                            xl: isLandscape ? '2xl' : 'xl',
-                        }}
-                        fontWeight="600"
-                    >
-                        {props.text}
-                    </Text>
+                    <Text type="subtitle" fontWeight="600" text={props.text} />
                 )}
             </Box>
         </TouchableHighlight>

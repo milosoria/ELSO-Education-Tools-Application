@@ -1,6 +1,7 @@
 import { Image, Modal, TouchableOpacity } from 'react-native'
 import { BlurView } from 'expo-blur'
-import { Box, Divider, Text } from 'native-base'
+import { Text } from '../../atoms/'
+import { Box, Divider } from 'native-base'
 
 const InstructionsModal = ({ modalVisible, setModalVisible }) => {
     return (
@@ -42,28 +43,14 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                     >
                         <Text
                             color="primary.black.100"
-                            fontWeight="500"
-                            fontSize={{
-                                base: '2xl',
-                                sm: '3xl',
-                                md: '3xl',
-                                lg: '3xl',
-                            }}
-                        >
-                            Remember
-                        </Text>
+                            type="title"
+                            text="Remember"
+                        />
                         <Text
                             color="primary.black.100"
-                            fontWeight="400"
-                            fontSize={{
-                                base: 'sm',
-                                sm: 'lg',
-                                md: 'lg',
-                                lg: 'xl',
-                            }}
-                        >
-                            Use two fingers
-                        </Text>
+                            type="subtitle"
+                            text="Use two fingers"
+                        />
                         <Image
                             source={require('../../assets/help/fingers-gesture.png')}
                             style={{ width: '35%' }}
@@ -84,15 +71,9 @@ const InstructionsModal = ({ modalVisible, setModalVisible }) => {
                             <Text
                                 color="primary.blue.50"
                                 fontWeight="600"
-                                fontSize={{
-                                    base: 'lg',
-                                    sm: '2xl',
-                                    md: '2xl',
-                                    lg: '2xl',
-                                }}
-                            >
-                                OK
-                            </Text>
+                                type="subtitle"
+                                text="OK"
+                            />
                         </TouchableOpacity>
                     </Box>
                 </Box>

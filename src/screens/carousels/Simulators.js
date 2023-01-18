@@ -5,16 +5,9 @@ import {
     SafeAreaView,
 } from 'react-native'
 import { create } from '../../utils/normalize'
-import { Button } from '../../atoms/'
+import { Button, Text } from '../../atoms/'
 import useOrientation from '../../utils/orientation'
-import {
-    Box,
-    HStack,
-    Text,
-    VStack,
-    useBreakpointValue,
-    useToken,
-} from 'native-base'
+import { Box, HStack, VStack, useBreakpointValue, useToken } from 'native-base'
 
 //FIXME: Simulators are still using view and react native components, and use maxDimension and minDimension
 const SIMULATORS = [
@@ -118,33 +111,16 @@ const Simulators = ({ navigation }) => {
                     pl={isPad ? '6%' : '0%'}
                 >
                     <Text
-                        color="white"
-                        lineHeight="sm"
-                        fontSize={{
-                            base: height > 900 ? '4xl' : '3xl',
-                            sm: isLandscape ? '3xl' : '3xl',
-                            md: isLandscape ? '3xl' : '3xl',
-                            lg: isLandscape ? '3xl' : '4xl',
-                            xl: isLandscape ? '4xl' : '5xl',
-                        }}
-                        fontWeight="700"
-                    >
-                        {name}
-                    </Text>
+                        type="title"
+                        base={height > 900 ? '4xl' : '3xl'}
+                        text={name}
+                        fontWeight="600"
+                    />
                     <Text
-                        color="white"
-                        lineHeight="sm"
-                        fontSize={{
-                            base: height > 900 ? 'lg' : 'md',
-                            sm: isLandscape ? 'lg' : 'lg',
-                            md: isLandscape ? 'xl' : 'xl',
-                            lg: isLandscape ? 'xl' : '2xl',
-                            xl: isLandscape ? '2xl' : '5xl',
-                        }}
-                        fontWeight={isPad ? '400' : '600'}
-                    >
-                        {description}
-                    </Text>
+                        type="description"
+                        fontWeight={'400'}
+                        text={description}
+                    />
                 </Box>
             </VStack>
         </ImageBackground>
@@ -166,33 +142,10 @@ const Simulators = ({ navigation }) => {
                         flexDirection="column-reverse"
                     >
                         <Text
-                            color="white"
-                            lineHeight="sm"
-                            fontSize={{
-                                base: height > 900 ? 'lg' : 'md',
-                                sm: isLandscape ? 'lg' : 'lg',
-                                md: isLandscape ? 'xl' : 'xl',
-                                lg: isLandscape ? 'xl' : '2xl',
-                                xl: isLandscape ? '2xl' : '5xl',
-                            }}
-                            fontWeight="400"
-                        >
-                            Scroll and select a simulator
-                        </Text>
-                        <Text
-                            color="white"
-                            lineHeight="sm"
-                            fontSize={{
-                                base: '3xl',
-                                sm: isLandscape ? '3xl' : '4xl',
-                                md: isLandscape ? '3xl' : '4xl',
-                                lg: isLandscape ? '3xl' : '5xl',
-                                xl: isLandscape ? '4xl' : '5xl',
-                            }}
-                            fontWeight="600"
-                        >
-                            Simulations
-                        </Text>
+                            type="description"
+                            text="Scroll and select a simulator"
+                        />
+                        <Text type="large title" text="Simulations" />
                     </VStack>
                 </ImageBackground>
             )}
@@ -206,16 +159,13 @@ const Simulators = ({ navigation }) => {
                 horizontal={isPad}
             >
                 {!isPad && (
-                    <VStack mt={4} width={itemWidth}>
+                    <VStack mt={4} space={2} width={itemWidth}>
+                        <Text type="large title" text="ECMO Simulators" />
                         <Text
-                            fontSize={height > 900 ? '4xl' : '3xl'}
-                            fontWeight="600"
-                        >
-                            ECMO Simulators
-                        </Text>
-                        <Text fontSize="xl" fontWeight="500">
-                            Scroll and select a simulator
-                        </Text>
+                            type="title"
+                            fontWeight="400"
+                            text="Scroll and select a simulator"
+                        />
                     </VStack>
                 )}
                 {SIMULATORS.map((item) => (

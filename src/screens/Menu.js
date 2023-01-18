@@ -1,14 +1,8 @@
 import { create } from '../utils/normalize'
 import { Dimensions, ImageBackground, Platform } from 'react-native'
-import { Button } from '../atoms/'
+import { Button, Text } from '../atoms/'
 import useOrientation from '../utils/orientation'
-import {
-    Box,
-    ScrollView,
-    Text,
-    useBreakpointValue,
-    useToken,
-} from 'native-base'
+import { Box, ScrollView, useBreakpointValue, useToken } from 'native-base'
 import * as ScreenOrientation from 'expo-screen-orientation'
 import { IPhoneButton } from '../components/'
 
@@ -103,19 +97,10 @@ const Menu = ({ navigation }) => {
                                     lg: 'lg',
                                     xl: 'xl',
                                 }}
-                                color="white"
-                                lineHeight="sm"
-                                fontSize={{
-                                    base: 'xl',
-                                    sm: '3xl',
-                                    md: '3xl',
-                                    lg: '4xl',
-                                    xl: '4xl',
-                                }}
+                                type="title"
                                 fontWeight="600"
-                            >
-                                Welcome to ELSO educational tools app!
-                            </Text>
+                                text="Welcome to ELSO educational tools app!"
+                            />
                         </Box>
                     ) : (
                         <Box
@@ -124,19 +109,10 @@ const Menu = ({ navigation }) => {
                             ml={{ base: '8', md: '12' }}
                         >
                             <Text
-                                color="white"
-                                lineHeight="sm"
-                                fontSize={{
-                                    base: height > 900 ? '2xl' : 'xl',
-                                    sm: '3xl',
-                                    md: '3xl',
-                                    lg: '4xl',
-                                    xl: '4xl',
-                                }}
+                                type="title"
                                 fontWeight="600"
-                            >
-                                Learn about ELSO
-                            </Text>
+                                text="Learn about ELSO"
+                            />
                         </Box>
                     )}
                     {isPad ? (
@@ -174,32 +150,15 @@ const Menu = ({ navigation }) => {
                                 md: 'md',
                                 lg: 'md',
                             }}
-                            fontFamily="body"
-                            color="white"
-                            lineHeight="sm"
-                            fontSize={{
-                                base: height > 900 ? '2xl' : 'xl',
-                                sm: '3xl',
-                                md: '3xl',
-                                lg: '4xl',
-                                xl: '4xl',
-                            }}
-                            fontWeight="600"
-                        >
-                            ECMO Machines Simulators
-                        </Text>
+                            type="title"
+                            text="ECMO Machines Simulators"
+                        />
                         {isPad && (
                             <Text
-                                fontSize={{
-                                    base: 'xs',
-                                    sm: 'md',
-                                    md: 'md',
-                                    lg: 'xl',
-                                }}
+                                type="small"
                                 fontWeight="400"
-                            >
-                                Air-Oxygen Blender - Pressure Display Box
-                            </Text>
+                                text="Air-Oxygen Blender - Pressure Display Box"
+                            />
                         )}
                     </Box>
                     {isPad ? (
@@ -235,31 +194,11 @@ const Menu = ({ navigation }) => {
                                 base: 'xs',
                                 lg: 'md',
                             }}
-                            color="white"
-                            lineHeight="sm"
-                            fontSize={{
-                                base: height > 900 ? '2xl' : 'xl',
-                                sm: '3xl',
-                                md: '3xl',
-                                lg: '4xl',
-                                xl: '4xl',
-                            }}
-                            fontWeight="600"
-                        >
-                            Clinical Tools
-                        </Text>
+                            type="title"
+                            text="Clinical Tools"
+                        />
                         {isPad && (
-                            <Text
-                                fontSize={{
-                                    base: 'xs',
-                                    sm: 'md',
-                                    md: 'md',
-                                    lg: 'xl',
-                                }}
-                                fontWeight="400"
-                            >
-                                Suggestive Cannula
-                            </Text>
+                            <Text type="small" text="Suggestive Cannula" />
                         )}
                     </Box>
                     {isPad ? (

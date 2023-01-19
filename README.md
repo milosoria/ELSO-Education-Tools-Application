@@ -23,7 +23,7 @@
 
 ### Suggestive cannula tool: cannula selector based on dropdown fields and guided filters
 
-1.  [ ] Backend: Cronjob that reads a weekly updated database (specify every step)
+1.  [ ] Backend: Cronjob that reads a weekly updated database
     -   [ ] Set up Express js/Node js project
     -   [ ] Determine a usable data format
     -   [ ] Create googlesheets consuming protocol using google API services (Google Cloud Account) with parser
@@ -31,7 +31,10 @@
     -   [ ] Add routing so it can be consumed '/cannulas'
     -   [ ] Host on aws (++work but cheaper), (Deta)[https://www.deta.sh/] or (Railway)[https://railway.app/pricing]
     -   [ ] Test
-2.  [ ] Cards: cards for cannulas profiles
+1.  [ ] Read googlesheets directly with 
+    -  [ ] Set up google apis keys and develop a parser for the googlesheets information
+2.  [ ] Implement filters 
+3.  [ ] Cards: cards for cannulas profiles
 
 ## TODO 1.1.2
 

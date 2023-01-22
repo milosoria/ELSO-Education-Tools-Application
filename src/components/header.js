@@ -112,7 +112,11 @@ const Header = ({ route, navigation }) => {
                             type="back"
                             onPress={handleBackPress}
                         >
-                            <Box right={isPad && '30%'} flexDirection="row">
+                            <Box
+                                right={isPad && '30%'}
+                                flexDirection="row"
+                                alignItems="center"
+                            >
                                 <Icon
                                     name="arrowleft"
                                     size={arrowSize}
@@ -122,7 +126,13 @@ const Header = ({ route, navigation }) => {
                                         paddingRight: styles.icon.pr,
                                     }}
                                 />
-                                {isPad && <Text type="subtitle" text="Back" />}
+                                {isPad && (
+                                    <Text
+                                        type="subtitle"
+                                        text="Back"
+                                        fontWeight="600"
+                                    />
+                                )}
                             </Box>
                         </Button>
                     </Box>

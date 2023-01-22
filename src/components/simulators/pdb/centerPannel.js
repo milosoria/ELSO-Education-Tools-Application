@@ -48,6 +48,7 @@ const CenterPannel = ({ dimension }) => {
     const alarmHighValue =
         functionType == 'off' ? '' : zeroPad(alarmInterval[1], 3)
 
+    // TODO: change these useEffect
     useEffect(() => {
         if (functionType == 'off') {
             setMode('')
@@ -70,7 +71,7 @@ const CenterPannel = ({ dimension }) => {
     }, [functionType, displayValue])
 
     useEffect(() => {
-        // If the value escapes the interval, then the led must turn blink
+        // If the value escapes the interval, then the led must start blinking
         if (!inInterval) {
             // if the alarm is active, play the sound on loop
             if (alarmActive) {

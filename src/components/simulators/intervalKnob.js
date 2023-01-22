@@ -76,6 +76,7 @@ const IntervalKnob = ({
             if (type == unblocked && unblocked !== 'none') runOnJS(playSound)()
         })
 
+    // TODO: change these useEffect
     // Manage rotation variations
     useEffect(() => {
         const ratio = savedRotation.value / step
